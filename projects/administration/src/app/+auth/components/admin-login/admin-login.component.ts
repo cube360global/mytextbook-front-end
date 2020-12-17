@@ -21,4 +21,10 @@ export class AdminLoginComponent implements OnInit {
     );
   }
 
+  onLoginSubmit(): void {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      return;
+    }
+  }
 }

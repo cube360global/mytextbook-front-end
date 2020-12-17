@@ -1,21 +1,42 @@
 <div class="container d-flex justify-content-center align-items-center">
-  <form [formGroup]="loginForm" >
+  <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
     <div class="logo-img text-center">
-      <img src="assets/img/my-text-book-logo-2x.png"
+
+      <img src="assets/img/my-text-book-logo-black.png"
            class="img-fluid p-3"
            alt="my-text-book-logo-2x">
     </div>
     <div class="p-float-label p-inputtext-sm p-input-icon-right mt-4">
       <i class="fas fa-user"></i>
-      <input id="username" formControlName="username" type="text" pInputText>
-      <label for="username">Username</label>
+      <input id="username"
+             [ngClass]="{ 'p-invalid' : !loginForm.controls['username'].valid && loginForm.controls['username'].touched}"
+             formControlName="username"
+             type="text" pInputText>
+      <label for="username">Username *</label>
     </div>
-    <br>
+
+    <div>
+      <small *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched"
+             class="p-invalid">Username is not available.
+      </small>
+    </div>
+
     <div class="p-float-label p-inputtext-sm p-input-icon-right mt-2">
       <i class="fas fa-lock"></i>
-      <input id="password" formControlName="password" type="password" pInputText>
-      <label for="password">Password</label>
+      <input id="password"
+             [ngClass]="{ 'p-invalid' : !loginForm.controls['password'].valid && loginForm.controls['password'].touched}"
+             formControlName="password"
+             type="password" pInputText>
+      <label for="password">Password *</label>
     </div>
+
+    <div>
+      <small *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched"
+             class="p-invalid">Password is not available.
+      </small>
+    </div>
+
+
     <div class="mt-2">
       <button mat-raised-button color="primary"> SIGN IN </button>
     </div>
