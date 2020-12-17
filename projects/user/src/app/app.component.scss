@@ -1,0 +1,27 @@
+.container {
+  width: 95vw;
+  height: 50vh;
+}
+
+.box {
+  height: inherit;
+  border: 2px solid grey;
+  width: 46.9vw;
+  float: left;
+  overflow-y: auto;
+}
+
+a {
+  background-color: yellow;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#thing {
+  background-color: yellow !important;
+}
+
+.section {
+  text-align: center;
+  font-size: 3em;
+}

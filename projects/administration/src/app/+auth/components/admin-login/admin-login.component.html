@@ -1,0 +1,27 @@
+<div class="container d-flex justify-content-center align-items-center">
+  <form [formGroup]="loginForm" >
+    <div class="logo-img text-center">
+      <img src="assets/img/my-text-book-logo-2x.png"
+           class="img-fluid p-3"
+           alt="my-text-book-logo-2x">
+    </div>
+    <div class="p-float-label p-inputtext-sm p-input-icon-right mt-4">
+      <i class="fas fa-user"></i>
+      <input id="username" formControlName="username" type="text" pInputText>
+      <label for="username">Username</label>
+    </div>
+    <br>
+    <div class="p-float-label p-inputtext-sm p-input-icon-right mt-2">
+      <i class="fas fa-lock"></i>
+      <input id="password" formControlName="password" type="password" pInputText>
+      <label for="password">Password</label>
+    </div>
+    <div class="mt-2">
+      <button mat-raised-button color="primary"> SIGN IN </button>
+    </div>
+  </form>
+</div>
+
+
+
+

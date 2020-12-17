@@ -1,0 +1,20 @@
+
+span:focus {
+  outline: none;
+  border: 0;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+p-button:focus {
+  outline: none !important;
+  background-color: transparent !important;
+}
+
+p-button {
+
+  background-color: transparent !important;
+}
+
