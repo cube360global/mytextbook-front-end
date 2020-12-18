@@ -14,8 +14,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.primengConfig.ripple = false;
-    console.log(this.helloWoldService.message);
+    this.primengConfig.ripple = true;
   }
 
 }

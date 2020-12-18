@@ -1,3 +1,6 @@
+
+
+
 <div class="container d-flex justify-content-center align-items-center">
   <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
     <div class="logo-img text-center">
@@ -16,9 +19,10 @@
     </div>
 
     <div>
-      <small *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched"
-             class="p-invalid">Username is not available.
-      </small>
+      <val-errors controlName="username" label="The username">
+        <ng-template valError="required"><small class="p-invalid">The username is required</small></ng-template>
+        <ng-template valError="email"><small class="p-invalid">This is not a valid email address</small></ng-template>
+      </val-errors>
     </div>
 
     <div class="p-float-label p-inputtext-sm p-input-icon-right mt-2">

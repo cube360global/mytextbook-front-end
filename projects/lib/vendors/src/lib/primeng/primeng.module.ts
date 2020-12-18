@@ -4,6 +4,7 @@ import {AccordionModule} from 'primeng/accordion';
 import {RippleModule} from 'primeng/ripple';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import {InputTextModule} from 'primeng/inputtext';
+import {ToastModule} from 'primeng/toast';
 
 const primeNg = [
   ButtonModule,
@@ -11,6 +12,7 @@ const primeNg = [
   RippleModule,
   PanelMenuModule,
   InputTextModule,
+  ToastModule
 
 ];
 
