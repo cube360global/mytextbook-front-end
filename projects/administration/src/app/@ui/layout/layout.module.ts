@@ -10,7 +10,8 @@ import { ToolBarComponent } from './component/nav-bar/tool-bar/tool-bar.componen
 @NgModule({
   declarations: [NavBarComponent, ToolBarComponent],
   exports: [
-    NavBarComponent
+    NavBarComponent,
+    ToolBarComponent
   ],
   imports: [
     CommonModule,

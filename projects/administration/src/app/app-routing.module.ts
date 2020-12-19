@@ -8,7 +8,8 @@ const routes: Routes = [
   {path: '', component: AdminLoginComponent},
   {
     path: Path.Admin, component: NavBarComponent, children: [
-      {path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)}
+      {path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)},
+      {path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)}
     ]
   },
 

@@ -1,7 +1,21 @@
 mat-drawer-container {
-  height: 100vh;
+  height: 90vh;
 
 }
+i{
+  cursor: pointer;
+  outline: transparent;
+}
+.ms-3{
+  cursor: pointer;
+  outline: transparent;
+}
+
+.admin-active{
+  background-color: #000F34 !important;
+}
+
+
 .icon-width {
   width: 20px;
   //padding: 10px;

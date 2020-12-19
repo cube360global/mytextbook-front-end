@@ -17,13 +17,42 @@ import {StoreModule} from '@ngrx/store';
 import {CookieService} from 'ngx-cookie-service';
 import {AuthEffects} from './+auth/store/auth.effects';
 import {JwtModule} from '@auth0/angular-jwt';
+import {LayoutModule} from './@ui/layout/layout.module';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
-  blur: 4,
-  pbColor: '#001851',
-  overlayColor: 'rgba(40,40,40,0.18)',
+  bgsColor: 'red',
+  bgsOpacity: 0.5,
+  bgsPosition: 'bottom-right',
+  bgsSize: 60,
+  bgsType: 'ball-spin-clockwise',
+  blur: 5,
+  delay: 0,
+  fastFadeOut: true,
   fgsColor: '#001851',
-  fgsType: 'square-loader'
+  fgsPosition: 'center-center',
+  fgsSize: 60,
+  fgsType: 'cube-grid',
+  gap: 24,
+  logoPosition: 'center-center',
+  logoSize: 120,
+  logoUrl: '',
+  masterLoaderId: 'master',
+  overlayBorderRadius: '0',
+  overlayColor: 'rgba(40, 40, 40, 0.8)',
+  pbColor: '#001851',
+  pbDirection: 'ltr',
+  pbThickness: 3,
+  hasProgressBar: true,
+  text: '',
+  textColor: '#FFFFFF',
+  textPosition: 'center-center',
+  maxTime: -1,
+  minTime: 300,
+  // blur: 4,
+  // pbColor: '#001851',
+  // overlayColor: 'rgba(40,40,40,0.18)',
+  // fgsColor: '#001851',
+  // fgsType: 'cube-grid'
 };
 
 
@@ -31,6 +60,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   declarations: [
     AppComponent,
     AdminLoginComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -40,6 +70,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([AuthEffects]),
     JwtModule,
+    LayoutModule,
     MaterialModule,
     PrimengModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
