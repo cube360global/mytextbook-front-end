@@ -1,5 +1,5 @@
 <app-tool-bar></app-tool-bar>
-<mat-drawer-container class="example-container" autosize >
+<mat-drawer-container class="example-container" autosize [class.drawer-opened]="drawer.opened">
   <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="true">
     <div class="d-flex flex-column">
       <div class="d-flex align-items-center justify-content-between p-3"

@@ -34,15 +34,14 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   ]
 })
 export class NavBarComponent implements OnInit {
-  @ViewChild('drawer')
-  drawer!: MatDrawer;
+
   showFiller = false;
 
   constructor() {
   }
 
   ngOnInit(): void {
-    this.drawer.opened = true;
+
   }
 
 }
