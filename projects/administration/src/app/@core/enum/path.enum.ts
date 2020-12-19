@@ -20,4 +20,5 @@ export enum Path {
 
   // Features
   Dashboard = 'dashboard',
+  Users = 'users',
 }

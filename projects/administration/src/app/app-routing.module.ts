@@ -8,8 +8,9 @@ const routes: Routes = [
   {path: '', component: AdminLoginComponent},
   {
     path: Path.Admin, component: NavBarComponent, children: [
-      {path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)},
-      {path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)}
+      {path: '', redirectTo: Path.Dashboard, pathMatch: 'full'},
+      {path: Path.Dashboard, loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)},
+      {path: Path.Users, loadChildren: () => import('./users/users.module').then(m => m.UsersModule)}
     ]
   },
 
