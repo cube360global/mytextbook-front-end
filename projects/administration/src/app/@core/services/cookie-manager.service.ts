@@ -11,8 +11,6 @@ export class CookieManagerService {
   }
 
   public setCookie(accessToken: string, refreshToken: string): void {
-    console.log(accessToken);
-    console.log(refreshToken);
     this.deleteCookie();
     this.cookieService.set(Cookie.ACCESS_TOKEN, accessToken, {expires: 0.1, sameSite: 'Lax'});
     this.cookieService.set(Cookie.REFRESH_TOKEN, refreshToken, {expires: 5, sameSite: 'Lax'});

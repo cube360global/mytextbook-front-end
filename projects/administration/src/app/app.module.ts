@@ -5,9 +5,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from '../../../lib/vendors/src/lib/material/material.module';
-import {NgxUiLoaderModule} from 'ngx-ui-loader';
+import {NgxUiLoaderConfig, NgxUiLoaderModule, NgxUiLoaderService} from 'ngx-ui-loader';
 import {PrimengModule} from '../../../lib/vendors/src/lib/primeng/primeng.module';
-import { AdminLoginComponent } from './+auth/components/admin-login/admin-login.component';
+import {AdminLoginComponent} from './+auth/components/admin-login/admin-login.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ValdemortModule} from 'ngx-valdemort';
 import {MessageService} from 'primeng/api';
@@ -16,6 +16,15 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {CookieService} from 'ngx-cookie-service';
 import {AuthEffects} from './+auth/store/auth.effects';
+import {JwtModule} from '@auth0/angular-jwt';
+
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  blur: 4,
+  pbColor: '#001851',
+  overlayColor: 'rgba(40,40,40,0.18)',
+  fgsColor: '#001851',
+  fgsType: 'square-loader'
+};
 
 
 @NgModule({
@@ -30,15 +39,16 @@ import {AuthEffects} from './+auth/store/auth.effects';
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([AuthEffects]),
+    JwtModule,
     MaterialModule,
     PrimengModule,
-    NgxUiLoaderModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     ReactiveFormsModule,
     ValdemortModule
 
     // NgxUiLoaderModule
   ],
-  providers: [MessageService, CookieService],
+  providers: [MessageService, CookieService, NgxUiLoaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

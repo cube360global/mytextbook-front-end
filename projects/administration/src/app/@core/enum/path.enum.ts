@@ -1,6 +1,7 @@
 export enum Path {
   // Public
   Home = '',
+  Admin = 'admin',
   InternalServerError = 'internal-server-error',
   NotFound = '404',
 

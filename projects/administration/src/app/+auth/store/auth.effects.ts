@@ -7,6 +7,8 @@ import {catchError, map, switchMap} from 'rxjs/operators';
 import {CookieManagerService} from '../../@core/services/cookie-manager.service';
 import {TokenDecodeModel} from '../shared/interfaces/TokenDecodeModel';
 import {of} from 'rxjs';
+import {NgxUiLoaderService} from 'ngx-ui-loader';
+import {Path} from '../../@core/enum/path.enum';
 
 
 @Injectable()
@@ -15,6 +17,7 @@ export class AuthEffects {
   constructor(private authService: AdminAuthService,
               private action: Actions,
               private cookieManager: CookieManagerService,
+              private ngxUiLoaderService: NgxUiLoaderService,
               private router: Router) {
   }
 
@@ -23,13 +26,17 @@ export class AuthEffects {
     return this.action.pipe(
       ofType(USER_LOGIN_STAT),
       switchMap((loginData) => {
+        this.ngxUiLoaderService.start('1200');
         return this.authService.loginAdAdmin(loginData.payload)
           .pipe(
             map((resData: TokenDecodeModel) => {
+              this.ngxUiLoaderService.stop('1200');
               this.cookieManager.setCookie(resData.access_token, resData.refresh_token);
+              this.router.navigate(['/', Path.Admin]);
               return USER_LOGIN({payload: resData});
             }),
-            catchError(err => {
+            catchError(() => {
+              this.ngxUiLoaderService.stop('1200');
               this.cookieManager.deleteCookie();
               return of(USER_LOGIN_FAIL);
             })
