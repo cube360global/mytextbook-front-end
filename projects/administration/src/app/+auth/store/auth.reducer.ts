@@ -25,9 +25,20 @@ export const authReducer = createReducer(
     };
   }),
   on(AuthAction.USER_LOGIN_FAIL, state => {
+    console.log('Called From error');
     return {
       ...state,
       tokenDecodeModel: {} as TokenDecodeModel
+    };
+  }),
+  on(AuthAction.REFRESH_USER_TOKEN, (state, {payload}) => {
+    return {
+      ...state,
+      tokenDecodeModel: payload
+    };
+  }), on(AuthAction.FINISH_REFRESH_USER_TOKEN, state => {
+    return {
+      ...state,
     };
   })
 );

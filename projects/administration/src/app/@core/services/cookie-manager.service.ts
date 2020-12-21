@@ -11,14 +11,15 @@ export class CookieManagerService {
   }
 
   public setCookie(accessToken: string, refreshToken: string): void {
-    this.deleteCookie();
-    this.cookieService.set(Cookie.ACCESS_TOKEN, accessToken, {expires: 0.1, sameSite: 'Lax'});
-    this.cookieService.set(Cookie.REFRESH_TOKEN, refreshToken, {expires: 5, sameSite: 'Lax'});
+    // this.deleteCookie();
+    this.cookieService.set(Cookie.ACCESS_TOKEN, accessToken, {path: '/', expires: 0.1, sameSite: 'Lax'});
+    this.cookieService.set(Cookie.REFRESH_TOKEN, refreshToken, {path: '/', expires: 5, sameSite: 'Lax'});
   }
 
   public deleteCookie(): void {
-    this.cookieService.delete(Cookie.ACCESS_TOKEN);
-    this.cookieService.delete(Cookie.REFRESH_TOKEN);
+    this.cookieService.deleteAll();
+    // this.cookieService.delete(Cookie.ACCESS_TOKEN);
+    // this.cookieService.delete(Cookie.REFRESH_TOKEN);
   }
 
   public getAccessToken(): string {

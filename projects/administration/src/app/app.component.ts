@@ -13,7 +13,8 @@ export class AppComponent implements OnInit {
   constructor(private primengConfig: PrimeNGConfig, private helloWoldService: HelloWorldService) {
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
     this.primengConfig.ripple = true;
   }
 

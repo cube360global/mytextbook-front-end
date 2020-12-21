@@ -1,5 +1,5 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpBackend, HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {LoginModel} from '../interfaces/LoginModel';
 import {ControllerConst} from '../../../../../../lib/tools/src/lib/global/ControllerConst';
 import {Observable} from 'rxjs';
@@ -10,7 +10,8 @@ import {TokenDecodeModel} from '../interfaces/TokenDecodeModel';
 })
 export class AdminAuthService {
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+  constructor(private httpBackend: HttpBackend,
+              @Inject('BASE_URL') private baseUrl: string) {
   }
 
   loginAdAdmin(loginModel: LoginModel): Observable<any> {
@@ -25,8 +26,8 @@ export class AdminAuthService {
     const headersObject = new HttpHeaders()
       .set('Content-Type', 'application/x-www-form-urlencoded')
       .set('Authorization', 'Basic ' + btoa(loginModel.username + ':' + loginModel.password));
-
-    return this.http.post<TokenDecodeModel>(this.baseUrl + ControllerConst.LoginController, reqBody.toString(),
+    const httpClient = new HttpClient(this.httpBackend);
+    return httpClient.post<TokenDecodeModel>(this.baseUrl + ControllerConst.LoginController, reqBody.toString(),
       {
         headers: headersObject
       });

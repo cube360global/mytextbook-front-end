@@ -6,31 +6,31 @@
            (click)="showFiller = !showFiller"
            style="cursor: pointer">
         <i matRipple class="fas fa-bars fa-1x icon-width"></i>
-        <div class="ms-3" *ngIf="showFiller"></div>
+        <div class="ms-3 router-text-default" *ngIf="showFiller"></div>
       </div>
       <div class="d-flex align-items-center  p-3" routerLinkActive="admin-active">
         <i class="fas fa-chart-pie fa-1x icon-width" routerLink="/admin/dashboard"></i>
-        <div class="ms-3" *ngIf="showFiller" routerLink="/admin/dashboard" [@inOutAnimation]>DASHBOARD</div>
+        <div class="ms-3 router-text-default" *ngIf="showFiller" routerLink="/admin/dashboard" [@inOutAnimation]>DASHBOARD</div>
       </div>
       <div class="d-flex align-items-center p-3">
         <i class="fas fa-file-video fa-1x icon-width" routerLink="/admin/content"></i>
-        <div class="ms-3" *ngIf="showFiller" [@inOutAnimation] routerLink="/admin/content">CONTENT</div>
+        <div class="ms-3 router-text-default" *ngIf="showFiller" [@inOutAnimation] routerLink="/admin/content">CONTENT</div>
       </div>
       <div class="d-flex align-items-center p-3" routerLinkActive="admin-active">
         <i class="fas fa-users fa-1x icon-width" routerLink="/admin/users"></i>
-        <div class="ms-3" *ngIf="showFiller" [@inOutAnimation] routerLink="/admin/users">USERS</div>
+        <div class="ms-3 router-text-default" *ngIf="showFiller" [@inOutAnimation] routerLink="/admin/users">USERS</div>
       </div>
       <div class="d-flex align-items-center p-3">
         <i class="fas fa-ticket-alt fa-1x icon-width"></i>
-        <div class="ms-3" *ngIf="showFiller" [@inOutAnimation] >COUPONS</div>
+        <div class="ms-3 router-text-default" *ngIf="showFiller" [@inOutAnimation] >COUPONS</div>
       </div>
       <div class="d-flex align-items-center p-3">
         <i class="fas fa-envelope fa-1x icon-width "></i>
-        <div class="ms-3" *ngIf="showFiller" [@inOutAnimation] >PUSH NOTIFICATION</div>
+        <div class="ms-3 router-text-default" *ngIf="showFiller" [@inOutAnimation] >PUSH NOTIFICATION</div>
       </div>
       <div class="d-flex align-items-center p-3">
         <i class="fas fa-chalkboard-teacher fa-1x icon-width "></i>
-        <div class="ms-3" *ngIf="showFiller" [@inOutAnimation] >QUESTIONS</div>
+        <div class="ms-3 router-text-default" *ngIf="showFiller" [@inOutAnimation] >QUESTIONS</div>
       </div>
     </div>
   </mat-drawer>

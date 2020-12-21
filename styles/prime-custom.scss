@@ -2580,6 +2580,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 }
 
 .p-column-filter-overlay {
+  z-index: 2000 !important;
   background: #ffffff;
   color: #000001;
   border: 0 none;
@@ -2623,7 +2624,10 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
   margin: 0.5rem 0;
 }
 
+
+
 .p-column-filter-overlay-menu .p-column-filter-operator {
+  z-index: 2000;
   padding: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   color: #000001;

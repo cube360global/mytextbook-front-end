@@ -4,7 +4,8 @@ import {MessageService} from 'primeng/api';
 import {AdminAuthService} from '../../shared/services/admin-auth.service';
 import {LoginModel} from '../../shared/interfaces/LoginModel';
 import {Store} from '@ngrx/store';
-import {USER_LOGIN, USER_LOGIN_STAT} from '../../store/auth.action';
+import {USER_LOGIN_STAT} from '../../store/auth.action';
+import * as fromApp from '../../../app.reducer';
 
 @Component({
   selector: 'app-admin-login',
@@ -16,8 +17,7 @@ export class AdminLoginComponent implements OnInit {
   loginForm = {} as FormGroup;
 
   constructor(private messageService: MessageService,
-              private store: Store,
-              private adminAuthService: AdminAuthService) {
+              private store: Store<fromApp.AppState>) {
   }
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class AdminLoginComponent implements OnInit {
       return;
     }
     console.log('Click');
-    this.store.dispatch(USER_LOGIN_STAT({ payload: this.loginForm.value as LoginModel}));
+    this.store.dispatch(USER_LOGIN_STAT({payload: this.loginForm.value as LoginModel}));
   }
 
   showInvalidFormToast(): void {

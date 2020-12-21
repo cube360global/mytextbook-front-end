@@ -6,6 +6,7 @@ import {PanelMenuModule} from 'primeng/panelmenu';
 import {InputTextModule} from 'primeng/inputtext';
 import {ToastModule} from 'primeng/toast';
 import {SidebarModule} from 'primeng/sidebar';
+import {TableModule} from 'primeng/table';
 
 const primeNg = [
   ButtonModule,
@@ -14,7 +15,8 @@ const primeNg = [
   PanelMenuModule,
   InputTextModule,
   SidebarModule,
-  ToastModule
+  ToastModule,
+  TableModule,
 
 ];
 

@@ -2,14 +2,17 @@ mat-drawer-container {
   height: 90vh;
 
 }
+.example-container{
+  background-color: #ffffff;
+}
 i{
   cursor: pointer;
   outline: transparent;
 }
-.ms-3{
-  cursor: pointer;
-  outline: transparent;
-}
+//.ms-3{
+//  cursor: pointer;
+//  outline: transparent;
+//}
 
 .admin-active{
   background-color: #000F34 !important;

@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {AdminAuthService} from '../shared/services/admin-auth.service';
 import {Router} from '@angular/router';
-import {USER_LOGIN, USER_LOGIN_FAIL, USER_LOGIN_STAT} from './auth.action';
-import {catchError, map, switchMap} from 'rxjs/operators';
+import {REFRESH_USER_TOKEN, USER_LOGIN, USER_LOGIN_FAIL, USER_LOGIN_STAT} from './auth.action';
+import {catchError, map, switchMap, tap} from 'rxjs/operators';
 import {CookieManagerService} from '../../@core/services/cookie-manager.service';
 import {TokenDecodeModel} from '../shared/interfaces/TokenDecodeModel';
 import {of} from 'rxjs';
@@ -38,12 +38,22 @@ export class AuthEffects {
             catchError(() => {
               this.ngxUiLoaderService.stop('1200');
               this.cookieManager.deleteCookie();
-              return of(USER_LOGIN_FAIL);
+              return of(USER_LOGIN_FAIL());
             })
           );
       })
     );
   });
+
+  authLogOut = createEffect(() => {
+    return this.action.pipe(
+      ofType(REFRESH_USER_TOKEN),
+      tap((tokenData) => {
+        console.log('from Refresh Token', tokenData);
+        this.cookieManager.setCookie(tokenData.payload.access_token, tokenData.payload.refresh_token);
+      })
+    );
+  }, {dispatch: false});
 
 
 }

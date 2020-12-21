@@ -11,13 +11,14 @@ import {AdminLoginComponent} from './+auth/components/admin-login/admin-login.co
 import {ReactiveFormsModule} from '@angular/forms';
 import {ValdemortModule} from 'ngx-valdemort';
 import {MessageService} from 'primeng/api';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {CookieService} from 'ngx-cookie-service';
 import {AuthEffects} from './+auth/store/auth.effects';
 import {JwtModule} from '@auth0/angular-jwt';
 import {LayoutModule} from './@ui/layout/layout.module';
+import {AuthInterceptorService} from './@core/interceptors/auth-interceptor.service';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -79,7 +80,15 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
 
     // NgxUiLoaderModule
   ],
-  providers: [MessageService, CookieService, NgxUiLoaderService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },
+    MessageService,
+    CookieService,
+    NgxUiLoaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
