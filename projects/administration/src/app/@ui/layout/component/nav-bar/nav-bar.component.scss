@@ -2,19 +2,22 @@ mat-drawer-container {
   height: 90vh;
 
 }
-.example-container{
+
+.example-container {
   background-color: #ffffff;
 }
-i{
+
+i {
   cursor: pointer;
   outline: transparent;
 }
+
 //.ms-3{
 //  cursor: pointer;
 //  outline: transparent;
 //}
 
-.admin-active{
+.admin-active {
   background-color: #000F34 !important;
 }
 
@@ -25,6 +28,7 @@ i{
   display: flex;
   justify-content: center;
 }
+
 mat-drawer {
   color: #ffffff !important;
   background-color: #001851 !important;

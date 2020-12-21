@@ -10,18 +10,11 @@ import {of} from 'rxjs';
 
 @Injectable()
 export class UsersEffects {
-  constructor(private usersApiService: UserApiService,
-              private action: Actions,
-              private cookieManager: CookieManagerService,
-              private ngxUiLoaderService: NgxUiLoaderService,
-              private router: Router) {
-  }
-
   userList$ = createEffect(() => {
     return this.action.pipe(
       ofType(USERS_DATA_REQUEST),
       switchMap(() => {
-        return  this.usersApiService.getUserAll().pipe(
+        return this.usersApiService.getUserAll().pipe(
           map((resData) => {
             console.log(resData);
             return USERS_DATA_LOADED({payload: resData});
@@ -33,5 +26,12 @@ export class UsersEffects {
       })
     );
   });
+
+  constructor(private usersApiService: UserApiService,
+              private action: Actions,
+              private cookieManager: CookieManagerService,
+              private ngxUiLoaderService: NgxUiLoaderService,
+              private router: Router) {
+  }
 
 }

@@ -11,7 +11,6 @@ import {ResponsesModel} from '../interfaces/ResponsesModel';
 export class ApiBaseService {
 
 
-
   constructor(private http: HttpClient,
               @Inject('BASE_URL') private baseUrl: string) {
   }
@@ -71,7 +70,7 @@ export class ApiBaseService {
         }));
   }
 
-  DELETE_API<T>(path: string[]): Observable<T>  {
+  DELETE_API<T>(path: string[]): Observable<T> {
     const apiPath = `${this.baseUrl}${path.join('/')}`;
     return this.http.delete<ResponsesModel>(apiPath)
       .pipe(

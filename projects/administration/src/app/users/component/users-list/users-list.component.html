@@ -1,18 +1,19 @@
-<p-table #dt1 [value]="users" [paginator]="true" [rows]="10"
+<p-table #dt1 [globalFilterFields]="['email','firstName','lastName','telephoneNumber','status',
+          'active','subscriptionCount','role']" [loading]="loading" [paginator]="true"
+         [rowsPerPageOptions]="[10,25,50]"
+         [rows]="10"
          [showCurrentPageReport]="true"
-         [loading]="loading"
-         styleClass="p-datatable-customers p-datatable-gridlines"
+         [value]="users"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-         [globalFilterFields]="['email','firstName','lastName','telephoneNumber','status',
-          'active','subscriptionCount','role']"
-         [rowsPerPageOptions]="[10,25,50]">
+         styleClass="p-datatable-customers p-datatable-gridlines">
 
   <ng-template pTemplate="caption">
     <div class="p-d-flex">
                 <span class="p-input-icon-left p-ml-auto">
                     <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')"
-                           placeholder="Search keyword" />
+                    <input (input)="dt1.filterGlobal(searchInputData, 'contains')" [(ngModel)]="searchInputData" pInputText
+                           placeholder="Search keyword"
+                           type="text"/>
                 </span>
     </div>
   </ng-template>
@@ -21,48 +22,48 @@
       <th>
         <div class="p-d-flex p-jc-between p-ai-center">
           Email
-          <p-columnFilter type="text" field="email" display="menu"></p-columnFilter>
+          <p-columnFilter display="menu" field="email" type="text"></p-columnFilter>
         </div>
       </th>
       <th>
         <div class="p-d-flex p-jc-between p-ai-center">
           First Name
-          <p-columnFilter type="text" field="firstName" display="menu"></p-columnFilter>
+          <p-columnFilter display="menu" field="firstName" type="text"></p-columnFilter>
         </div>
       </th>
       <th>
         <div class="p-d-flex p-jc-between p-ai-center">
           Last Name
-          <p-columnFilter type="text" field="lastName" display="menu"></p-columnFilter>
+          <p-columnFilter display="menu" field="lastName" type="text"></p-columnFilter>
         </div>
       </th>
       <th>
         <div class="p-d-flex p-jc-between p-ai-center">
           Contact No
-          <p-columnFilter type="text" field="telephoneNumber" display="menu"></p-columnFilter>
+          <p-columnFilter display="menu" field="telephoneNumber" type="text"></p-columnFilter>
         </div>
       </th>
       <th>
         <div class="p-d-flex p-jc-between p-ai-center">
           Status
-          <p-columnFilter type="text" field="active" display="menu"></p-columnFilter>
+          <p-columnFilter display="menu" field="active" type="text"></p-columnFilter>
         </div>
       </th>
       <th>
         <div class="p-d-flex p-jc-between p-ai-center">
           Subscription Count
-          <p-columnFilter type="number" field="subscriptionCount" display="menu"></p-columnFilter>
+          <p-columnFilter display="menu" field="subscriptionCount" type="number"></p-columnFilter>
         </div>
       </th>
       <th>
         <div class="p-d-flex p-jc-between p-ai-center">
           Role
-          <p-columnFilter type="number" field="role" display="menu"></p-columnFilter>
+          <p-columnFilter display="menu" field="role" type="number"></p-columnFilter>
         </div>
       </th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-user>
+  <ng-template let-user pTemplate="body">
     <tr>
       <td>{{user.email}}</td>
       <td>{{user.firstName}}</td>

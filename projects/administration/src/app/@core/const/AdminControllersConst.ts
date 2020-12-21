@@ -1,8 +1,6 @@
-export class AdminControllersConst{
+export class AdminControllersConst {
   // user- admin
   public static UserController = 'user';
-
-
 
 
   // Support

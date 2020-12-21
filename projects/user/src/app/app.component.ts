@@ -1,6 +1,5 @@
-import {Component, HostListener, Inject} from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {DisplayContentService} from '../../../lib/tools/src/lib/display-content.service';
-import {DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +9,8 @@ import {DOCUMENT} from '@angular/common';
 export class AppComponent {
 
 
-  constructor(private displayContentService: DisplayContentService){}
+  constructor(private displayContentService: DisplayContentService) {
+  }
 
 
   @HostListener('window:resize', ['$event'])

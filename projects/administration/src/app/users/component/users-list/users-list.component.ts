@@ -11,6 +11,8 @@ import {UserModel} from '../../../@core/interfaces/api/UserModel';
 })
 export class UsersListComponent implements OnInit {
 
+  searchInputData = '';
+
   users = [] as UserModel[];
   loading = true;
 

@@ -14,14 +14,6 @@ import {Path} from '../../@core/enum/path.enum';
 @Injectable()
 export class AuthEffects {
 
-  constructor(private authService: AdminAuthService,
-              private action: Actions,
-              private cookieManager: CookieManagerService,
-              private ngxUiLoaderService: NgxUiLoaderService,
-              private router: Router) {
-  }
-
-
   authLoginStart$ = createEffect(() => {
     return this.action.pipe(
       ofType(USER_LOGIN_STAT),
@@ -44,7 +36,6 @@ export class AuthEffects {
       })
     );
   });
-
   authLogOut = createEffect(() => {
     return this.action.pipe(
       ofType(REFRESH_USER_TOKEN),
@@ -54,6 +45,13 @@ export class AuthEffects {
       })
     );
   }, {dispatch: false});
+
+  constructor(private authService: AdminAuthService,
+              private action: Actions,
+              private cookieManager: CookieManagerService,
+              private ngxUiLoaderService: NgxUiLoaderService,
+              private router: Router) {
+  }
 
 
 }

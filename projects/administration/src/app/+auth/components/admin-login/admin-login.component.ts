@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MessageService} from 'primeng/api';
-import {AdminAuthService} from '../../shared/services/admin-auth.service';
 import {LoginModel} from '../../shared/interfaces/LoginModel';
 import {Store} from '@ngrx/store';
 import {USER_LOGIN_STAT} from '../../store/auth.action';

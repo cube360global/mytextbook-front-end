@@ -1,5 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatDrawer} from '@angular/material/sidenav';
+import {Component, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 
@@ -14,9 +13,9 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
         transition(
           ':enter',
           [
-            style({ opacity: 0 }),
+            style({opacity: 0}),
             animate('1s ease-out',
-              style({  opacity: 1 }))
+              style({opacity: 1}))
           ]
         )
       ]
