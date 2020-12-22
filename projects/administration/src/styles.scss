@@ -1,4 +1,4 @@
-
+$border-radius: 40px;
 span:focus {
   outline: none;
   border: 0;
@@ -6,6 +6,10 @@ span:focus {
 
 button:focus {
   outline: none !important;
+}
+
+input{
+  border-radius: $border-radius !important;
 }
 
 p-button:focus {
@@ -23,3 +27,6 @@ p-button {
   color: #ffffff !important;
 }
 
+.cdk-overlay-container {
+  z-index: 9999 !important;
+}

@@ -14,6 +14,9 @@ export class UserApiService {
 
   public getUserAll(): Observable<UserModel[]> {
     return this.apiBaseService.GET_API<UserModel[]>([AdminControllersConst.UserController, AdminControllersConst.All]);
+  }
 
+  public getUserProfileById(userId: string): Observable<UserModel> {
+    return this.apiBaseService.GET_API<UserModel>([AdminControllersConst.UserController, 'profile', userId]);
   }
 }

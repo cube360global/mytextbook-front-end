@@ -110,11 +110,15 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 $border-radius: 40px;
 .mat-button-rounded {
   border-radius: $border-radius !important;
-  padding: 4px 30px 4px 30px !important;
+  padding: 8px 35px 8px 35px !important;
 }
 
-.mat-button-padding {
+.mat-button-rounded-sm{
+  border-radius: $border-radius !important;
   padding: 4px 30px 4px 30px !important;
+}
+.mat-button-padding {
+  padding: 8px 35px 8px 35px !important;
 }
 
 .mat-icon-button.large {

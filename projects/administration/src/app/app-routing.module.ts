@@ -3,11 +3,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {AdminLoginComponent} from './+auth/components/admin-login/admin-login.component';
 import {Path} from './@core/enum/path.enum';
 import {NavBarComponent} from './@ui/layout/component/nav-bar/nav-bar.component';
+import {AdminAuthGuard} from './@core/guards/admin-auth.guard';
 
 const routes: Routes = [
   {path: '', component: AdminLoginComponent},
   {
-    path: Path.Admin, component: NavBarComponent, children: [
+    path: Path.Admin, component: NavBarComponent, canActivate: [AdminAuthGuard] , children: [
       {path: '', redirectTo: Path.Dashboard, pathMatch: 'full'},
       {path: Path.Dashboard, loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)},
       {path: Path.Users, loadChildren: () => import('./users/users.module').then(m => m.UsersModule)}

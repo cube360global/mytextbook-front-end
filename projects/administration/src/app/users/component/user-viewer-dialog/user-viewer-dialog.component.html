@@ -1,0 +1,62 @@
+<div mat-dialog-title>
+  <div class="d-flex justify-content-between">
+    <div>
+      User Details
+    </div>
+    <button (click)="dialogRef.close()" color="warn" mat-icon-button>
+      <mat-icon>highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+<div mat-dialog-content>
+  <div class="container mt-2 mb-2">
+    <div class="row">
+      <div class="col-sm-3">
+        <mat-card>
+          <div class="text-center">
+            <img src="assets/img/user.png" class="img-fluid me-3 user-img" alt="">
+          </div>
+          <div class="text-center mt-4">
+            <div class="user-name mb-1">{{userModel.firstName}} {{userModel.lastName}}</div>
+            <div> User Id : {{userModel.id}} </div>
+          </div>
+          <hr>
+          <p>
+            Email : <b>{{userModel.email}}</b>
+          </p>
+          <p>
+            Birthday : <b>{{userModel.birthDay}}</b>
+          </p>
+          <p>
+            Mobile Number : <b>{{userModel.telephoneNumber}}</b>
+          </p>
+          <p>
+            School  : <b>{{userModel.school}}</b>
+          </p>
+          <p>
+            District  : <b>{{userModel.district}}</b>
+          </p>
+          <p>
+            Sales Lead : <b>{{userModel.salesLead}}</b>
+          </p>
+          <p>
+            Status  : <b>{{userModel.active}}</b>
+          </p>
+          <p>
+            Number of subscriptions  : <b>{{userModel.subscriptionCount}}</b>
+          </p>
+
+        </mat-card>
+      </div>
+
+      <div class="col-sm-9">
+        <p class="header-text-sm">Subscriptions</p>
+        <p class="header-text-sm">Watch history</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

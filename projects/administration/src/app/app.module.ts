@@ -19,6 +19,7 @@ import {AuthEffects} from './+auth/store/auth.effects';
 import {JwtModule} from '@auth0/angular-jwt';
 import {LayoutModule} from './@ui/layout/layout.module';
 import {AuthInterceptorService} from './@core/interceptors/auth-interceptor.service';
+import {UsersEffects} from './users/store/user.effects';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -56,6 +57,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   // fgsType: 'cube-grid'
 };
 
+export function tokenGetter(): string {
+  return 'this is test';
+}
 
 @NgModule({
   declarations: [
@@ -68,9 +72,13 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+      }
+    }),
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthEffects]),
-    JwtModule,
+    EffectsModule.forRoot([AuthEffects, UsersEffects]),
     LayoutModule,
     MaterialModule,
     PrimengModule,
