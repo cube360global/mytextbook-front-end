@@ -11,9 +11,8 @@
 <div mat-dialog-content>
         <p-fileUpload name="myfile[]"
                       accept=".csv"
-
-                      fileLimit="1"
-                      customUpload="true"
+                      [fileLimit]="1"
+                      [customUpload]="true"
                       (uploadHandler)="myUploader($event)"
                       styleClass="p-button-rounded" chooseLabel="ADD BULK USERS"></p-fileUpload>
 </div>
