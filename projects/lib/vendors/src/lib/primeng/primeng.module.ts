@@ -9,6 +9,7 @@ import {SidebarModule} from 'primeng/sidebar';
 import {TableModule} from 'primeng/table';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {FileUploadModule} from 'primeng/fileupload';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 const primeNg = [
   ButtonModule,
@@ -21,6 +22,7 @@ const primeNg = [
   TableModule,
   OverlayPanelModule,
   FileUploadModule,
+  ConfirmDialogModule
 
 ];
 

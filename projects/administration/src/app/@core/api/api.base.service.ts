@@ -4,6 +4,7 @@ import {catchError, map} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
 import {ResponsesModel} from '../interfaces/ResponsesModel';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
+import {AlertService} from '../services/alert.service';
 
 
 @Injectable({
@@ -14,6 +15,7 @@ export class ApiBaseService {
 
   constructor(private http: HttpClient,
               private ngxUiLoader: NgxUiLoaderService,
+              private alertService: AlertService,
               @Inject('BASE_URL') private baseUrl: string) {
   }
 
@@ -36,27 +38,27 @@ export class ApiBaseService {
   }
 
   UPDATE_API<T>(path: string[], body: any, isLoaderOn = false): Observable<T> {
-    if (isLoaderOn){
-    this.ngxUiLoader.start('3300');
+    if (isLoaderOn) {
+      this.ngxUiLoader.start('3300');
     }
     const apiPath = `${this.baseUrl}${path.join('/')}`;
     return this.http.put<ResponsesModel>(apiPath, body)
       .pipe(
         map((data) => {
           if (data.statusCode === 200) {
-            if (isLoaderOn){
+            if (isLoaderOn) {
               this.ngxUiLoader.stop('3300');
             }
+            this.alertService.showSuccess(data.message);
             return data.data as T;
           } else {
-            throw Error('VERTEX');
+            throw Error(data.message);
           }
         }), catchError(err => {
-          if (err.message !== 'VERTEX') {
-          }
-          if (isLoaderOn){
+          if (isLoaderOn) {
             this.ngxUiLoader.stop('3300');
           }
+          this.alertService.showError(err.message);
           return throwError(err);
         }));
   }

@@ -10,7 +10,7 @@ import {PrimengModule} from '../../../lib/vendors/src/lib/primeng/primeng.module
 import {AdminLoginComponent} from './+auth/components/admin-login/admin-login.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ValdemortModule} from 'ngx-valdemort';
-import {MessageService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
@@ -20,6 +20,7 @@ import {JwtModule} from '@auth0/angular-jwt';
 import {LayoutModule} from './@ui/layout/layout.module';
 import {AuthInterceptorService} from './@core/interceptors/auth-interceptor.service';
 import {UsersEffects} from './users/store/user.effects';
+import {ToastrModule} from 'ngx-toastr';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -77,6 +78,10 @@ export function tokenGetter(): string {
         tokenGetter,
       }
     }),
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+    }),
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([AuthEffects, UsersEffects]),
     LayoutModule,
@@ -94,6 +99,7 @@ export function tokenGetter(): string {
       useClass: AuthInterceptorService,
       multi: true
     },
+    ConfirmationService,
     MessageService,
     CookieService,
     NgxUiLoaderService],

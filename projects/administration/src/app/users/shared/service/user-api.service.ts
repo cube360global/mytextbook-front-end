@@ -4,6 +4,7 @@ import {UserModel} from '../../../@core/interfaces/api/UserModel';
 import {AdminControllersConst} from '../../../@core/const/AdminControllersConst';
 import {Observable} from 'rxjs';
 import {AddUserModel} from '../../../@core/interfaces/api/AddUserModel';
+import {BulkResponseModel} from '../../../@core/interfaces/api/BulkResponseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class UserApiService {
     return this.apiBaseService.UPDATE_API<UserModel[]>([AdminControllersConst.UserController], addUserModel, true);
   }
 
-  public bulkUpload(fileData: FormData): Observable<any> {
-    return this.apiBaseService.UPDATE_API<UserModel[]>([AdminControllersConst.UserController, 'all'], fileData, true);
+  public bulkUpload(fileData: FormData): Observable<BulkResponseModel> {
+    return this.apiBaseService.UPDATE_API<BulkResponseModel>([AdminControllersConst.UserController, 'all'], fileData, true);
   }
 }

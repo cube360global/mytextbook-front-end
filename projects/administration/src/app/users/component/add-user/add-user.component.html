@@ -1,3 +1,5 @@
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
 <div mat-dialog-title>
   <div class="d-flex justify-content-between align-items-center">
     <div class="header-text-sm">
@@ -9,24 +11,63 @@
   </div>
 </div>
 <div mat-dialog-content>
-  <form [formGroup]="addUser">
+  <form [formGroup]="addUser" (ngSubmit)="onAddUsers()">
+
     <div class="p-float-label m-2">
-      <input type="text" id="email" formControlName="email" class="p-inputtext-sm" pInputText>
-      <label for="email">Email</label>
+      <input type="text" id="email"
+             formControlName="email"
+             [ngClass]="{ 'p-invalid' : !addUser.controls['email'].valid && addUser.controls['email'].touched}"
+             class="p-inputtext-sm" pInputText>
+      <label for="email">Email*</label>
     </div>
-    <div class="p-float-label m-2">
-      <input type="text" id="referralLink" formControlName="referralLink" class="p-inputtext-sm" pInputText>
-      <label for="referralLink">Referral Link</label>
+    <div>
+      <val-errors controlName="email" label="The email">
+        <ng-template valError="required"><small class="p-invalid ms-3">The email is required</small></ng-template>
+        <ng-template valError="email"><small class="p-invalid ms-3">This is not a valid email address</small></ng-template>
+      </val-errors>
     </div>
+
+<!--Referral Link-->
+
     <div class="p-float-label m-2">
-      <input type="text" id="roleId" formControlName="roleId" class="p-inputtext-sm" pInputText>
-      <label for="roleId">Role Id</label>
+      <input type="text" id="referralLink"
+             formControlName="referralLink"
+             [ngClass]="{ 'p-invalid' : !addUser.controls['referralLink'].valid && addUser.controls['referralLink'].touched}"
+             class="p-inputtext-sm" pInputText>
+      <label for="referralLink">Referral Link*</label>
+    </div>
+
+    <div>
+      <val-errors controlName="referralLink" label="The referralLink">
+        <ng-template valError="required">
+          <div class="container">
+            <small class="p-invalid ms-3">The referral link is required</small>
+          </div>
+          </ng-template>
+      </val-errors>
+    </div>
+
+    <!--Role Id-->
+    <div class="p-float-label m-2">
+      <input type="text" id="roleId"
+             formControlName="roleId"
+             [ngClass]="{ 'p-invalid' : !addUser.controls['roleId'].valid && addUser.controls['roleId'].touched}"
+             class="p-inputtext-sm" pInputText>
+      <label for="roleId">Role Id*</label>
+    </div>
+    <div>
+      <val-errors controlName="roleId" label="The roleId">
+        <ng-template valError="required">
+          <small class="p-invalid ms-3">The role is required</small>
+        </ng-template>
+      </val-errors>
+    </div>
+    <div class="text-center mt-3">
+      <button mat-raised-button color="primary" class="mat-button-rounded-sm"> Add User </button>
     </div>
   </form>
 
-  <div class="text-center mt-3">
-    <button mat-raised-button color="primary" class="mat-button-rounded-sm" (click)="onAddUsers()"> Add User </button>
-  </div>
+
 </div>
 
 

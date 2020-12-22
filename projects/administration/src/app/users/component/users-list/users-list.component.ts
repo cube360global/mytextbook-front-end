@@ -7,6 +7,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {UserViewerDialogComponent} from '../user-viewer-dialog/user-viewer-dialog.component';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
 import {FormControl, FormGroup} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-users-list',
@@ -16,13 +17,13 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class UsersListComponent implements OnInit {
 
   filterForm = {} as FormGroup;
-  searchInputData = '';
 
   users = [] as UserModel[];
   loading = true;
 
   constructor(private userApiService: UserApiService,
               private dialog: MatDialog,
+              private toastr: ToastrService,
               private ngxUiLoaderService: NgxUiLoaderService,
               private store: Store<fromApp.AppState>) {
 

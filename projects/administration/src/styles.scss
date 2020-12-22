@@ -1,3 +1,5 @@
+@import '~ngx-toastr/toastr';
+
 $border-radius: 40px;
 span:focus {
   outline: none;
@@ -30,6 +32,8 @@ p-button {
 .cdk-overlay-container {
   z-index: 9999 !important;
 }
+
+
 .p-button.p-fileupload-choose {
   border-radius: 45px !important;
 }
