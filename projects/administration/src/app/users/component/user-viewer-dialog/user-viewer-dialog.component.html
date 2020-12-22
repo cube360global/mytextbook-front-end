@@ -12,7 +12,7 @@
   <div class="container mt-2 mb-2">
     <div class="row">
       <div class="col-sm-3">
-        <mat-card>
+        <div class="profile-border">
           <div class="text-center">
             <img src="assets/img/user.png" class="img-fluid me-3 user-img" alt="">
           </div>
@@ -31,27 +31,31 @@
             Mobile Number : <b>{{userModel.telephoneNumber}}</b>
           </p>
           <p>
-            School  : <b>{{userModel.school}}</b>
+            School : <b>{{userModel.school}}</b>
           </p>
           <p>
-            District  : <b>{{userModel.district}}</b>
+            District : <b>{{userModel.district}}</b>
           </p>
           <p>
             Sales Lead : <b>{{userModel.salesLead}}</b>
           </p>
           <p>
-            Status  : <b>{{userModel.active}}</b>
+            Status : <b>{{userModel.active}}</b>
           </p>
           <p>
-            Number of subscriptions  : <b>{{userModel.subscriptionCount}}</b>
+            Number of subscriptions : <b>{{userModel.subscriptionCount}}</b>
           </p>
 
-        </mat-card>
+        </div>
       </div>
 
       <div class="col-sm-9">
-        <p class="header-text-sm">Subscriptions</p>
-        <p class="header-text-sm">Watch history</p>
+        <div class="profile-border">
+          <p class="header-text-sm">Subscriptions</p>
+        </div>
+        <div class="profile-border">
+          <p class="header-text-sm">Watch history</p>
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,35 @@
+<div mat-dialog-title>
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="header-text-sm">
+      Add User
+    </div>
+    <button (click)="dialogRef.close()" color="warn" mat-icon-button>
+      <mat-icon>highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="addUser">
+    <div class="p-float-label m-2">
+      <input type="text" id="email" formControlName="email" class="p-inputtext-sm" pInputText>
+      <label for="email">Email</label>
+    </div>
+    <div class="p-float-label m-2">
+      <input type="text" id="referralLink" formControlName="referralLink" class="p-inputtext-sm" pInputText>
+      <label for="referralLink">Referral Link</label>
+    </div>
+    <div class="p-float-label m-2">
+      <input type="text" id="roleId" formControlName="roleId" class="p-inputtext-sm" pInputText>
+      <label for="roleId">Role Id</label>
+    </div>
+  </form>
+
+  <div class="text-center mt-3">
+    <button mat-raised-button color="primary" class="mat-button-rounded-sm" (click)="onAddUsers()"> Add User </button>
+  </div>
+</div>
+
+
+
+
+

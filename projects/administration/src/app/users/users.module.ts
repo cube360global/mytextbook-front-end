@@ -7,6 +7,8 @@ import {MaterialModule} from '../../../../lib/vendors/src/lib/material/material.
 import {PrimengModule} from '../../../../lib/vendors/src/lib/primeng/primeng.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UserViewerDialogComponent } from './component/user-viewer-dialog/user-viewer-dialog.component';
+import { AddUserComponent } from './component/add-user/add-user.component';
+import { AddBulkUserComponent } from './component/add-bulk-user/add-bulk-user.component';
 
 const routes: Routes = [
   {path: '', component: UserManagementComponent},
@@ -14,7 +16,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [UserManagementComponent, UsersListComponent
-    , UserViewerDialogComponent],
+    , UserViewerDialogComponent, AddUserComponent, AddBulkUserComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

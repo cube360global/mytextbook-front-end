@@ -21,8 +21,8 @@ export class AdminLoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-        username: new FormControl('web-client', [Validators.required]),
-        password: new FormControl('web-secret', [Validators.required])
+        username: new FormControl('admin@abc.com', [Validators.required]),
+        password: new FormControl('Admin', [Validators.required])
       }
     );
   }

@@ -8,6 +8,7 @@ import {ToastModule} from 'primeng/toast';
 import {SidebarModule} from 'primeng/sidebar';
 import {TableModule} from 'primeng/table';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {FileUploadModule} from 'primeng/fileupload';
 
 const primeNg = [
   ButtonModule,
@@ -18,7 +19,8 @@ const primeNg = [
   SidebarModule,
   ToastModule,
   TableModule,
-  OverlayPanelModule
+  OverlayPanelModule,
+  FileUploadModule,
 
 ];
 
