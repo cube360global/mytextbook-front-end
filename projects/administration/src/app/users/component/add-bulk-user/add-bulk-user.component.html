@@ -9,12 +9,12 @@
   </div>
 </div>
 <div mat-dialog-content>
-        <p-fileUpload name="myfile[]"
-                      accept=".csv"
-                      [fileLimit]="1"
-                      [customUpload]="true"
-                      (uploadHandler)="myUploader($event)"
-                      styleClass="p-button-rounded" chooseLabel="ADD BULK USERS"></p-fileUpload>
+  <p-fileUpload (uploadHandler)="myUploader($event)"
+                [customUpload]="true"
+                [fileLimit]="1"
+                accept=".csv"
+                chooseLabel="ADD BULK USERS"
+                name="myfile[]" styleClass="p-button-rounded"></p-fileUpload>
 </div>
 
 

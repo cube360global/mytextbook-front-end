@@ -6,9 +6,9 @@ import {UsersListComponent} from './component/users-list/users-list.component';
 import {MaterialModule} from '../../../../lib/vendors/src/lib/material/material.module';
 import {PrimengModule} from '../../../../lib/vendors/src/lib/primeng/primeng.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { UserViewerDialogComponent } from './component/user-viewer-dialog/user-viewer-dialog.component';
-import { AddUserComponent } from './component/add-user/add-user.component';
-import { AddBulkUserComponent } from './component/add-bulk-user/add-bulk-user.component';
+import {UserViewerDialogComponent} from './component/user-viewer-dialog/user-viewer-dialog.component';
+import {AddUserComponent} from './component/add-user/add-user.component';
+import {AddBulkUserComponent} from './component/add-bulk-user/add-bulk-user.component';
 import {ValdemortModule} from 'ngx-valdemort';
 
 const routes: Routes = [
@@ -18,15 +18,15 @@ const routes: Routes = [
 @NgModule({
   declarations: [UserManagementComponent, UsersListComponent
     , UserViewerDialogComponent, AddUserComponent, AddBulkUserComponent],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        MaterialModule,
-        PrimengModule,
-        FormsModule,
-        ReactiveFormsModule,
-        ValdemortModule
-    ]
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    MaterialModule,
+    PrimengModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ValdemortModule
+  ]
 })
 export class UsersModule {
 }

@@ -21,4 +21,7 @@ export enum Path {
   // Features
   Dashboard = 'dashboard',
   Users = 'users',
+  Content = 'content',
+  Book = 'book',
+  Subject = 'subject'
 }

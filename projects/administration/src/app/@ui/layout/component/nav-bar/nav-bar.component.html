@@ -9,9 +9,20 @@
         <div *ngIf="showFiller" class="ms-3 router-text-default"></div>
       </div>
       <div class="d-flex align-items-center  p-3" routerLinkActive="admin-active">
+
         <i class="fas fa-chart-pie fa-1x icon-width" routerLink="/admin/dashboard"></i>
         <div *ngIf="showFiller" [@inOutAnimation] class="ms-3 router-text-default" routerLink="/admin/dashboard">
           DASHBOARD
+        </div>
+      </div>
+      <div class="d-flex align-items-center p-3" routerLinkActive="admin-active">
+        <i class="fab fa-accusoft fa-1x icon-width" routerLink="/admin/subject"></i>
+        <div *ngIf="showFiller" [@inOutAnimation] class="ms-3 router-text-default" routerLink="/admin/subject">SUBJECT
+        </div>
+      </div>
+      <div class="d-flex align-items-center p-3" routerLinkActive="admin-active">
+        <i class="fas fa-book fa-1x icon-width" routerLink="/admin/book"></i>
+        <div *ngIf="showFiller" [@inOutAnimation] class="ms-3 router-text-default" routerLink="/admin/content">BOOK
         </div>
       </div>
       <div class="d-flex align-items-center p-3">

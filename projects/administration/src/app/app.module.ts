@@ -21,6 +21,8 @@ import {LayoutModule} from './@ui/layout/layout.module';
 import {AuthInterceptorService} from './@core/interceptors/auth-interceptor.service';
 import {UsersEffects} from './users/store/user.effects';
 import {ToastrModule} from 'ngx-toastr';
+import {BooksEffects} from './book/store/book.effects';
+import {SubjectEffects} from './subject/store/subject.effects';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -83,7 +85,14 @@ export function tokenGetter(): string {
       preventDuplicates: true,
     }),
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthEffects, UsersEffects]),
+
+    EffectsModule.forRoot([
+      AuthEffects,
+      UsersEffects,
+      BooksEffects,
+      SubjectEffects
+    ]),
+
     LayoutModule,
     MaterialModule,
     PrimengModule,
