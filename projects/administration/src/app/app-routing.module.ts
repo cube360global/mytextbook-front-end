@@ -8,7 +8,7 @@ import {AdminAuthGuard} from './@core/guards/admin-auth.guard';
 const routes: Routes = [
   {path: '', component: AdminLoginComponent},
   {
-    path: Path.Admin, component: NavBarComponent, canActivate: [AdminAuthGuard], children: [
+    path: Path.Admin, component: NavBarComponent, canActivate: [AdminAuthGuard] , children: [
       {path: '', redirectTo: Path.Dashboard, pathMatch: 'full'},
       {path: Path.Dashboard, loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)},
       {path: Path.Users, loadChildren: () => import('./users/users.module').then(m => m.UsersModule)},

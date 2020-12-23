@@ -29,6 +29,7 @@ export class UserManagementComponent implements OnInit {
   }
 
 
+
   onAddBulkDialogOpenClick(): void {
     this.dialog.open(AddBulkUserComponent, {
       width: '500px'

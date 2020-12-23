@@ -1,5 +1,6 @@
 import * as subjectManagement from './subject.action';
 import {createReducer, on} from '@ngrx/store';
+import {BookModel} from '../../@core/interfaces/api/BookModel';
 import {SubjectModel} from '../../@core/interfaces/api/SubjectModel';
 
 

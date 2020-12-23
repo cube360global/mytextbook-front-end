@@ -8,11 +8,10 @@
     </div>
     <div class="p-float-label p-inputtext-sm p-input-icon-right mt-4">
       <i class="fas fa-user"></i>
-      <input
-        [ngClass]="{ 'p-invalid' : !loginForm.controls['username'].valid && loginForm.controls['username'].touched}"
-        formControlName="username"
-        id="username"
-        pInputText type="text">
+      <input [ngClass]="{ 'p-invalid' : !loginForm.controls['username'].valid && loginForm.controls['username'].touched}"
+             formControlName="username"
+             id="username"
+             pInputText type="text">
       <label for="username">Username *</label>
     </div>
 
@@ -25,11 +24,10 @@
 
     <div class="p-float-label p-inputtext-sm p-input-icon-right mt-2">
       <i class="fas fa-lock"></i>
-      <input
-        [ngClass]="{ 'p-invalid' : !loginForm.controls['password'].valid && loginForm.controls['password'].touched}"
-        formControlName="password"
-        id="password"
-        pInputText type="password">
+      <input [ngClass]="{ 'p-invalid' : !loginForm.controls['password'].valid && loginForm.controls['password'].touched}"
+             formControlName="password"
+             id="password"
+             pInputText type="password">
       <label for="password">Password *</label>
     </div>
 

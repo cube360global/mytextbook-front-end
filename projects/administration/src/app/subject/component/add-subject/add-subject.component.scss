@@ -1,3 +1,4 @@
+
 //.image-size{
 //  width: 100px;
 //  height: 100px !important;
@@ -16,7 +17,7 @@
   height: auto;
   width: 100%;
   padding: 10px;
-  min-height: 175px;
+  min-height:175px;
 }
 
 .img-space img {
@@ -40,8 +41,7 @@
   z-index: 99;
   opacity: 0;
 }
-
-.fileInputProfile[disabled] + .img-space {
+.fileInputProfile[disabled] + .img-space{
   pointer-events: none;
-  cursor: not-allowed !important;
+  cursor: not-allowed!important;
 }

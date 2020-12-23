@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {SubjectModel} from '../../../@core/interfaces/api/SubjectModel';
 import {SubjectApiService} from '../../shared/services/subject-api.service';
 import {MatDialog} from '@angular/material/dialog';
