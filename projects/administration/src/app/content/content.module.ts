@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {MaterialModule} from '../../../../lib/vendors/src/lib/material/material.module';
 import {PrimengModule} from '../../../../lib/vendors/src/lib/primeng/primeng.module';
@@ -24,4 +24,5 @@ const routes: Routes = [
     ValdemortModule
   ]
 })
-export class ContentModule { }
+export class ContentModule {
+}

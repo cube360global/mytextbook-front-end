@@ -5,5 +5,6 @@ export interface BookModel {
   medium: string;
   name: string;
   price: number;
+  subject: string;
   subjectId: number;
 }

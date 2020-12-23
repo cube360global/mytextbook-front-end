@@ -14,6 +14,7 @@ import {SUBJECT_DATA_LOADED} from '../../store/subject.action';
 })
 export class AddSubjectComponent implements OnInit {
 
+  file: any;
   subjectName = '';
   imageError: any;
   isImageSaved: any;
@@ -47,11 +48,14 @@ export class AddSubjectComponent implements OnInit {
         this.imageError = 'Only Images are allowed ( JPG | PNG )';
         return false;
       }
+
+      this.file = fileInput.target.files[0];
+
       const reader = new FileReader();
       reader.onload = (e: any) => {
         const image = new Image();
 
-        this.cardImageBase64 = e.target.result.toString();
+        this.cardImageBase64 = e.target.result;
         this.isImageSaved = true;
 
         // image.onload = () => {
@@ -82,7 +86,6 @@ export class AddSubjectComponent implements OnInit {
         //   }
         // };
       };
-
       reader.readAsDataURL(fileInput.target.files[0]);
     }
   }
@@ -104,9 +107,20 @@ export class AddSubjectComponent implements OnInit {
 
   doSubmit(): void {
     const postData = {} as SubjectPostModel;
-    postData.image = '';
     postData.name = this.subjectName;
-    this.subjectApiService.Put(postData)
+
+    console.log(this.file);
+
+    console.log(typeof (JSON.stringify(postData)));
+    const x = JSON.stringify(postData);
+    console.log(x);
+
+    const formData = new FormData();
+    formData.append('image', this.file);
+    formData.append('body', x);
+
+
+    this.subjectApiService.Put(formData)
       .subscribe(res => {
         this.store.dispatch(SUBJECT_DATA_LOADED({payload: res}));
       }, () => {

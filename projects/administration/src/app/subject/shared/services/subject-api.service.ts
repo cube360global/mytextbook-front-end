@@ -3,7 +3,6 @@ import {ApiBaseService} from '../../../@core/api/api.base.service';
 import {AdminControllersConst} from '../../../@core/const/AdminControllersConst';
 import {Observable} from 'rxjs';
 import {SubjectModel} from '../../../@core/interfaces/api/SubjectModel';
-import {SubjectPostModel} from '../../../@core/interfaces/api/SubjectPostModel';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +20,7 @@ export class SubjectApiService {
   // Get(dookId: string) {
   //
   // }
-  public Put(data: SubjectPostModel): Observable<SubjectModel[]> {
-    return this.apiBaseService.UPDATE_API<SubjectModel[]>([AdminControllersConst.SubjectController], data,true);
+  public Put(data: FormData): Observable<SubjectModel[]> {
+    return this.apiBaseService.UPDATE_API<SubjectModel[]>([AdminControllersConst.SubjectController], data, true);
   }
 }

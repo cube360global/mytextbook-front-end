@@ -34,7 +34,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 })
 export class NavBarComponent implements OnInit {
 
-  showFiller = false;
+  showFiller = true;
 
   constructor() {
   }

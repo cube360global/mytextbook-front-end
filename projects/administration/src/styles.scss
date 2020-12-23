@@ -10,7 +10,7 @@ button:focus {
   outline: none !important;
 }
 
-input{
+input {
   border-radius: $border-radius !important;
 }
 
@@ -38,3 +38,26 @@ p-button {
   border-radius: 45px !important;
 }
 
+// Material
+
+mat-form-field {
+  width: 100%;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 1em !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  margin-left: 10px;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline .mat-form-field-outline-start {
+  display: none !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline .mat-form-field-outline-end {
+  border-radius: 30px;
+  border: 1px solid #D8DADF;
+  padding-left: 20px !important;
+}

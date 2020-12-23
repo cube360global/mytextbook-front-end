@@ -1,4 +1,4 @@
 export interface SubjectPostModel {
-  image: string;
+  // image: string;
   name: string;
 }

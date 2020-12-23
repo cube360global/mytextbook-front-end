@@ -20,7 +20,7 @@ export class AlertService {
   }
 
   showError(message: string): void {
-    this.toastr.success(message, 'Error occur !!');
+    this.toastr.error(message, 'Error occur !!');
   }
 
 }

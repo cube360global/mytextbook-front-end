@@ -8,16 +8,16 @@
 
   <ng-template pTemplate="caption">
     <div class="d-flex justify-content-between align-items-center mb-2">
-            <div class="p-input-icon-left">
-              <i class="pi pi-search"></i>
-              <input (input)="dt1.filterGlobal(searchInputData, 'contains')"
-                     [(ngModel)]="searchInputData" pInputText
-                     placeholder="Search keyword"
-                     matTooltip="Search from table"
-                     class="p-inputtext-sm"
-                     type="text"/>
-            </div>
-<!--      <ng-container *ngTemplateOutlet="filterTemplate"></ng-container>-->
+      <div class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input (input)="dt1.filterGlobal(searchInputData, 'contains')"
+               [(ngModel)]="searchInputData" class="p-inputtext-sm"
+               matTooltip="Search from table"
+               pInputText
+               placeholder="Search keyword"
+               type="text"/>
+      </div>
+      <!--      <ng-container *ngTemplateOutlet="filterTemplate"></ng-container>-->
       <!--      <button mat-icon-button color="primary" (click)="op.toggle($event)">-->
       <!--        <mat-icon>filter_alt</mat-icon>-->
       <!--      </button>-->
@@ -28,14 +28,14 @@
   <ng-template pTemplate="header">
     <tr>
       <th>
-        Grade
+        Image
         <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
         <!--          Email-->
         <!--          <p-columnFilter display="menu" field="email" type="text"></p-columnFilter>-->
         <!--        </div>-->
       </th>
       <th>
-        Image
+        Grade
         <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
         <!--          First Name-->
         <!--          <p-columnFilter display="menu" field="firstName" type="text"></p-columnFilter>-->
@@ -73,19 +73,20 @@
   </ng-template>
   <ng-template let-user pTemplate="body">
     <tr>
+      <td>
+        <img alt="" class="img-fluid" height="100px" src="{{user.image}}" width="100px">
+      </td>
       <td>{{user.grade}}</td>
-      <td>{{user.image}}</td>
       <td>{{user.medium}}</td>
       <td>{{user.name}}</td>
       <td>{{user.price}}</td>
-      <td>{{user.subjectId}}</td>
+      <td>{{user.subject}}</td>
       <td>
-        <button mat-mini-fab color="primary" (click)="openUserViewDialog(user.id)"><i class="fas fa-eye"></i></button>
+        <button (click)="openUserViewDialog(user.id)" color="primary" mat-mini-fab><i class="fas fa-eye"></i></button>
       </td>
     </tr>
   </ng-template>
 </p-table>
-
 
 
 <!--<ng-template #filterTemplate>-->

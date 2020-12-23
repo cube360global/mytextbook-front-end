@@ -1,1 +1,14 @@
-<p>book-management works!</p>
+<div class="container mt-5">
+  <h1 class="header-text">
+    <b>Books</b>
+  </h1>
+  <div class="mt-4 d-flex justify-content-end">
+    <button (click)="openAddBookDialog()" class=" mat-button-rounded-sm ms-2" color="primary" mat-raised-button>
+      <i class="fas fa-plus me-2"></i>
+      ADD BOOK
+    </button>
+  </div>
+  <hr>
+  <app-books-list></app-books-list>
+</div>
+

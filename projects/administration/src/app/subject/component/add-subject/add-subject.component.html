@@ -1,8 +1,8 @@
 <div class="p-float-label mt-2">
-  <input type="text" id="subjectName"
-         [ngClass]="{ 'p-invalid' : subjectName == ''}"
-         [(ngModel)]="subjectName"
-         class="p-inputtext-sm" pInputText style="width: 100%">
+  <input [(ngModel)]="subjectName" [ngClass]="{ 'p-invalid' : subjectName == ''}"
+         class="p-inputtext-sm"
+         id="subjectName"
+         pInputText style="width: 100%" type="text">
   <label for="subjectName">Subject Name*</label>
 </div>
 <small class="p-invalid ms-3">The Subject Name is required</small>
@@ -11,13 +11,13 @@
   <label class="mb-2"><b>Upload Logo *</b></label>
   {{imageError}}
   <div class="custom-file fileInputProfileWrap ">
-    <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+    <input (change)="fileChangeEvent($event)" class="fileInputProfile" type="file">
     <div class="img-space">
       <ng-container *ngIf="isImageSaved; else elseTemplate">
-        <img [src]="cardImageBase64" alt="selected image" class="img-fluid" />
+        <img [src]="cardImageBase64" alt="selected image" class="img-fluid"/>
       </ng-container>
       <ng-template #elseTemplate>
-        <img src="assets/img/placeholder.jpg" alt="placeholder"  class="img-fluid">
+        <img alt="placeholder" class="img-fluid" src="assets/img/placeholder.jpg">
       </ng-template>
 
     </div>
@@ -27,12 +27,12 @@
 
 
 <div class="d-flex justify-content-end">
-  <button mat-raised-button color="warn"
-          class="mat-button-rounded-sm mt-2" (click)="$event.preventDefault();removeImage()"
-          *ngIf="isImageSaved">
-    Remove</button>
+  <button (click)="$event.preventDefault();removeImage()" *ngIf="isImageSaved"
+          class="mat-button-rounded-sm mt-2" color="warn"
+          mat-raised-button>
+    Remove
+  </button>
 </div>
-
 
 
 <!--<div class="p-float-label mt-2">-->
@@ -45,8 +45,9 @@
 <!--</div>-->
 <!--<small class="p-invalid ms-3">The Subject Name is required</small>-->
 
-<button mat-raised-button color="primary" class="mat-button-rounded-sm mt-3" style="width: 100%;"
-        [disabled]="cardImageBase64 == '' || subjectName == ''"  (click)="onSubmitImg()">submit </button>
+<button (click)="onSubmitImg()" [disabled]="cardImageBase64 == '' || subjectName == ''" class="mat-button-rounded-sm mt-3" color="primary"
+        mat-raised-button style="width: 100%;">submit
+</button>
 
 
 
