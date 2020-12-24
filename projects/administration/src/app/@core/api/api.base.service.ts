@@ -20,7 +20,7 @@ export class ApiBaseService {
   }
 
 
-  POST_API<T>(path: string[], body: any, isLoaderOn = false, isShowSuccess = true,): Observable<T> {
+  POST_API<T>(path: string[], body: any, isLoaderOn = false, isShowSuccess = true): Observable<T> {
     if (isLoaderOn) {
       this.ngxUiLoader.start('3100');
     }

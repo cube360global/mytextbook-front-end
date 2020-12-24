@@ -23,6 +23,8 @@ import {UsersEffects} from './users/store/user.effects';
 import {ToastrModule} from 'ngx-toastr';
 import {BooksEffects} from './book/store/book.effects';
 import {SubjectEffects} from './subject/store/subject.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -85,7 +87,10 @@ export function tokenGetter(): string {
       preventDuplicates: true,
     }),
     StoreModule.forRoot(fromApp.appReducer),
-
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
     EffectsModule.forRoot([
       AuthEffects,
       UsersEffects,

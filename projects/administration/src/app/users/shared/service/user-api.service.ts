@@ -17,7 +17,8 @@ export class UserApiService {
   }
 
   public all(): Observable<UserAndSchoolModel> {
-    return this.apiBaseService.GET_API<UserAndSchoolModel>([AdminControllersConst.UserController, AdminControllersConst.All]);
+    return this.apiBaseService.GET_API<UserAndSchoolModel>([AdminControllersConst.UserController,
+      AdminControllersConst.All]);
   }
 
   public getUserProfileById(userId: string): Observable<UserModel> {
@@ -25,14 +26,17 @@ export class UserApiService {
   }
 
   public createUser(addUserModel: AddUserModel): Observable<UserModel[]> {
-    return this.apiBaseService.UPDATE_API<UserModel[]>([AdminControllersConst.UserController], addUserModel, true);
+    return this.apiBaseService.UPDATE_API<UserModel[]>([AdminControllersConst.UserController],
+      addUserModel, true);
   }
 
   public bulkUpload(fileData: FormData): Observable<BulkResponseModel> {
-    return this.apiBaseService.UPDATE_API<BulkResponseModel>([AdminControllersConst.UserController, 'all'], fileData, true);
+    return this.apiBaseService.UPDATE_API<BulkResponseModel>([AdminControllersConst.UserController, 'all'],
+      fileData, true);
   }
 
-  public searchUsers(searchUserModel: SearchUserModel): Observable<UserModel[]> {
-    return this.apiBaseService.POST_API<UserModel[]>([AdminControllersConst.UserController, 'search'], searchUserModel, true);
+  public searchUsers(searchUserModel: SearchUserModel): Observable<UserAndSchoolModel> {
+    return this.apiBaseService.POST_API<UserAndSchoolModel>([AdminControllersConst.UserController, 'search'],
+      searchUserModel, true, true);
   }
 }

@@ -10,7 +10,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {AlertConst} from '../../../@core/const/AlertConst';
 import {AddUserModel} from '../../../@core/interfaces/api/AddUserModel';
-import {USERS_DATA_LOADED} from '../../store/user.action';
+import {USERS_AND_SCHOOL_DATA_LOADED, USERS_DATA_LOADED} from '../../store/user.action';
 import {SearchUserModel} from '../../../@core/interfaces/api/SearchUserModel';
 import {AlertService} from '../../../@core/services/alert.service';
 
@@ -73,10 +73,6 @@ export class UsersListComponent implements OnInit {
 
 
   onFilterApply(): void {
-    // if (this.filterForm.invalid){
-    //   this.filterForm.markAllAsTouched();
-    //   return;
-    // }
 
     this.alertService.getConfirmationDialog()
       .confirm({
@@ -89,9 +85,15 @@ export class UsersListComponent implements OnInit {
 
   sendToServer(): void {
     const searchUser = this.filterForm.value as SearchUserModel;
+    searchUser.grade = +searchUser.grade;
+
+    console.log(searchUser);
+    console.log('CALLED');
+
     this.userApiService.searchUsers(searchUser)
       .subscribe(res => {
-        this.store.dispatch(USERS_DATA_LOADED({payload: res}));
+        console.log(res);
+        this.store.dispatch(USERS_AND_SCHOOL_DATA_LOADED({payload: res}));
       });
   }
 }

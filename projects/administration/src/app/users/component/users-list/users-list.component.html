@@ -95,45 +95,41 @@
 </p-table>
 
 
-
-
-
-
-
 <ng-template #filterTemplate>
   <form (ngSubmit)="onFilterApply()" [formGroup]="filterForm">
-    <div class="row">
-      <div class="d-flex justify-content-center">
-        <div class="p-float-label m-1">
-          <input class="p-inputtext-sm" formControlName="district" id="district" pInputText type="text">
-          <label for="district">District</label>
-        </div>
-        <div class="p-float-label m-1">
-          <input class="p-inputtext-sm" formControlName="school" id="school" pInputText type="text">
-          <label for="school">School</label>
-        </div>
-        <div class="p-float-label m-1">
-          <input class="p-inputtext-sm" formControlName="subject" id="subject" pInputText type="text">
-          <label for="subject">Subject</label>
-        </div>
-        <div class="p-float-label m-1">
-          <input class="p-inputtext-sm" formControlName="grade" id="grade" pInputText type="text">
-          <label for="grade">Grade</label>
-        </div>
-        <div class="p-float-label m-1">
-          <input class="p-inputtext-sm" formControlName="salesLead" id="salesLead" pInputText type="text">
-          <label for="salesLead">Sales Lead</label>
-        </div>
+
+    <div class="d-flex justify-content-center">
+
+      <div class="p-float-label m-1">
+        <input class="p-inputtext-sm" formControlName="district" id="district" pInputText type="text">
+        <label for="district">District</label>
       </div>
-    </div>
+      <div class="p-float-label m-1">
+        <input class="p-inputtext-sm" formControlName="school" id="school" pInputText type="text">
+        <label for="school">School</label>
+      </div>
+      <div class="p-float-label m-1">
+        <input class="p-inputtext-sm" formControlName="subject" id="subject" pInputText type="text">
+        <label for="subject">Subject</label>
+      </div>
+      <div class="p-float-label m-1">
+        <input class="p-inputtext-sm" formControlName="grade" id="grade" pInputText type="text">
+        <label for="grade">Grade</label>
+      </div>
+      <div class="p-float-label m-1">
+        <input class="p-inputtext-sm" formControlName="salesLead" id="salesLead" pInputText type="text">
+        <label for="salesLead">Sales Lead</label>
+      </div>
 
-    <div class="text-center">
-      <button class="mat-button-rounded m-1" color="primary" type="submit"
-              mat-raised-button>
-        <i class="fas fa-search me-2"></i> Search
-      </button>
-    </div>
 
+      <div class="text-center">
+        <button class="mat-button-rounded m-1" color="primary" type="submit"
+                mat-raised-button>
+          <i class="fas fa-search me-2"></i> Search
+        </button>
+      </div>
+
+    </div>
   </form>
 
 
