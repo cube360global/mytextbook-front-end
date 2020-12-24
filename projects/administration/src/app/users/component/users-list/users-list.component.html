@@ -95,6 +95,11 @@
 </p-table>
 
 
+
+
+
+
+
 <ng-template #filterTemplate>
   <form (ngSubmit)="onFilterApply()" [formGroup]="filterForm">
     <div class="row">
@@ -121,13 +126,16 @@
         </div>
       </div>
     </div>
+
+    <div class="text-center">
+      <button class="mat-button-rounded m-1" color="primary" type="submit"
+              mat-raised-button>
+        <i class="fas fa-search me-2"></i> Search
+      </button>
+    </div>
+
   </form>
-  <div class="text-center">
-    <button class="mat-button-rounded m-1" color="primary"
-            mat-raised-button>
-      <i class="fas fa-search me-2"></i> Search
-    </button>
-  </div>
+
 
 </ng-template>
 

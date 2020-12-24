@@ -18,7 +18,7 @@ export class AdminAuthGuard implements CanActivate {
     console.log('called');
     if (accessToken != null) {
       return true;
-      //return !this.jwtService.isTokenExpired(accessToken);
+      // return !this.jwtService.isTokenExpired(accessToken);
     }
     return false;
 

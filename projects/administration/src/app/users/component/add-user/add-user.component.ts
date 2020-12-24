@@ -42,28 +42,17 @@ export class AddUserComponent implements OnInit {
       .confirm({
         message: AlertConst.ConfirmationMessage,
         accept: () => {
-          const addUser = this.addUser.value as AddUserModel;
-          addUser.roleId = 2;
-          this.userApiService.createUser(addUser)
-            .subscribe(res => {
-              this.store.dispatch(USERS_DATA_LOADED({payload: res}));
-            });
+          this.sendToServer();
         }
       });
+  }
 
-    // console.log('CLICKED');
-    // this.confirmationService.confirm({
-    //   message: ,
-    //   accept: () => {
-    //     console.log('OK');
-    //     // Actual logic to perform a confirmation
-    //   }
-    // });
-    // const addUser = this.addUser.value as AddUserModel;
-    // addUser.roleId = 2;
-    // this.userApiService.createUser(addUser)
-    //   .subscribe(res => {
-    //     this.store.dispatch(USERS_DATA_LOADED({payload: res}));
-    //   });
+  sendToServer(): void {
+    const addUser = this.addUser.value as AddUserModel;
+    addUser.roleId = 2;
+    this.userApiService.createUser(addUser)
+      .subscribe(res => {
+        this.store.dispatch(USERS_DATA_LOADED({payload: res}));
+      });
   }
 }

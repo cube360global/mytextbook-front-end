@@ -5,6 +5,8 @@ import {AdminControllersConst} from '../../../@core/const/AdminControllersConst'
 import {Observable} from 'rxjs';
 import {AddUserModel} from '../../../@core/interfaces/api/AddUserModel';
 import {BulkResponseModel} from '../../../@core/interfaces/api/BulkResponseModel';
+import {UserAndSchoolModel} from '../../../@core/interfaces/api/UserAndSchoolModel';
+import {SearchUserModel} from '../../../@core/interfaces/api/SearchUserModel';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,8 @@ export class UserApiService {
   constructor(private apiBaseService: ApiBaseService) {
   }
 
-  public getUserAll(): Observable<UserModel[]> {
-    return this.apiBaseService.GET_API<UserModel[]>([AdminControllersConst.UserController, AdminControllersConst.All]);
+  public all(): Observable<UserAndSchoolModel> {
+    return this.apiBaseService.GET_API<UserAndSchoolModel>([AdminControllersConst.UserController, AdminControllersConst.All]);
   }
 
   public getUserProfileById(userId: string): Observable<UserModel> {
@@ -28,5 +30,9 @@ export class UserApiService {
 
   public bulkUpload(fileData: FormData): Observable<BulkResponseModel> {
     return this.apiBaseService.UPDATE_API<BulkResponseModel>([AdminControllersConst.UserController, 'all'], fileData, true);
+  }
+
+  public searchUsers(searchUserModel: SearchUserModel): Observable<UserModel[]> {
+    return this.apiBaseService.POST_API<UserModel[]>([AdminControllersConst.UserController, 'search'], searchUserModel, true);
   }
 }

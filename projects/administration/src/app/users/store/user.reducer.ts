@@ -5,11 +5,13 @@ import {createReducer, on} from '@ngrx/store';
 
 export interface State {
   loading: boolean;
+  schools: string[];
   userData: UserModel[];
 }
 
 export const initialState: State = {
   loading: false,
+  schools: [] as string[],
   userData: [] as UserModel[]
 };
 
@@ -19,6 +21,14 @@ export const userReducer = createReducer(
     return {
       ...state,
       loading: true
+    };
+  }),
+  on(UserManagement.USERS_AND_SCHOOL_DATA_LOADED, (state, {payload}) => {
+    return {
+      ...state,
+      userData: payload.users,
+      schools: payload.schools,
+      loading: false
     };
   }),
   on(UserManagement.USERS_DATA_LOADED, (state, {payload}) => {

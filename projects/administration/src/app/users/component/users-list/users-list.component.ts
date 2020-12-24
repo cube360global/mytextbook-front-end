@@ -8,6 +8,11 @@ import {UserViewerDialogComponent} from '../user-viewer-dialog/user-viewer-dialo
 import {NgxUiLoaderService} from 'ngx-ui-loader';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
+import {AlertConst} from '../../../@core/const/AlertConst';
+import {AddUserModel} from '../../../@core/interfaces/api/AddUserModel';
+import {USERS_DATA_LOADED} from '../../store/user.action';
+import {SearchUserModel} from '../../../@core/interfaces/api/SearchUserModel';
+import {AlertService} from '../../../@core/services/alert.service';
 
 @Component({
   selector: 'app-users-list',
@@ -25,7 +30,8 @@ export class UsersListComponent implements OnInit {
               private dialog: MatDialog,
               private toastr: ToastrService,
               private ngxUiLoaderService: NgxUiLoaderService,
-              private store: Store<fromApp.AppState>) {
+              private store: Store<fromApp.AppState>,
+              private alertService: AlertService) {
 
     this.store.select(fromApp.getUserReducer)
       .subscribe(res => {
@@ -67,6 +73,25 @@ export class UsersListComponent implements OnInit {
 
 
   onFilterApply(): void {
+    // if (this.filterForm.invalid){
+    //   this.filterForm.markAllAsTouched();
+    //   return;
+    // }
 
+    this.alertService.getConfirmationDialog()
+      .confirm({
+        message: AlertConst.ConfirmationMessage,
+        accept: () => {
+          this.sendToServer();
+        }
+      });
+  }
+
+  sendToServer(): void {
+    const searchUser = this.filterForm.value as SearchUserModel;
+    this.userApiService.searchUsers(searchUser)
+      .subscribe(res => {
+        this.store.dispatch(USERS_DATA_LOADED({payload: res}));
+      });
   }
 }
