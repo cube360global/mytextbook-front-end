@@ -22,7 +22,7 @@ export class AddSubjectComponent implements OnInit {
 
   constructor(private subjectApiService: SubjectApiService,
               private store: Store<fromApp.AppState>,
-              private alertService: AlertService,) {
+              private alertService: AlertService) {
   }
 
   ngOnInit(): void {

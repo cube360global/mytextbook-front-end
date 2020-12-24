@@ -20,19 +20,30 @@ export class ApiBaseService {
   }
 
 
-  POST_API<T>(path: string[], body: any, isShowSuccess = true): Observable<T> {
+  POST_API<T>(path: string[], body: any, isLoaderOn = false, isShowSuccess = true,): Observable<T> {
+    if (isLoaderOn) {
+      this.ngxUiLoader.start('3100');
+    }
     const apiPath = `${this.baseUrl}${path.join('/')}`;
     return this.http.post<ResponsesModel>(apiPath, body)
       .pipe(
         map((data) => {
           if (data.statusCode === 200) {
+            if (isLoaderOn) {
+              this.ngxUiLoader.stop('3100');
+            }
+            if (isShowSuccess) {
+              this.alertService.showSuccess(data.message);
+            }
             return data.data as T;
           } else {
             throw Error('VERTEX');
           }
         }), catchError(err => {
-          if (err.message !== 'VERTEX') {
+          if (isLoaderOn) {
+            this.ngxUiLoader.stop('3100');
           }
+          this.alertService.showError(err.message);
           return throwError(err);
         }));
   }

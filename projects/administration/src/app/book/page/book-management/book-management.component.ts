@@ -4,6 +4,8 @@ import * as fromApp from '../../../app.reducer';
 import {MatDialog} from '@angular/material/dialog';
 import {BOOK_DATA_REQUEST} from '../../store/book.action';
 import {AddBookComponent} from '../../component/add-book/add-book.component';
+import {NgxUiLoaderService} from 'ngx-ui-loader';
+import {SubjectApiService} from '../../../subject/shared/services/subject-api.service';
 
 @Component({
   selector: 'app-book-management',
@@ -12,9 +14,10 @@ import {AddBookComponent} from '../../component/add-book/add-book.component';
 })
 export class BookManagementComponent implements OnInit {
 
-  link = 'https://drive.google.com/file/d/1wxqV2dcznExZWhAjx07EVHqK5pwLVZrC/view';
 
   constructor(private store: Store<fromApp.AppState>,
+              private subjectService: SubjectApiService,
+              private ngxUiLoaderService: NgxUiLoaderService,
               private dialog: MatDialog) {
   }
 
@@ -22,13 +25,18 @@ export class BookManagementComponent implements OnInit {
     this.store.dispatch(BOOK_DATA_REQUEST());
   }
 
-  onAddBookDialogOpenClick(): void {
-
-  }
 
   openAddBookDialog(): void {
-    this.dialog.open(AddBookComponent, {
-      width: '350px',
-    });
+    this.ngxUiLoaderService.start();
+    this.subjectService.All()
+      .subscribe(res => {
+        this.dialog.open(AddBookComponent, {
+          width: '400px',
+          data: res
+        });
+        this.ngxUiLoaderService.stop();
+      }, () => {
+        this.ngxUiLoaderService.stop();
+      });
   }
 }

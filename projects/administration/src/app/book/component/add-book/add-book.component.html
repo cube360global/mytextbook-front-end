@@ -8,10 +8,11 @@
     </button>
   </div>
 </div>
-<div mat-dialog-content style="height: 500px">
+<div mat-dialog-content>
   <form (ngSubmit)="onAddBooks()" [formGroup]="addBook">
     <div class="p-float-label m-2">
-      <input [ngClass]="{ 'p-invalid' : !addBook.controls['name'].valid && addBook.controls['name'].touched}" class="p-inputtext-sm"
+      <input [ngClass]="{ 'p-invalid' : !addBook.controls['name'].valid && addBook.controls['name'].touched}"
+             class="p-inputtext-sm"
              formControlName="name"
              id="name"
              pInputText type="text">
@@ -26,12 +27,14 @@
 
     <div class="p-float-label m-2">
       <input
-            formControlName="medium"
-            [ngClass]="{ 'p-invalid' : !addBook.controls['medium'].valid && addBook.controls['medium'].touched}" class="p-inputtext-sm"
-             id="medium"
-             pInputText type="text">
+        formControlName="medium"
+        [ngClass]="{ 'p-invalid' : !addBook.controls['medium'].valid && addBook.controls['medium'].touched}"
+        class="p-inputtext-sm"
+        id="medium"
+        pInputText type="text">
       <label for="medium">Book's Medium*</label>
     </div>
+
     <div>
       <val-errors controlName="medium">
         <ng-template valError="required"><small class="p-invalid ms-3">The Medium is required</small></ng-template>
@@ -39,18 +42,19 @@
       </val-errors>
     </div>
 
-    <div class="m-2">
+    <div class="m-2" style="position: relative">
       <p-dropdown
+        appendTo="body"
         styleClass="p-inputtext-sm w-100"
-        [options]="utilityService.gradeList" [(ngModel)]="selectedGrade" formControlName="grade" optionLabel="name"
+        [options]="utilityService.gradeList" formControlName="grade" optionLabel="name"
         [filter]="true"
         filterBy="name"
         [showClear]="true"
         placeholder="Select a Grade*">
 
         <ng-template pTemplate="selectedItem">
-          <div class="country-item country-item-value" *ngIf="selectedGrade">
-            <div>{{selectedGrade.name}}</div>
+          <div class="country-item country-item-value">
+            <div>{{addBook.controls['grade'].value.name}}</div>
           </div>
         </ng-template>
 
@@ -64,125 +68,79 @@
     <div>
       <val-errors controlName="grade">
         <ng-template valError="required"><small class="p-invalid ms-3">The Grade is required</small></ng-template>
+      </val-errors>
+    </div>
+
+    <div class="m-2" style="position: relative">
+      <p-dropdown
+        appendTo="body"
+        styleClass="p-inputtext-sm w-100"
+        [options]="subjects" formControlName="subjectId" optionLabel="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Select a Subject*">
+
+        <ng-template pTemplate="selectedItem">
+          <div class="country-item country-item-value">
+            <div>{{addBook.controls['subjectId'].value.name}}</div>
+          </div>
+        </ng-template>
+
+        <ng-template let-subject pTemplate="item">
+          <div class="country-item">
+            <div>{{subject.name}}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+    </div>
+    <div>
+      <val-errors controlName="subjectId">
+        <ng-template valError="required"><small class="p-invalid ms-3">The Grade is required</small></ng-template>
+      </val-errors>
+    </div>
+
+    <div class="p-float-label m-2">
+      <input
+        formControlName="price"
+        [ngClass]="{ 'p-invalid' : !addBook.controls['price'].valid && addBook.controls['price'].touched}"
+        class="p-inputtext-sm"
+        id="price"
+        pInputText type="number">
+      <label for="medium">Book's Medium*</label>
+    </div>
+
+    <div>
+      <val-errors controlName="price">
+        <ng-template valError="required"><small class="p-invalid ms-3">The Medium is required</small></ng-template>
         >
       </val-errors>
     </div>
 
 
 
+    <mat-divider>
+    </mat-divider>
+    <label class="ms-3"> Book's Image </label>
+    <div class="d-flex justify-content-between align-items-center">
+      <p-fileUpload styleClass="m-2" #ff mode="basic" name="demo[]" [fileLimit]="1"
+                    [customUpload]="true"
+                    (onSelect)="onBasicUpload($event)">
+      </p-fileUpload>
+      <button type="button" mat-icon-button color="warn" (click)="ff.clear();onRemoveClick()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div>
+      <small *ngIf="!bookImage" class="p-invalid ms-3">The book's image is required</small>
+    </div>
+    <mat-divider>
+    </mat-divider>
 
-    <!--      &lt;!&ndash;Referral Link&ndash;&gt;-->
-
-    <!--      <div class="p-float-label m-2">-->
-    <!--        <input type="text" id="referralLink"-->
-    <!--               formControlName="referralLink"-->
-    <!--               [ngClass]="{ 'p-invalid' : !addUser.controls['referralLink'].valid && addUser.controls['referralLink'].touched}"-->
-    <!--               class="p-inputtext-sm" pInputText>-->
-    <!--        <label for="referralLink">Referral Link*</label>-->
-    <!--      </div>-->
-
-    <!--      <div>-->
-    <!--        <val-errors controlName="referralLink" label="The referralLink">-->
-    <!--          <ng-template valError="required">-->
-    <!--            <div class="container">-->
-    <!--              <small class="p-invalid ms-3">The referral link is required</small>-->
-    <!--            </div>-->
-    <!--          </ng-template>-->
-    <!--        </val-errors>-->
-    <!--      </div>-->
-
-    <!--      &lt;!&ndash;Role Id&ndash;&gt;-->
-    <!--      <div class="p-float-label m-2">-->
-    <!--        <input type="text" id="roleId"-->
-    <!--               formControlName="roleId"-->
-    <!--               [ngClass]="{ 'p-invalid' : !addUser.controls['roleId'].valid && addUser.controls['roleId'].touched}"-->
-    <!--               class="p-inputtext-sm" pInputText>-->
-    <!--        <label for="roleId">Role Id*</label>-->
-    <!--      </div>-->
-    <!--      <div>-->
-    <!--        <val-errors controlName="roleId" label="The roleId">-->
-    <!--          <ng-template valError="required">-->
-    <!--            <small class="p-invalid ms-3">The role is required</small>-->
-    <!--          </ng-template>-->
-    <!--        </val-errors>-->
-    <!--      </div>-->
-    <!--      <div class="text-center mt-3">-->
-    <!--        <button mat-raised-button color="primary" class="mat-button-rounded-sm"> Add User </button>-->
-    <!--      </div>-->
+    <div class="text-center w-100 mt-3">
+      <button mat-raised-button color="primary" class="mat-button-rounded-sm"> Add Book</button>
+    </div>
   </form>
 </div>
-
-<!--<p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" optionDisabled="inactive"></p-dropdown>-->
-
-
-<!--<div mat-dialog-title>-->
-<!--  <div class="d-flex justify-content-between align-items-center">-->
-<!--    <div class="header-text-sm">-->
-<!--      Add User-->
-<!--    </div>-->
-<!--    <button (click)="dialogRef.close()" color="warn" mat-icon-button>-->
-<!--      <mat-icon>highlight_off</mat-icon>-->
-<!--    </button>-->
-<!--  </div>-->
-<!--</div>-->
-<!--<div mat-dialog-content>-->
-<!--  <form [formGroup]="addUser" (ngSubmit)="onAddUsers()">-->
-
-<!--    <div class="p-float-label m-2">-->
-<!--      <input type="text" id="email"-->
-<!--             formControlName="email"-->
-<!--             [ngClass]="{ 'p-invalid' : !addUser.controls['email'].valid && addUser.controls['email'].touched}"-->
-<!--             class="p-inputtext-sm" pInputText>-->
-<!--      <label for="email">Email*</label>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--      <val-errors controlName="email" label="The email">-->
-<!--        <ng-template valError="required"><small class="p-invalid ms-3">The email is required</small></ng-template>-->
-<!--        <ng-template valError="email"><small class="p-invalid ms-3">This is not a valid email address</small></ng-template>-->
-<!--      </val-errors>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash;Referral Link&ndash;&gt;-->
-
-<!--    <div class="p-float-label m-2">-->
-<!--      <input type="text" id="referralLink"-->
-<!--             formControlName="referralLink"-->
-<!--             [ngClass]="{ 'p-invalid' : !addUser.controls['referralLink'].valid && addUser.controls['referralLink'].touched}"-->
-<!--             class="p-inputtext-sm" pInputText>-->
-<!--      <label for="referralLink">Referral Link*</label>-->
-<!--    </div>-->
-
-<!--    <div>-->
-<!--      <val-errors controlName="referralLink" label="The referralLink">-->
-<!--        <ng-template valError="required">-->
-<!--          <div class="container">-->
-<!--            <small class="p-invalid ms-3">The referral link is required</small>-->
-<!--          </div>-->
-<!--        </ng-template>-->
-<!--      </val-errors>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash;Role Id&ndash;&gt;-->
-<!--    <div class="p-float-label m-2">-->
-<!--      <input type="text" id="roleId"-->
-<!--             formControlName="roleId"-->
-<!--             [ngClass]="{ 'p-invalid' : !addUser.controls['roleId'].valid && addUser.controls['roleId'].touched}"-->
-<!--             class="p-inputtext-sm" pInputText>-->
-<!--      <label for="roleId">Role Id*</label>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--      <val-errors controlName="roleId" label="The roleId">-->
-<!--        <ng-template valError="required">-->
-<!--          <small class="p-invalid ms-3">The role is required</small>-->
-<!--        </ng-template>-->
-<!--      </val-errors>-->
-<!--    </div>-->
-<!--    <div class="text-center mt-3">-->
-<!--      <button mat-raised-button color="primary" class="mat-button-rounded-sm"> Add User </button>-->
-<!--    </div>-->
-<!--  </form>-->
-
-
-<!--</div>-->
 
 
