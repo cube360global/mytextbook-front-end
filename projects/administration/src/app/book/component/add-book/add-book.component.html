@@ -8,10 +8,11 @@
     </button>
   </div>
 </div>
-<div mat-dialog-content style="height: 500px">
+<div mat-dialog-content>
   <form (ngSubmit)="onAddBooks()" [formGroup]="addBook">
     <div class="p-float-label m-2">
-      <input [ngClass]="{ 'p-invalid' : !addBook.controls['name'].valid && addBook.controls['name'].touched}" class="p-inputtext-sm"
+      <input [ngClass]="{ 'p-invalid' : !addBook.controls['name'].valid && addBook.controls['name'].touched}"
+             class="p-inputtext-sm"
              formControlName="name"
              id="name"
              pInputText type="text">
@@ -26,12 +27,14 @@
 
     <div class="p-float-label m-2">
       <input
-            formControlName="medium"
-            [ngClass]="{ 'p-invalid' : !addBook.controls['medium'].valid && addBook.controls['medium'].touched}" class="p-inputtext-sm"
-             id="medium"
-             pInputText type="text">
+        formControlName="medium"
+        [ngClass]="{ 'p-invalid' : !addBook.controls['medium'].valid && addBook.controls['medium'].touched}"
+        class="p-inputtext-sm"
+        id="medium"
+        pInputText type="text">
       <label for="medium">Book's Medium*</label>
     </div>
+
     <div>
       <val-errors controlName="medium">
         <ng-template valError="required"><small class="p-invalid ms-3">The Medium is required</small></ng-template>
@@ -39,8 +42,9 @@
       </val-errors>
     </div>
 
-    <div class="m-2">
+    <div class="m-2" style="position: relative">
       <p-dropdown
+        appendTo="body"
         styleClass="p-inputtext-sm w-100"
         [options]="utilityService.gradeList" [(ngModel)]="selectedGrade" formControlName="grade" optionLabel="name"
         [filter]="true"
@@ -64,11 +68,23 @@
     <div>
       <val-errors controlName="grade">
         <ng-template valError="required"><small class="p-invalid ms-3">The Grade is required</small></ng-template>
-        >
       </val-errors>
     </div>
 
 
+    <div class="p-float-label m-2">
+      <input type="text" id="price"
+             formControlName="price"
+             [ngClass]="{ 'p-invalid' : !addBook.controls['price'].valid && addBook.controls['price'].touched}"
+             class="p-inputtext-sm" pInputText>
+      <label for="price">Referral Link*</label>
+    </div>
+
+    <div>
+      <val-errors controlName="price" label="The price">
+        <ng-template valError="required"><small class="p-invalid ms-3">The price is required</small></ng-template>
+      </val-errors>
+    </div>
 
 
     <!--      &lt;!&ndash;Referral Link&ndash;&gt;-->

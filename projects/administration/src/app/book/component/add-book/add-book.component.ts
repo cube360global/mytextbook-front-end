@@ -86,7 +86,8 @@ export class AddBookComponent implements OnInit {
       name: new FormControl(null, {validators: [Validators.required]}),
       medium: new FormControl(null, {validators: [Validators.required]}),
       grade: new FormControl(null, {validators: [Validators.required]}),
-      price: new FormControl(null, {validators: [Validators.required]})
+      price: new FormControl(null, {validators: [Validators.required]}),
+      subjectId: new FormControl(null, {validators: [Validators.required]}),
     });
   }
 }
