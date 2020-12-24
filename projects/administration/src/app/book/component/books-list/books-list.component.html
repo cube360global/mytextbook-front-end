@@ -82,7 +82,12 @@
       <td>{{user.price}}</td>
       <td>{{user.subject}}</td>
       <td>
-        <button (click)="openUserViewDialog(user.id)" color="primary" mat-mini-fab><i class="fas fa-eye"></i></button>
+        <button (click)="openBookEditViewDialog(user.id)"
+                class="me-2"
+                color="primary"
+                mat-mini-fab><i class="fas fa-edit"></i></button>
+
+        <button (click)="onDelete(user.id)" color="warn" mat-mini-fab><i class="fas fa-trash"></i></button>
       </td>
     </tr>
   </ng-template>

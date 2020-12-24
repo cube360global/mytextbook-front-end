@@ -17,7 +17,11 @@ export class BookApiService {
     ([AdminControllersConst.BookController, AdminControllersConst.All]);
   }
 
-  Get(dookId: string) {
-
+  public Send(formBody: FormData): Observable<BookModel[]> {
+    return this.apiBaseService.UPDATE_API<BookModel[]>([AdminControllersConst.BookController], formBody, true);
   }
+
+  // Get(dookId: string) {
+  //
+  // }
 }

@@ -34,17 +34,6 @@
   </button>
 </div>
 
-
-<!--<div class="p-float-label mt-2">-->
-<!--  <input type="text" id="subjectImg"-->
-<!--         class="p-inputtext-sm"-->
-<!--         [(ngModel)]="subjectImg"-->
-<!--         [ngClass]="{ 'p-invalid' : subjectImg == ''}"-->
-<!--         pInputText>-->
-<!--  <label for="subjectImg">Image *</label>-->
-<!--</div>-->
-<!--<small class="p-invalid ms-3">The Subject Name is required</small>-->
-
 <button (click)="onSubmitImg()" [disabled]="cardImageBase64 == '' || subjectName == ''" class="mat-button-rounded-sm mt-3" color="primary"
         mat-raised-button style="width: 100%;">submit
 </button>

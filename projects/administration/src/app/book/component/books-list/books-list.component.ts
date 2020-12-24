@@ -13,7 +13,6 @@ import {BookModel} from '../../../@core/interfaces/api/BookModel';
 })
 export class BooksListComponent implements OnInit {
 
-  // filterForm = {} as FormGroup;
 
   books = [] as BookModel[];
   loading = true;
@@ -36,33 +35,14 @@ export class BooksListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.filterForm = new FormGroup({
-    //   district: new FormControl(),
-    //   school: new FormControl(),
-    //   subject: new FormControl(),
-    //   grade: new FormControl(),
-    //   salesLead: new FormControl(),
-    // });
-
-  }
-
-  openUserViewDialog(userId: string): void {
-    // this.ngxUiLoaderService.start();
-    // this.bookApiService.Get(userId)
-    //   .subscribe(res => {
-    //     this.dialog.open(UserViewerDialogComponent, {
-    //       width: '100%',
-    //       data: res
-    //     });
-    //     this.ngxUiLoaderService.stop();
-    //   }, () => {
-    //     this.ngxUiLoaderService.stop();
-    //   });
-
   }
 
 
-  onFilterApply(): void {
+  onDelete(id: any): void {
+
+  }
+
+  openBookEditViewDialog(id: any): void {
 
   }
 }
