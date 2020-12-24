@@ -8,7 +8,7 @@
     </button>
   </div>
 </div>
-<div mat-dialog-content>
+<div mat-dialog-content style="height: 500px">
   <form (ngSubmit)="onAddBooks()" [formGroup]="addBook">
     <div class="p-float-label m-2">
       <input [ngClass]="{ 'p-invalid' : !addBook.controls['name'].valid && addBook.controls['name'].touched}" class="p-inputtext-sm"
@@ -25,37 +25,51 @@
     </div>
 
     <div class="p-float-label m-2">
-      <input [ngClass]="{ 'p-invalid' : !addBook.controls['medium'].valid && addBook.controls['medium'].touched}" class="p-inputtext-sm"
-             formControlName="medium"
+      <input
+            formControlName="medium"
+            [ngClass]="{ 'p-invalid' : !addBook.controls['medium'].valid && addBook.controls['medium'].touched}" class="p-inputtext-sm"
              id="medium"
              pInputText type="text">
       <label for="medium">Book's Medium*</label>
     </div>
     <div>
-      <val-errors controlName="name">
+      <val-errors controlName="medium">
         <ng-template valError="required"><small class="p-invalid ms-3">The Medium is required</small></ng-template>
         >
       </val-errors>
     </div>
 
-    <!--      <p-dropdown [options]="utilityService.getGradeList()" formControlName="grade" optionLabel="Grade"-->
-    <!--                  [ngClass]="{ 'p-invalid' : !addBook.controls['grade'].valid && addBook.controls['grade'].touched}"-->
-    <!--      >-->
-    <!--      </p-dropdown>-->
+    <div class="m-2">
+      <p-dropdown
+        styleClass="p-inputtext-sm w-100"
+        [options]="utilityService.gradeList" [(ngModel)]="selectedGrade" formControlName="grade" optionLabel="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Select a Grade*">
 
-    <!--      <div class="p-float-label m-2">-->
-    <!--        <input type="text" id="grade"-->
-    <!--               formControlName="grade"-->
-    <!--               [ngClass]="{ 'p-invalid' : !addBook.controls['grade'].valid && addBook.controls['grade'].touched}"-->
-    <!--               class="p-inputtext-sm" pInputText>-->
-    <!--        <label for="grade">Book's Medium*</label>-->
-    <!--      </div>-->
+        <ng-template pTemplate="selectedItem">
+          <div class="country-item country-item-value" *ngIf="selectedGrade">
+            <div>{{selectedGrade.name}}</div>
+          </div>
+        </ng-template>
+
+        <ng-template let-grade pTemplate="item">
+          <div class="country-item">
+            <div>{{grade.name}}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+    </div>
     <div>
       <val-errors controlName="grade">
-        <ng-template valError="required"><small class="p-invalid ms-3">The Medium is required</small></ng-template>
+        <ng-template valError="required"><small class="p-invalid ms-3">The Grade is required</small></ng-template>
         >
       </val-errors>
     </div>
+
+
+
 
     <!--      &lt;!&ndash;Referral Link&ndash;&gt;-->
 

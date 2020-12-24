@@ -1,4 +1,4 @@
 export interface KeyValueModel {
-  key: number;
-  value: string;
+  name: string;
+  code: string;
 }
