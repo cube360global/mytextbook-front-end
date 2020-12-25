@@ -88,7 +88,7 @@
   <hr>
   <div class="text-center">
     <button (click)="onAddSubscription()"
-            [disabled]="!this.userSubscriptionService.getSelectedBookList().length > 0"
+            [disabled]="!(this.userSubscriptionService.getSelectedBookList().length >= 0)"
             color="primary" class="mat-button-rounded-sm m-2" mat-raised-button> Add Subscription </button>
   </div>
 
