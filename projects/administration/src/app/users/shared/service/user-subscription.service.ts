@@ -11,6 +11,10 @@ export class UserSubscriptionService {
   }
 
   addToSelectedBookList(bookId: number): void {
+    if (this.isBookExist(bookId)) {
+      this.removeFromList(bookId);
+      return;
+    }
     this.selectedBooksList.push(bookId);
   }
 
@@ -19,9 +23,14 @@ export class UserSubscriptionService {
     this.selectedBooksList.splice(index, 1);
   }
 
-  isBookExist(bookId: number): boolean{
+  isBookExist(bookId: number): boolean {
     return this.selectedBooksList.includes(bookId);
   }
+
+  getSelectedBookList(): number[] {
+    return this.selectedBooksList;
+  }
+
 
 
 }

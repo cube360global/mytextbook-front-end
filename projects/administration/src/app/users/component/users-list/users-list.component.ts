@@ -27,6 +27,7 @@ export class UsersListComponent implements OnInit {
 
   users = [] as UserModel[];
   loading = true;
+  searchInputData: any;
 
   constructor(private userApiService: UserApiService,
               private dialog: MatDialog,
@@ -100,12 +101,12 @@ export class UsersListComponent implements OnInit {
       });
   }
 
-  openManageSubDialog(id: string): void {
+  openManageSubDialog(user: UserModel): void {
     this.ngxUiLoaderService.start();
     this.subjectService.All()
       .subscribe(res => {
         const subjectUser = {} as SubjectUser;
-        subjectUser.userId = id;
+        subjectUser.user = user;
         subjectUser.subjectList = res;
         this.dialog.open(SubscriptionManagementComponent, {
           width: '100%',

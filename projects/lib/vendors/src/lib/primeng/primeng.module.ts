@@ -11,6 +11,8 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {FileUploadModule} from 'primeng/fileupload';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {DropdownModule} from 'primeng/dropdown';
+import {BadgeModule} from 'primeng/badge';
+
 
 const primeNg = [
   ButtonModule,
@@ -24,7 +26,8 @@ const primeNg = [
   OverlayPanelModule,
   FileUploadModule,
   ConfirmDialogModule,
-  DropdownModule
+  DropdownModule,
+  BadgeModule
 
 ];
 

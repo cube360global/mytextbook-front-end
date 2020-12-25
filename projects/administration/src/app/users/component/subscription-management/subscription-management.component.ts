@@ -8,6 +8,10 @@ import {UtilityService} from '../../../@core/services/utility.service';
 import {BookModel} from '../../../@core/interfaces/api/BookModel';
 import {KeyValueModel} from '../../../@core/interfaces/KeyValueModel';
 import {BookApiService} from '../../../book/shared/services/book-api.service';
+import {AlertService} from '../../../@core/services/alert.service';
+import {UserSubscriptionService} from '../../shared/service/user-subscription.service';
+import {UserApiService} from '../../shared/service/user-api.service';
+import {PostSubscription} from '../../../@core/interfaces/api/PostSubscription';
 
 
 @Component({
@@ -28,6 +32,9 @@ export class SubscriptionManagementComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<SubscriptionManagementComponent>,
               private store: Store<fromApp.AppState>,
               private bookService: BookApiService,
+              public userSubscriptionService: UserSubscriptionService,
+              private userApiService: UserApiService,
+              private alertService: AlertService,
               public utilityService: UtilityService,
               @Inject(MAT_DIALOG_DATA) public data: SubjectUser) {
   }
@@ -36,7 +43,7 @@ export class SubscriptionManagementComponent implements OnInit {
     this.subjects = this.data.subjectList;
   }
 
-  onSearchClick(): void{
+  onSearchClick(): void {
     const bookSearchModel = {
       grade: +this.selectedGrades.code,
       medium: this.selectedMedium.code,
@@ -49,4 +56,21 @@ export class SubscriptionManagementComponent implements OnInit {
       });
   }
 
+  onAddSubscription(): void {
+    this.alertService
+      .getConfirmationDialog().confirm({
+      message: `Do you really want to add selected ${this.userSubscriptionService.getSelectedBookList().length}
+      subscriptions to ${this.data.user.firstName + ' ' + this.data.user.lastName}
+      `,
+      accept: () => {
+        const userBook = {} as PostSubscription;
+        userBook.bookIds = this.userSubscriptionService.getSelectedBookList();
+        userBook.userId = this.data.user.id;
+        this.userApiService.addSubscriptionToUser(userBook)
+          .subscribe(() => {
+            this.dialogRef.close();
+          });
+      }
+    });
+  }
 }

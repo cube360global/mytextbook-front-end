@@ -1,6 +1,7 @@
 import {SubjectModel} from './api/SubjectModel';
+import {UserModel} from './api/UserModel';
 
 export interface SubjectUser{
-  userId: string;
+  user: UserModel;
   subjectList: SubjectModel[];
 }

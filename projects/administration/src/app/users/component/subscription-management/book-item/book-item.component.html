@@ -1,7 +1,8 @@
-<mat-card pRipple style="width: 100%;">
+<div style="z-index: 1200" *ngIf="userSubscriptionService.isBookExist(book.id)" matBadge="--" matBadgeColor="primary"></div>
+<mat-card (click)="onAddToServiceList(book.id)" class="m-1"
+          pRipple style="width: 100%;">
   <img src="{{book.image}}" alt="{{book.name}}" class="img-fluid" width="100%">
   <hr>
   <p>{{book.name}}</p>
   <p class="text-danger">{{book.price}}.00</p>
-  <p>Grade {{book.grade}}</p>
 </mat-card>

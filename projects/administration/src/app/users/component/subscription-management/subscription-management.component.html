@@ -1,7 +1,7 @@
 <div mat-dialog-title>
   <div class="d-flex justify-content-between align-items-center">
     <div class="header-text-sm">
-      Add User
+      Add Subscription
     </div>
     <button (click)="dialogRef.close()" color="warn" mat-icon-button>
       <mat-icon>highlight_off</mat-icon>
@@ -70,6 +70,7 @@
 
   <div class="text-center">
     <button mat-raised-button color="primary" class="mat-button-rounded-sm"
+            matTooltip="Please Search First"
             [disabled]="selectedSubject == null || selectedMedium == null || selectedGrades == null"
             (click)="onSearchClick()">
       <i class="fas fa-search me-2"></i> Search
@@ -83,6 +84,12 @@
       class="col-sm-2"
       *ngFor="let book of bookModel" [book]="book"></app-book-item>
   </div>
-
 </div>
+  <hr>
+  <div class="text-center">
+    <button (click)="onAddSubscription()"
+            [disabled]="!this.userSubscriptionService.getSelectedBookList().length > 0"
+            color="primary" class="mat-button-rounded-sm m-2" mat-raised-button> Add Subscription </button>
+  </div>
+
 </div>

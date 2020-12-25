@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --hmr",
+    "start": "ng serve --o",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -35,7 +35,7 @@
     "ngx-ui-loader": "^10.0.0",
     "ngx-valdemort": "^5.0.0",
     "primeicons": "^4.1.0",
-    "primeng": "^11.0.0",
+    "primeng": "^11.1.0-rc.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "typescript": "^4.0.5",

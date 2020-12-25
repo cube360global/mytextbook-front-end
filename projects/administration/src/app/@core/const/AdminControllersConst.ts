@@ -3,6 +3,7 @@ export class AdminControllersConst {
   public static UserController = 'user';
   public static BookController = 'book';
   public static SubjectController = 'subject';
+  public static SubscriptionController = 'subscription';
 
 
   // Support

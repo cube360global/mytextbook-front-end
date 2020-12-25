@@ -1,3 +1,5 @@
+import {UserSubscriptionModel} from './UserSubscriptionModel';
+
 export interface UserModel {
   id: number;
   email: string;
@@ -11,6 +13,6 @@ export interface UserModel {
   salesLead?: any;
   birthDay: number;
   school: string;
-  subscriptions: any[];
+  subscriptions: UserSubscriptionModel[];
   contents: any[];
 }

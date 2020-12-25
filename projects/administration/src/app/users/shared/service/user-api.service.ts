@@ -7,6 +7,7 @@ import {AddUserModel} from '../../../@core/interfaces/api/AddUserModel';
 import {BulkResponseModel} from '../../../@core/interfaces/api/BulkResponseModel';
 import {UserAndSchoolModel} from '../../../@core/interfaces/api/UserAndSchoolModel';
 import {SearchUserModel} from '../../../@core/interfaces/api/SearchUserModel';
+import {PostSubscription} from '../../../@core/interfaces/api/PostSubscription';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,10 @@ export class UserApiService {
   public searchUsers(searchUserModel: SearchUserModel): Observable<UserAndSchoolModel> {
     return this.apiBaseService.POST_API<UserAndSchoolModel>([AdminControllersConst.UserController, 'search'],
       searchUserModel, true, true);
+  }
+
+  public addSubscriptionToUser(postSub: PostSubscription): Observable<any> {
+    return this.apiBaseService.POST_API<any>([AdminControllersConst.SubscriptionController],
+      postSub, true, true);
   }
 }
