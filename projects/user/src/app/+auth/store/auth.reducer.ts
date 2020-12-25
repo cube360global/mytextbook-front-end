@@ -1,4 +1,4 @@
-import {TokenDecodeModel} from '../shared/interfaces/TokenDecodeModel';
+import {TokenDecodeModel} from '../../../../../lib/authentication/src/lib/interfaces/TokenDecodeModel';
 import {createReducer, on} from '@ngrx/store';
 import * as AuthAction from './auth.action';
 

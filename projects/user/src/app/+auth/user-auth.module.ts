@@ -7,6 +7,7 @@ import {LayoutModule} from '../@ui/layout/layout.module';
 import {SignInFormComponent} from './components/sign-in/sign-in-form/sign-in-form.component';
 import {MaterialModule} from '../../../../lib/vendors/src/lib/material/material.module';
 import {PrimengModule} from '../../../../lib/vendors/src/lib/primeng/primeng.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 const routes: Routes = [
@@ -30,6 +31,8 @@ const routes: Routes = [
     LayoutModule,
     MaterialModule,
     PrimengModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class UserAuthModule {

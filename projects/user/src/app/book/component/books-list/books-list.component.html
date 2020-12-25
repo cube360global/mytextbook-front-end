@@ -1,0 +1,132 @@
+<p-table #dt1 [loading]="loading" [paginator]="true"
+         [rowsPerPageOptions]="[10,25,50]"
+         [rows]="10"
+         [showCurrentPageReport]="true"
+         [value]="books"
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         styleClass="p-datatable-sm p-datatable-responsive-demo">
+
+  <ng-template pTemplate="caption">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <div class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input (input)="dt1.filterGlobal(searchInputData, 'contains')"
+               [(ngModel)]="searchInputData" class="p-inputtext-sm"
+               matTooltip="Search from table"
+               pInputText
+               placeholder="Search keyword"
+               type="text"/>
+      </div>
+      <!--      <ng-container *ngTemplateOutlet="filterTemplate"></ng-container>-->
+      <!--      <button mat-icon-button color="primary" (click)="op.toggle($event)">-->
+      <!--        <mat-icon>filter_alt</mat-icon>-->
+      <!--      </button>-->
+
+
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>
+        Image
+        <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
+        <!--          Email-->
+        <!--          <p-columnFilter display="menu" field="email" type="text"></p-columnFilter>-->
+        <!--        </div>-->
+      </th>
+      <th>
+        Grade
+        <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
+        <!--          First Name-->
+        <!--          <p-columnFilter display="menu" field="firstName" type="text"></p-columnFilter>-->
+        <!--        </div>-->
+      </th>
+      <th>
+        Medium
+        <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
+        <!--          Last Name-->
+        <!--          <p-columnFilter display="menu" field="lastName" type="text"></p-columnFilter>-->
+        <!--        </div>-->
+      </th>
+      <th>
+        Name
+        <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
+        <!--          Contact No-->
+        <!--          <p-columnFilter display="menu" field="telephoneNumber" type="text"></p-columnFilter>-->
+        <!--        </div>-->
+      </th>
+      <th>
+        Price
+        <!--        <div class="p-d-flex p-jc-between p-ai-center" matTooltip="User active status">-->
+        <!--          Status-->
+        <!--          <p-columnFilter display="menu" field="active" type="text"></p-columnFilter>-->
+        <!--        </div>-->
+      </th>
+      <th>
+        Subject Id
+        <!--        <div class="p-d-flex p-jc-between p-ai-center" matTooltip="Subscription Count">-->
+        <!--          Sub. Count-->
+        <!--          <p-columnFilter display="menu" field="subscriptionCount" type="number"></p-columnFilter>-->
+        <!--        </div>-->
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template let-user pTemplate="body">
+    <tr>
+      <td>
+        <img alt="" class="img-fluid" height="100px" src="{{user.image}}" width="100px">
+      </td>
+      <td>{{user.grade}}</td>
+      <td>{{user.medium}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.price}}</td>
+      <td>{{user.subject}}</td>
+      <td>
+        <button (click)="openBookEditViewDialog(user.id)"
+                class="me-2"
+                color="primary"
+                mat-mini-fab><i class="fas fa-edit"></i></button>
+
+        <button (click)="onDelete(user.id)" color="warn" mat-mini-fab><i class="fas fa-trash"></i></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+<!--<ng-template #filterTemplate>-->
+<!--  <form (ngSubmit)="onFilterApply()" [formGroup]="filterForm">-->
+<!--    <div class="row">-->
+<!--      <div class="d-flex justify-content-center">-->
+<!--        <div class="p-float-label m-1">-->
+<!--          <input type="text" id="district" formControlName="district" class="p-inputtext-sm" pInputText>-->
+<!--          <label for="district">District</label>-->
+<!--        </div>-->
+<!--        <div class="p-float-label m-1">-->
+<!--          <input type="text" id="school" formControlName="school" class="p-inputtext-sm" pInputText>-->
+<!--          <label for="school">School</label>-->
+<!--        </div>-->
+<!--        <div class="p-float-label m-1">-->
+<!--          <input type="text" id="subject" formControlName="subject" class="p-inputtext-sm" pInputText>-->
+<!--          <label for="subject">Subject</label>-->
+<!--        </div>-->
+<!--        <div class="p-float-label m-1">-->
+<!--          <input type="text" id="grade" formControlName="grade" class="p-inputtext-sm" pInputText>-->
+<!--          <label for="grade">Grade</label>-->
+<!--        </div>-->
+<!--        <div class="p-float-label m-1">-->
+<!--          <input type="text" id="salesLead" formControlName="salesLead" class="p-inputtext-sm" pInputText>-->
+<!--          <label for="salesLead">Sales Lead</label>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </form>-->
+<!--  <div class="text-center">-->
+<!--    <button mat-raised-button color="primary"-->
+<!--            class="mat-button-rounded m-1">-->
+<!--      <i class="fas fa-search me-2"></i> Search-->
+<!--    </button>-->
+<!--  </div>-->
+
+<!--</ng-template>-->
+

@@ -19,4 +19,7 @@ export enum Path {
 
   // Features
   Dashboard = 'dashboard',
+
+  Public = 'public',
+  Private = 'private'
 }

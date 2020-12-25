@@ -1,8 +1,9 @@
-<form>
+<form (ngSubmit)="onLogin()" [formGroup]="loginForm">
   <div class="p-input-icon-right w-100 mb-3">
     <i class="fas fa-user"></i>
     <input autocomplete="disable"
            class="p-input-round"
+           formControlName="username"
            id="my-text-book-email"
            pInputText
            placeholder="Enter Your Email"
@@ -14,12 +15,14 @@
     <i class="fas fa-lock"></i>
     <input autocomplete="off"
            class="p-input-round"
+           formControlName="password"
            id="float-input"
            pInputText
            placeholder="Enter Your Password"
            type="Password">
     <label for="float-input"></label>
   </div>
+  <button class="mat-button-rounded w-100 mt-3" color="primary" mat-raised-button>LOGIN</button>
 </form>
-<button class="mat-button-rounded w-100 mt-3" color="primary" mat-raised-button> LOGIN</button>
+
 

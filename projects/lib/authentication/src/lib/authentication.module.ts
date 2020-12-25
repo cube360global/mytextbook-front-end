@@ -1,11 +1,10 @@
 import {NgModule} from '@angular/core';
-import {AuthenticationComponent} from './authentication.component';
 
 
 @NgModule({
-  declarations: [AuthenticationComponent],
+  declarations: [],
   imports: [],
-  exports: [AuthenticationComponent]
+  exports: []
 })
 export class AuthenticationModule {
 }
