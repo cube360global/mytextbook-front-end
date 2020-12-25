@@ -6,19 +6,6 @@ import {KeyValueModel} from '../interfaces/KeyValueModel';
 })
 export class UtilityService {
 
-  // countries = [
-  //   {name: 'Australia', code: 'AU'},
-  //   {name: 'Brazil', code: 'BR'},
-  //   {name: 'China', code: 'CN'},
-  //   {name: 'Egypt', code: 'EG'},
-  //   {name: 'France', code: 'FR'},
-  //   {name: 'Germany', code: 'DE'},
-  //   {name: 'India', code: 'IN'},
-  //   {name: 'Japan', code: 'JP'},
-  //   {name: 'Spain', code: 'ES'},
-  //   {name: 'United States', code: 'US'}
-  // ] as KeyValueModel[];
-
   gradeList = [
     {name: 'Grade 01', code: '1'},
     {name: 'Grade 02', code: '2'},
@@ -34,6 +21,13 @@ export class UtilityService {
     {name: 'Grade 12', code: '12'},
     {name: 'Grade 13', code: '13'},
   ] as KeyValueModel[];
+
+  mediums = [
+    {name: 'Sinhala', code: 'sinhala'},
+    {name: 'English', code: 'english'},
+    {name: 'Tamil', code: 'tamil'}
+  ] as KeyValueModel[];
+
 
   constructor() {
     // this.getGradeList();

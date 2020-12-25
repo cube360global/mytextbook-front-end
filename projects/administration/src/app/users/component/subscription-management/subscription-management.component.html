@@ -1,0 +1,88 @@
+<div mat-dialog-title>
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="header-text-sm">
+      Add User
+    </div>
+    <button (click)="dialogRef.close()" color="warn" mat-icon-button>
+      <mat-icon>highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+<div mat-dialog-content>
+<div class="d-flex align-items-center">
+
+  <div class="m-2">
+    <p-dropdown
+      appendTo="body"
+      styleClass="p-inputtext-sm w-100"
+      [options]="utilityService.mediums" [(ngModel)]="selectedMedium" optionLabel="name"></p-dropdown>
+  </div>
+
+
+  <div class="m-2" style="position: relative">
+    <p-dropdown
+      appendTo="body"
+      styleClass="p-inputtext-sm w-100"
+      [options]="subjects" [(ngModel)]="selectedSubject" optionLabel="name"
+      [filter]="true"
+      filterBy="name"
+      [showClear]="true"
+      placeholder="Select a Subject*">
+
+      <ng-template pTemplate="selectedSubject">
+        <div class="country-item country-item-value">
+          <div>{{selectedSubject.name}}</div>
+        </div>
+      </ng-template>
+
+      <ng-template let-subject pTemplate="item">
+        <div class="country-item">
+          <div>{{subject.name}}</div>
+        </div>
+      </ng-template>
+    </p-dropdown>
+  </div>
+
+
+  <div class="m-2" style="position: relative">
+    <p-dropdown
+      appendTo="body"
+      styleClass="p-inputtext-sm w-100"
+      [options]="utilityService.gradeList" [(ngModel)]="selectedGrades" optionLabel="name"
+      [filter]="true"
+      filterBy="name"
+      [showClear]="true"
+      placeholder="Select a Grade*">
+
+      <ng-template pTemplate="selectedItem">
+        <div class="country-item country-item-value">
+          <div>{{selectedGrades.name}}</div>
+        </div>
+      </ng-template>
+
+      <ng-template let-grade pTemplate="item">
+        <div class="country-item">
+          <div>{{grade.name}}</div>
+        </div>
+      </ng-template>
+    </p-dropdown>
+  </div>
+
+  <div class="text-center">
+    <button mat-raised-button color="primary" class="mat-button-rounded-sm"
+            [disabled]="selectedSubject == null || selectedMedium == null || selectedGrades == null"
+            (click)="onSearchClick()">
+      <i class="fas fa-search me-2"></i> Search
+    </button>
+  </div>
+</div>
+<hr>
+<div class="container" >
+  <div class="row">
+    <app-book-item
+      class="col-sm-2"
+      *ngFor="let book of bookModel" [book]="book"></app-book-item>
+  </div>
+
+</div>
+</div>

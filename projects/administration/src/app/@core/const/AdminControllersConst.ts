@@ -7,4 +7,5 @@ export class AdminControllersConst {
 
   // Support
   public static All = 'all';
+  public static Search = 'search';
 }
