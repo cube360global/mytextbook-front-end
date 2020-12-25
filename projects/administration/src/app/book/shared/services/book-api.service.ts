@@ -21,6 +21,12 @@ export class BookApiService {
     return this.apiBaseService.UPDATE_API<BookModel[]>([AdminControllersConst.BookController], formBody, true);
   }
 
+  public search(bookModel: any): Observable<BookModel[]> {
+    return this.apiBaseService.POST_API<BookModel[]>
+    ([AdminControllersConst.BookController, AdminControllersConst.Search],
+      bookModel, true, true);
+  }
+
   // Get(dookId: string) {
   //
   // }

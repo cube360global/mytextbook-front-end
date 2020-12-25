@@ -10,6 +10,8 @@ import {UserViewerDialogComponent} from './component/user-viewer-dialog/user-vie
 import {AddUserComponent} from './component/add-user/add-user.component';
 import {AddBulkUserComponent} from './component/add-bulk-user/add-bulk-user.component';
 import {ValdemortModule} from 'ngx-valdemort';
+import { SubscriptionManagementComponent } from './component/subscription-management/subscription-management.component';
+import { BookItemComponent } from './component/subscription-management/book-item/book-item.component';
 
 const routes: Routes = [
   {path: '', component: UserManagementComponent},
@@ -17,7 +19,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [UserManagementComponent, UsersListComponent
-    , UserViewerDialogComponent, AddUserComponent, AddBulkUserComponent],
+    , UserViewerDialogComponent, AddUserComponent, AddBulkUserComponent, SubscriptionManagementComponent, BookItemComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

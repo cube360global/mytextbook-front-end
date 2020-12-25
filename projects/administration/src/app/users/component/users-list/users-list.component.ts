@@ -9,10 +9,12 @@ import {NgxUiLoaderService} from 'ngx-ui-loader';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {AlertConst} from '../../../@core/const/AlertConst';
-import {AddUserModel} from '../../../@core/interfaces/api/AddUserModel';
-import {USERS_AND_SCHOOL_DATA_LOADED, USERS_DATA_LOADED} from '../../store/user.action';
+import {USERS_AND_SCHOOL_DATA_LOADED} from '../../store/user.action';
 import {SearchUserModel} from '../../../@core/interfaces/api/SearchUserModel';
 import {AlertService} from '../../../@core/services/alert.service';
+import {SubjectApiService} from '../../../subject/shared/services/subject-api.service';
+import {SubscriptionManagementComponent} from '../subscription-management/subscription-management.component';
+import {SubjectUser} from '../../../@core/interfaces/SubjectUser';
 
 @Component({
   selector: 'app-users-list',
@@ -29,6 +31,7 @@ export class UsersListComponent implements OnInit {
   constructor(private userApiService: UserApiService,
               private dialog: MatDialog,
               private toastr: ToastrService,
+              private subjectService: SubjectApiService,
               private ngxUiLoaderService: NgxUiLoaderService,
               private store: Store<fromApp.AppState>,
               private alertService: AlertService) {
@@ -94,6 +97,23 @@ export class UsersListComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
         this.store.dispatch(USERS_AND_SCHOOL_DATA_LOADED({payload: res}));
+      });
+  }
+
+  openManageSubDialog(id: string): void {
+    this.ngxUiLoaderService.start();
+    this.subjectService.All()
+      .subscribe(res => {
+        const subjectUser = {} as SubjectUser;
+        subjectUser.userId = id;
+        subjectUser.subjectList = res;
+        this.dialog.open(SubscriptionManagementComponent, {
+          width: '100%',
+          data: subjectUser,
+        });
+        this.ngxUiLoaderService.stop();
+      }, () => {
+        this.ngxUiLoaderService.stop();
       });
   }
 }
