@@ -1,4 +1,4 @@
-export interface UserSubscriptionModel{
+export interface UserSubscriptionModel {
   description: string;
   image: string;
   payment: number;

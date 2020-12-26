@@ -6,8 +6,8 @@
            src="assets/img/my-text-book-logo.png">
     </a>
     <div class="d-flex justify-content-between align-items-center">
-      <button aria-label="Example icon-button with share icon"
-              [matMenuTriggerFor]="menu"
+      <button [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with share icon"
               class="me-lg-4" mat-icon-button>
         <mat-icon>person</mat-icon>
       </button>
@@ -17,7 +17,7 @@
 <div style="margin-top: 10vh"></div>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item (click)="onLogOutClick()">
+  <button (click)="onLogOutClick()" mat-menu-item>
     <mat-icon>login</mat-icon>
     <span>Sign Out</span>
   </button>

@@ -39,11 +39,6 @@ export class ContentAddFormComponent implements OnInit {
     });
   }
 
-  private loadBooks(): void {
-    this.contentApiService.allBooks()
-      .subscribe(res => this.books = res);
-  }
-
   onBasicUpload($event: any): void {
     try {
       if ($event != null) {
@@ -92,5 +87,10 @@ export class ContentAddFormComponent implements OnInit {
       .subscribe(res => {
         this.store.dispatch(CONTENT_DATA_LOADED({payload: res}));
       });
+  }
+
+  private loadBooks(): void {
+    this.contentApiService.allBooks()
+      .subscribe(res => this.books = res);
   }
 }

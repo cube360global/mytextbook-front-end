@@ -1,9 +1,9 @@
-<p-table #dt1 [loading]="loading" [paginator]="true"
+<p-table #dt1 [globalFilterFields]="['name','description','chapter','pageNumber','viewCount','likeCount','unLikeCount','status','book']" [loading]="loading"
+         [paginator]="true"
          [rowsPerPageOptions]="[10,25,50]"
          [rows]="10"
          [showCurrentPageReport]="true"
          [value]="contentList"
-         [globalFilterFields]="['name','description','chapter','pageNumber','viewCount','likeCount','unLikeCount','status','book']"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
          styleClass="p-datatable-sm p-datatable-responsive-demo">
 
@@ -12,10 +12,10 @@
       <div class="p-input-icon-left">
         <i class="pi pi-search"></i>
         <input (input)="dt1.filterGlobal(searchInputData, 'contains')"
-               [(ngModel)]="searchInputData" pInputText
-               placeholder="Search keyword"
+               [(ngModel)]="searchInputData" class="p-inputtext-sm"
                matTooltip="Search from table"
-               class="p-inputtext-sm"
+               pInputText
+               placeholder="Search keyword"
                type="text"/>
       </div>
       <div class="d-flex justify-content-between align-items-center mt-2">
@@ -98,7 +98,7 @@
   <ng-template let-content pTemplate="body">
     <tr>
       <td>
-        <img src="{{content.markerImageURL}}" alt="" class="img-fluid" width="80px" height="80px">
+        <img alt="" class="img-fluid" height="80px" src="{{content.markerImageURL}}" width="80px">
       </td>
       <td>{{content.name}}</td>
       <td>{{content.description}}</td>
@@ -110,11 +110,11 @@
       <td>{{content.status}}</td>
       <td>{{content.book}}</td>
       <td>
-        <button color="primary"
+        <button [state]="content"
+                color="primary"
                 mat-mini-fab
-                routerLink="../view"
-                [state]="content"
-                matTooltip="View More">
+                matTooltip="View More"
+                routerLink="../view">
           <i class="fas fa-eye"></i>
         </button>
 

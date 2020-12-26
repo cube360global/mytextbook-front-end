@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="contentAddForm" (ngSubmit)="onContentSubmit()">
+  <form (ngSubmit)="onContentSubmit()" [formGroup]="contentAddForm">
     <div class="p-float-label">
       <input
         [ngClass]="{ 'p-invalid' : !contentAddForm.controls['name'].valid && contentAddForm.controls['name'].touched}"
@@ -11,7 +11,8 @@
     </div>
     <div>
       <val-errors controlName="name">
-        <ng-template valError="required"><small class="p-invalid ms-3">The content name is required</small></ng-template>
+        <ng-template valError="required"><small class="p-invalid ms-3">The content name is required</small>
+        </ng-template>
         >
       </val-errors>
     </div>
@@ -19,15 +20,16 @@
     <div class="p-float-label">
     <textarea
       [ngClass]="{ 'p-invalid' : !contentAddForm.controls['description'].valid && contentAddForm.controls['description'].touched}"
-      id="description"
       class="p-inputtext-sm"
       formControlName="description"
+      id="description"
       pInputText type="text"></textarea>
       <label for="description">Description*</label>
     </div>
     <div>
       <val-errors controlName="description">
-        <ng-template valError="required"><small class="p-invalid ms-3">The content name is required</small></ng-template>
+        <ng-template valError="required"><small class="p-invalid ms-3">The content name is required</small>
+        </ng-template>
         >
       </val-errors>
     </div>
@@ -64,7 +66,8 @@
         </div>
         <div>
           <val-errors controlName="pageNumber">
-            <ng-template valError="required"><small class="p-invalid ms-3">The page number is required</small></ng-template>
+            <ng-template valError="required"><small class="p-invalid ms-3">The page number is required</small>
+            </ng-template>
             >
           </val-errors>
         </div>
@@ -76,11 +79,11 @@
       <div class="col-sm-6">
         <label class="ms-3"> Book's Image </label>
         <div class="d-flex justify-content-between align-items-center">
-          <p-fileUpload styleClass="m-2" #ff mode="basic" name="demo[]" [fileLimit]="1"
-                        [customUpload]="true"
-                        (onSelect)="onBasicUpload($event)">
+          <p-fileUpload #ff (onSelect)="onBasicUpload($event)" [customUpload]="true" [fileLimit]="1" mode="basic"
+                        name="demo[]"
+                        styleClass="m-2">
           </p-fileUpload>
-          <button type="button" mat-icon-button color="warn" (click)="ff.clear();onRemoveClick()">
+          <button (click)="ff.clear();onRemoveClick()" color="warn" mat-icon-button type="button">
             <mat-icon>delete</mat-icon>
           </button>
         </div>
@@ -89,7 +92,6 @@
         </div>
       </div>
     </div>
-
 
 
     <div class="p-float-label">
@@ -109,14 +111,14 @@
 
     <div>
       <p-dropdown
-        appendTo="body"
-        styleClass="p-inputtext-sm w-100 p-invalid ms-1 mt-2"
-        [options]="books" formControlName="bookId" optionLabel="name" optionValue="id"
         [filter]="true"
-        filterBy="name"
-        [showClear]="true"
-        [required]="true"
-        placeholder="Select a Book*">
+        [options]="books"
+        [required]="true" [showClear]="true" appendTo="body" filterBy="name"
+        formControlName="bookId"
+        optionLabel="name"
+        optionValue="id"
+        placeholder="Select a Book*"
+        styleClass="p-inputtext-sm w-100 p-invalid ms-1 mt-2">
 
         <ng-template pTemplate="selectedSubject">
           <div class="country-item country-item-value">
@@ -140,7 +142,7 @@
     </div>
 
     <div class="text-center mt-5 mb-5">
-      <button mat-raised-button color="primary" class="mat-button-rounded-sm"> Submit </button>
+      <button class="mat-button-rounded-sm" color="primary" mat-raised-button> Submit</button>
     </div>
 
 

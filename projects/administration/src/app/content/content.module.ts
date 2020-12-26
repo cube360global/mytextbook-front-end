@@ -8,10 +8,10 @@ import {ValdemortModule} from 'ngx-valdemort';
 import {ContentManagementComponent} from './page/content-management/content-management.component';
 import {ContentListComponent} from './component/content-list/content-list.component';
 import {Path} from '../@core/enum/path.enum';
-import { ContentTableComponent } from './component/content-list/content-table/content-table.component';
-import { ContentAddComponent } from './component/content-add/content-add.component';
-import { ContentViewComponent } from './component/content-view/content-view.component';
-import { ContentAddFormComponent } from './component/content-add/content-add-form/content-add-form.component';
+import {ContentTableComponent} from './component/content-list/content-table/content-table.component';
+import {ContentAddComponent} from './component/content-add/content-add.component';
+import {ContentViewComponent} from './component/content-view/content-view.component';
+import {ContentAddFormComponent} from './component/content-add/content-add-form/content-add-form.component';
 
 
 const routes: Routes = [

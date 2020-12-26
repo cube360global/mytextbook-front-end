@@ -48,16 +48,6 @@ export class AddBookComponent implements OnInit {
     this.initForm();
   }
 
-  private initForm(): void {
-    this.addBook = new FormGroup({
-      name: new FormControl(null, {validators: [Validators.required]}),
-      medium: new FormControl(null, {validators: [Validators.required]}),
-      grade: new FormControl(null, {validators: [Validators.required]}),
-      price: new FormControl(null, {validators: [Validators.required]}),
-      subjectId: new FormControl(null, {validators: [Validators.required]}),
-    });
-  }
-
   onBasicUpload($event: any): void {
     try {
       if ($event != null) {
@@ -108,6 +98,16 @@ export class AddBookComponent implements OnInit {
         this.store.dispatch(BOOK_DATA_LOADED({payload: res}));
         this.dialogRef.close();
       });
+  }
+
+  private initForm(): void {
+    this.addBook = new FormGroup({
+      name: new FormControl(null, {validators: [Validators.required]}),
+      medium: new FormControl(null, {validators: [Validators.required]}),
+      grade: new FormControl(null, {validators: [Validators.required]}),
+      price: new FormControl(null, {validators: [Validators.required]}),
+      subjectId: new FormControl(null, {validators: [Validators.required]}),
+    });
   }
 
 }

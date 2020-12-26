@@ -9,7 +9,9 @@ import {UserSubscriptionModel} from '../../../../@core/interfaces/api/UserSubscr
 export class UserSubViewComponent implements OnInit {
 
   @Input() userSubscription = [] as UserSubscriptionModel [];
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

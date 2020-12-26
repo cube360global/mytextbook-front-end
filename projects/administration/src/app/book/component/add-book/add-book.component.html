@@ -27,9 +27,9 @@
 
     <div class="p-float-label m-2">
       <input
-        formControlName="medium"
         [ngClass]="{ 'p-invalid' : !addBook.controls['medium'].valid && addBook.controls['medium'].touched}"
         class="p-inputtext-sm"
+        formControlName="medium"
         id="medium"
         pInputText type="text">
       <label for="medium">Book's Medium*</label>
@@ -44,13 +44,13 @@
 
     <div class="m-2" style="position: relative">
       <p-dropdown
-        appendTo="body"
-        styleClass="p-inputtext-sm w-100"
-        [options]="utilityService.gradeList" formControlName="grade" optionLabel="name"
         [filter]="true"
-        filterBy="name"
-        [showClear]="true"
-        placeholder="Select a Grade*">
+        [options]="utilityService.gradeList"
+        [showClear]="true" appendTo="body" filterBy="name"
+        formControlName="grade"
+        optionLabel="name"
+        placeholder="Select a Grade*"
+        styleClass="p-inputtext-sm w-100">
 
         <ng-template pTemplate="selectedItem">
           <div class="country-item country-item-value">
@@ -73,13 +73,13 @@
 
     <div class="m-2" style="position: relative">
       <p-dropdown
-        appendTo="body"
-        styleClass="p-inputtext-sm w-100"
-        [options]="subjects" formControlName="subjectId" optionLabel="name"
         [filter]="true"
-        filterBy="name"
-        [showClear]="true"
-        placeholder="Select a Subject*">
+        [options]="subjects"
+        [showClear]="true" appendTo="body" filterBy="name"
+        formControlName="subjectId"
+        optionLabel="name"
+        placeholder="Select a Subject*"
+        styleClass="p-inputtext-sm w-100">
 
         <ng-template pTemplate="selectedItem">
           <div class="country-item country-item-value">
@@ -102,9 +102,9 @@
 
     <div class="p-float-label m-2">
       <input
-        formControlName="price"
         [ngClass]="{ 'p-invalid' : !addBook.controls['price'].valid && addBook.controls['price'].touched}"
         class="p-inputtext-sm"
+        formControlName="price"
         id="price"
         pInputText type="number">
       <label for="medium">Book's Price*</label>
@@ -120,11 +120,11 @@
     </mat-divider>
     <label class="ms-3"> Book's Image </label>
     <div class="d-flex justify-content-between align-items-center">
-      <p-fileUpload styleClass="m-2" #ff mode="basic" name="demo[]" [fileLimit]="1"
-                    [customUpload]="true"
-                    (onSelect)="onBasicUpload($event)">
+      <p-fileUpload #ff (onSelect)="onBasicUpload($event)" [customUpload]="true" [fileLimit]="1" mode="basic"
+                    name="demo[]"
+                    styleClass="m-2">
       </p-fileUpload>
-      <button type="button" mat-icon-button color="warn" (click)="ff.clear();onRemoveClick()">
+      <button (click)="ff.clear();onRemoveClick()" color="warn" mat-icon-button type="button">
         <mat-icon>delete</mat-icon>
       </button>
     </div>
@@ -135,7 +135,7 @@
     </mat-divider>
 
     <div class="text-center w-100 mt-3">
-      <button mat-raised-button color="primary" class="mat-button-rounded-sm"> Add Book</button>
+      <button class="mat-button-rounded-sm" color="primary" mat-raised-button> Add Book</button>
     </div>
   </form>
 </div>

@@ -18,7 +18,7 @@ export class ContentListComponent implements OnInit {
   constructor(private store: Store<fromApp.AppState>) {
     store.select(fromApp.getContentReducer)
       .subscribe(res => {
-        if (res.contentData.length > 0){
+        if (res.contentData.length > 0) {
           this.contentList = res.contentData;
           this.loading = false;
         }

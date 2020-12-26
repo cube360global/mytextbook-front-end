@@ -3,9 +3,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MessageService} from 'primeng/api';
 import {LoginModel} from '../../shared/interfaces/LoginModel';
 import {Store} from '@ngrx/store';
-import {LOGIN_WITH_REFRESH_TOKEN, USER_LOGIN_STAT} from '../../store/auth.action';
+import {USER_LOGIN_STAT} from '../../store/auth.action';
 import * as fromApp from '../../../app.reducer';
-import {CookieManagerService} from '../../../@core/services/cookie-manager.service';
 
 @Component({
   selector: 'app-admin-login',

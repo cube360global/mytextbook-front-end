@@ -32,5 +32,4 @@ export class ContentTableComponent implements OnInit {
   }
 
 
-
 }

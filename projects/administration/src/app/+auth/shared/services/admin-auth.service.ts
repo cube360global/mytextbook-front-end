@@ -4,8 +4,6 @@ import {LoginModel} from '../interfaces/LoginModel';
 import {ControllerConst} from '../../../../../../lib/tools/src/lib/global/ControllerConst';
 import {Observable} from 'rxjs';
 import {TokenDecodeModel} from '../interfaces/TokenDecodeModel';
-import {tap} from 'rxjs/operators';
-import {REFRESH_USER_TOKEN} from '../../store/auth.action';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +34,7 @@ export class AdminAuthService {
       });
   }
 
-  loginWithRefreshToken( refreshToken: string): Observable<TokenDecodeModel> {
+  loginWithRefreshToken(refreshToken: string): Observable<TokenDecodeModel> {
 
     // Set up x-www-form-urlencode body
     const reqBody = new HttpParams()

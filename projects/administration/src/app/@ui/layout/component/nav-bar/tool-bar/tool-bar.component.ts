@@ -3,7 +3,7 @@ import {AlertService} from '../../../../../@core/services/alert.service';
 import {AlertConst} from '../../../../../@core/const/AlertConst';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../app.reducer';
-import {USER_LOGIN_FAIL, USER_LOGOUT} from '../../../../../+auth/store/auth.action';
+import {USER_LOGOUT} from '../../../../../+auth/store/auth.action';
 
 @Component({
   selector: 'app-tool-bar',

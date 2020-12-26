@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
-import {USERS_AND_SCHOOL_DATA_LOADED, USERS_DATA_LOAD_FAIL, USERS_DATA_LOADED, USERS_DATA_REQUEST} from './user.action';
+import {USERS_AND_SCHOOL_DATA_LOADED, USERS_DATA_LOAD_FAIL, USERS_DATA_REQUEST} from './user.action';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {UserApiService} from '../shared/service/user-api.service';
 import {of} from 'rxjs';

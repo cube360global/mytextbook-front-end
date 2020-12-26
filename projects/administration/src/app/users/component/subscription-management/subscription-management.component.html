@@ -9,87 +9,88 @@
   </div>
 </div>
 <div mat-dialog-content>
-<div class="d-flex align-items-center">
+  <div class="d-flex align-items-center">
 
-  <div class="m-2">
-    <p-dropdown
-      appendTo="body"
-      styleClass="p-inputtext-sm w-100"
-      [options]="utilityService.mediums" [(ngModel)]="selectedMedium" optionLabel="name"></p-dropdown>
+    <div class="m-2">
+      <p-dropdown
+        [(ngModel)]="selectedMedium"
+        [options]="utilityService.mediums"
+        appendTo="body" optionLabel="name" styleClass="p-inputtext-sm w-100"></p-dropdown>
+    </div>
+
+
+    <div class="m-2" style="position: relative">
+      <p-dropdown
+        [(ngModel)]="selectedSubject"
+        [filter]="true"
+        [options]="subjects" [showClear]="true" appendTo="body"
+        filterBy="name"
+        optionLabel="name"
+        placeholder="Select a Subject*"
+        styleClass="p-inputtext-sm w-100">
+
+        <ng-template pTemplate="selectedSubject">
+          <div class="country-item country-item-value">
+            <div>{{selectedSubject.name}}</div>
+          </div>
+        </ng-template>
+
+        <ng-template let-subject pTemplate="item">
+          <div class="country-item">
+            <div>{{subject.name}}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+    </div>
+
+
+    <div class="m-2" style="position: relative">
+      <p-dropdown
+        [(ngModel)]="selectedGrades"
+        [filter]="true"
+        [options]="utilityService.gradeList" [showClear]="true" appendTo="body"
+        filterBy="name"
+        optionLabel="name"
+        placeholder="Select a Grade*"
+        styleClass="p-inputtext-sm w-100">
+
+        <ng-template pTemplate="selectedItem">
+          <div class="country-item country-item-value">
+            <div>{{selectedGrades.name}}</div>
+          </div>
+        </ng-template>
+
+        <ng-template let-grade pTemplate="item">
+          <div class="country-item">
+            <div>{{grade.name}}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+    </div>
+
+    <div class="text-center">
+      <button (click)="onSearchClick()" [disabled]="selectedSubject == null || selectedMedium == null || selectedGrades == null" class="mat-button-rounded-sm"
+              color="primary"
+              mat-raised-button
+              matTooltip="Please Search First">
+        <i class="fas fa-search me-2"></i> Search
+      </button>
+    </div>
   </div>
-
-
-  <div class="m-2" style="position: relative">
-    <p-dropdown
-      appendTo="body"
-      styleClass="p-inputtext-sm w-100"
-      [options]="subjects" [(ngModel)]="selectedSubject" optionLabel="name"
-      [filter]="true"
-      filterBy="name"
-      [showClear]="true"
-      placeholder="Select a Subject*">
-
-      <ng-template pTemplate="selectedSubject">
-        <div class="country-item country-item-value">
-          <div>{{selectedSubject.name}}</div>
-        </div>
-      </ng-template>
-
-      <ng-template let-subject pTemplate="item">
-        <div class="country-item">
-          <div>{{subject.name}}</div>
-        </div>
-      </ng-template>
-    </p-dropdown>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <app-book-item
+        *ngFor="let book of bookModel"
+        [book]="book" class="col-sm-2"></app-book-item>
+    </div>
   </div>
-
-
-  <div class="m-2" style="position: relative">
-    <p-dropdown
-      appendTo="body"
-      styleClass="p-inputtext-sm w-100"
-      [options]="utilityService.gradeList" [(ngModel)]="selectedGrades" optionLabel="name"
-      [filter]="true"
-      filterBy="name"
-      [showClear]="true"
-      placeholder="Select a Grade*">
-
-      <ng-template pTemplate="selectedItem">
-        <div class="country-item country-item-value">
-          <div>{{selectedGrades.name}}</div>
-        </div>
-      </ng-template>
-
-      <ng-template let-grade pTemplate="item">
-        <div class="country-item">
-          <div>{{grade.name}}</div>
-        </div>
-      </ng-template>
-    </p-dropdown>
-  </div>
-
-  <div class="text-center">
-    <button mat-raised-button color="primary" class="mat-button-rounded-sm"
-            matTooltip="Please Search First"
-            [disabled]="selectedSubject == null || selectedMedium == null || selectedGrades == null"
-            (click)="onSearchClick()">
-      <i class="fas fa-search me-2"></i> Search
-    </button>
-  </div>
-</div>
-<hr>
-<div class="container" >
-  <div class="row">
-    <app-book-item
-      class="col-sm-2"
-      *ngFor="let book of bookModel" [book]="book"></app-book-item>
-  </div>
-</div>
   <hr>
   <div class="text-center">
     <button (click)="onAddSubscription()"
             [disabled]="!(this.userSubscriptionService.getSelectedBookList().length >= 0)"
-            color="primary" class="mat-button-rounded-sm m-2" mat-raised-button> Add Subscription </button>
+            class="mat-button-rounded-sm m-2" color="primary" mat-raised-button> Add Subscription
+    </button>
   </div>
 
 </div>

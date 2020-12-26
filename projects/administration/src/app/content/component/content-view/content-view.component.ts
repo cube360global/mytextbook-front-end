@@ -10,7 +10,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class ContentViewComponent implements OnInit {
 
   contentData = {} as ContentModel;
-  videoUrl:any;
+  videoUrl: any;
 
   constructor(private sanitizer: DomSanitizer) {
   }
