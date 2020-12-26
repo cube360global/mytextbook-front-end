@@ -12,7 +12,7 @@ import * as fromApp from '../../../../../../../administration/src/app/app.reduce
 })
 export class SignInFormComponent implements OnInit {
 
-  // loginForm: FormGroup;
+  hide = true;
   loginForm = {} as FormGroup;
 
   constructor(private store: Store<fromApp.AppState>) {
@@ -20,13 +20,13 @@ export class SignInFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      username: new FormControl('admin@abc.com', [Validators.required]),
-      password: new FormControl('Admin', [Validators.required])
+      username: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(8)])
     });
   }
 
+
   onLogin(): void {
-    console.log(this.loginForm.value);
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;

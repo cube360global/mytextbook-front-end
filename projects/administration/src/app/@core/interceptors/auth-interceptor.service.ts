@@ -39,10 +39,10 @@ export class AuthInterceptorService implements HttpInterceptor {
     //     }
     //   });
 
-    this.token = this.cookieManagerService.getAccessToken();
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    this.token = this.cookieManagerService.getAccessToken();
     request = request.clone({
       setHeaders: {
         Authorization: `Bearer ${this.token}`

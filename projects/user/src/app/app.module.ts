@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -15,6 +15,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {JwtModule} from '@auth0/angular-jwt';
 import {ToastrModule} from 'ngx-toastr';
 import {tokenGetter} from '../../../administration/src/app/app.module';
+import {AlyleModule} from '../../../lib/vendors/src/lib/alyle/alyle.module';
+import {LY_THEME, LY_THEME_NAME, LyHammerGestureConfig, LyTheme2, StyleRenderer} from '@alyle/ui';
+import {MinimaDark, MinimaLight} from '@alyle/ui/themes/minima';
+import {CustomMinimaDark, CustomMinimaLight} from '../../../lib/vendors/src/lib/alyle/alyle.config';
+
+
 
 
 @NgModule({
@@ -35,15 +41,27 @@ import {tokenGetter} from '../../../administration/src/app/app.module';
       positionClass: 'toast-top-center',
       preventDuplicates: true,
     }),
-    MaterialModule,
+    AlyleModule,
     PrimengModule,
     NgxUiLoaderModule,
     UserAuthModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([AuthEffects])
   ],
-  providers: [],
+  providers: [
+    [ LyTheme2 ],
+    [ StyleRenderer ],
+    { provide: LY_THEME_NAME, useValue: 'minima-light' },
+    { provide: LY_THEME, useClass: MinimaLight, multi: true },
+    { provide: LY_THEME, useClass: MinimaDark, multi: true },
+    { provide: LY_THEME, useClass: CustomMinimaLight, multi: true },
+    { provide: LY_THEME, useClass: CustomMinimaDark, multi: true },
+    { provide: HAMMER_GESTURE_CONFIG, useClass: LyHammerGestureConfig }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 }
+
+
+

@@ -7,6 +7,7 @@ import {MaterialModule} from '../../../../lib/vendors/src/lib/material/material.
 import {PrimengModule} from '../../../../lib/vendors/src/lib/primeng/primeng.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PublicModule} from '../public/public.module';
+import {AlyleModule} from '../../../../lib/vendors/src/lib/alyle/alyle.module';
 
 
 @NgModule({
@@ -22,8 +23,9 @@ import {PublicModule} from '../public/public.module';
   ],
   imports: [
     CommonModule,
-    MaterialModule,
+    AlyleModule,
     PrimengModule,
+    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     PublicModule,

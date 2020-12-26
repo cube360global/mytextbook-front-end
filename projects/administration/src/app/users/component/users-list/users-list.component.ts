@@ -15,6 +15,7 @@ import {AlertService} from '../../../@core/services/alert.service';
 import {SubjectApiService} from '../../../subject/shared/services/subject-api.service';
 import {SubscriptionManagementComponent} from '../subscription-management/subscription-management.component';
 import {SubjectUser} from '../../../@core/interfaces/SubjectUser';
+import {UserEditComponent} from '../user-edit/user-edit.component';
 
 @Component({
   selector: 'app-users-list',
@@ -116,5 +117,12 @@ export class UsersListComponent implements OnInit {
       }, () => {
         this.ngxUiLoaderService.stop();
       });
+  }
+
+  onUserStatusEditClick(user: UserModel): void {
+    this.dialog.open(UserEditComponent, {
+      width: '100%',
+      data: JSON.parse(JSON.stringify(user))
+    });
   }
 }

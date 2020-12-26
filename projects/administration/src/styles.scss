@@ -10,6 +10,7 @@ button:focus {
   outline: none !important;
 }
 
+
 input {
   border-radius: $border-radius !important;
 }
@@ -17,6 +18,15 @@ input {
 textarea {
   border-radius: 20px !important;
 }
+.navbar {
+  color: #ffffff;
+  height: 10vh;
+  background-color: #001B34 !important;
+  border-color: #001B34 !important;
+}
+
+
+// utility
 
 p-button:focus {
   outline: none !important;

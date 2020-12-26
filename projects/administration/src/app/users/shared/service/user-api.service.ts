@@ -8,6 +8,7 @@ import {BulkResponseModel} from '../../../@core/interfaces/api/BulkResponseModel
 import {UserAndSchoolModel} from '../../../@core/interfaces/api/UserAndSchoolModel';
 import {SearchUserModel} from '../../../@core/interfaces/api/SearchUserModel';
 import {PostSubscription} from '../../../@core/interfaces/api/PostSubscription';
+import {UserChangeStatus} from '../../../@core/interfaces/api/UserChangeStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -45,4 +46,9 @@ export class UserApiService {
     return this.apiBaseService.POST_API<any>([AdminControllersConst.SubscriptionController],
       postSub, true, true);
   }
+
+  public changeUserStatus(userStatus: UserChangeStatus): Observable<any> {
+    return this.apiBaseService.POST_API<any>([AdminControllersConst.UserController, 'change-status'], userStatus, true);
+  }
+
 }

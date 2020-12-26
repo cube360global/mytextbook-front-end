@@ -28,6 +28,11 @@ export class UtilityService {
     {name: 'Tamil', code: 'tamil'}
   ] as KeyValueModel[];
 
+  status = [
+    {name: 'Active', code: true},
+    {name: 'Deactivate', code: false}
+  ];
+
 
   constructor() {
     // this.getGradeList();
