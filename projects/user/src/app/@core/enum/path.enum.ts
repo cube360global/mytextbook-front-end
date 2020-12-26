@@ -1,11 +1,12 @@
 export enum Path {
   // Public
   Home = '',
+  User = 'user',
   InternalServerError = 'internal-server-error',
   NotFound = '404',
 
   // Auth
-  Auth = '',
+  Auth = 'auth',
   SignIn = 'sign-in',
   SignUp = 'sign-up',
   ForgotPassword = 'forgot-password',
@@ -18,8 +19,8 @@ export enum Path {
   App = 'app',
 
   // Features
-  Dashboard = 'dashboard',
-
+  UserDetails = 'user-details',
+  Content = 'content',
   Public = 'public',
   Private = 'private'
 }

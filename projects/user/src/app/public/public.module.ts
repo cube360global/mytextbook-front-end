@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PublicHomePageComponent} from './components/public-home-page/public-home-page.component';
 import {RouterModule, Routes} from '@angular/router';
-import {LayoutModule} from '../@ui/layout/layout.module';
 import {MaterialModule} from '../../../../lib/vendors/src/lib/material/material.module';
 import {PrimengModule} from '../../../../lib/vendors/src/lib/primeng/primeng.module';
+import {PublicNavbarComponent} from './layout/public-navbar/public-navbar.component';
 
 
 const routes: Routes = [
@@ -16,12 +16,15 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    PublicNavbarComponent,
     PublicHomePageComponent
+  ],
+  exports: [
+    PublicNavbarComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    LayoutModule,
     MaterialModule,
     PrimengModule,
 
