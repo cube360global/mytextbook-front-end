@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {AdminAuthService} from '../shared/services/admin-auth.service';
 import {Router} from '@angular/router';
-import {LOGIN_WITH_REFRESH_TOKEN, REFRESH_USER_TOKEN, USER_LOGIN, USER_LOGIN_FAIL, USER_LOGIN_STAT} from './auth.action';
+import {LOGIN_WITH_REFRESH_TOKEN, REFRESH_USER_TOKEN, USER_LOGIN, USER_LOGIN_FAIL, USER_LOGIN_STAT, USER_LOGOUT} from './auth.action';
 import {catchError, map, switchMap, tap} from 'rxjs/operators';
 import {CookieManagerService} from '../../@core/services/cookie-manager.service';
 import {TokenDecodeModel} from '../shared/interfaces/TokenDecodeModel';
@@ -77,6 +77,16 @@ export class AuthEffects {
       ofType(USER_LOGIN_FAIL),
       tap(() => {
         this.alertService.showWaning('Authentication Fail or Session Time Out', 'Please Login Again!');
+        this.cookieManager.deleteCookie();
+        this.router.navigate(['']);
+      })
+    );
+  }, {dispatch: false});
+
+  userLogOut = createEffect(() => {
+    return this.action.pipe(
+      ofType(USER_LOGOUT),
+      tap(() => {
         this.cookieManager.deleteCookie();
         this.router.navigate(['']);
       })

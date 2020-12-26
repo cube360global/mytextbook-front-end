@@ -19,6 +19,25 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    const cc = window as any;
+    cc.cookieconsent.initialise({
+      palette: {
+        popup: {
+          background: '#164969'
+        },
+        button: {
+          background: '#ffe000',
+          text: '#164969'
+        }
+      },
+      theme: 'classic',
+      content: {
+        message: 'This website uses cookies to ensure you get the best experience on our website.',
+        dismiss: 'Got it!',
+      }
+    });
+
     if (this.cookieManagementService.checkRefreshToken()) {
       this.store.dispatch(LOGIN_WITH_REFRESH_TOKEN({payload: this.cookieManagementService.getRefreshToken()}));
     }

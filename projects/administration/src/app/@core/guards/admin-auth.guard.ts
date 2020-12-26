@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree} from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
 import {CookieManagerService} from '../services/cookie-manager.service';
 
@@ -7,13 +7,18 @@ import {CookieManagerService} from '../services/cookie-manager.service';
   providedIn: 'root'
 })
 export class AdminAuthGuard implements CanActivate {
-  constructor(private cookieService: CookieManagerService) {
+  constructor(private cookieService: CookieManagerService, private router: Router) {
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.cookieService.checkAccessToken();
+
+    if (this.cookieService.checkAccessToken()) {
+      return true;
+    }
+    this.router.navigate(['']);
+    return false;
   }
 
 }
