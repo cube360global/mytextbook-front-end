@@ -1,0 +1,122 @@
+<div class="container">
+  <form [formGroup]="contentAddForm">
+    <div class="p-float-label">
+      <input
+        [ngClass]="{ 'p-invalid' : !contentAddForm.controls['name'].valid && contentAddForm.controls['name'].touched}"
+        class="p-inputtext-sm w-100"
+        formControlName="name"
+        id="name"
+        pInputText type="text">
+      <label for="name">Content Name*</label>
+    </div>
+    <div>
+      <val-errors controlName="name">
+        <ng-template valError="required"><small class="p-invalid ms-3">The content name is required</small></ng-template>
+        >
+      </val-errors>
+    </div>
+
+    <div class="p-float-label">
+    <textarea
+      [ngClass]="{ 'p-invalid' : !contentAddForm.controls['description'].valid && contentAddForm.controls['description'].touched}"
+      id="description"
+      class="p-inputtext-sm"
+      formControlName="description"
+      pInputText type="text"></textarea>
+      <label for="description">Description*</label>
+    </div>
+    <div>
+      <val-errors controlName="description">
+        <ng-template valError="required"><small class="p-invalid ms-3">The content name is required</small></ng-template>
+        >
+      </val-errors>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-6">
+        <div class="p-float-label">
+          <input
+            [ngClass]="{ 'p-invalid' : !contentAddForm.controls['chapter'].valid && contentAddForm.controls['chapter'].touched}"
+            class="p-inputtext-sm"
+            formControlName="chapter"
+            id="chapter"
+            pInputText type="number">
+          <label for="name">Chapter No*</label>
+        </div>
+        <div>
+          <val-errors controlName="chapter">
+            <ng-template valError="required"><small class="p-invalid ms-3">The chapter is required</small></ng-template>
+            >
+          </val-errors>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="p-float-label">
+          <input
+            [ngClass]="{ 'p-invalid' : !contentAddForm.controls['pageNumber'].valid && contentAddForm.controls['pageNumber'].touched}"
+            class="p-inputtext-sm"
+            formControlName="pageNumber"
+            id="pageNumber"
+            pInputText type="number">
+          <label for="name">Page Number*</label>
+        </div>
+        <div>
+          <val-errors controlName="pageNumber">
+            <ng-template valError="required"><small class="p-invalid ms-3">The page number is required</small></ng-template>
+            >
+          </val-errors>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="p-float-label">
+      <input
+        [ngClass]="{ 'p-invalid' : !contentAddForm.controls['contentURL'].valid && contentAddForm.controls['contentURL'].touched}"
+        class="p-inputtext-sm"
+        formControlName="contentURL"
+        id="contentURL"
+        pInputText type="text">
+      <label for="contentURL">Content Name*</label>
+    </div>
+    <div>
+      <val-errors controlName="contentURL">
+        <ng-template valError="required"><small class="p-invalid ms-3">The content name is required</small></ng-template>
+        >
+      </val-errors>
+    </div>
+
+    <p-dropdown
+      appendTo="body"
+      styleClass="p-inputtext-sm w-100 p-invalid"
+      [options]="books" formControlName="bookId" optionLabel="name" optionValue="id"
+      [filter]="true"
+      filterBy="name"
+      [showClear]="true"
+      required
+      placeholder="Select a Book*">
+
+      <ng-template pTemplate="selectedSubject">
+        <div class="country-item country-item-value">
+          <div>{{contentAddForm.controls['bookId'].value}}</div>
+        </div>
+      </ng-template>
+
+      <ng-template let-book pTemplate="item">
+        <div class="country-item">
+          <div>{{book.name}}</div>
+        </div>
+      </ng-template>
+    </p-dropdown>
+
+    <div>
+      <val-errors controlName="bookId" label="The book Id">
+        <ng-template valError="required"><small class="p-invalid ms-3">The book is required</small></ng-template>
+      </val-errors>
+    </div>
+
+  </form>
+</div>
+

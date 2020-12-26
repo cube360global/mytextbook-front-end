@@ -8,13 +8,16 @@ import {SignInFormComponent} from './components/sign-in/sign-in-form/sign-in-for
 import {MaterialModule} from '../../../../lib/vendors/src/lib/material/material.module';
 import {PrimengModule} from '../../../../lib/vendors/src/lib/primeng/primeng.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import {Path} from '../@core/enum/path.enum';
 
 
 const routes: Routes = [
   {
     path: '', component: AuthHomeComponent,
     children: [
-      {path: '', component: SignInComponent}
+      {path: '', component: SignInComponent},
+      {path: Path.SignUp, component: SignUpComponent}
     ]
   }
 ];
@@ -23,7 +26,8 @@ const routes: Routes = [
   declarations: [
     AuthHomeComponent,
     SignInComponent,
-    SignInFormComponent],
+    SignInFormComponent,
+    SignUpComponent],
   exports: [],
   imports: [
     CommonModule,

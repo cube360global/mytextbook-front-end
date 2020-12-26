@@ -1,41 +1,41 @@
-import * as UserManagement from './content.action';
-import {UserModel} from '../../@core/interfaces/api/UserModel';
+import * as ContentManagement from './content.action';
 import {createReducer, on} from '@ngrx/store';
+import {ContentModel} from '../../@core/interfaces/api/ContentModel';
 
 
 export interface State {
   loading: boolean;
-  userData: UserModel[];
+  contentData: ContentModel[];
 }
 
 export const initialState: State = {
   loading: false,
-  userData: [] as UserModel[]
+  contentData: [] as ContentModel[]
 };
 
 export const contentReducer = createReducer(
   initialState,
-  on(UserManagement.USERS_DATA_REQUEST, state => {
+  on(ContentManagement.CONTENT_DATA_REQUEST, state => {
     return {
       ...state,
       loading: true
     };
   }),
-  on(UserManagement.USERS_DATA_LOADED, (state, {payload}) => {
+  on(ContentManagement.CONTENT_DATA_LOADED, (state, {payload}) => {
     return {
       ...state,
-      userData: payload,
+      contentData: payload,
       loading: false
     };
   }),
-  on(UserManagement.USERS_DATA_LOAD_FAIL, (state) => {
+  on(ContentManagement.CONTENT_DATA_LOAD_FAIL, (state) => {
     return {
       ...state,
-      userData: [] as UserModel[],
+      contentData: [] as ContentModel[],
       loading: false
     };
   })
 );
 
-export const getUsesList = (state: State) => state.userData;
-export const getUserLoadingState = (state: State) => state.loading;
+export const getContentList = (state: State) => state.contentData;
+export const getContentLoadingState = (state: State) => state.loading;

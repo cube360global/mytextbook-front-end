@@ -1,30 +1,30 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
-import {USERS_DATA_LOAD_FAIL, USERS_DATA_LOADED, USERS_DATA_REQUEST} from './content.action';
+import {CONTENT_DATA_LOAD_FAIL, CONTENT_DATA_LOADED, CONTENT_DATA_REQUEST} from './content.action';
 import {catchError, map, switchMap} from 'rxjs/operators';
-import {UserApiService} from '../shared/service/user-api.service';
 import {of} from 'rxjs';
+import {ContentApiService} from '../shared/service/content-api.service';
 
 @Injectable()
-export class UsersEffects {
+export class ContentEffects {
   userList$ = createEffect(() => {
     return this.action.pipe(
-      ofType(USERS_DATA_REQUEST),
+      ofType(CONTENT_DATA_REQUEST),
       switchMap(() => {
-        return this.usersApiService.getUserAll().pipe(
+        return this.contentApiService.all().pipe(
           map((resData) => {
             console.log(resData);
-            return USERS_DATA_LOADED({payload: resData});
+            return CONTENT_DATA_LOADED({payload: resData});
           }),
           catchError(() => {
-            return of(USERS_DATA_LOAD_FAIL());
+            return of(CONTENT_DATA_LOAD_FAIL());
           })
         );
       })
     );
   });
 
-  constructor(private usersApiService: UserApiService,
+  constructor(private contentApiService: ContentApiService,
               private action: Actions) {
   }
 

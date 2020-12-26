@@ -13,6 +13,9 @@ button:focus {
 input {
   border-radius: $border-radius !important;
 }
+textarea{
+  border-radius: 20px !important;
+}
 
 p-button:focus {
   outline: none !important;

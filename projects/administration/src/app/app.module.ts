@@ -25,6 +25,7 @@ import {BooksEffects} from './book/store/book.effects';
 import {SubjectEffects} from './subject/store/subject.effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
+import {ContentEffects} from './content/store/content.effects';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -89,13 +90,14 @@ export function tokenGetter(): string {
     StoreModule.forRoot(fromApp.appReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      logOnly: environment.development,
+      logOnly: true,
     }),
     EffectsModule.forRoot([
       AuthEffects,
       UsersEffects,
       BooksEffects,
-      SubjectEffects
+      SubjectEffects,
+      ContentEffects,
     ]),
 
     LayoutModule,

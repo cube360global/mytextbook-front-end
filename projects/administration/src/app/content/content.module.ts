@@ -5,15 +5,27 @@ import {MaterialModule} from '../../../../lib/vendors/src/lib/material/material.
 import {PrimengModule} from '../../../../lib/vendors/src/lib/primeng/primeng.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ValdemortModule} from 'ngx-valdemort';
-import {UserManagementComponent} from '../users/page/user-management/user-management.component';
+import {ContentManagementComponent} from './page/content-management/content-management.component';
+import {ContentListComponent} from './component/content-list/content-list.component';
+import {Path} from '../@core/enum/path.enum';
+import { ContentTableComponent } from './component/content-list/content-table/content-table.component';
+import { ContentAddComponent } from './component/content-add/content-add.component';
+import { ContentViewComponent } from './component/content-view/content-view.component';
+import { ContentAddFormComponent } from './component/content-add/content-add-form/content-add-form.component';
 
 
 const routes: Routes = [
-  {path: '', component: UserManagementComponent},
+  {
+    path: '', component: ContentManagementComponent, children: [
+      {path: '', redirectTo: Path.All, pathMatch: 'full'},
+      {path: Path.All, component: ContentListComponent},
+      {path: Path.Add, component: ContentAddComponent},
+    ]
+  },
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [ContentManagementComponent, ContentListComponent, ContentTableComponent, ContentAddComponent, ContentViewComponent, ContentAddFormComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

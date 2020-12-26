@@ -75,22 +75,28 @@ export class ApiBaseService {
   }
 
 
-  GET_API<T>(path: string[]): Observable<T> {
-    // this.showSpinner();
+  GET_API<T>(path: string[], isLoaderOn = false): Observable<T> {
+    if (isLoaderOn) {
+      this.ngxUiLoader.start('3200');
+    }
     const apiPath = `${this.baseUrl}${path.join('/')}`;
     return this.http.get<ResponsesModel>(apiPath)
       .pipe(
         map((data) => {
           if (data.statusCode === 200) {
-            // this.hideSpinner();
+            if (isLoaderOn) {
+              this.ngxUiLoader.stop('3200');
+            }
             return data.data as T;
 
           } else {
-            throw Error('VERTEX');
+            throw Error(data.message);
           }
         }), catchError(err => {
-          if (err.message !== 'VERTEX') {
+          if (isLoaderOn) {
+            this.ngxUiLoader.stop('3200');
           }
+          this.alertService.showError(err.message);
           return throwError(err);
         }));
   }

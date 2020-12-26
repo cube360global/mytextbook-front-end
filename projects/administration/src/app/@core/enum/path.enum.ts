@@ -23,5 +23,12 @@ export enum Path {
   Users = 'users',
   Content = 'content',
   Book = 'book',
-  Subject = 'subject'
+  Subject = 'subject',
+
+  // option
+  All = 'all',
+  Add = 'add',
+  View = 'view',
+  Edit = 'edit'
+
 }

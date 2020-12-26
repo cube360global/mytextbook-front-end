@@ -4,6 +4,7 @@ export class AdminControllersConst {
   public static BookController = 'book';
   public static SubjectController = 'subject';
   public static SubscriptionController = 'subscription';
+  public static ContentController = 'content';
 
 
   // Support
