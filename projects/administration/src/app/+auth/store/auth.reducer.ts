@@ -40,6 +40,10 @@ export const authReducer = createReducer(
     return {
       ...state,
     };
+  }), on(AuthAction.LOGIN_WITH_REFRESH_TOKEN, state => {
+    return {
+      ...state,
+    };
   })
 );
 

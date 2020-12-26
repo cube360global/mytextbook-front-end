@@ -13,11 +13,11 @@ import {
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../app.reducer';
-import {catchError, filter, switchMap, take, tap} from 'rxjs/operators';
+import {catchError, filter, switchMap, take} from 'rxjs/operators';
 import {CookieManagerService} from '../services/cookie-manager.service';
 import {TokenDecodeModel} from '../../+auth/shared/interfaces/TokenDecodeModel';
 import {ControllerConst} from '../../../../../lib/tools/src/lib/global/ControllerConst';
-import {REFRESH_USER_TOKEN} from '../../+auth/store/auth.action';
+import {REFRESH_USER_TOKEN, USER_LOGIN_FAIL} from '../../+auth/store/auth.action';
 
 @Injectable({
   providedIn: 'root'
@@ -32,19 +32,17 @@ export class AuthInterceptorService implements HttpInterceptor {
               @Inject('BASE_URL') private baseUrl: string,
               private cookieManagerService: CookieManagerService) {
 
-    store.select(fromApp.getAuthState)
-      .subscribe(authData => {
-        if (authData != null && authData.tokenDecodeModel != null && authData.tokenDecodeModel.access_token != null) {
-          // this.token = authData.tokenDecodeModel.access_token;
-        }
-      });
+    // store.select(fromApp.getAuthState)
+    //   .subscribe(authData => {
+    //     if (authData != null && authData.tokenDecodeModel != null && authData.tokenDecodeModel.access_token != null) {
+    //       // this.token = authData.tokenDecodeModel.access_token;
+    //     }
+    //   });
 
     this.token = this.cookieManagerService.getAccessToken();
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('FROM INTERCEPTOR');
-    console.log(this.token);
     request = request.clone({
       setHeaders: {
         Authorization: `Bearer ${this.token}`
@@ -54,8 +52,6 @@ export class AuthInterceptorService implements HttpInterceptor {
       catchError(error => {
         if (error instanceof HttpErrorResponse && error.status === 401) {
           console.log('FROM INTERCEPTOR : unauthorized error occur');
-          // console.log()
-          console.log(request);
           return this.handle401Error(request, next);
         } else {
           return throwError(error);
@@ -70,17 +66,19 @@ export class AuthInterceptorService implements HttpInterceptor {
       console.log('FROM INTERCEPTOR : getting new token');
       return this.tryGetRefreshTokenService().pipe(
         switchMap((token) => {
+          this.store.dispatch(REFRESH_USER_TOKEN({payload: token}));
           this.isRefreshing = false;
           this.refreshTokenSubject.next(token);
           return next.handle(this.addToken(request, token.access_token));
+        }), catchError((err) => {
+          this.store.dispatch(USER_LOGIN_FAIL());
+          return throwError(err);
         }));
     } else {
       return this.refreshTokenSubject.pipe(
         filter(token => token != null),
         take(1),
         switchMap(jwt => {
-          console.log('FROM INTERCEPTOR :', jwt.access_token);
-          console.log(request);
           return next.handle(this.addToken(request, jwt.access_token));
         }));
     }
@@ -110,9 +108,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     return httpClient.post<TokenDecodeModel>(this.baseUrl + ControllerConst.LoginController, reqBody.toString(),
       {
         headers: headersObject
-      }).pipe(tap(res => {
-      console.log(res);
-      this.store.dispatch(REFRESH_USER_TOKEN({payload: res}));
-    }));
+      });
+
   }
 }

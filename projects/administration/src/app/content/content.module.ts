@@ -20,6 +20,7 @@ const routes: Routes = [
       {path: '', redirectTo: Path.All, pathMatch: 'full'},
       {path: Path.All, component: ContentListComponent},
       {path: Path.Add, component: ContentAddComponent},
+      {path: Path.View, component: ContentViewComponent},
     ]
   },
 ];

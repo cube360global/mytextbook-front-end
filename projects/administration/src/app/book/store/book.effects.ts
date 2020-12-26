@@ -14,7 +14,6 @@ export class BooksEffects {
       switchMap(() => {
         return this.bookApiService.All().pipe(
           map((resData) => {
-            console.log(resData);
             return BOOK_DATA_LOADED({payload: resData});
           }),
           catchError(() => {

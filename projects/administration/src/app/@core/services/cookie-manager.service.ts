@@ -22,6 +22,14 @@ export class CookieManagerService {
     // this.cookieService.delete(Cookie.REFRESH_TOKEN);
   }
 
+  public checkAccessToken(): boolean {
+    return this.cookieService.check(Cookie.ACCESS_TOKEN);
+  }
+
+  public checkRefreshToken(): boolean {
+    return this.cookieService.check(Cookie.REFRESH_TOKEN);
+  }
+
   public getAccessToken(): string {
     return this.cookieService.get(Cookie.ACCESS_TOKEN).toString();
   }

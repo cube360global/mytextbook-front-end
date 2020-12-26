@@ -13,7 +13,6 @@ export class UsersEffects {
       switchMap(() => {
         return this.usersApiService.all().pipe(
           map((resData) => {
-            console.log(resData);
             return USERS_AND_SCHOOL_DATA_LOADED({payload: resData});
           }),
           catchError(() => {

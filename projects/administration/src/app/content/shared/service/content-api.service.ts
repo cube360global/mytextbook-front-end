@@ -23,4 +23,9 @@ export class ContentApiService {
       AdminControllersConst.All], true);
   }
 
+  putContent(contentData: FormData): Observable<any> {
+    return this.apiBaseService.UPDATE_API<ContentModel[]>([AdminControllersConst.ContentController], contentData,
+      true);
+  }
+
 }

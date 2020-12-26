@@ -2,14 +2,19 @@
 <mat-drawer-container autosize class="example-container">
   <mat-drawer [opened]="true" class="example-sidenav" mode="side">
     <div class="d-flex flex-column">
+
       <div (click)="showFiller = !showFiller"
-           class="d-flex align-items-center justify-content-end p-3"
+           class="d-flex align-items-center justify-content-end p-3 admin-active"
            style="cursor: pointer">
+        <span *ngIf="showFiller" class="me-2">
+          <i class="fas fa-user-circle me-2"></i>{{userEmail}}
+        </span>
         <i class="fas fa-bars fa-1x icon-width" matRipple></i>
+
         <div *ngIf="showFiller" class="ms-3 router-text-default"></div>
       </div>
 
-      <div class="d-flex align-items-center  p-3" routerLinkActive="admin-active">
+      <div class="d-flex align-items-center  p-3 mt-5" routerLinkActive="admin-active">
         <i class="fas fa-chart-pie fa-1x icon-width" routerLink="/admin/dashboard"></i>
         <div *ngIf="showFiller" [@inOutAnimation] class="ms-3 router-text-default me-5" routerLink="/admin/dashboard">
           DASHBOARD
@@ -54,3 +59,7 @@
   </div>
 
 </mat-drawer-container>
+
+<ng-template #userData>
+
+</ng-template>

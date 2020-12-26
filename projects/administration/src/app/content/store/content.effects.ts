@@ -13,7 +13,6 @@ export class ContentEffects {
       switchMap(() => {
         return this.contentApiService.all().pipe(
           map((resData) => {
-            console.log(resData);
             return CONTENT_DATA_LOADED({payload: resData});
           }),
           catchError(() => {

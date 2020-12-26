@@ -12,4 +12,5 @@ export interface ContentModel{
   markerImageURL: string;
   status: boolean;
   book: string;
+  bookId: number;
 }

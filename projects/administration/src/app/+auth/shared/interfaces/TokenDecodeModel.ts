@@ -5,6 +5,7 @@ export interface TokenDecodeModel {
   expires_in: number;
   scope: string;
   role: string;
+  email: string;
   userId: string;
   jti: string;
 }

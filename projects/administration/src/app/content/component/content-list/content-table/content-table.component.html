@@ -3,9 +3,9 @@
          [rows]="10"
          [showCurrentPageReport]="true"
          [value]="contentList"
+         [globalFilterFields]="['name','description','chapter','pageNumber','viewCount','likeCount','unLikeCount','status','book']"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-         styleClass="p-datatable-sm p-datatable-responsive-demo"
->
+         styleClass="p-datatable-sm p-datatable-responsive-demo">
 
   <ng-template pTemplate="caption">
     <div class="mb-2">
@@ -110,8 +110,12 @@
       <td>{{content.status}}</td>
       <td>{{content.book}}</td>
       <td>
-        <button  color="primary" mat-mini-fab matTooltip="View More"><i
-          class="fas fa-eye"></i>
+        <button color="primary"
+                mat-mini-fab
+                routerLink="../view"
+                [state]="content"
+                matTooltip="View More">
+          <i class="fas fa-eye"></i>
         </button>
 
       </td>

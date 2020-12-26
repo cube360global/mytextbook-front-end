@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {PrimeNGConfig} from 'primeng/api';
-import {HelloWorldService} from '../../../lib/tools/src/lib/hello-world.service';
+import {CookieManagerService} from './@core/services/cookie-manager.service';
+import {Store} from '@ngrx/store';
+import * as fromApp from './app.reducer';
+import {LOGIN_WITH_REFRESH_TOKEN} from './+auth/store/auth.action';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +13,15 @@ import {HelloWorldService} from '../../../lib/tools/src/lib/hello-world.service'
 export class AppComponent implements OnInit {
   title = 'administration';
 
-  constructor(private primengConfig: PrimeNGConfig, private helloWoldService: HelloWorldService) {
+  constructor(private primengConfig: PrimeNGConfig,
+              private store: Store<fromApp.AppState>,
+              private cookieManagementService: CookieManagerService) {
   }
 
   ngOnInit(): void {
+    if (this.cookieManagementService.checkRefreshToken()) {
+      this.store.dispatch(LOGIN_WITH_REFRESH_TOKEN({payload: this.cookieManagementService.getRefreshToken()}));
+    }
     this.primengConfig.ripple = true;
   }
 

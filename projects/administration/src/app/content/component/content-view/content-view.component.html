@@ -19,3 +19,27 @@
 
   </div>
 </div>
+
+<div class="container mt-4" *ngIf="contentData.id != null;else noContent">
+  <div class="row">
+    <div class="col-sm-6">
+      <img src="{{contentData.markerImageURL}}" alt="{{contentData.name}}" class="img-fluid">
+    </div>
+    <div class="col-sm-6" >
+      <iframe [src]="videoUrl" allow="autoplay; fullscreen" width="100%" class="img-fluid" allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <p><b> Name : {{contentData.name}} </b></p>
+  <p> Description : {{contentData.description}} </p>
+  <p> BookName : {{contentData.book}} </p>
+  <p> Like Count : {{contentData.likeCount}} </p>
+  <p> View Count : {{contentData.viewCount}} </p>
+<div class="m-5 p-5" ></div>
+
+</div>
+
+<ng-template #noContent>
+  Please Select a Content from Table
+</ng-template>

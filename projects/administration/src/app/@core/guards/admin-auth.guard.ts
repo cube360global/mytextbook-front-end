@@ -13,15 +13,7 @@ export class AdminAuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const accessToken = this.cookieService.getAccessToken();
-
-    console.log('called');
-    if (accessToken != null) {
-      return true;
-      // return !this.jwtService.isTokenExpired(accessToken);
-    }
-    return false;
-
+    return this.cookieService.checkAccessToken();
   }
 
 }

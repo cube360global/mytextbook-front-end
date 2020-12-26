@@ -13,7 +13,6 @@ export class SubjectEffects {
       switchMap(() => {
         return this.subjectApiService.All().pipe(
           map((resData) => {
-            console.log(resData);
             return SUBJECT_DATA_LOADED({payload: resData});
           }),
           catchError(() => {

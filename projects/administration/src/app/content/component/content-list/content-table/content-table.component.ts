@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ContentModel} from '../../../../@core/interfaces/api/ContentModel';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../app.reducer';
 import {CONTENT_DATA_REQUEST} from '../../../store/content.action';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-content-table',
@@ -15,10 +16,10 @@ export class ContentTableComponent implements OnInit {
   loading = true;
   searchInputData: any;
 
-  constructor(private store: Store<fromApp.AppState>) {
+  constructor(private store: Store<fromApp.AppState>, private router: Router) {
     store.select(fromApp.getContentReducer)
       .subscribe(res => {
-        if (res.contentData.length > 0){
+        if (res.contentData.length > 0) {
           this.contentList = res.contentData;
           this.loading = false;
         }
@@ -29,6 +30,7 @@ export class ContentTableComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(CONTENT_DATA_REQUEST());
   }
+
 
 
 }

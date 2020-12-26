@@ -23,4 +23,7 @@ export class AlertService {
     this.toastr.error(message, 'Error occur !!');
   }
 
+  showWaning(message: string, title: string): void {
+    this.toastr.error(message, title);
+  }
 }

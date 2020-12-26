@@ -23,17 +23,20 @@ $border-radius: 40px;
 @font-face {
   font-family: "Samsung Sharp Sans bold";
   src: url('./fonts/samsungsharpsans-bold.woff') format('truetype');
+  font-display: block;
 }
 
 
 @font-face {
   font-family: "Samsung Sharp Sans";
   src: url('./fonts/samsungsharpsans.woff') format('truetype');
+  font-display: block;
 }
 
 @font-face {
   font-family: "Samsung Sharp Medium";
   src: url('./fonts/samsungsharpsans-medium.woff') format('truetype');
+  font-display: block;
 }
 
 

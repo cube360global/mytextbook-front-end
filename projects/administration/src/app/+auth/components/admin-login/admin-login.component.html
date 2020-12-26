@@ -1,50 +1,58 @@
-<div class="container d-flex justify-content-center align-items-center">
-  <form (ngSubmit)="onLoginSubmit()" [formGroup]="loginForm">
-    <div class="logo-img text-center">
+<div class="back">
+  <div class="container d-flex justify-content-center align-items-center">
+    <form (ngSubmit)="onLoginSubmit()" [formGroup]="loginForm">
+      <div class="logo-img text-center">
 
-      <img alt="my-text-book-logo-2x"
-           class="img-fluid p-3"
-           src="assets/img/my-text-book-logo-black.png">
-    </div>
-    <div class="p-float-label p-inputtext-sm p-input-icon-right mt-4">
-      <i class="fas fa-user"></i>
-      <input
-        [ngClass]="{ 'p-invalid' : !loginForm.controls['username'].valid && loginForm.controls['username'].touched}"
-        formControlName="username"
-        id="username"
-        pInputText type="text">
-      <label for="username">Username *</label>
-    </div>
+        <img alt="my-text-book-logo-2x"
+             class="img-fluid p-3"
+             src="assets/img/logo-white.png">
+      </div>
+      <label for="username" class="ms-2 mt-1">Username *</label>
+      <br>
+      <div class=" p-inputtext-sm p-input-icon-right mt-1">
+        <i class="fas fa-user"></i>
+        <input
+          [ngClass]="{ 'p-invalid' : !loginForm.controls['username'].valid && loginForm.controls['username'].touched}"
+          formControlName="username"
+          id="username"
+          pInputText type="text">
 
-    <div>
-      <val-errors controlName="username" label="The username">
-        <ng-template valError="required"><small class="p-invalid">The username is required</small></ng-template>
-        <ng-template valError="email"><small class="p-invalid">This is not a valid email address</small></ng-template>
-      </val-errors>
-    </div>
+      </div>
 
-    <div class="p-float-label p-inputtext-sm p-input-icon-right mt-2">
-      <i class="fas fa-lock"></i>
-      <input
-        [ngClass]="{ 'p-invalid' : !loginForm.controls['password'].valid && loginForm.controls['password'].touched}"
-        formControlName="password"
-        id="password"
-        pInputText type="password">
-      <label for="password">Password *</label>
-    </div>
+      <div>
+        <val-errors controlName="username" label="The username">
+          <ng-template valError="required"><small>The username is required</small></ng-template>
+          <ng-template valError="email"><small>This is not a valid email address</small></ng-template>
+        </val-errors>
+      </div>
 
-    <div>
-      <small *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched"
-             class="p-invalid">Password is not available.
-      </small>
-    </div>
+      <label for="password" class="ms-2 mt-2">Password *</label>
+      <br>
+      <div class="p-float-label p-inputtext-sm p-input-icon-right mt-1">
+        <i class="fas fa-lock"></i>
+        <input
+          [ngClass]="{ 'p-invalid' : !loginForm.controls['password'].valid && loginForm.controls['password'].touched}"
+          formControlName="password"
+          id="password"
+          pInputText type="password">
+      </div>
+
+      <div>
+        <small *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched"
+               >Password is not available.
+        </small>
+      </div>
 
 
-    <div class="mt-2">
-      <button color="primary" class="mat-button-rounded" mat-raised-button> SIGN IN</button>
-    </div>
-  </form>
+      <div class="mt-2">
+        <button color="primary" class="mat-button-rounded" mat-raised-button> SIGN IN</button>
+      </div>
+    </form>
+  </div>
+
 </div>
+
+
 
 
 

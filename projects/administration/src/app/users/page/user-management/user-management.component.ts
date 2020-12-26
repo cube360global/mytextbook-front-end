@@ -18,7 +18,6 @@ export class UserManagementComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('called');
     this.store.dispatch(USERS_DATA_REQUEST());
   }
 
