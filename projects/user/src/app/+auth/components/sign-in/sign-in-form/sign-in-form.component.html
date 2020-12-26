@@ -1,3 +1,6 @@
+
+
+
 <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
 
   <ly-field appearance="filled" [lyWidth]="1">
@@ -14,7 +17,7 @@
     <ly-error *ngIf="loginForm.controls['username'].hasError('required')">Required</ly-error>
   </ly-field>
 
-  <ly-field fullWidth #_field appearance="filled">
+  <ly-field [fullWidth]="true" #_field appearance="filled">
     <input
       lyNativeControl
       placeholder="********"

@@ -5,6 +5,7 @@ import {LyImageCropperModule} from '@alyle/ui/image-cropper';
 import {LyIconModule} from '@alyle/ui/icon';
 import {LyFieldModule} from '@alyle/ui/field';
 import {LySelectModule} from '@alyle/ui/select';
+import {LyGridModule} from '@alyle/ui/grid';
 
 
 const alyle = [
@@ -13,7 +14,8 @@ const alyle = [
   LyImageCropperModule,
   LyIconModule,
   LyFieldModule,
-  LySelectModule
+  LySelectModule,
+  LyGridModule
 ];
 
 @NgModule({
