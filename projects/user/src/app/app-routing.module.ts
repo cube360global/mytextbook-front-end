@@ -1,11 +1,23 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {Path} from "./@core/enum/path.enum";
+import {Path} from './@core/enum/path.enum';
+import {UserAuthGuard} from './@core/guards/user-auth.guard';
+import {AuthHomeComponent} from './+auth/home/auth-home/auth-home.component';
+import {SignInComponent} from './+auth/components/sign-in/sign-in.component';
 
 const routes: Routes = [
-  {path: '', loadChildren: () => import('./+auth/user-auth.module').then(m => m.UserAuthModule)},
+  {path: '', redirectTo: Path.Auth, pathMatch: 'full'},
+  {
+    path: Path.Auth, component: AuthHomeComponent, children: [
+      {path: '', component: SignInComponent},
+    ]
+  },
+
   {path: Path.Public, loadChildren: () => import('./public/public.module').then(m => m.PublicModule)},
-  {path: Path.Private, loadChildren: () => import('./private/private.module').then(m => m.PrivateModule)}
+  {
+    path: Path.Private, loadChildren: () => import('./private/private.module').then(m => m.PrivateModule),
+    canActivate: [UserAuthGuard]
+  }
 ];
 
 @NgModule({

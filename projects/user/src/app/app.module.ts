@@ -7,21 +7,19 @@ import {MaterialModule} from '../../../lib/vendors/src/lib/material/material.mod
 import {PrimengModule} from '../../../lib/vendors/src/lib/primeng/primeng.module';
 import {NgxUiLoaderModule} from 'ngx-ui-loader';
 import {UserAuthModule} from './+auth/user-auth.module';
-import {TestComponent} from './test/component/test/test.component';
 import {StoreModule} from '@ngrx/store';
 import * as fromApp from '../../../administration/src/app/app.reducer';
-import {EffectsModule} from "@ngrx/effects";
-import {AuthEffects} from "./+auth/store/auth.effects";
-import {HttpClientModule} from "@angular/common/http";
-import {JwtModule} from "@auth0/angular-jwt";
-import {ToastrModule} from "ngx-toastr";
-import {tokenGetter} from "../../../administration/src/app/app.module";
+import {EffectsModule} from '@ngrx/effects';
+import {AuthEffects} from './+auth/store/auth.effects';
+import {HttpClientModule} from '@angular/common/http';
+import {JwtModule} from '@auth0/angular-jwt';
+import {ToastrModule} from 'ngx-toastr';
+import {tokenGetter} from '../../../administration/src/app/app.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TestComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

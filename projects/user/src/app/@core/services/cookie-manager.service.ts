@@ -26,6 +26,10 @@ export class CookieManagerService {
     return this.cookieService.get(Cookie.ACCESS_TOKEN).toString();
   }
 
+  public checkAccessToken(): boolean {
+    return this.cookieService.check(Cookie.ACCESS_TOKEN);
+  }
+
   public getRefreshToken(): string {
     return this.cookieService.get(Cookie.REFRESH_TOKEN).toString();
   }

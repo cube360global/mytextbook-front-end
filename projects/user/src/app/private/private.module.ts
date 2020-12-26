@@ -1,25 +1,26 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {UserSidebarComponent} from './layout/user-sidebar/user-sidebar.component';
-import {UserToolbarComponent} from './layout/user-sidebar/user-toolbar/user-toolbar.component';
-import {MaterialModule} from "../../../../lib/vendors/src/lib/material/material.module";
-import {PrimengModule} from "../../../../lib/vendors/src/lib/primeng/primeng.module";
-import {RouterModule, Routes} from "@angular/router";
+import {RouterModule, Routes} from '@angular/router';
+import {Path} from '../@core/enum/path.enum';
 
 
 const routes: Routes = [
-  {path: '', component: UserSidebarComponent}
+  {path: '', redirectTo: Path.UserDetails, pathMatch: 'full'},
+  {
+    path: Path.UserDetails,
+    loadChildren: () => import('./@ui/user-details/user-details.module').then(m => m.UserDetailsModule)
+  },
+  {
+    path: Path.Content,
+    loadChildren: () => import('./@ui/user-content/user-content.module').then(m => m.UserContentModule)
+  }
 ];
 
 @NgModule({
-  declarations: [
-    UserSidebarComponent,
-    UserToolbarComponent
-  ],
+  declarations: [],
+  exports: [],
   imports: [
     CommonModule,
-    MaterialModule,
-    PrimengModule,
     RouterModule.forChild(routes),
   ]
 })
