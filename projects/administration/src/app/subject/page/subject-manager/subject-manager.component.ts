@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {AddUserComponent} from '../../../users/component/add-user/add-user.component';
 import {AddBulkUserComponent} from '../../../users/component/add-bulk-user/add-bulk-user.component';
 import {SUBJECT_DATA_REQUEST} from '../../store/subject.action';
+import {AddSubjectComponent} from '../../component/add-subject/add-subject.component';
 
 @Component({
   selector: 'app-subject-manager',
@@ -21,17 +22,12 @@ export class SubjectManagerComponent implements OnInit {
     this.store.dispatch(SUBJECT_DATA_REQUEST());
   }
 
-  openAddUserDialog(): void {
-    this.dialog.open(AddUserComponent, {
+  openAddSubjectDialog(): void {
+    this.dialog.open(AddSubjectComponent, {
       width: '400px'
     });
   }
 
 
-  onAddBulkDialogOpenClick(): void {
-    this.dialog.open(AddBulkUserComponent, {
-      width: '500px'
-    });
-  }
 
 }
