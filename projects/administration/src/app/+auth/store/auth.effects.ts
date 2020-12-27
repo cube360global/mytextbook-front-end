@@ -67,6 +67,8 @@ export class AuthEffects {
     return this.action.pipe(
       ofType(REFRESH_USER_TOKEN),
       tap((tokenData) => {
+        console.log(tokenData);
+        this.cookieManager.deleteCookie();
         this.cookieManager.setCookie(tokenData.payload.access_token, tokenData.payload.refresh_token);
       })
     );
