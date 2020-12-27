@@ -18,6 +18,7 @@ import {AlyleModule} from '../../../lib/vendors/src/lib/alyle/alyle.module';
 import {LY_THEME, LY_THEME_NAME, LyHammerGestureConfig, LyTheme2, StyleRenderer} from '@alyle/ui';
 import {MinimaDark, MinimaLight} from '@alyle/ui/themes/minima';
 import {CustomMinimaDark, CustomMinimaLight} from '../../../lib/vendors/src/lib/alyle/alyle.config';
+import {MatPasswordStrengthModule} from '@angular-material-extensions/password-strength';
 
 
 
@@ -45,7 +46,8 @@ import {CustomMinimaDark, CustomMinimaLight} from '../../../lib/vendors/src/lib/
     NgxUiLoaderModule,
     UserAuthModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects]),
+    MatPasswordStrengthModule.forRoot()
   ],
   providers: [
     [ LyTheme2 ],

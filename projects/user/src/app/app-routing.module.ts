@@ -6,6 +6,7 @@ import {AuthHomeComponent} from './+auth/home/auth-home/auth-home.component';
 import {SignInComponent} from './+auth/components/sign-in/sign-in.component';
 import {SignUpComponent} from './+auth/components/sign-up/sign-up.component';
 import {ForgetPasswordComponent} from './+auth/components/forget-password/forget-password.component';
+import {ResetPasswordComponent} from './+auth/components/reset-password/reset-password.component';
 
 const routes: Routes = [
   {path: '', redirectTo: Path.Auth, pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
       {path: '', component: SignInComponent},
       {path: Path.SignUp, component: SignUpComponent},
       {path: Path.ForgotPassword, component: ForgetPasswordComponent},
+      {path: Path.PasswordReset, component: ResetPasswordComponent},
     ]
   },
 
