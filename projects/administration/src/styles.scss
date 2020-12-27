@@ -1,5 +1,10 @@
 @import '~ngx-toastr/toastr';
 
+div, label, span, p {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+
 $border-radius: 40px;
 span:focus {
   outline: none;

@@ -107,6 +107,13 @@ $my-app-warn: mat-palette($mat-deep-orange, 800, 800, 800);
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 @include angular-material-theme($my-app-theme);
 
+//  Mat custom
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: .1em 0 !important;
+}
+
+
+
 $border-radius: 40px;
 .mat-button-rounded {
   border-radius: $border-radius !important;

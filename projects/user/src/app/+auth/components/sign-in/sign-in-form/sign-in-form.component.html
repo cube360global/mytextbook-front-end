@@ -1,77 +1,99 @@
-
-
-
 <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
 
-  <ly-field appearance="outlined" [lyWidth]="1">
-    <ly-label>Email address</ly-label>
-    <input lyNativeControl
-           type="text"
-           formControlName="username"
-    >
-    <div lyPrefix [lyMf]="'0.25em'">
-      <ly-icon>person</ly-icon>
-    </div>
-    <ly-hint>Provide your primary email</ly-hint>
-    <ly-error *ngIf="loginForm.controls['username'].hasError('email')">This is the not a valid email</ly-error>
-    <ly-error *ngIf="loginForm.controls['username'].hasError('required')">Required</ly-error>
-  </ly-field>
 
-  <ly-field [fullWidth]="true" #_field appearance="outlined">
-    <input
-      lyNativeControl
-      placeholder="********"
-      [type]="hide ? 'password' : 'text'"
-      formControlName="password"
-    >
-    <ly-label>Enter your password</ly-label>
-    <div lyPrefix [lyMf]="'0.25em'" class="mt-2">
-      <ly-icon>lock</ly-icon>
-    </div>
-    <button ly-button
-            appearance="icon"
-            lySuffix
-            (click)="$event.preventDefault();hide = !hide"
-            [color]="_field.errorState ? 'warn' : 'text'"
-    >
-      <ly-icon>{{ hide ? 'visibility' : 'visibility_off' }}</ly-icon>
+  <mat-form-field appearance="outline">
+    <mat-label>Primary Email</mat-label>
+    <mat-icon matPrefix class="me-1">person</mat-icon>
+    <input formControlName="username" placeholder="example@gmail.com" matInput>
+    <mat-error *ngIf="loginForm.controls['username'].hasError('email')">This is the not a valid email</mat-error>
+    <mat-error *ngIf="loginForm.controls['username'].hasError('required')">Required</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <mat-icon matPrefix class="me-1">lock</mat-icon>
+    <input formControlName="password"
+           [type]="hide ? 'password' : 'text'"
+           placeholder="********"
+           matInput>
+
+    <button mat-icon-button
+            matSuffix
+            (click)="$event.preventDefault();hide = !hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
-    <ly-hint>Hint</ly-hint>
-    <ly-hint [align]="'after'">{{ loginForm.controls['password'].value?.length || 0 }}</ly-hint>
-    <ly-error *ngIf="loginForm.controls['password'].hasError('minlength')">Min 8 characters</ly-error>
-    <ly-error *ngIf="loginForm.controls['password'].hasError('required')">Required</ly-error>
-  </ly-field>
-
-  <button class="btn-cus-lg w-100 mt-3" ly-button raised bg="primary" size="large">SUBMIT</button>
+    <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">Min 8 characters</mat-error>
+    <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Required</mat-error>
+  </mat-form-field>
 
 
+  <!--  <ly-field appearance="outlined" [lyWidth]="1">-->
+  <!--    <ly-label>Email address</ly-label>-->
+  <!--    <input lyNativeControl-->
+  <!--           type="text"-->
+  <!--           formControlName="username"-->
+  <!--    >-->
+  <!--    <div lyPrefix [lyMf]="'0.25em'">-->
+  <!--      <ly-icon>person</ly-icon>-->
+  <!--    </div>-->
+  <!--    <ly-hint>Provide your primary email</ly-hint>-->
+  <!--    <ly-error *ngIf="loginForm.controls['username'].hasError('email')">This is the not a valid email</ly-error>-->
+  <!--    <ly-error *ngIf="loginForm.controls['username'].hasError('required')">Required</ly-error>-->
+  <!--  </ly-field>-->
+
+<!--  <ly-field [fullWidth]="true" #_field appearance="outlined">-->
+<!--    <input-->
+<!--      lyNativeControl-->
+<!--      placeholder="********"-->
+<!--      [type]="hide ? 'password' : 'text'"-->
+<!--      formControlName="password"-->
+<!--    >-->
+<!--    <ly-label>Enter your password</ly-label>-->
+<!--    <div lyPrefix [lyMf]="'0.25em'" class="mt-2">-->
+<!--      <ly-icon>lock</ly-icon>-->
+<!--    </div>-->
+<!--    <button ly-button-->
+<!--            appearance="icon"-->
+<!--            lySuffix-->
+<!--            (click)="$event.preventDefault();hide = !hide"-->
+<!--            [color]="_field.errorState ? 'warn' : 'text'"-->
+<!--    >-->
+<!--      <ly-icon>{{ hide ? 'visibility' : 'visibility_off' }}</ly-icon>-->
+<!--    </button>-->
+<!--    <ly-hint>Hint</ly-hint>-->
+<!--    <ly-hint [align]="'after'">{{ loginForm.controls['password'].value?.length || 0 }}</ly-hint>-->
+<!--    <ly-error *ngIf="loginForm.controls['password'].hasError('minlength')">Min 8 characters</ly-error>-->
+<!--    <ly-error *ngIf="loginForm.controls['password'].hasError('required')">Required</ly-error>-->
+<!--  </ly-field>-->
+
+  <button class="btn-cus-lg w-100 mt-3" ly-button raised bg="primary" size="large">SIGN IN</button>
 
 
+  <!--  <div class="p-input-icon-right w-100 mb-3">-->
+  <!--    <i class="fas fa-user"></i>-->
+  <!--    <input autocomplete="disable"-->
+  <!--           class="p-input-round"-->
+  <!--           formControlName="username"-->
+  <!--           id="my-text-book-email"-->
+  <!--           pInputText-->
+  <!--           placeholder="Enter Your Email"-->
+  <!--           type="text"/>-->
+  <!--    <label for="my-text-book-email"></label>-->
 
-<!--  <div class="p-input-icon-right w-100 mb-3">-->
-<!--    <i class="fas fa-user"></i>-->
-<!--    <input autocomplete="disable"-->
-<!--           class="p-input-round"-->
-<!--           formControlName="username"-->
-<!--           id="my-text-book-email"-->
-<!--           pInputText-->
-<!--           placeholder="Enter Your Email"-->
-<!--           type="text"/>-->
-<!--    <label for="my-text-book-email"></label>-->
-
-<!--  </div>-->
-<!--  <div class="p-input-icon-right w-100">-->
-<!--    <i class="fas fa-lock"></i>-->
-<!--    <input autocomplete="off"-->
-<!--           class="p-input-round"-->
-<!--           formControlName="password"-->
-<!--           id="float-input"-->
-<!--           pInputText-->
-<!--           placeholder="Enter Your Password"-->
-<!--           type="Password">-->
-<!--    <label for="float-input"></label>-->
-<!--  </div>-->
-<!--  <button class="mat-button-rounded w-100 mt-3" color="primary" mat-raised-button>LOGIN</button>-->
+  <!--  </div>-->
+  <!--  <div class="p-input-icon-right w-100">-->
+  <!--    <i class="fas fa-lock"></i>-->
+  <!--    <input autocomplete="off"-->
+  <!--           class="p-input-round"-->
+  <!--           formControlName="password"-->
+  <!--           id="float-input"-->
+  <!--           pInputText-->
+  <!--           placeholder="Enter Your Password"-->
+  <!--           type="Password">-->
+  <!--    <label for="float-input"></label>-->
+  <!--  </div>-->
+  <!--  <button class="mat-button-rounded w-100 mt-3" color="primary" mat-raised-button>LOGIN</button>-->
 </form>
 
 
