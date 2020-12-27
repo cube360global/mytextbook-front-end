@@ -11,7 +11,7 @@ export enum Path {
   SignUp = 'sign-up',
   ForgotPassword = 'forgot-password',
   ForgotPasswordEmailSent = 'forgot-password-email-sent',
-  PasswordReset = 'password-reset',
+  PasswordReset = 'reset-password',
   PasswordResetSucceeded = 'password-reset-succeeded',
   PasswordResetFailed = 'password-reset-failed',
 

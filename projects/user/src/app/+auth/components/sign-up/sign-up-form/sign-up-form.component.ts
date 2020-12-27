@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UserSignUpModel} from "../../../../@core/interfaces/api/UserSignUpModel";
 
 @Component({
   selector: 'app-sign-up-form',
@@ -27,8 +28,14 @@ export class SignUpFormComponent implements OnInit {
   }
 
   onSignUp(): void{
-    if (this.signUpForm.valid){
+    if (!this.signUpForm.valid){
+      this.signUpForm.markAllAsTouched();
+      return;
     }
+    const postData = this.signUpForm.value as UserSignUpModel;
+    console.log(postData);
+    const date = new Date('2017-10-05');
+    console.log(date.getUTCDay());
   }
 
 }
