@@ -1,5 +1,5 @@
 export interface UserSignUpModel{
-  birthDay: string;
+  birthDay: number;
   district: string;
   email: string;
   firstName: string;

@@ -4,6 +4,8 @@ import {LoginModel} from '../../../../../../lib/authentication/src/lib/interface
 import {ControllerConst} from '../../../../../../lib/tools/src/lib/global/ControllerConst';
 import {Observable} from 'rxjs';
 import {TokenDecodeModel} from '../../../../../../lib/authentication/src/lib/interfaces/TokenDecodeModel';
+import {ApiUtilityToolService} from "../../../../../../lib/tools/src/lib/api-utility-tool.service";
+import {UserSignUpModel} from "../../../@core/interfaces/api/UserSignUpModel";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,7 @@ import {TokenDecodeModel} from '../../../../../../lib/authentication/src/lib/int
 export class UserAuthService {
 
   constructor(private httpBackend: HttpBackend,
+              private apiUtilityToolService: ApiUtilityToolService,
               @Inject('BASE_URL') private baseUrl: string) {
   }
 
@@ -34,5 +37,9 @@ export class UserAuthService {
       });
   }
 
+  public signUpUser(signUp: UserSignUpModel): Observable<any> {
+    return this.apiUtilityToolService.POST([ControllerConst.User, 'sign-up'],
+      signUp, true, true);
+  }
 
 }
