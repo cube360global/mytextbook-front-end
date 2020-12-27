@@ -6,6 +6,7 @@ import {LyIconModule} from '@alyle/ui/icon';
 import {LyFieldModule} from '@alyle/ui/field';
 import {LySelectModule} from '@alyle/ui/select';
 import {LyGridModule} from '@alyle/ui/grid';
+import {LyRadioModule} from "@alyle/ui/radio";
 
 
 const alyle = [
@@ -15,7 +16,8 @@ const alyle = [
   LyIconModule,
   LyFieldModule,
   LySelectModule,
-  LyGridModule
+  LyGridModule,
+  LyRadioModule,
 ];
 
 @NgModule({

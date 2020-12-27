@@ -1,0 +1,96 @@
+
+<form (ngSubmit)="onSignUp" [formGroup]="signUpForm">
+  <ly-field appearance="filled" [lyWidth]="1">
+    <ly-label>Enter First Name</ly-label>
+    <input lyNativeControl
+           type="text"
+           formControlName="firstName"
+    >
+    <ly-hint>Provide your first Name</ly-hint>
+  </ly-field>
+
+  <ly-field appearance="filled" [lyWidth]="1">
+    <ly-label>Enter Last Name</ly-label>
+    <input lyNativeControl
+           type="text"
+           formControlName="lastName"
+    >
+    <ly-hint>Provide your last Name</ly-hint>
+  </ly-field>
+
+  <ly-field appearance="filled" [lyWidth]="1">
+    <ly-label>Enter Phone No</ly-label>
+    <input lyNativeControl
+           type="text"
+           formControlName="telephoneNumber"
+    >
+    <ly-hint>Provide your phone No</ly-hint>
+  </ly-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Enter Birthday</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="birthDay">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <ly-field appearance="filled" [lyWidth]="1">
+    <ly-label>Enter Email address</ly-label>
+    <input lyNativeControl
+           type="text"
+           formControlName="email"
+    >
+    <ly-hint>Provide your email</ly-hint>
+  </ly-field>
+
+  <ly-field appearance="filled" [lyWidth]="1">
+    <ly-label>Enter School</ly-label>
+    <input lyNativeControl
+           type="text"
+           formControlName="school"
+    >
+    <ly-hint>Provide your School</ly-hint>
+  </ly-field>
+
+  <ly-field>
+    <ly-label>Enter District</ly-label>
+    <select lyNativeControl formControlName="district">
+      <option value="Ampara">Ampara</option>
+      <option value="Anuradhapura">Anuradhapura</option>
+      <option value="Badulla">Badulla</option>
+      <option value="Batticaloa">Batticaloa</option>
+      <option value="Colombo">Colombo</option>
+      <option value="Galle">Galle</option>
+      <option value="Gampaha">Gampaha</option>
+      <option value="Hambantota">Hambantota</option>
+      <option value="Jaffna">Jaffna</option>
+      <option value="Kalutara">Kalutara</option>
+      <option value="Kandy">Kandy</option>
+      <option value="Kegalle">Kegalle</option>
+      <option value="Kilinochchi">Kilinochchi</option>
+      <option value="Kurunegala">Kurunegala</option>
+      <option value="Mannar">Mannar</option>
+      <option value="Matale">Matale</option>
+      <option value="Matara">Matara</option>
+      <option value="Moneragala">Moneragala</option>
+      <option value="Mullaitivu">Mullaitivu</option>
+      <option value="Nuwara Eliya">Nuwara Eliya</option>
+      <option value="Polonnaruwa">Polonnaruwa</option>
+      <option value="Puttalam">Puttalam</option>
+      <option value="Ratnapura">Ratnapura</option>
+      <option value="Trincomalee">Trincomalee</option>
+      <option value="Vavuniya">Vavuniya</option>
+    </select>
+  </ly-field>
+
+  <ly-field appearance="filled" [lyWidth]="1">
+    <ly-label>Enter referralLink</ly-label>
+    <input lyNativeControl
+           type="text"
+           formControlName="referralLink"
+    >
+    <ly-hint>Provide your referralLink</ly-hint>
+  </ly-field>
+
+  <button class="btn-cus-lg w-100 mt-3" ly-button raised bg="primary" size="large">SUBMIT</button>
+</form>

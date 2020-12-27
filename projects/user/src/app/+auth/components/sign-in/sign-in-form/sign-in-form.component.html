@@ -3,7 +3,7 @@
 
 <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
 
-  <ly-field appearance="filled" [lyWidth]="1">
+  <ly-field appearance="outlined" [lyWidth]="1">
     <ly-label>Email address</ly-label>
     <input lyNativeControl
            type="text"
@@ -17,7 +17,7 @@
     <ly-error *ngIf="loginForm.controls['username'].hasError('required')">Required</ly-error>
   </ly-field>
 
-  <ly-field [fullWidth]="true" #_field appearance="filled">
+  <ly-field [fullWidth]="true" #_field appearance="outlined">
     <input
       lyNativeControl
       placeholder="********"
