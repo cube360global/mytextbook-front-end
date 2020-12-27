@@ -12,6 +12,7 @@ import {ContentTableComponent} from './component/content-list/content-table/cont
 import {ContentAddComponent} from './component/content-add/content-add.component';
 import {ContentViewComponent} from './component/content-view/content-view.component';
 import {ContentAddFormComponent} from './component/content-add/content-add-form/content-add-form.component';
+import {ContentEditComponent} from './component/content-edit/content-edit.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ContentManagementComponent, ContentListComponent, ContentTableComponent, ContentAddComponent, ContentViewComponent, ContentAddFormComponent],
+  declarations: [ContentManagementComponent,
+    ContentListComponent,
+    ContentTableComponent,
+    ContentAddComponent,
+    ContentViewComponent,
+    ContentAddFormComponent,
+    ContentEditComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

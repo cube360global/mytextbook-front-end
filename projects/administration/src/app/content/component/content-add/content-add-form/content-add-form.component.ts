@@ -8,6 +8,7 @@ import {AlertService} from '../../../../@core/services/alert.service';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../app.reducer';
 import {CONTENT_DATA_LOADED} from '../../../store/content.action';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-content-add-form',
@@ -23,6 +24,7 @@ export class ContentAddFormComponent implements OnInit {
 
   constructor(private contentApiService: ContentApiService,
               private store: Store<fromApp.AppState>,
+              private router: Router,
               private alertService: AlertService) {
   }
 
@@ -85,6 +87,7 @@ export class ContentAddFormComponent implements OnInit {
   sendToServer(formData: FormData): void {
     this.contentApiService.putContent(formData)
       .subscribe(res => {
+        this.router.navigate(['/admin/content/all']);
         this.store.dispatch(CONTENT_DATA_LOADED({payload: res}));
       });
   }

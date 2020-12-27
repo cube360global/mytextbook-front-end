@@ -12,6 +12,7 @@ import {AlertService} from '../../../@core/services/alert.service';
 import {UserSubscriptionService} from '../../shared/service/user-subscription.service';
 import {UserApiService} from '../../shared/service/user-api.service';
 import {PostSubscription} from '../../../@core/interfaces/api/PostSubscription';
+import {USERS_DATA_REQUEST} from '../../store/user.action';
 
 
 @Component({
@@ -40,6 +41,7 @@ export class SubscriptionManagementComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userSubscriptionService.resetList();
     this.subjects = this.data.subjectList;
   }
 
@@ -68,6 +70,7 @@ export class SubscriptionManagementComponent implements OnInit {
         userBook.userId = this.data.user.id;
         this.userApiService.addSubscriptionToUser(userBook)
           .subscribe(() => {
+            this.store.dispatch(USERS_DATA_REQUEST());
             this.dialogRef.close();
           });
       }

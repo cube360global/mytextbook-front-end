@@ -18,14 +18,24 @@ export class ContentApiService {
       AdminControllersConst.All]);
   }
 
-  allBooks(): Observable<BookModel[]> {
+  allBooks(isLoaderOn = true): Observable<BookModel[]> {
     return this.apiBaseService.GET_API<BookModel[]>([AdminControllersConst.BookController,
-      AdminControllersConst.All], true);
+      AdminControllersConst.All], isLoaderOn);
   }
 
   putContent(contentData: FormData): Observable<any> {
     return this.apiBaseService.UPDATE_API<ContentModel[]>([AdminControllersConst.ContentController], contentData,
       true);
+  }
+
+  // Update
+  updateContent(contentData: FormData): Observable<any> {
+    return this.apiBaseService.UPDATE_API<ContentModel[]>([AdminControllersConst.ContentController, 'update'], contentData,
+      true);
+  }
+
+  deleteContent(id: string): Observable<any> {
+    return this.apiBaseService.DELETE_API<ContentModel[]>([AdminControllersConst.ContentController, id]);
   }
 
 }

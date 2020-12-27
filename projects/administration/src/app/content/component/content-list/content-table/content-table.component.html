@@ -1,4 +1,6 @@
-<p-table #dt1 [globalFilterFields]="['name','description','chapter','pageNumber','viewCount','likeCount','unLikeCount','status','book']" [loading]="loading"
+<p-table #dt1
+         [globalFilterFields]="['name','description','chapter','pageNumber','viewCount','likeCount','unLikeCount','status','book']"
+         [loading]="loading"
          [paginator]="true"
          [rowsPerPageOptions]="[10,25,50]"
          [rows]="10"
@@ -42,13 +44,13 @@
         <!--          <p-columnFilter display="menu" field="email" type="text"></p-columnFilter>-->
         <!--        </div>-->
       </th>
-      <th>
-        Description
-        <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
-        <!--          First Name-->
-        <!--          <p-columnFilter display="menu" field="firstName" type="text"></p-columnFilter>-->
-        <!--        </div>-->
-      </th>
+<!--      <th>-->
+<!--        Description-->
+<!--        &lt;!&ndash;        <div class="p-d-flex p-jc-between p-ai-center">&ndash;&gt;-->
+<!--        &lt;!&ndash;          First Name&ndash;&gt;-->
+<!--        &lt;!&ndash;          <p-columnFilter display="menu" field="firstName" type="text"></p-columnFilter>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      </th>-->
       <th>
         Chapter No
         <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
@@ -101,7 +103,7 @@
         <img alt="" class="img-fluid" height="80px" src="{{content.markerImageURL}}" width="80px">
       </td>
       <td>{{content.name}}</td>
-      <td>{{content.description}}</td>
+<!--      <td>{{content.description}}</td>-->
       <td>{{content.chapter}}</td>
       <td>{{content.pageNumber}}</td>
       <td>{{content.viewCount}}</td>
@@ -117,7 +119,14 @@
                 routerLink="../view">
           <i class="fas fa-eye"></i>
         </button>
-
+        &nbsp;
+<!--        <button-->
+<!--          color="primary"-->
+<!--          mat-mini-fab-->
+<!--          matTooltip="Edit"-->
+<!--          (click)="onContentEditDialogOpen(content)">-->
+<!--          <i class="fas fa-edit"></i>-->
+<!--        </button>-->
       </td>
     </tr>
   </ng-template>

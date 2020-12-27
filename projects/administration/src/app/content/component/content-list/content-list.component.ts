@@ -4,6 +4,7 @@ import * as fromApp from '../../../app.reducer';
 import {CONTENT_DATA_REQUEST} from '../../store/content.action';
 import {ContentModel} from '../../../@core/interfaces/api/ContentModel';
 
+
 @Component({
   selector: 'app-content-list',
   templateUrl: './content-list.component.html',
@@ -29,5 +30,7 @@ export class ContentListComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(CONTENT_DATA_REQUEST());
   }
+
+
 
 }

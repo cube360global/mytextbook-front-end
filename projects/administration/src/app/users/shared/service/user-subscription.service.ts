@@ -31,5 +31,9 @@ export class UserSubscriptionService {
     return this.selectedBooksList;
   }
 
+  resetList(): void {
+    this.selectedBooksList = [] as number[];
+  }
+
 
 }

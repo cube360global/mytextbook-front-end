@@ -7,11 +7,15 @@
     <h2 class="header-text-sm"> Content Details </h2>
 
     <div>
-      <button class="mat-button-rounded-sm ms-2" color="primary" mat-raised-button>
+      <button class="mat-button-rounded-sm ms-2"
+              (click)="onContentEditDialogOpen(contentData)"
+              color="primary" mat-raised-button>
         <i class="fas fa-edit me-2"></i>
         EDIT CONTENT
       </button>
-      <button class="mat-button-rounded-sm ms-2" color="warn" mat-raised-button>
+      <button class="mat-button-rounded-sm ms-2"
+              (click)="onDeleteContentClick(contentData)"
+              color="warn" mat-raised-button>
         <i class="fas fa-trash-alt me-2"></i>
         DELETE CONTENT
       </button>
@@ -26,7 +30,7 @@
       <img alt="{{contentData.name}}" class="img-fluid" src="{{contentData.markerImageURL}}">
     </div>
     <div class="col-sm-6">
-      <iframe [src]="videoUrl" allow="autoplay; fullscreen" allowfullscreen class="img-fluid" width="100%">
+      <iframe [src]="videoUrl" allow="autoplay; fullscreen" allowfullscreen width="640" height="360">
       </iframe>
     </div>
   </div>

@@ -1,0 +1,190 @@
+<div mat-dialog-title>
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="header-text-sm">
+      Edit Content
+    </div>
+    <button (click)="dialogRef.close()" color="warn" mat-icon-button>
+      <mat-icon>highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <div class="container mt-4">
+    <form (ngSubmit)="onContentSubmit()" [formGroup]="contentAddForm">
+      <div class="p-float-label">
+        <input
+          [ngClass]="{ 'p-invalid' : !contentAddForm.controls['name'].valid && contentAddForm.controls['name'].touched}"
+          class="p-inputtext-sm w-100"
+          formControlName="name"
+          id="name"
+          pInputText type="text">
+        <label for="name">Content Name*</label>
+      </div>
+      <div>
+        <val-errors controlName="name">
+          <ng-template valError="required"><small class="p-invalid ms-3">The content name is required</small>
+          </ng-template>
+          >
+        </val-errors>
+      </div>
+
+      <div class="p-float-label">
+    <textarea
+      [ngClass]="{ 'p-invalid' : !contentAddForm.controls['description'].valid && contentAddForm.controls['description'].touched}"
+      class="p-inputtext-sm"
+      formControlName="description"
+      id="description"
+      pInputText type="text"></textarea>
+        <label for="description">Description*</label>
+      </div>
+      <div>
+        <val-errors controlName="description">
+          <ng-template valError="required"><small class="p-invalid ms-3">The content name is required</small>
+          </ng-template>
+          >
+        </val-errors>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <div class="p-float-label">
+            <input
+              [ngClass]="{ 'p-invalid' : !contentAddForm.controls['chapter'].valid && contentAddForm.controls['chapter'].touched}"
+              class="p-inputtext-sm"
+              formControlName="chapter"
+              id="chapter"
+              pInputText type="number">
+            <label for="name">Chapter No*</label>
+          </div>
+          <div>
+            <val-errors controlName="chapter">
+              <ng-template valError="required"><small class="p-invalid ms-3">The chapter is required</small>
+              </ng-template>
+              >
+            </val-errors>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="p-float-label">
+            <input
+              [ngClass]="{ 'p-invalid' : !contentAddForm.controls['pageNumber'].valid && contentAddForm.controls['pageNumber'].touched}"
+              class="p-inputtext-sm"
+              formControlName="pageNumber"
+              id="pageNumber"
+              pInputText type="number">
+            <label for="name">Page Number*</label>
+          </div>
+          <div>
+            <val-errors controlName="pageNumber">
+              <ng-template valError="required"><small class="p-invalid ms-3">The page number is required</small>
+              </ng-template>
+              >
+            </val-errors>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="initialLoad;else newImage">
+        <div class="d-flex align-items-center mt-2 w-100">
+          <div class="p-float-label w-100">
+            <input
+              [value]="bookContentModel.content.markerImageURL"
+              class="p-inputtext-sm"
+              id="current-marker-img"
+              pInputText type="text">
+            <label for="current-marker-img">Current marker url</label>
+          </div>
+          <button (click)="$event.preventDefault();onRemoveCurrentImageClick()"
+                  matTooltip="Remove Current Image"
+                  color="warn" mat-icon-button type="button">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="p-float-label">
+        <input
+          [ngClass]="{ 'p-invalid' : !contentAddForm.controls['contentURL'].valid && contentAddForm.controls['contentURL'].touched}"
+          class="p-inputtext-sm"
+          formControlName="contentURL"
+          id="contentURL"
+          pInputText type="text">
+        <label for="contentURL">Content Id*</label>
+      </div>
+      <div>
+        <val-errors controlName="contentURL">
+          <ng-template valError="required"><small class="p-invalid ms-3">The content Id is required</small>
+          </ng-template>
+        </val-errors>
+      </div>
+
+      <div>
+        <p-dropdown
+          [filter]="true"
+          [options]="books"
+          [required]="true" [showClear]="true" appendTo="body" filterBy="name"
+          optionLabel="name"
+          optionValue="id"
+          formControlName="bookId"
+          placeholder="Select a Book*"
+          styleClass="p-inputtext-sm w-100 p-invalid ms-1 mt-2">
+
+          <ng-template pTemplate="selectedSubject">
+            <div class="country-item country-item-value">
+              <div>{{contentAddForm.controls['bookId'].value}}</div>
+            </div>
+          </ng-template>
+
+          <ng-template let-book pTemplate="item">
+            <div class="country-item">
+              <div>{{book.name}}</div>
+            </div>
+          </ng-template>
+        </p-dropdown>
+      </div>
+
+
+      <div>
+        <val-errors controlName="bookId" label="The book Id">
+          <ng-template valError="required"><small class="p-invalid ms-3">The book is required</small></ng-template>
+        </val-errors>
+      </div>
+
+      <div class="text-center mt-5 mb-5">
+        <button class="mat-button-rounded-sm" color="primary" mat-raised-button> Submit</button>
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+<ng-template #newImage>
+  <div class="row">
+    <div class="col-sm-6">
+      <label class="ms-3"> Marker Image </label>
+      <div class="d-flex justify-content-between align-items-center">
+        <p-fileUpload #ff (onSelect)="onBasicUpload($event)" [customUpload]="true" [fileLimit]="1" mode="basic"
+                      name="demo[]"
+                      styleClass="m-2">
+        </p-fileUpload>
+        <button (click)="ff.clear();onRemoveClick()" color="warn" mat-icon-button type="button">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <div>
+        <small *ngIf="!contentImage" class="p-invalid ms-3">The content image is required</small>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
