@@ -4,12 +4,16 @@ import {Path} from './@core/enum/path.enum';
 import {UserAuthGuard} from './@core/guards/user-auth.guard';
 import {AuthHomeComponent} from './+auth/home/auth-home/auth-home.component';
 import {SignInComponent} from './+auth/components/sign-in/sign-in.component';
+import {SignUpComponent} from './+auth/components/sign-up/sign-up.component';
+import {ForgetPasswordComponent} from './+auth/components/forget-password/forget-password.component';
 
 const routes: Routes = [
   {path: '', redirectTo: Path.Auth, pathMatch: 'full'},
   {
     path: Path.Auth, component: AuthHomeComponent, children: [
       {path: '', component: SignInComponent},
+      {path: Path.SignUp, component: SignUpComponent},
+      {path: Path.ForgotPassword, component: ForgetPasswordComponent},
     ]
   },
 

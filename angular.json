@@ -189,7 +189,8 @@
               ]
             },
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./styles/bootstrap.min.css",
               "./styles/app-theme.scss",
               "./styles/prime-custom.scss",
               "node_modules/primeng/resources/primeng.min.css",
