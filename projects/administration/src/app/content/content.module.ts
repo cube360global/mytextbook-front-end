@@ -27,7 +27,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ContentManagementComponent,
+  declarations: [
+    ContentManagementComponent,
     ContentListComponent,
     ContentTableComponent,
     ContentAddComponent,
