@@ -6,6 +6,8 @@ import {AlertService} from '../../../@core/services/alert.service';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../app.reducer';
 import {SUBJECT_DATA_LOADED} from '../../store/subject.action';
+import {MatDialogRef} from '@angular/material/dialog';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-add-subject',
@@ -14,6 +16,7 @@ import {SUBJECT_DATA_LOADED} from '../../store/subject.action';
 })
 export class AddSubjectComponent implements OnInit {
 
+  subjectNameCon = new FormControl(null,[Validators.required]);
   file: any;
   subjectName = '';
   imageError: any;
@@ -22,7 +25,9 @@ export class AddSubjectComponent implements OnInit {
 
   constructor(private subjectApiService: SubjectApiService,
               private store: Store<fromApp.AppState>,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              public dialogRef: MatDialogRef<AddSubjectComponent>,
+              ) {
   }
 
   ngOnInit(): void {

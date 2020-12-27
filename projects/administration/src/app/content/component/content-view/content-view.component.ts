@@ -1,6 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {ContentModel} from '../../../@core/interfaces/api/ContentModel';
 import {DomSanitizer} from '@angular/platform-browser';
+import {BookContentModel} from '../../../@core/interfaces/BookContentModel';
+import {ContentEditComponent} from '../content-edit/content-edit.component';
+import {ContentApiService} from '../../shared/service/content-api.service';
+import {MatDialog} from '@angular/material/dialog';
+import {AlertService} from '../../../@core/services/alert.service';
+import {AlertConst} from '../../../@core/const/AlertConst';
+import {Store} from '@ngrx/store';
+import * as fromApp from '../../../app.reducer';
+import {CONTENT_DATA_LOADED} from '../../store/content.action';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-content-view',
@@ -12,7 +22,12 @@ export class ContentViewComponent implements OnInit {
   contentData = {} as ContentModel;
   videoUrl: any;
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(private sanitizer: DomSanitizer,
+              private dialog: MatDialog,
+              private router: Router,
+              private store: Store<fromApp.AppState>,
+              private alertService: AlertService,
+              private contentApiService: ContentApiService) {
   }
 
   ngOnInit(): void {
@@ -21,4 +36,32 @@ export class ContentViewComponent implements OnInit {
       .bypassSecurityTrustResourceUrl(`https://player.vimeo.com/video/${this.contentData.contentURL}`);
   }
 
+  onContentEditDialogOpen(content: ContentModel): void {
+    this.contentApiService.allBooks()
+      .subscribe((res) => {
+        const bookContent = {} as BookContentModel;
+        bookContent.content = content;
+        bookContent.bookList = res;
+        this.dialog.open(ContentEditComponent, {
+          width: '100%',
+          data: bookContent
+        });
+
+      });
+
+  }
+
+  onDeleteContentClick(contentData: ContentModel): void {
+    this.alertService.getConfirmationDialog()
+      .confirm({
+        message: AlertConst.ConfirmationMessage,
+        accept: () => {
+          this.contentApiService.deleteContent(contentData.id.toString())
+            .subscribe(res => {
+              this.router.navigate(['/admin/content/all']);
+              this.store.dispatch(CONTENT_DATA_LOADED({payload: res}));
+            });
+        }
+      });
+  }
 }
