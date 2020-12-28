@@ -40,7 +40,6 @@ import {VendorsModule} from '../../../../lib/vendors/src/lib/vendors.module';
   imports: [
     CommonModule,
     AlyleModule,
-    VendorsModule,
     PrimengModule,
     MaterialModule,
     FormsModule,
