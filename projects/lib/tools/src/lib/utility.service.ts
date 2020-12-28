@@ -18,7 +18,7 @@ export class UtilityService {
     {name: 'Grade 10', code: '10'},
     {name: 'Grade 11', code: '11'},
     {name: 'Grade 12', code: '12'},
-    {name: 'Grade 13', code: '13'},
+    {name: 'Grade 13', code: '13'}
   ] as KeyValueModel[];
 
   mediums = [

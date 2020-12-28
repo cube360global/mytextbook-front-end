@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../../app.reducer';
-import {BOOK_DATA_REQUEST} from '../../store/book.action';
+import {BOOK_DATA_REQUEST} from '../../store/book/book.action';
 
 @Component({
   selector: 'app-user-book',
