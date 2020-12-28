@@ -4,7 +4,6 @@ import {PrivateNavBarComponent} from './private-nav-bar/private-nav-bar.componen
 import {MaterialModule} from '../../../../../lib/vendors/src/lib/material/material.module';
 import {PrimengModule} from '../../../../../lib/vendors/src/lib/primeng/primeng.module';
 
-
 @NgModule({
   declarations: [
     PrivateNavBarComponent
@@ -15,7 +14,7 @@ import {PrimengModule} from '../../../../../lib/vendors/src/lib/primeng/primeng.
   imports: [
     CommonModule,
     MaterialModule,
-    PrimengModule,
+    PrimengModule
   ]
 })
 export class UserSharedModule {
