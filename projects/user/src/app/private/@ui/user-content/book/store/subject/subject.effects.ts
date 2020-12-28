@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
-import {SubjectApiService} from '../../../../../../subject/shared/services/subject-api.service';
+import {SubjectApiService} from '../../../../../shared/service/subject-api.service';
 import {SUBJECT_DATA_LOAD_FAIL, SUBJECT_DATA_LOADED, SUBJECT_DATA_REQUEST} from './subject.action';
 
 @Injectable()
