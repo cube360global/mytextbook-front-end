@@ -6,6 +6,8 @@ import {VertexSnackbarNotifyService} from '../../../../../../../lib/vendors/src/
 
 import {AlertService} from '../../../../../../../lib/tools/src/lib/alert.service';
 import {ToastrService} from 'ngx-toastr';
+import {USER_LOGIN_STAT} from '../../../store/auth.action';
+import {LoginModel} from '../../../../../../../lib/authentication/src/lib/interfaces/LoginModel';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -31,14 +33,11 @@ export class SignInFormComponent implements OnInit {
 
 
   onLogin(): void {
-    // this.notify.showSuccess('jsdhjkdsh', 'sjdhsdjkhsdj');
-    //  this.alertService.showSuccess('ijsdfjhkfdhkudfhkjdfhghdf');
-    this.toastr.success('hjgjgjgjhg', 'success');
-    // if (this.loginForm.invalid) {
-    //   this.loginForm.markAllAsTouched();
-    //   return;
-    // }
-    // this.store.dispatch(USER_LOGIN_STAT({payload: this.loginForm.value as LoginModel}));
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      return;
+    }
+    this.store.dispatch(USER_LOGIN_STAT({payload: this.loginForm.value as LoginModel}));
   }
 
 }

@@ -111,7 +111,13 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 .mat-form-field-appearance-outline .mat-form-field-wrapper {
   margin: .1em 0 !important;
 }
+.mat-form-field-wrapper {
+  padding-bottom: 1.2em !important;
+}
 
+mat-form-field {
+  width: 100%;
+}
 
 
 $border-radius: 40px;

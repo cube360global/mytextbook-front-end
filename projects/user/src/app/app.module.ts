@@ -42,8 +42,9 @@ import {VendorsModule} from '../../../lib/vendors/src/lib/vendors.module';
       }
     }),
     ToastrModule.forRoot({
-      positionClass: 'toast-bottom-center',
+      positionClass: 'toast-top-right',
       preventDuplicates: true,
+      closeButton: true,
     }),
     AlyleModule,
     PrimengModule,

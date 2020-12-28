@@ -18,12 +18,13 @@ export class UserAuthService {
   }
 
   loginAdAdmin(loginModel: LoginModel): Observable<any> {
+    console.log(loginModel);
     // Set up x-www-form-urlencode body
     const reqBody = new HttpParams()
       .set('grant_type', 'password-and-role')
       .set('username', loginModel.username)
       .set('password', loginModel.password)
-      .set('user_role', 'ADMIN');
+      .set('user_role', 'STUDENT');
 
 
     // set headers
