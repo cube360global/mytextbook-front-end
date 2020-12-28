@@ -1,6 +1,6 @@
 import * as fromAuth from './+auth/store/auth.reducer';
 import * as fromUserManagement from './users/store/user.reducer';
-import * as fromBookManagement from './book/store/book.reducer';
+import * as fromBookManagement from './private/@ui/user-content/book/store/book.reducer';
 import * as fromSubjectManagement from './subject/store/subject.reducer';
 import {ActionReducerMap, createFeatureSelector} from '@ngrx/store';
 

@@ -421,7 +421,8 @@
       }
     }
   },
-  "defaultProject": "administration"
+  "defaultProject": "administration",
+  "cli": {
+    "analytics": false
+  }
 }
-
-
