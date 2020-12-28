@@ -2,7 +2,7 @@
   <div class="header-text">
     <h2><b>Password change</b></h2>
   </div>
-  <form>
+  <form [formGroup]="pwdForm">
     <mat-label class="text-color-01-b">Current password (leave blank to leave unchanged)</mat-label>
     <mat-form-field appearance="outline" class="mt-1" floatLabel="never">
       <mat-icon class="me-1 text-color-01" matPrefix>lock</mat-icon>
@@ -16,15 +16,15 @@
               matSuffix>
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <!--          <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">Min 8 characters</mat-error>-->
-      <!--          <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Required</mat-error>-->
+      <mat-error *ngIf="pwdForm.controls['password'].hasError('minlength')">Min 8 characters</mat-error>
+      <mat-error *ngIf="pwdForm.controls['password'].hasError('required')">Required</mat-error>
     </mat-form-field>
 
     <mat-label class="text-color-01-b">New password (leave blank to leave unchanged)</mat-label>
     <mat-form-field appearance="outline" class="mt-1" floatLabel="never">
       <mat-icon class="me-1 text-color-01" matPrefix>lock</mat-icon>
       <input [type]="hide ? 'password' : 'text'"
-             formControlName="password"
+             formControlName="newPassword"
              matInput
              placeholder="********">
 
@@ -33,15 +33,15 @@
               matSuffix>
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <!--          <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">Min 8 characters</mat-error>-->
-      <!--          <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Required</mat-error>-->
+      <mat-error *ngIf="pwdForm.controls['password'].hasError('minlength')">Min 8 characters</mat-error>
+      <mat-error *ngIf="pwdForm.controls['password'].hasError('required')">Required</mat-error>
     </mat-form-field>
 
     <mat-label class="text-color-01-b">Confirm new password</mat-label>
     <mat-form-field appearance="outline" class="mt-1" floatLabel="never">
       <mat-icon class="me-1 text-color-01" matPrefix>lock</mat-icon>
       <input [type]="hide ? 'password' : 'text'"
-             formControlName="password"
+             formControlName="conPassword"
              matInput
              placeholder="********">
 
@@ -50,8 +50,8 @@
               matSuffix>
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <!--          <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">Min 8 characters</mat-error>-->
-      <!--          <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Required</mat-error>-->
+      <mat-error *ngIf="pwdForm.controls['password'].hasError('minlength')">Min 8 characters</mat-error>
+      <mat-error *ngIf="pwdForm.controls['password'].hasError('required')">Required</mat-error>
     </mat-form-field>
   </form>
 </div>
