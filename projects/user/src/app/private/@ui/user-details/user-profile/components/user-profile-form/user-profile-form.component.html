@@ -1,0 +1,87 @@
+<form (ngSubmit)="onSignUp()" [formGroup]="signUpForm">
+
+  <div class="row">
+    <div class="col-sm-6">
+      <mat-label class="text-color-01-b">First Name</mat-label>
+      <mat-form-field appearance="outline" class="mt-1">
+        <mat-label>Enter First Name</mat-label>
+        <input formControlName="firstName" matInput type="text"
+        >
+        <mat-error *ngIf="signUpForm.controls['firstName'].hasError('required')">Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-6">
+      <mat-label class="text-color-01-b">Last Name</mat-label>
+      <mat-form-field appearance="outline" class="mt-1">
+        <mat-label>Enter Last Name</mat-label>
+        <input formControlName="lastName" matInput type="text"
+        >
+        <mat-error *ngIf="signUpForm.controls['lastName'].hasError('required')">Required</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-label class="text-color-01-b">Phone Number</mat-label>
+  <mat-form-field appearance="outline" class="mt-1">
+    <mat-label>Enter Phone No</mat-label>
+    <input formControlName="telephoneNumber" matInput type="text"
+    >
+    <mat-error *ngIf="signUpForm.controls['telephoneNumber'].hasError('required')">Required</mat-error>
+  </mat-form-field>
+
+  <mat-label class="text-color-01-b">Birthday</mat-label>
+  <mat-form-field appearance="outline" class="mt-1">
+    <mat-label>Enter Birthday</mat-label>
+    <input [matDatepicker]="picker" formControlName="birthDay" matInput>
+    <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="signUpForm.controls['birthDay'].hasError('required')">Required</mat-error>
+  </mat-form-field>
+
+  <mat-label class="text-color-01-b">Email</mat-label>
+  <mat-form-field appearance="outline" class="mt-1">
+    <mat-label>Enter Email address</mat-label>
+    <input formControlName="email" matInput type="text">
+    <mat-error *ngIf="signUpForm.controls['email'].hasError('email')">This is the not a valid email</mat-error>
+    <mat-error *ngIf="signUpForm.controls['email'].hasError('required')">Required</mat-error>
+  </mat-form-field>
+
+  <mat-label class="text-color-01-b">School</mat-label>
+  <mat-form-field appearance="outline" class="mt-1">
+    <mat-label>Enter School</mat-label>
+    <input formControlName="school" matInput type="text">
+    <mat-error *ngIf="signUpForm.controls['school'].hasError('required')">Required</mat-error>
+  </mat-form-field>
+
+  <mat-label class="text-color-01-b">District</mat-label>
+  <mat-form-field appearance="outline" class="mt-1">
+    <mat-label>Enter District</mat-label>
+    <mat-select formControlName="district">
+      <mat-option value="Ampara">Ampara</mat-option>
+      <mat-option value="Anuradhapura">Anuradhapura</mat-option>
+      <mat-option value="Badulla">Badulla</mat-option>
+      <mat-option value="Batticaloa">Batticaloa</mat-option>
+      <mat-option value="Colombo">Colombo</mat-option>
+      <mat-option value="Galle">Galle</mat-option>
+      <mat-option value="Gampaha">Gampaha</mat-option>
+      <mat-option value="Hambantota">Hambantota</mat-option>
+      <mat-option value="Jaffna">Jaffna</mat-option>
+      <mat-option value="Kalutara">Kalutara</mat-option>
+      <mat-option value="Kandy">Kandy</mat-option>
+      <mat-option value="Kegalle">Kegalle</mat-option>
+      <mat-option value="Kilinochchi">Kilinochchi</mat-option>
+      <mat-option value="Kurunegala">Kurunegala</mat-option>
+      <mat-option value="Mannar">Mannar</mat-option>
+      <mat-option value="Matale">Matale</mat-option>
+      <mat-option value="Matara">Matara</mat-option>
+      <mat-option value="Moneragala">Moneragala</mat-option>
+      <mat-option value="Mullaitivu">Mullaitivu</mat-option>
+      <mat-option value="Nuwara Eliya">Nuwara Eliya</mat-option>
+      <mat-option value="Polonnaruwa">Polonnaruwa</mat-option>
+      <mat-option value="Puttalam">Puttalam</mat-option>
+      <mat-option value="Ratnapura">Ratnapura</mat-option>
+      <mat-option value="Trincomalee">Trincomalee</mat-option>
+      <mat-option value="Vavuniya">Vavuniya</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

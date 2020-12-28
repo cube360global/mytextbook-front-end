@@ -1,9 +1,7 @@
-
-
-// Test css
 .text-color-01 {
   color: #929292;
 }
+
 .text-color-01-b {
   color: #929292;
   font-weight: bold;
@@ -23,7 +21,6 @@
 .header-text {
   font-family: 'Samsung Sharp Sans bold', sans-serif !important;
   font-size: 2.5em !important;
-
 }
 
 .header-text-sm {
@@ -31,22 +28,21 @@
   font-size: 1.5em !important;
 }
 
-
 .p-datatable-responsive-demo .p-datatable-tbody > tr > td .p-column-title {
   display: none;
 }
 
+.btn-cus {
+  padding: 8px !important;
+  border-radius: 8px !important;
+}
 
-
-// Button
-.btn-cus-lg{
+.btn-cus-lg {
   padding: 12px !important;
   border-radius: 8px !important;
 }
 
-
 @media screen and (max-width: 40rem) {
-
   .p-datatable {
     &.p-datatable-responsive-demo {
       .p-datatable-thead > tr > th,
@@ -76,6 +72,4 @@
       }
     }
   }
-
 }
-

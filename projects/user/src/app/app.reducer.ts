@@ -1,28 +1,23 @@
 import * as fromAuth from './+auth/store/auth.reducer';
-import * as fromUserManagement from './users/store/user.reducer';
-import * as fromBookManagement from './private/@ui/user-content/book/store/book.reducer';
+
+
+import * as fromProfile from './private/@ui/user-details/user-profile/store/user-profile.reducer';
 import {ActionReducerMap, createFeatureSelector} from '@ngrx/store';
 
 export interface AppState {
   auth: fromAuth.AuthState;
-  userManagement: fromUserManagement.State;
-  bookManagement: fromBookManagement.State;
-  //subjectManagement: fromSubjectManagement.State;
+  userProfile: fromProfile.State;
+
 }
 
 export const appReducer: ActionReducerMap<AppState> = {
   auth: fromAuth.authReducer,
-  userManagement: fromUserManagement.userReducer,
-  bookManagement: fromBookManagement.bookReducer,
-  //subjectManagement: fromSubjectManagement.subjectReducer
+  userProfile: fromProfile.userProfileReducer,
 };
 
 // Main Selectors
 export const getAuthState = createFeatureSelector<fromAuth.AuthState>('auth');
-export const getUserReducer = createFeatureSelector<fromUserManagement.State>('userManagement');
-export const getBookReducer = createFeatureSelector<fromBookManagement.State>('bookManagement');
-//export const getSubjectReducer = createFeatureSelector<fromSubjectManagement.State>('subjectManagement');
+export const getUserProfileReducer = createFeatureSelector<fromProfile.State>('userProfile');
 
-// export const getCurrentAuthToken = createSelector(getAuthState, fromAuth.getCurrentAuthToken);
-// export const getUserAccessFunctions = createSelector(getAuthState, fromAuth.getUserAccessFunctions);
-// export const getCurrentUserModel = createSelector(getAuthState, fromAuth.getCurrentUserModel);
+
+

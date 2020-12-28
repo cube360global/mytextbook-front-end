@@ -4,7 +4,7 @@ import {Store} from '@ngrx/store';
 import * as fromApp from '../../../app.reducer';
 import {SubjectUser} from '../../../@core/interfaces/SubjectUser';
 import {SubjectModel} from '../../../@core/interfaces/api/SubjectModel';
-import {UtilityService} from '../../../@core/services/utility.service';
+import {UtilityService} from '../../../../../../lib/tools/src/lib/utility.service';
 import {BookModel} from '../../../@core/interfaces/api/BookModel';
 import {KeyValueModel} from '../../../@core/interfaces/KeyValueModel';
 import {BookApiService} from '../../../book/shared/services/book-api.service';
