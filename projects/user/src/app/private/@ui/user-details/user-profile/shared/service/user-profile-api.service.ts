@@ -1,17 +1,18 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
 import {ApiUtilityToolService} from '../../../../../../../../../lib/tools/src/lib/api-utility-tool.service';
+import {Observable} from 'rxjs';
 import {ControllerConst} from '../../../../../../../../../lib/tools/src/lib/global/ControllerConst';
-import {BookModel} from '../../../../../../@core/interfaces/api/BookModel';
+import {UserModel} from '../../../../../../@core/interfaces/api/UserModel';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookApiService {
+export class UserProfileApiService {
+
   constructor(private  apiUtilityToolService: ApiUtilityToolService) {
   }
 
-  all(): Observable<BookModel[]> {
-    return this.apiUtilityToolService.GET<BookModel[]>([ControllerConst.Book, ControllerConst.All], true);
+  public getUserProfileById(userId: string): Observable<UserModel> {
+    return this.apiUtilityToolService.GET<UserModel>([ControllerConst.User, 'profile', userId], true);
   }
 }

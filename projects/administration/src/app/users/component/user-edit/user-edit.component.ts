@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {UserModel} from '../../../@core/interfaces/api/UserModel';
-import {UtilityService} from '../../../@core/services/utility.service';
+import {UtilityService} from '../../../../../../lib/tools/src/lib/utility.service';
 import {UserApiService} from '../../shared/service/user-api.service';
 import {AlertService} from '../../../@core/services/alert.service';
 import {AlertConst} from '../../../@core/const/AlertConst';

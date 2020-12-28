@@ -78,14 +78,7 @@ export class UsersListComponent implements OnInit {
 
 
   onFilterApply(): void {
-
-    this.alertService.getConfirmationDialog()
-      .confirm({
-        message: AlertConst.ConfirmationMessage,
-        accept: () => {
-          this.sendToServer();
-        }
-      });
+    this.sendToServer();
   }
 
   sendToServer(): void {

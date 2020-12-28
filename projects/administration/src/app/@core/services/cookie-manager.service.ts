@@ -17,8 +17,8 @@ export class CookieManagerService {
   }
 
   public deleteCookie(): void {
-    this.cookieService.deleteAll();
-    // this.cookieService.delete(Cookie.ACCESS_TOKEN);
+    // this.cookieService.deleteAll();
+    this.cookieService.delete(Cookie.ACCESS_TOKEN);
     // this.cookieService.delete(Cookie.REFRESH_TOKEN);
   }
 
