@@ -14,6 +14,7 @@ export enum Path {
   PasswordReset = 'reset-password',
   PasswordResetSucceeded = 'password-reset-succeeded',
   PasswordResetFailed = 'password-reset-failed',
+  AboutUs = 'about-us',
 
   // App base url
   App = 'app',
