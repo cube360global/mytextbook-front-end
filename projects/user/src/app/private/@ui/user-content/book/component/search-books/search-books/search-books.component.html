@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-sm-3 m-1">
+    <p-dropdown [filter]="true"
+                [options]="subjects"
+                [showClear]="true"
+                appendTo="body"
+                filterBy="name"
+                formControlName="subject"
+                optionLabel="name"
+                placeholder="Search by Subject">
+    </p-dropdown>
+  </div>
+  <div class="col-sm-3 m-1">
+    <p-dropdown [filter]="true"
+                [options]="utilityService.gradeList"
+                [showClear]="true"
+                appendTo="body"
+                filterBy="name"
+                formControlName="grade"
+                optionLabel="name"
+                placeholder="Search by Grade">
+    </p-dropdown>
+  </div>
+  <div class="col-sm-3 m-1">
+    <p-dropdown [filter]="true"
+                [options]="utilityService.mediums"
+                [showClear]="true"
+                appendTo="body"
+                filterBy="name"
+                formControlName="medium"
+                optionLabel="name"
+                placeholder="Search by Medium">
+    </p-dropdown>
+  </div>
+  <div class="col-sm-2 m-3">
+    <button mat-flat-button color="primary"
+            style="text-transform: uppercase">
+      Search
+    </button>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
 import * as fromApp from '../../../../../../app.reducer';
 import {BookModel} from '../../../../../../@core/interfaces/api/BookModel';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-book-list',
@@ -10,8 +10,8 @@ import {Observable} from 'rxjs';
   styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit {
-  // books = [] as BookModel[];
   $obs = new Observable<BookModel[]>();
+  // books = [] as BookModel[];
 
   constructor(private store: Store<fromApp.AppState>) {
   }
@@ -20,7 +20,6 @@ export class BookListComponent implements OnInit {
     this.$obs = this.store.select(fromApp.getAllBooks);
     // this.store.select(fromApp.getBookReducer).subscribe(books => {
     //   if (books.bookData.length > 0) {
-    //     console.log(books);
     //     this.books = books.bookData;
     //   }
     // }, error => {
