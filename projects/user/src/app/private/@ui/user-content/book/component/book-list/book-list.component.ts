@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../../app.reducer';
+import {BookModel} from '../../../../../../@core/interfaces/api/BookModel';
 
 @Component({
   selector: 'app-book-list',
@@ -8,7 +9,6 @@ import * as fromApp from '../../../../../../app.reducer';
   styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit {
-
   constructor(private store: Store<fromApp.AppState>) {
   }
 
@@ -17,5 +17,4 @@ export class BookListComponent implements OnInit {
       console.log(res);
     });
   }
-
 }
