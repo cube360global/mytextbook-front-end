@@ -105,7 +105,7 @@ export class AuthInterceptorService implements HttpInterceptor {
       .set('Authorization', 'Basic ' + btoa('web-client' + ':' + 'web-secret'));
 
     const httpClient = new HttpClient(this.httpBackend);
-    return httpClient.post<TokenDecodeModel>(this.baseUrl + ControllerConst.LoginController, reqBody.toString(),
+    return httpClient.post<TokenDecodeModel>(this.baseUrl + ControllerConst.Login, reqBody.toString(),
       {
         headers: headersObject
       });

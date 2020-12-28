@@ -23,7 +23,6 @@ import {LoadingBarHttpClientModule} from '@ngx-loading-bar/http-client';
 import {LoadingBarModule} from '@ngx-loading-bar/core';
 import {LoadingBarRouterModule} from '@ngx-loading-bar/router';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {BooksEffects} from './private/@ui/user-content/book/store/book/book.effects';
 import {AuthInterceptorService} from './@core/interceptors/auth-interceptor.service';
 import {UserProfileEffects} from './private/@ui/user-details/user-profile/store/user-profile.effects';
 
@@ -56,7 +55,7 @@ export function tokenGetter(): string {
     NgxUiLoaderModule,
     UserAuthModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthEffects, BooksEffects, UserProfileEffects]),
+    EffectsModule.forRoot([AuthEffects, UserProfileEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: true,
