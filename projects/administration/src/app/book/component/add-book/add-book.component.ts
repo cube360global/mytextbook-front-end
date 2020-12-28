@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {SubjectModel} from '../../../@core/interfaces/api/SubjectModel';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {UtilityService} from '../../../@core/services/utility.service';
+import {UtilityService} from '../../../../../../lib/tools/src/lib/utility.service';
 import {BookModel} from '../../../@core/interfaces/api/BookModel';
 import {BookApiService} from '../../shared/services/book-api.service';
 import {AlertService} from '../../../@core/services/alert.service';

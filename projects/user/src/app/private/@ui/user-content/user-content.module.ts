@@ -9,23 +9,12 @@ import {BookListComponent} from './book/component/book-list/book-list.component'
 import {BookItemComponent} from './book/component/book-list/book-item/book-item.component';
 import {MaterialModule} from '../../../../../../lib/vendors/src/lib/material/material.module';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: UserContentComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: Path.Books,
-        pathMatch: 'full'
-      },
-      {
-        path: Path.Books,
-        component: UserBookComponent
-      }
-    ]
-  }
-];
+const routes: Routes = [{
+  path: '', component: UserContentComponent, children: [
+    {path: '', redirectTo: Path.Books, pathMatch: 'full'},
+    {path: Path.Books, component: UserBookComponent}
+  ]
+}];
 
 @NgModule({
   declarations: [

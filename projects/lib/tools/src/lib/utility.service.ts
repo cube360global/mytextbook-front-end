@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
-import {KeyValueModel} from '../interfaces/KeyValueModel';
+import {KeyValueModel} from '../../../../administration/src/app/@core/interfaces/KeyValueModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilityService {
-
   gradeList = [
     {name: 'Grade 01', code: '1'},
     {name: 'Grade 02', code: '2'},
@@ -33,11 +32,6 @@ export class UtilityService {
     {name: 'Deactivate', code: false}
   ];
 
-
   constructor() {
-    // this.getGradeList();
   }
-
-
 }
-

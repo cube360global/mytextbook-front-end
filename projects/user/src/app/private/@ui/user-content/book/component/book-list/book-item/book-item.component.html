@@ -1,24 +1,26 @@
-<mat-card class="h-50 w-25 mt-1">
-  <img mat-card-image src="{{book.image}}"
-       alt="{{book.name}}">
-  <mat-card-content class="text-center">
-    <p style="font-weight: bold; font-size: medium">
-      {{book.name}}
-    </p>
-    <p style="color: gray">
-      {{book.price}} LKR / 12 Months
-    </p>
-  </mat-card-content>
-  <mat-card-actions class="text-center mb-1">
-    <button mat-flat-button color="primary"
-            style="text-transform: uppercase"
-            class="m-1">
-      Subscribe
-    </button>
-<!--    <button mat-flat-button color="primary"-->
-<!--            style="text-transform: uppercase"-->
-<!--            class="m-1">-->
-<!--      View Cart-->
-<!--    </button>-->
-  </mat-card-actions>
-</mat-card>
+<div class="m-2">
+  <mat-card class="h-50 w-100">
+    <img mat-card-image src="{{book.image}}"
+         alt="{{book.name}}">
+    <mat-card-content class="text-center">
+      <p style="font-weight: bold; font-size: medium">
+        {{book.name}}
+      </p>
+      <p style="color: gray">
+        {{book.price}} LKR / 12 Months
+      </p>
+    </mat-card-content>
+    <mat-card-actions class="text-center mb-1">
+      <button mat-flat-button color="primary"
+              style="text-transform: uppercase"
+              class="m-1">
+        Subscribe
+      </button>
+      <!--    <button mat-flat-button color="primary"-->
+      <!--            style="text-transform: uppercase"-->
+      <!--            class="m-1">-->
+      <!--      View Cart-->
+      <!--    </button>-->
+    </mat-card-actions>
+  </mat-card>
+</div>

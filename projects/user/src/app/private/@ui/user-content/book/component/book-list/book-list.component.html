@@ -1,1 +1,5 @@
-<app-book-item *ngFor="let book of $obs | async" [book]="book"></app-book-item>
+<div class="row">
+  <app-book-item *ngFor="let book of $obs | async" [book]="book"
+                 class="col-sm-4"></app-book-item>
+</div>
+
