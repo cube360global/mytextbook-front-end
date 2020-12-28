@@ -5,7 +5,7 @@ import {Path} from '../@core/enum/path.enum';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: Path.Content, pathMatch: 'full'},
+  {path: '', redirectTo: Path.UserDetails, pathMatch: 'full'},
   {
     path: Path.UserDetails,
     loadChildren: () => import('./@ui/user-details/user-details.module').then(m => m.UserDetailsModule)

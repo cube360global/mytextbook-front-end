@@ -21,7 +21,7 @@ export class UserProfileFormComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.store.select(fromApp.getUserProfileReducer).subscribe(res => {
-      if (res.user.id != null) {
+      if (res != null && res.user.id != null) {
         this.userProfile = res.user;
         this.patchForm(res.user);
       }
