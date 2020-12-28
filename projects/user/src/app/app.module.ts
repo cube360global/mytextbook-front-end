@@ -23,6 +23,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import {LoadingBarHttpClientModule} from '@ngx-loading-bar/http-client';
 import {LoadingBarModule} from '@ngx-loading-bar/core';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import {VendorsModule} from '../../../lib/vendors/src/lib/vendors.module';
 
 
 
@@ -44,6 +45,7 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
       positionClass: 'toast-top-center',
       preventDuplicates: true,
     }),
+    VendorsModule,
     AlyleModule,
     PrimengModule,
     NgxUiLoaderModule,

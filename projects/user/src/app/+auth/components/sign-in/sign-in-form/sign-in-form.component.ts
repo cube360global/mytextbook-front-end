@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
-import {USER_LOGIN_STAT} from '../../../store/auth.action';
-import {LoginModel} from '../../../../../../../lib/authentication/src/lib/interfaces/LoginModel';
 import * as fromApp from '../../../../../../../administration/src/app/app.reducer';
+import {VertexSnackbarNotifyService} from '../../../../../../../lib/vendors/src/lib/snackbar-notify/vertex-snackbar-notify.service';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -15,7 +14,7 @@ export class SignInFormComponent implements OnInit {
   hide = true;
   loginForm = {} as FormGroup;
 
-  constructor(private store: Store<fromApp.AppState>) {
+  constructor(private store: Store<fromApp.AppState>, private notify: VertexSnackbarNotifyService) {
   }
 
   ngOnInit(): void {
@@ -27,11 +26,12 @@ export class SignInFormComponent implements OnInit {
 
 
   onLogin(): void {
-    if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
-      return;
-    }
-    this.store.dispatch(USER_LOGIN_STAT({payload: this.loginForm.value as LoginModel}));
+    this.notify.showSuccess('jsdhjkdsh', 'sjdhsdjkhsdj');
+    // if (this.loginForm.invalid) {
+    //   this.loginForm.markAllAsTouched();
+    //   return;
+    // }
+    // this.store.dispatch(USER_LOGIN_STAT({payload: this.loginForm.value as LoginModel}));
   }
 
 }
