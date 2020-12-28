@@ -4,7 +4,8 @@ import {BOOK_DATA_LOAD_FAIL, BOOK_DATA_LOADED, BOOK_DATA_REQUEST} from './book.a
 import {catchError, map, switchMap} from 'rxjs/operators';
 
 import {of} from 'rxjs';
-import {BookApiService} from '../shared/services/book-api.service';
+import {BookApiService} from '../shared/service/book-api.service';
+
 
 @Injectable()
 export class BooksEffects {
@@ -12,7 +13,7 @@ export class BooksEffects {
     return this.action.pipe(
       ofType(BOOK_DATA_REQUEST),
       switchMap(() => {
-        return this.bookApiService.All().pipe(
+        return this.bookApiService.all().pipe(
           map((resData) => {
             console.log(resData);
             return BOOK_DATA_LOADED({payload: resData});

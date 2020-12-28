@@ -1,6 +1,6 @@
 import * as bookManagement from './book.action';
 import {createReducer, on} from '@ngrx/store';
-import {BookModel} from '../../@core/interfaces/api/BookModel';
+import {BookModel} from '../../../../../@core/interfaces/api/BookModel';
 
 
 export interface State {
