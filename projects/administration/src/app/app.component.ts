@@ -39,7 +39,10 @@ export class AppComponent implements OnInit {
     });
 
     if (this.cookieManagementService.checkRefreshToken()) {
-      this.store.dispatch(LOGIN_WITH_REFRESH_TOKEN({payload: this.cookieManagementService.getRefreshToken()}));
+
+      let refresh: any;
+      refresh = this.cookieManagementService.getRefreshToken();
+      this.store.dispatch(LOGIN_WITH_REFRESH_TOKEN({payload: refresh}));
     }
     this.primengConfig.ripple = true;
   }

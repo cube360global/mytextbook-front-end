@@ -54,6 +54,7 @@ export class ContentViewComponent implements OnInit {
   onDeleteContentClick(contentData: ContentModel): void {
     this.alertService.getConfirmationDialog()
       .confirm({
+        key: 'cd-100',
         message: AlertConst.ConfirmationMessage,
         accept: () => {
           this.contentApiService.deleteContent(contentData.id.toString())
