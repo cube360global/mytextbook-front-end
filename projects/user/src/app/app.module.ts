@@ -7,13 +7,12 @@ import {PrimengModule} from '../../../lib/vendors/src/lib/primeng/primeng.module
 import {NgxUiLoaderModule} from 'ngx-ui-loader';
 import {UserAuthModule} from './+auth/user-auth.module';
 import {StoreModule} from '@ngrx/store';
-import * as fromApp from '../../../administration/src/app/app.reducer';
+import * as fromApp from './app.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import {AuthEffects} from './+auth/store/auth.effects';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtModule} from '@auth0/angular-jwt';
 import {ToastrModule} from 'ngx-toastr';
-import {tokenGetter} from '../../../administration/src/app/app.module';
 import {AlyleModule} from '../../../lib/vendors/src/lib/alyle/alyle.module';
 import {LY_THEME, LY_THEME_NAME, LyHammerGestureConfig, LyTheme2, StyleRenderer} from '@alyle/ui';
 import {MinimaDark, MinimaLight} from '@alyle/ui/themes/minima';
@@ -26,6 +25,11 @@ import {LoadingBarRouterModule} from '@ngx-loading-bar/router';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {BooksEffects} from './private/@ui/user-content/book/store/book.effects';
 import {AuthInterceptorService} from './@core/interceptors/auth-interceptor.service';
+import {UserProfileEffects} from './private/@ui/user-details/user-profile/store/user-profile.effects';
+
+export function tokenGetter(): string {
+  return 'this is test';
+}
 
 
 @NgModule({
@@ -52,7 +56,7 @@ import {AuthInterceptorService} from './@core/interceptors/auth-interceptor.serv
     NgxUiLoaderModule,
     UserAuthModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthEffects, BooksEffects]),
+    EffectsModule.forRoot([AuthEffects, BooksEffects, UserProfileEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: true,

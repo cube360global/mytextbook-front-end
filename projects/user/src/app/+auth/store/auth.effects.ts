@@ -6,9 +6,10 @@ import {REFRESH_USER_TOKEN, USER_LOGIN, USER_LOGIN_FAIL, USER_LOGIN_STAT} from '
 import {catchError, map, switchMap, tap} from 'rxjs/operators';
 import {CookieManagerService} from '../../@core/services/cookie-manager.service';
 import {TokenDecodeModel} from '../../../../../lib/authentication/src/lib/interfaces/TokenDecodeModel';
-import {of} from 'rxjs';
+import {of, pipe} from 'rxjs';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
 import {Path} from '../../@core/enum/path.enum';
+import {USER_DATA_REQUEST} from "../../private/@ui/user-details/user-profile/store/user-profile.action";
 
 
 @Injectable()
@@ -45,6 +46,21 @@ export class AuthEffects {
       })
     );
   }, {dispatch: false});
+
+  authLoginSuccess$ = createEffect(() => {
+    return this.action.pipe(
+      ofType(USER_LOGIN),
+      pipe(
+        map((res) => {
+          return USER_DATA_REQUEST({payload: res.payload.userId.toString()});
+        }),
+        catchError(() => {
+          return of(USER_LOGIN_FAIL());
+        })
+      )
+    );
+  });
+
 
   constructor(private authService: UserAuthService,
               private action: Actions,
