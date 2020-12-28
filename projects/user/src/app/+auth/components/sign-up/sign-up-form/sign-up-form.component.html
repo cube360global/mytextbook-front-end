@@ -6,7 +6,7 @@
 
 
 
-
+  <ly-label class="text-color-01-b">first Name</ly-label>
   <ly-field appearance="outlined" [lyWidth]="1">
     <ly-label>Enter First Name</ly-label>
     <input lyNativeControl
@@ -16,6 +16,7 @@
     <ly-hint>Provide your first Name</ly-hint>
   </ly-field>
 
+  <ly-label class="text-color-01-b">Last Name</ly-label>
   <ly-field appearance="outlined" [lyWidth]="1">
     <ly-label>Enter Last Name</ly-label>
     <input lyNativeControl
@@ -25,6 +26,7 @@
     <ly-hint>Provide your last Name</ly-hint>
   </ly-field>
 
+  <ly-label class="text-color-01-b">Phone Number</ly-label>
   <ly-field appearance="outlined" [lyWidth]="1">
     <ly-label>Enter Phone No</ly-label>
     <input lyNativeControl
@@ -34,13 +36,16 @@
     <ly-hint>Provide your phone No</ly-hint>
   </ly-field>
 
-  <mat-form-field>
+  <mat-label class="text-color-01-b">Birthday</mat-label>
+  <br>
+  <mat-form-field appearance="outline" class="mt-1">
     <mat-label>Enter Birthday</mat-label>
     <input matInput [matDatepicker]="picker" formControlName="birthDay">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-
+  <br>
+  <ly-label class="text-color-01-b">Email</ly-label>
   <ly-field appearance="outlined" [lyWidth]="1">
     <ly-label>Enter Email address</ly-label>
     <input lyNativeControl
@@ -50,6 +55,7 @@
     <ly-hint>Provide your email</ly-hint>
   </ly-field>
 
+  <ly-label class="text-color-01-b">School</ly-label>
   <ly-field appearance="outlined" [lyWidth]="1">
     <ly-label>Enter School</ly-label>
     <input lyNativeControl
@@ -59,6 +65,7 @@
     <ly-hint>Provide your School</ly-hint>
   </ly-field>
 
+  <ly-label class="text-color-01-b">District</ly-label>
   <ly-field appearance="outlined" [lyWidth]="1">
     <ly-label>Enter District</ly-label>
     <select lyNativeControl formControlName="district">
@@ -90,6 +97,7 @@
     </select>
   </ly-field>
 
+  <ly-label class="text-color-01-b">ReferralLink</ly-label>
   <ly-field appearance="outlined" [lyWidth]="1">
     <ly-label>Enter referralLink</ly-label>
     <input lyNativeControl
