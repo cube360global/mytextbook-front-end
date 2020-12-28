@@ -12,6 +12,7 @@
       <div class=" p-inputtext-sm p-input-icon-right mt-1">
         <i class="fas fa-user"></i>
         <input
+          autocomplete="off"
           [ngClass]="{ 'p-invalid' : !loginForm.controls['username'].valid && loginForm.controls['username'].touched}"
           formControlName="username"
           id="username"
@@ -31,6 +32,7 @@
       <div class="p-float-label p-inputtext-sm p-input-icon-right mt-1">
         <i class="fas fa-lock"></i>
         <input
+          autocomplete="off"
           [ngClass]="{ 'p-invalid' : !loginForm.controls['password'].valid && loginForm.controls['password'].touched}"
           formControlName="password"
           id="password"

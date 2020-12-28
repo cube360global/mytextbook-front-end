@@ -97,7 +97,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     // Set up x-www-form-urlencode body
     const reqBody = new HttpParams()
       .set('grant_type', 'refresh_token')
-      .set('refresh_token', refreshToken);
+      .set('refresh_token', refreshToken.toString());
 
     // set headers
     const headersObject = new HttpHeaders()

@@ -10,6 +10,7 @@ import {BookContentModel} from '../../../@core/interfaces/BookContentModel';
 import {AlertService} from '../../../@core/services/alert.service';
 import {AlertConst} from '../../../@core/const/AlertConst';
 import {CONTENT_DATA_LOADED} from '../../store/content.action';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -29,13 +30,14 @@ export class ContentEditComponent implements OnInit {
               private alertService: AlertService,
               private contentApiService: ContentApiService,
               private store: Store<fromApp.AppState>,
+              private router: Router,
               @Inject(MAT_DIALOG_DATA) public bookContentModel: BookContentModel) {
   }
 
 
   ngOnInit(): void {
 
-    this.books  = this.bookContentModel.bookList;
+    this.books = this.bookContentModel.bookList;
     this.contentImage = this.bookContentModel.content.markerImageURL;
 
     this.contentAddForm = new FormGroup({
@@ -66,7 +68,7 @@ export class ContentEditComponent implements OnInit {
   }
 
   onContentSubmit(): void {
-    if (this.contentAddForm.invalid && this.contentImage == null) {
+    if (this.contentAddForm.invalid || this.contentImage == null) {
       this.contentAddForm.markAllAsTouched();
       return;
     }
@@ -83,13 +85,14 @@ export class ContentEditComponent implements OnInit {
 
     const postDataString = JSON.stringify(postData);
 
-    console.log(postDataString);
+
     const formData = new FormData();
     formData.append('image', this.contentImage);
     formData.append('body', postDataString);
 
     this.alertService.getConfirmationDialog()
       .confirm({
+        key: 'ce-100',
         message: AlertConst.ConfirmationMessage,
         accept: () => {
           this.sendToServer(formData);
@@ -103,6 +106,7 @@ export class ContentEditComponent implements OnInit {
     this.contentApiService.updateContent(formData)
       .subscribe(res => {
         this.dialogRef.close();
+        this.router.navigate(['/admin/content/all']);
         this.store.dispatch(CONTENT_DATA_LOADED({payload: res}));
       });
   }

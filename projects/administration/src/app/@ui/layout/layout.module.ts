@@ -4,6 +4,7 @@ import {NavBarComponent} from './component/nav-bar/nav-bar.component';
 import {MaterialModule} from '../../../../../lib/vendors/src/lib/material/material.module';
 import {RouterModule} from '@angular/router';
 import {ToolBarComponent} from './component/nav-bar/tool-bar/tool-bar.component';
+import {PrimengModule} from '../../../../../lib/vendors/src/lib/primeng/primeng.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {ToolBarComponent} from './component/nav-bar/tool-bar/tool-bar.component'
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    PrimengModule,
   ]
 })
 export class LayoutModule {

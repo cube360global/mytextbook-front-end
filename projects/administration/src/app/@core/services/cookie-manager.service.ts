@@ -12,31 +12,42 @@ export class CookieManagerService {
 
   public setCookie(accessToken: string, refreshToken: string): void {
     // this.deleteCookie();
-    this.cookieService.set(Cookie.ACCESS_TOKEN, accessToken, {path: '/', expires: 0.1, sameSite: 'Lax'});
-    this.cookieService.set(Cookie.REFRESH_TOKEN, refreshToken, {path: '/', expires: 5, sameSite: 'Lax'});
+    localStorage.setItem(Cookie.ACCESS_TOKEN, accessToken);
+    localStorage.setItem(Cookie.REFRESH_TOKEN, refreshToken);
+
+    // this.cookieService.set(Cookie.ACCESS_TOKEN, accessToken, {path: '/', expires: 0.1, sameSite: 'Strict'});
+    // this.cookieService.set(Cookie.REFRESH_TOKEN, REFRESH_TOKEN, {path: '/', expires: 5, sameSite: 'Strict'});
   }
 
   public deleteCookie(): void {
-    // this.cookieService.deleteAll();
-    this.cookieService.delete(Cookie.ACCESS_TOKEN);
-    // this.cookieService.delete(Cookie.REFRESH_TOKEN);
+    localStorage.removeItem(Cookie.ACCESS_TOKEN);
+    localStorage.removeItem(Cookie.REFRESH_TOKEN);
+    this.cookieService.deleteAll();
   }
 
   public checkAccessToken(): boolean {
-    return this.cookieService.check(Cookie.ACCESS_TOKEN);
+    return localStorage.getItem(Cookie.ACCESS_TOKEN) !== null;
+    // return this.cookieService.check(Cookie.ACCESS_TOKEN);
   }
 
   public checkRefreshToken(): boolean {
-    return this.cookieService.check(Cookie.REFRESH_TOKEN);
+    return localStorage.getItem(Cookie.REFRESH_TOKEN) !== null;
   }
 
-  public getAccessToken(): string {
-    return this.cookieService.get(Cookie.ACCESS_TOKEN).toString();
+  public getAccessToken(): any {
+    if (this.checkAccessToken()) {
+      return localStorage.getItem(Cookie.ACCESS_TOKEN);
+    } else {
+      return '';
+    }
   }
 
-  public getRefreshToken(): string {
-    return this.cookieService.get(Cookie.REFRESH_TOKEN).toString();
+  public getRefreshToken(): any {
+    if (this.checkRefreshToken()) {
+      return localStorage.getItem(Cookie.REFRESH_TOKEN);
+    } else {
+      return '';
+    }
   }
-
 
 }
