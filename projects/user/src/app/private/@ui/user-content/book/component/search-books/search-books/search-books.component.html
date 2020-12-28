@@ -1,40 +1,43 @@
 <div class="row">
-  <div class="col-sm-3 m-1">
-    <p-dropdown [filter]="true"
-                [options]="subjects"
-                [showClear]="true"
-                appendTo="body"
-                filterBy="name"
-                formControlName="subject"
-                optionLabel="name"
-                placeholder="Search by Subject">
-    </p-dropdown>
+  <div class="col-sm-3">
+    <mat-form-field appearance="outline">
+      <mat-label>Search by Subject</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let subject of subjects"
+                    value="subject.name">
+          {{subject.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-  <div class="col-sm-3 m-1">
-    <p-dropdown [filter]="true"
-                [options]="utilityService.gradeList"
-                [showClear]="true"
-                appendTo="body"
-                filterBy="name"
-                formControlName="grade"
-                optionLabel="name"
-                placeholder="Search by Grade">
-    </p-dropdown>
+  <div class="col-sm-3">
+    <mat-form-field appearance="outline">
+      <mat-label>Search by Grade</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let grade of utilityService.gradeList"
+                    value="grade.name">
+          {{grade.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-  <div class="col-sm-3 m-1">
-    <p-dropdown [filter]="true"
-                [options]="utilityService.mediums"
-                [showClear]="true"
-                appendTo="body"
-                filterBy="name"
-                formControlName="medium"
-                optionLabel="name"
-                placeholder="Search by Medium">
-    </p-dropdown>
+  <div class="col-sm-3">
+    <mat-form-field appearance="outline">
+      <mat-label>Search by Medium</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let medium of utilityService.mediums"
+                    value="medium.name">
+          {{medium.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-  <div class="col-sm-2 m-3">
-    <button mat-flat-button color="primary"
+  <div class="col-sm-3">
+    <button mat-flat-button
+            color="primary"
+            class="btn-cus w-100"
             style="text-transform: uppercase">
+      <i class="fas fa-search ms-2"></i>
       Search
     </button>
   </div>
