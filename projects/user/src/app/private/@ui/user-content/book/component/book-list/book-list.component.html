@@ -1,1 +1,1 @@
-<app-book-item *ngFor="let book of books"></app-book-item>
+<app-book-item *ngFor="let book of $obs | async" [book]="book"></app-book-item>
