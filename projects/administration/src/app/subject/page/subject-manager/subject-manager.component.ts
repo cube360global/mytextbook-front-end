@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../app.reducer';
 import {MatDialog} from '@angular/material/dialog';
-import {AddUserComponent} from '../../../users/component/add-user/add-user.component';
-import {AddBulkUserComponent} from '../../../users/component/add-bulk-user/add-bulk-user.component';
 import {SUBJECT_DATA_REQUEST} from '../../store/subject.action';
 import {AddSubjectComponent} from '../../component/add-subject/add-subject.component';
 
@@ -27,7 +25,6 @@ export class SubjectManagerComponent implements OnInit {
       width: '400px'
     });
   }
-
 
 
 }

@@ -12,51 +12,51 @@
 </div>
 
 <div mat-dialog-content>
-<div class="p-float-label mt-2 mb-2">
-  <input [(ngModel)]="subjectName"
-         class="p-inputtext-sm"
-         [ngClass]="{ 'p-invalid' : !subjectNameCon.valid && subjectNameCon.touched}"
-         [formControl]="subjectNameCon"
-         id="subjectName"
-         pInputText style="width: 100%" type="text">
-  <label for="subjectName">Subject Name*</label>
-</div>
+  <div class="p-float-label mt-2 mb-2">
+    <input [(ngModel)]="subjectName"
+           [formControl]="subjectNameCon"
+           [ngClass]="{ 'p-invalid' : !subjectNameCon.valid && subjectNameCon.touched}"
+           class="p-inputtext-sm"
+           id="subjectName"
+           pInputText style="width: 100%" type="text">
+    <label for="subjectName">Subject Name*</label>
+  </div>
 
   <div>
     <small *ngIf="!subjectNameCon.valid && subjectNameCon.touched" class="p-invalid ms-3">The Name is required</small>
   </div>
 
-<fieldset class="form-group mt-4 image-size">
-  <label class="mb-2"><b>Upload Logo *</b></label>
-  {{imageError}}
-  <div class="custom-file fileInputProfileWrap ">
-    <input (change)="fileChangeEvent($event)" class="fileInputProfile" type="file">
-    <div class="img-space">
-      <ng-container *ngIf="isImageSaved; else elseTemplate">
-        <img [src]="cardImageBase64" alt="selected image" class="img-fluid"/>
-      </ng-container>
-      <ng-template #elseTemplate>
-        <img alt="placeholder" class="img-fluid" src="assets/img/placeholder.jpg">
-      </ng-template>
+  <fieldset class="form-group mt-4 image-size">
+    <label class="mb-2"><b>Upload Logo *</b></label>
+    {{imageError}}
+    <div class="custom-file fileInputProfileWrap ">
+      <input (change)="fileChangeEvent($event)" class="fileInputProfile" type="file">
+      <div class="img-space">
+        <ng-container *ngIf="isImageSaved; else elseTemplate">
+          <img [src]="cardImageBase64" alt="selected image" class="img-fluid"/>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <img alt="placeholder" class="img-fluid" src="assets/img/placeholder.jpg">
+        </ng-template>
+
+      </div>
 
     </div>
+  </fieldset>
 
+
+  <div class="d-flex justify-content-end">
+    <button (click)="$event.preventDefault();removeImage()" *ngIf="isImageSaved"
+            class="mat-button-rounded-sm mt-2" color="warn"
+            mat-raised-button>
+      Remove
+    </button>
   </div>
-</fieldset>
 
-
-<div class="d-flex justify-content-end">
-  <button (click)="$event.preventDefault();removeImage()" *ngIf="isImageSaved"
-          class="mat-button-rounded-sm mt-2" color="warn"
-          mat-raised-button>
-    Remove
+  <button (click)="onSubmitImg()" [disabled]="cardImageBase64 == '' || subjectName == ''"
+          class="mat-button-rounded-sm mt-3" color="primary"
+          mat-raised-button style="width: 100%;">submit
   </button>
-</div>
-
-<button (click)="onSubmitImg()" [disabled]="cardImageBase64 == '' || subjectName == ''"
-        class="mat-button-rounded-sm mt-3" color="primary"
-        mat-raised-button style="width: 100%;">submit
-</button>
 </div>
 
 

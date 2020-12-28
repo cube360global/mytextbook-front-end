@@ -1,4 +1,4 @@
-import { PartialThemeVariables} from '@alyle/ui';
+import {PartialThemeVariables} from '@alyle/ui';
 import {color} from '@alyle/ui/color';
 
 /**

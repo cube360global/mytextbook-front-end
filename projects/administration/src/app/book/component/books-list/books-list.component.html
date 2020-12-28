@@ -1,9 +1,9 @@
-<p-table #dt1 [loading]="loading" [paginator]="true"
+<p-table #dt1 [globalFilterFields]="['grade','medium','name','price','subject']" [loading]="loading"
+         [paginator]="true"
          [rowsPerPageOptions]="[10,25,50]"
          [rows]="10"
          [showCurrentPageReport]="true"
          [value]="books"
-         [globalFilterFields]="['grade','medium','name','price','subject']"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
          styleClass="p-datatable-sm p-datatable-responsive-demo">
 

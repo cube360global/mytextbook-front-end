@@ -1,4 +1,4 @@
-export interface UserSignUpModel{
+export interface UserSignUpModel {
   birthDay: number;
   district: string;
   email: string;

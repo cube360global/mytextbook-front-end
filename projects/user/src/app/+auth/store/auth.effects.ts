@@ -7,29 +7,28 @@ import {catchError, map, switchMap, tap} from 'rxjs/operators';
 import {CookieManagerService} from '../../@core/services/cookie-manager.service';
 import {TokenDecodeModel} from '../../../../../lib/authentication/src/lib/interfaces/TokenDecodeModel';
 import {of, pipe} from 'rxjs';
-import {NgxUiLoaderService} from 'ngx-ui-loader';
 import {Path} from '../../@core/enum/path.enum';
-import {USER_DATA_REQUEST} from "../../private/@ui/user-details/user-profile/store/user-profile.action";
-
+import {USER_DATA_REQUEST} from '../../private/@ui/user-details/user-profile/store/user-profile.action';
+import {NgxSpinnerService} from 'ngx-spinner';
+import {USER_LOGOUT} from '../../../../../administration/src/app/+auth/store/auth.action';
 
 @Injectable()
 export class AuthEffects {
-
   authLoginStart$ = createEffect(() => {
     return this.action.pipe(
       ofType(USER_LOGIN_STAT),
       switchMap((loginData) => {
-        this.ngxUiLoaderService.start('1200');
+        this.spinner.show();
         return this.authService.loginAdAdmin(loginData.payload)
           .pipe(
             map((resData: TokenDecodeModel) => {
-              this.ngxUiLoaderService.stop('1200');
+              this.spinner.hide();
               this.cookieManager.setCookie(resData.access_token, resData.refresh_token);
               this.router.navigate(['/', Path.Private]);
               return USER_LOGIN({payload: resData});
             }),
             catchError(() => {
-              this.ngxUiLoaderService.stop('1200');
+              this.spinner.hide();
               this.cookieManager.deleteCookie();
               return of(USER_LOGIN_FAIL());
             })
@@ -37,6 +36,7 @@ export class AuthEffects {
       })
     );
   });
+
   authLogOut = createEffect(() => {
     return this.action.pipe(
       ofType(REFRESH_USER_TOKEN),
@@ -61,13 +61,20 @@ export class AuthEffects {
     );
   });
 
+  userLogOut = createEffect(() => {
+    return this.action.pipe(
+      ofType(USER_LOGOUT),
+      tap(() => {
+        this.cookieManager.deleteCookie();
+        this.router.navigate(['']);
+      })
+    );
+  }, {dispatch: false});
 
   constructor(private authService: UserAuthService,
               private action: Actions,
               private cookieManager: CookieManagerService,
-              private ngxUiLoaderService: NgxUiLoaderService,
+              private spinner: NgxSpinnerService,
               private router: Router) {
   }
-
-
 }

@@ -1,15 +1,24 @@
 <nav class="navbar navbar-light bg-light fixed-top">
   <div class="container-fluid">
     <div class="navbar-brand d-flex align-items-center">
-      <i (click)="drawer.toggle()" class="fas fa-bars me-2" style="color: #ffffff"></i>
+      <i (click)="drawer.toggle()" *ngIf="isDrawerShow" class="fas fa-bars me-2" style="color: #ffffff"></i>
       <img alt="my text book logo"
            class="img-fluid ms-lg-4"
            src="../../../../../../../assets/img/my-text-book-logo.png">
     </div>
     <div class="d-flex justify-content-between align-items-center">
-      <button aria-label="Example icon-button with share icon" class="me-lg-4" mat-icon-button>
+      <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with share icon" class="me-lg-4"
+              mat-icon-button>
         <mat-icon>person</mat-icon>
       </button>
     </div>
   </div>
 </nav>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/private/user-details">
+    My Profile
+  </button>
+  <button (click)="onSignOut()" mat-menu-item>
+    Sign Out
+  </button>
+</mat-menu>

@@ -2,25 +2,25 @@
 
 
   <mat-label class="text-color-01-b">Email Address</mat-label>
-  <mat-form-field appearance="outline" floatLabel="never" class="mt-1">
-    <mat-icon matPrefix class="me-1 text-color-01">person</mat-icon>
-    <input formControlName="username" placeholder="example@gmail.com" matInput>
+  <mat-form-field appearance="outline" class="mt-1" floatLabel="never">
+    <mat-icon class="me-1 text-color-01" matPrefix>person</mat-icon>
+    <input formControlName="username" matInput placeholder="example@gmail.com">
     <mat-error *ngIf="loginForm.controls['username'].hasError('email')">This is the not a valid email</mat-error>
     <mat-error *ngIf="loginForm.controls['username'].hasError('required')">Required</mat-error>
   </mat-form-field>
 
 
   <mat-label class="text-color-01-b">Password</mat-label>
-  <mat-form-field appearance="outline" floatLabel="never" class="mt-1">
-    <mat-icon matPrefix class="me-1 text-color-01">lock</mat-icon>
-    <input formControlName="password"
-           [type]="hide ? 'password' : 'text'"
-           placeholder="********"
-           matInput>
+  <mat-form-field appearance="outline" class="mt-1" floatLabel="never">
+    <mat-icon class="me-1 text-color-01" matPrefix>lock</mat-icon>
+    <input [type]="hide ? 'password' : 'text'"
+           formControlName="password"
+           matInput
+           placeholder="********">
 
-    <button mat-icon-button
-            matSuffix
-            (click)="$event.preventDefault();hide = !hide">
+    <button (click)="$event.preventDefault();hide = !hide"
+            mat-icon-button
+            matSuffix>
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
     <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">Min 8 characters</mat-error>
@@ -42,32 +42,32 @@
   <!--    <ly-error *ngIf="loginForm.controls['username'].hasError('required')">Required</ly-error>-->
   <!--  </ly-field>-->
 
-<!--  <ly-field [fullWidth]="true" #_field appearance="outlined">-->
-<!--    <input-->
-<!--      lyNativeControl-->
-<!--      placeholder="********"-->
-<!--      [type]="hide ? 'password' : 'text'"-->
-<!--      formControlName="password"-->
-<!--    >-->
-<!--    <ly-label>Enter your password</ly-label>-->
-<!--    <div lyPrefix [lyMf]="'0.25em'" class="mt-2">-->
-<!--      <ly-icon>lock</ly-icon>-->
-<!--    </div>-->
-<!--    <button ly-button-->
-<!--            appearance="icon"-->
-<!--            lySuffix-->
-<!--            (click)="$event.preventDefault();hide = !hide"-->
-<!--            [color]="_field.errorState ? 'warn' : 'text'"-->
-<!--    >-->
-<!--      <ly-icon>{{ hide ? 'visibility' : 'visibility_off' }}</ly-icon>-->
-<!--    </button>-->
-<!--    <ly-hint>Hint</ly-hint>-->
-<!--    <ly-hint [align]="'after'">{{ loginForm.controls['password'].value?.length || 0 }}</ly-hint>-->
-<!--    <ly-error *ngIf="loginForm.controls['password'].hasError('minlength')">Min 8 characters</ly-error>-->
-<!--    <ly-error *ngIf="loginForm.controls['password'].hasError('required')">Required</ly-error>-->
-<!--  </ly-field>-->
+  <!--  <ly-field [fullWidth]="true" #_field appearance="outlined">-->
+  <!--    <input-->
+  <!--      lyNativeControl-->
+  <!--      placeholder="********"-->
+  <!--      [type]="hide ? 'password' : 'text'"-->
+  <!--      formControlName="password"-->
+  <!--    >-->
+  <!--    <ly-label>Enter your password</ly-label>-->
+  <!--    <div lyPrefix [lyMf]="'0.25em'" class="mt-2">-->
+  <!--      <ly-icon>lock</ly-icon>-->
+  <!--    </div>-->
+  <!--    <button ly-button-->
+  <!--            appearance="icon"-->
+  <!--            lySuffix-->
+  <!--            (click)="$event.preventDefault();hide = !hide"-->
+  <!--            [color]="_field.errorState ? 'warn' : 'text'"-->
+  <!--    >-->
+  <!--      <ly-icon>{{ hide ? 'visibility' : 'visibility_off' }}</ly-icon>-->
+  <!--    </button>-->
+  <!--    <ly-hint>Hint</ly-hint>-->
+  <!--    <ly-hint [align]="'after'">{{ loginForm.controls['password'].value?.length || 0 }}</ly-hint>-->
+  <!--    <ly-error *ngIf="loginForm.controls['password'].hasError('minlength')">Min 8 characters</ly-error>-->
+  <!--    <ly-error *ngIf="loginForm.controls['password'].hasError('required')">Required</ly-error>-->
+  <!--  </ly-field>-->
 
-  <button class="btn-cus-lg w-100 mt-3" ly-button raised bg="primary" size="large">SIGN IN</button>
+  <button bg="primary" class="btn-cus-lg w-100 mt-3" ly-button raised size="large">SIGN IN</button>
 
 
   <!--  <div class="p-input-icon-right w-100 mb-3">-->

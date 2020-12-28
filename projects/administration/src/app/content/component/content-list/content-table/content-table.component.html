@@ -2,11 +2,11 @@
          [globalFilterFields]="['name','description','chapter','pageNumber','viewCount','likeCount','unLikeCount','status','book']"
          [loading]="loading"
          [paginator]="true"
+         [resizableColumns]="true"
          [rowsPerPageOptions]="[10,25,50]"
          [rows]="10"
-         [showCurrentPageReport]="true"
          [scrollable]="true"
-         [resizableColumns]="true"
+         [showCurrentPageReport]="true"
          [value]="contentList"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
          styleClass="p-datatable-sm p-datatable-responsive-demo">
@@ -79,7 +79,7 @@
         <img alt="" class="img-fluid" height="80px" src="{{content.markerImageURL}}" width="80px">
       </td>
       <td>{{content.name}}</td>
-<!--      <td>{{content.description}}</td>-->
+      <!--      <td>{{content.description}}</td>-->
       <td>{{content.chapter}}</td>
       <td>{{content.pageNumber}}</td>
       <td>{{content.viewCount}}</td>
@@ -96,13 +96,13 @@
           <i class="fas fa-eye"></i>
         </button>
         &nbsp;
-<!--        <button-->
-<!--          color="primary"-->
-<!--          mat-mini-fab-->
-<!--          matTooltip="Edit"-->
-<!--          (click)="onContentEditDialogOpen(content)">-->
-<!--          <i class="fas fa-edit"></i>-->
-<!--        </button>-->
+        <!--        <button-->
+        <!--          color="primary"-->
+        <!--          mat-mini-fab-->
+        <!--          matTooltip="Edit"-->
+        <!--          (click)="onContentEditDialogOpen(content)">-->
+        <!--          <i class="fas fa-edit"></i>-->
+        <!--        </button>-->
       </td>
     </tr>
   </ng-template>
