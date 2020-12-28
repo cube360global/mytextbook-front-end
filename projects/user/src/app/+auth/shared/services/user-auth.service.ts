@@ -41,5 +41,17 @@ export class UserAuthService {
     return this.apiUtilityToolService.POST([ControllerConst.User, 'sign-up'],
       signUp, true, true);
   }
+  public  forgetPassword(email: string): Observable<any>{
+    return this.apiUtilityToolService.POST([ControllerConst.User, 'forgot-password', email],
+      null, true, true);
+  }
 
+  public  resetPassword(password: string, token: string): Observable<any>{
+    const x = {password};
+    const headersObject = new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`);
+    const httpClient = new HttpClient(this.httpBackend);
+    return  this.apiUtilityToolService.POST_WITHOUT_AUTH([ControllerConst.User, 'set-password'],
+      x, headersObject, true);
+  }
 }
