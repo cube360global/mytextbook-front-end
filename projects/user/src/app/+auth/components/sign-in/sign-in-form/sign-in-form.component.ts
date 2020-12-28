@@ -4,6 +4,9 @@ import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../../../administration/src/app/app.reducer';
 import {VertexSnackbarNotifyService} from '../../../../../../../lib/vendors/src/lib/snackbar-notify/vertex-snackbar-notify.service';
 
+import {AlertService} from '../../../../../../../lib/tools/src/lib/alert.service';
+import {ToastrService} from 'ngx-toastr';
+
 @Component({
   selector: 'app-sign-in-form',
   templateUrl: './sign-in-form.component.html',
@@ -14,7 +17,9 @@ export class SignInFormComponent implements OnInit {
   hide = true;
   loginForm = {} as FormGroup;
 
-  constructor(private store: Store<fromApp.AppState>, private notify: VertexSnackbarNotifyService) {
+  constructor(private store: Store<fromApp.AppState>,
+              private alertService: AlertService,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -26,7 +31,9 @@ export class SignInFormComponent implements OnInit {
 
 
   onLogin(): void {
-    this.notify.showSuccess('jsdhjkdsh', 'sjdhsdjkhsdj');
+    // this.notify.showSuccess('jsdhjkdsh', 'sjdhsdjkhsdj');
+    //  this.alertService.showSuccess('ijsdfjhkfdhkudfhkjdfhghdf');
+    this.toastr.success('hjgjgjgjhg', 'success');
     // if (this.loginForm.invalid) {
     //   this.loginForm.markAllAsTouched();
     //   return;

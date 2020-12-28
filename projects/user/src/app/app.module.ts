@@ -42,10 +42,9 @@ import {VendorsModule} from '../../../lib/vendors/src/lib/vendors.module';
       }
     }),
     ToastrModule.forRoot({
-      positionClass: 'toast-top-center',
+      positionClass: 'toast-bottom-center',
       preventDuplicates: true,
     }),
-    VendorsModule,
     AlyleModule,
     PrimengModule,
     NgxUiLoaderModule,

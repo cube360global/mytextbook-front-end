@@ -13,6 +13,8 @@ span:focus {
   border: 0;
 }
 
+@import '~styles/ngx-toastr';
+
 button:focus {
   outline: none !important;
 }
@@ -27,6 +29,7 @@ button:focus {
 
 .success-snack.mat-snack-bar-container {
   background-color: #ffffff;
+  border-left:5px solid #49DB6D;
 }
 .snack-notify-header{
   color: #000001;
