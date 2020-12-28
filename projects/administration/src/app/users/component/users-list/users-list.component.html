@@ -1,12 +1,15 @@
-<p-table #dt1 [globalFilterFields]="['email','firstName','lastName','telephoneNumber','active','subscriptionCount','role']" [loading]="loading"
-         [paginator]="true"
-         [rowsPerPageOptions]="[10,25,50]"
-         [rows]="10"
-         [showCurrentPageReport]="true"
+<p-table #dt1
+         [globalFilterFields]="['email','firstName','lastName','telephoneNumber','active','subscriptionCount','role']"
+         [loading]="loading"
          [value]="users"
-         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-         styleClass="p-datatable-sm p-datatable-responsive-demo"
+         [rowHover]="true"
+         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         [scrollable]="true"
+         [resizableColumns]="true"
+         styleClass="p-datatable-gridlines"
 >
+
 
   <ng-template pTemplate="caption">
     <div class="mb-2">
@@ -22,75 +25,59 @@
       <div class="d-flex justify-content-between align-items-center mt-2">
         <ng-container *ngTemplateOutlet="filterTemplate"></ng-container>
       </div>
-
-
-      <!--      <button mat-icon-button color="primary" (click)="op.toggle($event)">-->
-      <!--        <mat-icon>filter_alt</mat-icon>-->
-      <!--      </button>-->
-
-
     </div>
   </ng-template>
+
+  <ng-template pTemplate="colgroup">
+    <colgroup>
+      <col style="width:25%">
+      <col style="width:15%">
+      <col style="width:35%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:25%">
+      <col style="width:25%">
+    </colgroup>
+  </ng-template>
+
+
   <ng-template pTemplate="header">
     <tr>
-      <th>
+      <th pResizableColumn>
         Email
-        <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
-        <!--          Email-->
-        <!--          <p-columnFilter display="menu" field="email" type="text"></p-columnFilter>-->
-        <!--        </div>-->
       </th>
-      <th>
+      <th pResizableColumn>
         First Name
-        <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
-        <!--          First Name-->
-        <!--          <p-columnFilter display="menu" field="firstName" type="text"></p-columnFilter>-->
-        <!--        </div>-->
       </th>
-      <th>
+      <th pResizableColumn>
         Last Name
-        <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
-        <!--          Last Name-->
-        <!--          <p-columnFilter display="menu" field="lastName" type="text"></p-columnFilter>-->
-        <!--        </div>-->
       </th>
-      <th>
+      <th pResizableColumn>
         Contact No
-        <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
-        <!--          Contact No-->
-        <!--          <p-columnFilter display="menu" field="telephoneNumber" type="text"></p-columnFilter>-->
-        <!--        </div>-->
       </th>
-      <th>
+      <th pResizableColumn>
         Status
-        <!--        <div class="p-d-flex p-jc-between p-ai-center" matTooltip="User active status">-->
-        <!--          Status-->
-        <!--          <p-columnFilter display="menu" field="active" type="text"></p-columnFilter>-->
-        <!--        </div>-->
       </th>
-      <th matTooltip="Subscription Count">
+      <th pResizableColumn matTooltip="Subscription Count">
         Sub. Count
-        <!--        <div class="p-d-flex p-jc-between p-ai-center" matTooltip="Subscription Count">-->
-        <!--          Sub. Count-->
-        <!--          <p-columnFilter display="menu" field="subscriptionCount" type="number"></p-columnFilter>-->
-        <!--        </div>-->
       </th>
-      <th>
+      <th pResizableColumn>
         Role
-        <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
-        <!--          Role-->
-        <!--          <p-columnFilter display="menu" field="role" type="number"></p-columnFilter>-->
-        <!--        </div>-->
       </th>
     </tr>
   </ng-template>
-  <ng-template let-user pTemplate="body">
+
+  <ng-template  pTemplate="body"  let-user>
     <tr>
       <td>{{user.email}}</td>
       <td>{{user.firstName}}</td>
       <td>{{user.lastName}}</td>
       <td>{{user.telephoneNumber}}</td>
-      <td matRipple style="cursor: pointer" (click)="onUserStatusEditClick(user)">{{user.active}}</td>
+      <td matTooltip="Click to edit user status" style="cursor: pointer" (click)="onUserStatusEditClick(user)">
+        <span  *ngIf="user.active;else falseContent"  class="alert alert-success p-1"> True </span>
+
+      </td>
       <td>{{user.subscriptionCount}}</td>
       <td>{{user.role}}</td>
       <td>
@@ -138,3 +125,6 @@
   </form>
 </ng-template>
 
+<ng-template #falseContent>
+  <span class="alert alert-danger p-1"> False </span>
+</ng-template>

@@ -1,1 +1,1 @@
-<p>book-list works!</p>
+<app-book-item *ngFor="let book of $obs | async" [book]="book"></app-book-item>
