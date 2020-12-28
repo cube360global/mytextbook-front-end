@@ -1,5 +1,5 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpBackend, HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {ApiResponseModel} from './interfaces/ApiResponseModel';
@@ -12,6 +12,7 @@ import {AlertService} from './alert.service';
 export class ApiUtilityToolService {
 
   constructor(private http: HttpClient,
+              private httpBackend: HttpBackend,
               private spinner: NgxSpinnerService,
               private alertService: AlertService,
               @Inject('BASE_URL') private baseUrl: string) {
@@ -116,4 +117,35 @@ export class ApiUtilityToolService {
           return throwError(err);
         }));
   }
+
+  POST_WITHOUT_AUTH<T>(path: string[], body: T, httpHeaders: HttpHeaders, isLoaderOn = false): Observable<T> {
+    if (isLoaderOn) {
+      this.spinner.show();
+    }
+    const apiPath = `${this.baseUrl}${path.join('/')}`;
+    const httpClient = new HttpClient(this.httpBackend);
+    return httpClient.post<ApiResponseModel>(apiPath, body,
+      {
+        headers: httpHeaders
+      }).pipe(
+      map((data) => {
+        if (data.statusCode === 200) {
+          if (isLoaderOn) {
+            this.spinner.hide();
+          }
+          return data.data as T;
+        } else {
+          throw Error(data.message);
+        }
+      }), catchError(err => {
+
+        if (isLoaderOn) {
+          this.spinner.hide();
+        }
+        this.alertService.showError(err.message);
+        return throwError(err);
+      }));
+
+  }
+
 }

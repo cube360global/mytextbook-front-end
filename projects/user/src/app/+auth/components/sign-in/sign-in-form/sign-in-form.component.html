@@ -1,18 +1,18 @@
 <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
 
 
-  <mat-form-field appearance="outline">
-    <mat-label>Primary Email</mat-label>
-    <mat-icon matPrefix class="me-1">person</mat-icon>
+  <mat-label class="text-color-01-b">Email Address</mat-label>
+  <mat-form-field appearance="outline" floatLabel="never" class="mt-1">
+    <mat-icon matPrefix class="me-1 text-color-01">person</mat-icon>
     <input formControlName="username" placeholder="example@gmail.com" matInput>
     <mat-error *ngIf="loginForm.controls['username'].hasError('email')">This is the not a valid email</mat-error>
     <mat-error *ngIf="loginForm.controls['username'].hasError('required')">Required</mat-error>
   </mat-form-field>
 
 
-  <mat-form-field appearance="outline">
-    <mat-label>Password</mat-label>
-    <mat-icon matPrefix class="me-1">lock</mat-icon>
+  <mat-label class="text-color-01-b">Password</mat-label>
+  <mat-form-field appearance="outline" floatLabel="never" class="mt-1">
+    <mat-icon matPrefix class="me-1 text-color-01">lock</mat-icon>
     <input formControlName="password"
            [type]="hide ? 'password' : 'text'"
            placeholder="********"
