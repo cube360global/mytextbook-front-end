@@ -2,17 +2,17 @@ import * as fromAuth from './+auth/store/auth.reducer';
 
 
 import * as fromProfile from './private/@ui/user-details/user-profile/store/user-profile.reducer';
-import {ActionReducerMap, createFeatureSelector, createSelector} from '@ngrx/store';
+import {ActionReducerMap, createFeatureSelector} from '@ngrx/store';
 
 export interface AppState {
   auth: fromAuth.AuthState;
-  profile: fromProfile.State;
+  userProfile: fromProfile.State;
 
 }
 
 export const appReducer: ActionReducerMap<AppState> = {
   auth: fromAuth.authReducer,
-  profile: fromProfile.userProfileReducer,
+  userProfile: fromProfile.userProfileReducer,
 };
 
 // Main Selectors
