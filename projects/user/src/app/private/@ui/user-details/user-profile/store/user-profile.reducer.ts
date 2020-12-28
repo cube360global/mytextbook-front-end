@@ -1,5 +1,5 @@
-import * as UserManagement from './user.action';
-import {UserModel} from '../../@core/interfaces/api/UserModel';
+import * as UserManagement from './user-profile.action';
+import {UserModel} from '../../../../../@core/interfaces/api/UserModel';
 import {createReducer, on} from '@ngrx/store';
 
 
@@ -7,12 +7,14 @@ export interface State {
   loading: boolean;
   schools: string[];
   userData: UserModel[];
+  user: UserModel;
 }
 
 export const initialState: State = {
   loading: false,
   schools: [] as string[],
-  userData: [] as UserModel[]
+  userData: [] as UserModel[],
+  user: {} as UserModel
 };
 
 export const userReducer = createReducer(
@@ -42,6 +44,20 @@ export const userReducer = createReducer(
     return {
       ...state,
       userData: [] as UserModel[],
+      loading: false
+    };
+  }),
+  on(UserManagement.USER_DATA_LOADED, (state, {payload}) => {
+    return {
+      ...state,
+      user: payload,
+      loading: false
+    };
+  }),
+  on(UserManagement.USER_DATA_LOAD_FAIL, (state) => {
+    return {
+      ...state,
+      user: {} as UserModel,
       loading: false
     };
   })

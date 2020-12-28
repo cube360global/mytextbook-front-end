@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {MatDrawer} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-private-nav-bar',
@@ -7,10 +8,13 @@ import {Component, OnInit} from '@angular/core';
 })
 export class PrivateNavBarComponent implements OnInit {
 
+  @Input() drawer = {} as MatDrawer;
+
   constructor() {
   }
 
   ngOnInit(): void {
+
   }
 
 }

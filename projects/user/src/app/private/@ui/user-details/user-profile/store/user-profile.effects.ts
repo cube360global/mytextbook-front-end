@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
-import {USERS_AND_SCHOOL_DATA_LOADED, USERS_DATA_LOAD_FAIL, USERS_DATA_REQUEST} from './user.action';
+import {USER_DATA_LOAD_FAIL, USER_DATA_LOADED, USERS_DATA_REQUEST} from './user-profile.action';
 import {catchError, map, switchMap} from 'rxjs/operators';
-import {UserApiService} from '../shared/service/user-api.service';
+import {UserProfileApiService} from '../shared/service/user-profile-api.service';
 import {of} from 'rxjs';
 
 @Injectable()
@@ -11,20 +11,20 @@ export class UsersEffects {
     return this.action.pipe(
       ofType(USERS_DATA_REQUEST),
       switchMap(() => {
-        return this.usersApiService.all().pipe(
+        return this.userProfileApiService.getUserProfileById('1').pipe(
           map((resData) => {
             console.log(resData);
-            return USERS_AND_SCHOOL_DATA_LOADED({payload: resData});
+            return USER_DATA_LOADED({payload: resData});
           }),
           catchError(() => {
-            return of(USERS_DATA_LOAD_FAIL());
+            return of(USER_DATA_LOAD_FAIL());
           })
         );
       })
     );
   });
 
-  constructor(private usersApiService: UserApiService,
+  constructor(private userProfileApiService: UserProfileApiService,
               private action: Actions) {
   }
 
