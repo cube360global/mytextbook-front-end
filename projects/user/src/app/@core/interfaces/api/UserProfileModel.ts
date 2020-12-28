@@ -1,4 +1,7 @@
-export interface UserModel {
+import {UserProfileSubModel} from './UserProfileSubModel';
+
+
+export interface UserProfileModel {
   id: number;
   email: string;
   firstName: string;
@@ -11,6 +14,6 @@ export interface UserModel {
   salesLead?: any;
   birthDay: number;
   school: string;
-  subscriptions: any[];
+  subscriptions: UserProfileSubModel[];
   contents: any[];
 }

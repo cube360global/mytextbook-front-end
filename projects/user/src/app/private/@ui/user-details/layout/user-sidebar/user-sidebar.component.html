@@ -42,7 +42,9 @@
   </mat-drawer>
   <mat-drawer-content>
     <app-private-nav-bar [drawer]="drawer"></app-private-nav-bar>
+    <div style="margin-top: 15vh;">
+      <router-outlet></router-outlet>
+    </div>
   </mat-drawer-content>
 </mat-drawer-container>
-<app-user-profile></app-user-profile>
 

@@ -5,18 +5,26 @@ import {MaterialModule} from '../../../../../../lib/vendors/src/lib/material/mat
 import {PrimengModule} from '../../../../../../lib/vendors/src/lib/primeng/primeng.module';
 import {UserSharedModule} from '../../shared/user-shared.module';
 import {RouterModule, Routes} from '@angular/router';
-import {UserProfileComponent} from './user-profile/components/user-profile.component';
+import {UserProfileComponent} from './user-profile/page/user-profile.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {UserProfileResetPwdComponent} from './user-profile/components/user-profile-reset-pwd/user-profile-reset-pwd.component';
+import {UserProfileFormComponent} from './user-profile/components/user-profile-form/user-profile-form.component';
 
 
 const routes: Routes = [
-  {path: '', component: UserSidebarComponent},
-
+  {
+    path: '', component: UserSidebarComponent, children: [
+      {path: '', component: UserProfileComponent}
+    ]
+  }
 ];
 
 @NgModule({
   declarations: [
     UserSidebarComponent,
     UserProfileComponent,
+    UserProfileResetPwdComponent,
+    UserProfileFormComponent,
 
   ],
   imports: [
@@ -24,7 +32,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MaterialModule,
     PrimengModule,
-    UserSharedModule
+    UserSharedModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ]
 })
