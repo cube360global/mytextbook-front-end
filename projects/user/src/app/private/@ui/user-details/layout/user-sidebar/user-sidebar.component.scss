@@ -1,6 +1,5 @@
 mat-drawer-container {
   height: 100vh;
-
 }
 
 .example-container {
@@ -12,15 +11,12 @@ i {
   outline: transparent;
 }
 
-
 .user-active {
   background-color: #000F34 !important;
 }
 
-
 .icon-width {
   width: 20px;
-  //padding: 10px;
   display: flex;
   justify-content: center;
 }
@@ -29,5 +25,3 @@ mat-drawer {
   color: #ffffff !important;
   background-color: #001851 !important;
 }
-
-

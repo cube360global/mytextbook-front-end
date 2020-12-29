@@ -1,13 +1,9 @@
-<div class="container">
-  <div class="text-center">
-    <h1>{{contentData.book}} - Chapter {{contentData.chapter}}</h1>
-  </div>
-  <div class="text-center">
-    <iframe [src]="videoUrl"
-            allow="autoplay; fullscreen"
-            allowfullscreen
-            height="360"
-            width="640">
+<div class="video-center">
+  <div class="ratio"
+       style="--aspect-ratio: 50%;">
+    <iframe #player_container
+            [src]="videoUrl"
+            allow="autoplay">
     </iframe>
   </div>
 </div>

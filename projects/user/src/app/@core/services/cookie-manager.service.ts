@@ -22,6 +22,8 @@ export class CookieManagerService {
   public deleteCookie(): void {
     localStorage.removeItem(Cookie.ACCESS_TOKEN);
     localStorage.removeItem(Cookie.REFRESH_TOKEN);
+    localStorage.removeItem('USERID');
+    localStorage.clear();
     this.cookieService.deleteAll();
   }
 

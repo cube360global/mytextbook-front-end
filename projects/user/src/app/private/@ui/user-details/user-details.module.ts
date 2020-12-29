@@ -32,10 +32,10 @@ const routes: Routes = [
           {path: Path.BookContent + '/:id', component: BookContentComponent}
         ]
       },
-      {path: Path.Play + '/:id', component: VideoPlayerComponent},
       {path: Path.History, component: UserWatchHistoryComponent}
     ]
-  }
+  },
+  {path: Path.VideoPlayer + '/:contentId/:userId/:id', component: VideoPlayerComponent}
 ];
 
 @NgModule({
