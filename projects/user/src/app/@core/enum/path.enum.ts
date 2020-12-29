@@ -26,6 +26,7 @@ export enum Path {
   Subscriptions = 'subscriptions',
   All = 'all',
   Video = 'video',
+  Play = 'play',
 
   Public = 'public',
   Private = 'private'
