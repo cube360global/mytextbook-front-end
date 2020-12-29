@@ -18,7 +18,12 @@ const routes: Routes = [
   {
     path: '', component: UserSidebarComponent, children: [
       {path: '', component: UserProfileComponent},
-      {path: Path.Subscriptions, component: SubscriptionsComponent}
+      {
+        path: Path.Subscriptions, component: SubscriptionsComponent, children: [
+          {path: '', redirectTo: Path.All, pathMatch: 'full'},
+          {path: Path.All, component: SubscriptionListComponent}
+        ]
+      }
     ]
   }
 ];
