@@ -29,7 +29,7 @@ const routes: Routes = [
         path: Path.Subscriptions, component: SubscriptionsComponent, children: [
           {path: '', redirectTo: Path.All, pathMatch: 'full'},
           {path: Path.All, component: SubscriptionListComponent},
-          {path: Path.BookContent + '/:id', component: BookContentComponent}
+          {path: `${Path.BookContent}/:id`, component: BookContentComponent}
         ]
       },
       {path: Path.Play, component: VideoPlayerComponent},
