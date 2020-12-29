@@ -13,6 +13,9 @@ import {UserProfileFormComponent} from './user-profile/components/user-profile-f
 import {SubscriptionsComponent} from './user-subscriptions/page/subscriptions.component';
 import {SubscriptionListComponent} from './user-subscriptions/components/subscription-list/subscription-list.component';
 import {SubscriptionItemComponent} from './user-subscriptions/components/subscription-list/subscription-item/subscription-item.component';
+import {BookContentComponent} from './user-subscriptions/components/subscription-list/subscription-item/book-content/book-content.component';
+import {VideoListComponent} from './user-subscriptions/components/subscription-list/subscription-item/book-content/video-list/video-list.component';
+import {VideoItemComponent} from './user-subscriptions/components/subscription-list/subscription-item/book-content/video-list/video-item/video-item.component';
 
 const routes: Routes = [
   {
@@ -36,7 +39,10 @@ const routes: Routes = [
     UserProfileFormComponent,
     SubscriptionsComponent,
     SubscriptionListComponent,
-    SubscriptionItemComponent
+    SubscriptionItemComponent,
+    BookContentComponent,
+    VideoListComponent,
+    VideoItemComponent
   ],
   imports: [
     CommonModule,
