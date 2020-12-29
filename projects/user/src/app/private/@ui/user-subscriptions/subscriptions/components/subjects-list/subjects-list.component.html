@@ -1,7 +1,0 @@
-<div class="row mt-4" *ngFor="let subject of $obs | async" [subject]="subject">
-  <p class="m-2"
-     style="font-size: larger; font-weight: bold">
-    {{subject.name}}
-  </p>
-  <app-book-list [subject]="subject"></app-book-list>
-</div>

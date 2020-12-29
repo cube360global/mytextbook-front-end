@@ -14,10 +14,6 @@ const routes: Routes = [
   {
     path: Path.Content,
     loadChildren: () => import('./@ui/user-content/user-content.module').then(m => m.UserContentModule)
-  },
-  {
-    path: Path.Subscriptions,
-    loadChildren: () => import('./@ui/user-subscriptions/user-subscriptions.module').then(m => m.UserSubscriptionsModule)
   }
 ];
 
