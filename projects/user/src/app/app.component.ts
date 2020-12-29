@@ -28,6 +28,7 @@ export class AppComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {
-    this.displayContentService.isMobile = window.screen.width <= 411;
+    this.displayContentService.isMobile = window.screen.width <= 600;
+    this.displayContentService.isMinHeight = window.screen.height <= 580;
   }
 }

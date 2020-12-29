@@ -1,18 +1,8 @@
 <form (ngSubmit)="onSignUp()" [formGroup]="signUpForm">
-
-  <!--  <mat-label class="text-color-01-b">Email Address</mat-label>-->
-  <!--  <mat-form-field appearance="outline" floatLabel="never" class="mt-1">-->
-  <!--    <mat-icon matPrefix class="me-1 text-color-01">person</mat-icon>-->
-  <!--    <input formControlName="username" placeholder="example@gmail.com" matInput>-->
-  <!--    <mat-error *ngIf="signUpForm.controls['username'].hasError('email')">This is the not a valid email</mat-error>-->
-  <!--    <mat-error *ngIf="signUpForm.controls['username'].hasError('required')">Required</mat-error>-->
-  <!--  </mat-form-field>-->
-
-
   <mat-label class="text-color-01-b">First Name</mat-label>
-  <mat-form-field appearance="outline" class="mt-1">
-    <mat-label>Enter First Name</mat-label>
+  <mat-form-field floatLabel="never">
     <input formControlName="firstName"
+           placeholder="Nuwan"
            matInput
            type="text"
     >
@@ -20,39 +10,39 @@
   </mat-form-field>
 
   <mat-label class="text-color-01-b">Last Name</mat-label>
-  <mat-form-field appearance="outline" class="mt-1">
-    <mat-label>Enter Last Name</mat-label>
+  <mat-form-field floatLabel="never">
     <input formControlName="lastName"
            matInput
+           placeholder="Kumara"
            type="text"
     >
     <mat-error *ngIf="signUpForm.controls['lastName'].hasError('required')">Required</mat-error>
   </mat-form-field>
 
   <mat-label class="text-color-01-b">Phone Number</mat-label>
-  <mat-form-field appearance="outline" class="mt-1">
-    <mat-label>Enter Phone No</mat-label>
+  <mat-form-field floatLabel="never">
     <input formControlName="telephoneNumber"
            matInput
+           placeholder="07x xxx xxx xx"
            type="text"
     >
     <mat-error *ngIf="signUpForm.controls['telephoneNumber'].hasError('required')">Required</mat-error>
   </mat-form-field>
 
   <mat-label class="text-color-01-b">Birthday</mat-label>
-  <mat-form-field appearance="outline" class="mt-1">
-    <mat-label>Enter Birthday</mat-label>
-    <input [matDatepicker]="picker" formControlName="birthDay" matInput>
+  <mat-form-field floatLabel="never">
+    <mat-hint>Select your birthday</mat-hint>
+    <input [matDatepicker]="picker" placeholder="01/01/2000" formControlName="birthDay" matInput>
     <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <mat-error *ngIf="signUpForm.controls['birthDay'].hasError('required')">Required</mat-error>
   </mat-form-field>
 
   <mat-label class="text-color-01-b">Email</mat-label>
-  <mat-form-field appearance="outline" class="mt-1">
-    <mat-label>Enter Email address</mat-label>
+  <mat-form-field floatLabel="never">
     <input formControlName="email"
            matInput
+           placeholder="example@example.com"
            type="text"
     >
     <mat-error *ngIf="signUpForm.controls['email'].hasError('email')">This is the not a valid email</mat-error>
@@ -60,19 +50,18 @@
   </mat-form-field>
 
   <mat-label class="text-color-01-b">School</mat-label>
-  <mat-form-field appearance="outline" class="mt-1">
-    <mat-label>Enter School</mat-label>
+  <mat-form-field floatLabel="never">
     <input formControlName="school"
            matInput
+           placeholder="Ananda College"
            type="text"
     >
     <mat-error *ngIf="signUpForm.controls['school'].hasError('required')">Required</mat-error>
   </mat-form-field>
 
   <mat-label class="text-color-01-b">District</mat-label>
-  <mat-form-field appearance="outline" class="mt-1">
-    <mat-label>Enter District</mat-label>
-    <mat-select formControlName="district">
+  <mat-form-field floatLabel="never">
+    <mat-select placeholder="Colombo" formControlName="district">
       <mat-option value="Ampara">Ampara</mat-option>
       <mat-option value="Anuradhapura">Anuradhapura</mat-option>
       <mat-option value="Badulla">Badulla</mat-option>
@@ -102,14 +91,15 @@
   </mat-form-field>
 
   <mat-label class="text-color-01-b">ReferralLink</mat-label>
-  <mat-form-field appearance="outline" class="mt-1">
-    <mat-label>Enter referralLink</mat-label>
+  <mat-form-field floatLabel="never">
+    <mat-hint>Please add your referral link</mat-hint>
     <input formControlName="referralLink"
            matInput
            type="text"
+           placeholder="LQkctDs5fZsyjZubSU2pRJvyydnpXcaHZyeF4cYAQ46uwHvsRQSSJN3Gtg5FNYKyvNEYvV5Yj"
     >
     <mat-error *ngIf="signUpForm.controls['referralLink'].hasError('required')">Required</mat-error>
   </mat-form-field>
 
-  <button class="btn-cus-lg w-100 mt-3" color="primary" mat-raised-button>SUBMIT</button>
+  <button class="mat-button-rounded-sm w-100 mt-3" color="primary" mat-raised-button>SUBMIT</button>
 </form>
