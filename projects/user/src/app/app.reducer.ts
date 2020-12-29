@@ -15,4 +15,5 @@ export const appReducer: ActionReducerMap<AppState> = {
 // Main Selectors
 export const getAuthState = createFeatureSelector<fromAuth.AuthState>('auth');
 export const getUserProfileReducer = createFeatureSelector<fromProfile.State>('userProfile');
+export const getUserProfile = createSelector(getUserProfileReducer, fromProfile.getUser);
 export const getUserSubscription = createSelector(getUserProfileReducer, fromProfile.getUserSubscription);

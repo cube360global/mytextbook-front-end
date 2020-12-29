@@ -50,19 +50,19 @@ export class AuthEffects {
     );
   }, {dispatch: false});
 
-  authLoginSuccess$ = createEffect(() => {
-    return this.action.pipe(
-      ofType(USER_LOGIN),
-      pipe(
-        map((res) => {
-          return USER_DATA_REQUEST({payload: res.payload.userId.toString()});
-        }),
-        catchError(() => {
-          return of(USER_LOGIN_FAIL());
-        })
-      )
-    );
-  });
+  // authLoginSuccess$ = createEffect(() => {
+  //   return this.action.pipe(
+  //     ofType(USER_LOGIN),
+  //     pipe(
+  //       map((res) => {
+  //         return USER_DATA_REQUEST({payload: res.payload.userId.toString()});
+  //       }),
+  //       catchError(() => {
+  //         return of(USER_LOGIN_FAIL());
+  //       })
+  //     )
+  //   );
+  // });
 
   userLogOut = createEffect(() => {
     return this.action.pipe(

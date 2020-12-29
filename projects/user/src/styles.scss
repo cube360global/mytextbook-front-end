@@ -1,8 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-div, label, span, p {
+body{
+
+}
+
+div, label, span, p{
   font-family: 'Poppins', sans-serif;
 }
+
+
 
 input {
   width: 100% !important;
@@ -74,4 +80,19 @@ button:focus {
 
 #style-4::-webkit-scrollbar-thumb {
   background-color: #1A49BA;
+}
+
+// shadow
+
+.box-shadow-default {
+  box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12)
+!important;
+  background: white;
+  border-radius: 20px !important;
 }

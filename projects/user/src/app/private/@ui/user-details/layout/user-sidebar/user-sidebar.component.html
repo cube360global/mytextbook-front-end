@@ -1,4 +1,4 @@
-<mat-drawer-container [hasBackdrop]="true" class="example-container">
+<mat-drawer-container [hasBackdrop]="true" class="example-container"  style="background-color: #FFFFFF">
   <mat-drawer #drawer [mode]="'over'">
     <div class="text-center mt-5">
       <img alt="profile picture"
@@ -38,7 +38,7 @@
     <!--      </div>-->
     <!--    </div>-->
   </mat-drawer>
-  <mat-drawer-content>
+  <mat-drawer-content style="background-image: url('assets/img/live-background.svg')">
     <app-private-nav-bar [drawer]="drawer"></app-private-nav-bar>
     <div style="margin-top: 15vh;">
       <router-outlet></router-outlet>

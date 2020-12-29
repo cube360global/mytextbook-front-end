@@ -5,6 +5,7 @@ import * as fromApp from '../../../../../../app.reducer';
 import {UserProfileModel} from '../../../../../../@core/interfaces/api/UserProfileModel';
 import {UserProfileApiService} from '../../shared/service/user-profile-api.service';
 import {USER_DATA_LOADED} from '../../store/user-profile.action';
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-profile-form',
@@ -20,7 +21,9 @@ export class UserProfileFormComponent implements OnInit {
   lastname = '';
   email = '';
 
-  constructor(private store: Store<fromApp.AppState>, private userProfileApiService: UserProfileApiService) {
+  constructor(private store: Store<fromApp.AppState>,
+              public dialogRef: MatDialogRef<UserProfileFormComponent>,
+              private userProfileApiService: UserProfileApiService) {
   }
 
   ngOnInit(): void {
