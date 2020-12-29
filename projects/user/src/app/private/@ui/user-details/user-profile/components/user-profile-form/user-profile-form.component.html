@@ -1,6 +1,18 @@
-<form (ngSubmit)="onSignUp()" [formGroup]="signUpForm">
+<div class="row">
+  <div class="col-sm-1">
+    <img
+      alt=""
+      src="https://www.pikpng.com/pngl/m/80-805068_my-profile-icon-blank-profile-picture-circle-clipart.png"
+      style="max-height: 75px;">
+  </div>
+  <div class="col-sm">
+    <h2>{{ firstName }} {{ lastname }}</h2>
+    <h3>{{ email }}</h3>
+  </div>
+</div>
+<form (ngSubmit)="onSave()" [formGroup]="signUpForm">
 
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-sm-6">
       <mat-label class="text-color-01-b">First Name</mat-label>
       <mat-form-field appearance="outline" class="mt-1">
@@ -84,4 +96,11 @@
       <mat-option value="Vavuniya">Vavuniya</mat-option>
     </mat-select>
   </mat-form-field>
+  <button
+    bg="primary" class="btn-cus-lg w-20"
+    ly-button
+    raised size="large"
+    style="text-transform: uppercase">
+    Save
+  </button>
 </form>

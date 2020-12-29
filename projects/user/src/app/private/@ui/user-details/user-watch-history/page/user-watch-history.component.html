@@ -1,0 +1,9 @@
+<div class="container container-fluid">
+  <h1 class="text-center mb-5"
+      style="text-transform: uppercase; margin-bottom: 10%">
+    Watch History
+  </h1>
+  <app-user-watch-history-item *ngFor="let content of contents"
+                               [content]="content">
+  </app-user-watch-history-item>
+</div>

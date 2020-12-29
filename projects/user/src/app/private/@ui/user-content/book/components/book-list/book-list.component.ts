@@ -15,6 +15,6 @@ export class BookListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.$obs = this.bookApiService.all();
+    this.$obs = this.bookApiService.All();
   }
 }

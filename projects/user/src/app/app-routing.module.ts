@@ -19,7 +19,7 @@ const routes: Routes = [
       {path: Path.SignUp, component: SignUpComponent},
       {path: Path.ForgotPassword, component: ForgetPasswordComponent},
       {path: Path.PasswordReset, component: ResetPasswordComponent},
-      {path: Path.AboutUs, component: PublicHomePageComponent},
+      {path: Path.AboutUs, component: PublicHomePageComponent}
     ]
   },
   {
