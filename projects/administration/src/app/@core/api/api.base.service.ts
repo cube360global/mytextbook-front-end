@@ -1,5 +1,5 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {catchError, map} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
 import {ResponsesModel} from '../interfaces/ResponsesModel';
@@ -43,7 +43,7 @@ export class ApiBaseService {
           if (isLoaderOn) {
             this.ngxUiLoader.stop('3100');
           }
-          this.alertService.showError(err.message);
+          this.alertService.showError(err.error.message);
           return throwError(err);
         }));
   }
@@ -69,7 +69,7 @@ export class ApiBaseService {
           if (isLoaderOn) {
             this.ngxUiLoader.stop('3300');
           }
-          this.alertService.showError(err.message);
+          this.alertService.showError(err.error.message);
           return throwError(err);
         }));
   }
@@ -92,11 +92,12 @@ export class ApiBaseService {
           } else {
             throw Error(data.message);
           }
-        }), catchError(err => {
+        }), catchError((err: HttpErrorResponse) => {
+          console.log(err);
           if (isLoaderOn) {
             this.ngxUiLoader.stop('3200');
           }
-          this.alertService.showError(err.message);
+          this.alertService.showError(err.error.message);
           return throwError(err);
         }));
   }
@@ -115,6 +116,7 @@ export class ApiBaseService {
 
           if (err.message !== 'VERTEX') {
           }
+          this.alertService.showError(err.error.message);
           return throwError(err);
         }));
   }
