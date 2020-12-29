@@ -21,4 +21,10 @@ export class AlertService {
   showWaning(message: string, title: string): void {
     this.toastr.warning(message, title);
   }
+
+  showAuthHttpResponseError(error: any): void {
+    this.toastr.warning('', error.error.error_description);
+  }
+
+
 }

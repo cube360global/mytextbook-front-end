@@ -11,6 +11,7 @@ import {Path} from '../../@core/enum/path.enum';
 import {USER_DATA_REQUEST} from '../../private/@ui/user-details/user-profile/store/user-profile.action';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {USER_LOGOUT} from '../../../../../administration/src/app/+auth/store/auth.action';
+import {AlertService} from '../../../../../lib/tools/src/lib/alert.service';
 
 @Injectable()
 export class AuthEffects {
@@ -27,8 +28,9 @@ export class AuthEffects {
               this.router.navigate(['/', Path.Private]);
               return USER_LOGIN({payload: resData});
             }),
-            catchError(() => {
+            catchError((err) => {
               this.spinner.hide();
+              this.alertService.showAuthHttpResponseError(err);
               this.cookieManager.deleteCookie();
               return of(USER_LOGIN_FAIL());
             })
@@ -74,6 +76,7 @@ export class AuthEffects {
   constructor(private authService: UserAuthService,
               private action: Actions,
               private cookieManager: CookieManagerService,
+              private alertService: AlertService,
               private spinner: NgxSpinnerService,
               private router: Router) {
   }
