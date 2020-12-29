@@ -19,7 +19,7 @@ import {BookContentComponent} from './user-subscriptions/components/book-content
 import {VideoPlayerComponent} from './user-subscriptions/components/video-player/video-player.component';
 import {VideoItemComponent} from './user-subscriptions/components/book-content/video-item/video-item.component';
 import {UserWatchHistoryComponent} from './user-watch-history/page/user-watch-history.component';
-import {UserWatchHistoryItemComponent} from "./user-watch-history/component/user-watch-history-item/user-watch-history-item.component";
+import {UserWatchHistoryItemComponent} from './user-watch-history/component/user-watch-history-item/user-watch-history-item.component';
 
 const routes: Routes = [
   {
