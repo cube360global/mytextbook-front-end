@@ -9,6 +9,7 @@ import {UserProfileComponent} from './user-profile/page/user-profile.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserProfileResetPwdComponent} from './user-profile/components/user-profile-reset-pwd/user-profile-reset-pwd.component';
 import {UserProfileFormComponent} from './user-profile/components/user-profile-form/user-profile-form.component';
+import {LyButtonModule} from '@alyle/ui/button';
 
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
     PrimengModule,
     UserSharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LyButtonModule
 
   ]
 })

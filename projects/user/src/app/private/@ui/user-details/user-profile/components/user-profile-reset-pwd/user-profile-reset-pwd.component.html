@@ -1,8 +1,8 @@
-<div>
-  <div class="header-text">
-    <h2><b>Password change</b></h2>
+<div class="mt-3 mb-4">
+  <div class="header-text-sm">
+    <h1><b>Password change</b></h1>
   </div>
-  <form [formGroup]="pwdForm">
+  <form (ngSubmit)="onSavePwd()" [formGroup]="pwdForm">
     <mat-label class="text-color-01-b">Current password (leave blank to leave unchanged)</mat-label>
     <mat-form-field appearance="outline" class="mt-1" floatLabel="never">
       <mat-icon class="me-1 text-color-01" matPrefix>lock</mat-icon>
@@ -53,5 +53,12 @@
       <mat-error *ngIf="pwdForm.controls['password'].hasError('minlength')">Min 8 characters</mat-error>
       <mat-error *ngIf="pwdForm.controls['password'].hasError('required')">Required</mat-error>
     </mat-form-field>
+    <button
+      bg="primary" class="btn-cus-lg w-20"
+      ly-button
+      raised size="large"
+      style="text-transform: uppercase">
+      Save
+    </button>
   </form>
 </div>

@@ -1,6 +1,6 @@
-<form (ngSubmit)="onSignUp()" [formGroup]="signUpForm">
+<form (ngSubmit)="onSave()" [formGroup]="signUpForm">
 
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-sm-6">
       <mat-label class="text-color-01-b">First Name</mat-label>
       <mat-form-field appearance="outline" class="mt-1">
@@ -84,4 +84,11 @@
       <mat-option value="Vavuniya">Vavuniya</mat-option>
     </mat-select>
   </mat-form-field>
+  <button
+    bg="primary" class="btn-cus-lg w-20"
+    ly-button
+    raised size="large"
+    style="text-transform: uppercase">
+    Save
+  </button>
 </form>
