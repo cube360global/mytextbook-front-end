@@ -1,6 +1,6 @@
 <p-confirmDialog header="Confirmation"
-                 key="ce-100"
-                 icon="pi pi-exclamation-triangle"></p-confirmDialog>
+                 icon="pi pi-exclamation-triangle"
+                 key="ce-100"></p-confirmDialog>
 
 <div mat-dialog-title>
   <div class="d-flex justify-content-between align-items-center">
@@ -99,8 +99,8 @@
             pInputText type="text">
 
           <button (click)="$event.preventDefault();onRemoveCurrentImageClick()"
-                  matTooltip="Remove Current Image"
-                  color="warn" mat-icon-button type="button">
+                  color="warn"
+                  mat-icon-button matTooltip="Remove Current Image" type="button">
             <mat-icon>delete</mat-icon>
           </button>
         </div>
@@ -129,9 +129,9 @@
         [filter]="true"
         [options]="books"
         [required]="true" [showClear]="true" appendTo="body" filterBy="name"
+        formControlName="bookId"
         optionLabel="name"
         optionValue="id"
-        formControlName="bookId"
         placeholder="Select a Book*"
         styleClass="p-inputtext-sm w-100 p-invalid ms-1 mt-2">
 

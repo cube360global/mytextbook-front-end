@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, NgForm, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
 import {UserAuthService} from '../../../shared/services/user-auth.service';
 
 @Component({
@@ -9,13 +9,15 @@ import {UserAuthService} from '../../../shared/services/user-auth.service';
 })
 export class ForgetPasswordFormComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
+
   constructor(private userApiService: UserAuthService) {
   }
+
   ngOnInit(): void {
   }
 
   onReset(): void {
-    console.log( 'email:' + this.email.value);
+    console.log('email:' + this.email.value);
     this.userApiService.forgetPassword(this.email.value)
       .subscribe(res => console.log(res));
   }

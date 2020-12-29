@@ -3,9 +3,10 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {Path} from '../@core/enum/path.enum';
 
-
 const routes: Routes = [
-  {path: '', redirectTo: Path.UserDetails, pathMatch: 'full'},
+  {
+    path: '', redirectTo: Path.UserDetails, pathMatch: 'full'
+  },
   {
     path: Path.UserDetails,
     loadChildren: () => import('./@ui/user-details/user-details.module').then(m => m.UserDetailsModule)
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: Path.Content,
     loadChildren: () => import('./@ui/user-content/user-content.module').then(m => m.UserContentModule)
+  },
+  {
+    path: Path.Subscriptions,
+    loadChildren: () => import('./@ui/user-subscriptions/user-subscriptions.module').then(m => m.UserSubscriptionsModule)
   }
 ];
 
@@ -21,7 +26,7 @@ const routes: Routes = [
   exports: [],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes)
   ]
 })
 export class PrivateModule {

@@ -32,5 +32,4 @@ export class ContentListComponent implements OnInit {
   }
 
 
-
 }

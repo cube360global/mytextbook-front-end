@@ -71,7 +71,9 @@
     </div>
 
     <div class="text-center">
-      <button (click)="onSearchClick()" [disabled]="selectedSubject == null || selectedMedium == null || selectedGrades == null" class="mat-button-rounded-sm"
+      <button (click)="onSearchClick()"
+              [disabled]="selectedSubject == null || selectedMedium == null || selectedGrades == null"
+              class="mat-button-rounded-sm"
               color="primary"
               mat-raised-button
               matTooltip="Please Search First">

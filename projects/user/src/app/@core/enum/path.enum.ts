@@ -22,8 +22,9 @@ export enum Path {
   // Features
   UserDetails = 'user-details',
   Books = 'books',
-
+  Subscriptions = 'subscriptions',
   Content = 'content',
+
   Public = 'public',
   Private = 'private'
 }

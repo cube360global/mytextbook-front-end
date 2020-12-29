@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {BookModel} from '../../../../../../@core/interfaces/api/BookModel';
-import {BookApiService} from '../../shared/service/book-api.service';
+import {BookModel} from '../../../../../../../@core/interfaces/api/BookModel';
+import {BookApiService} from '../../../../../user-content/book/shared/service/book-api.service';
 
 @Component({
   selector: 'app-book-list',

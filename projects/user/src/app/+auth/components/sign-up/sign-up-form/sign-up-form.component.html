@@ -1,41 +1,40 @@
-
 <form (ngSubmit)="onSignUp()" [formGroup]="signUpForm">
 
-<!--  <mat-label class="text-color-01-b">Email Address</mat-label>-->
-<!--  <mat-form-field appearance="outline" floatLabel="never" class="mt-1">-->
-<!--    <mat-icon matPrefix class="me-1 text-color-01">person</mat-icon>-->
-<!--    <input formControlName="username" placeholder="example@gmail.com" matInput>-->
-<!--    <mat-error *ngIf="signUpForm.controls['username'].hasError('email')">This is the not a valid email</mat-error>-->
-<!--    <mat-error *ngIf="signUpForm.controls['username'].hasError('required')">Required</mat-error>-->
-<!--  </mat-form-field>-->
+  <!--  <mat-label class="text-color-01-b">Email Address</mat-label>-->
+  <!--  <mat-form-field appearance="outline" floatLabel="never" class="mt-1">-->
+  <!--    <mat-icon matPrefix class="me-1 text-color-01">person</mat-icon>-->
+  <!--    <input formControlName="username" placeholder="example@gmail.com" matInput>-->
+  <!--    <mat-error *ngIf="signUpForm.controls['username'].hasError('email')">This is the not a valid email</mat-error>-->
+  <!--    <mat-error *ngIf="signUpForm.controls['username'].hasError('required')">Required</mat-error>-->
+  <!--  </mat-form-field>-->
 
 
   <mat-label class="text-color-01-b">First Name</mat-label>
-  <mat-form-field appearance="outline" class="mt-1" >
+  <mat-form-field appearance="outline" class="mt-1">
     <mat-label>Enter First Name</mat-label>
-    <input matInput
+    <input formControlName="firstName"
+           matInput
            type="text"
-           formControlName="firstName"
     >
     <mat-error *ngIf="signUpForm.controls['firstName'].hasError('required')">Required</mat-error>
   </mat-form-field>
 
   <mat-label class="text-color-01-b">Last Name</mat-label>
-  <mat-form-field appearance="outline" class="mt-1" >
+  <mat-form-field appearance="outline" class="mt-1">
     <mat-label>Enter Last Name</mat-label>
-    <input matInput
+    <input formControlName="lastName"
+           matInput
            type="text"
-           formControlName="lastName"
     >
     <mat-error *ngIf="signUpForm.controls['lastName'].hasError('required')">Required</mat-error>
   </mat-form-field>
 
   <mat-label class="text-color-01-b">Phone Number</mat-label>
-  <mat-form-field appearance="outline" class="mt-1" >
+  <mat-form-field appearance="outline" class="mt-1">
     <mat-label>Enter Phone No</mat-label>
-    <input matInput
+    <input formControlName="telephoneNumber"
+           matInput
            type="text"
-           formControlName="telephoneNumber"
     >
     <mat-error *ngIf="signUpForm.controls['telephoneNumber'].hasError('required')">Required</mat-error>
   </mat-form-field>
@@ -43,8 +42,8 @@
   <mat-label class="text-color-01-b">Birthday</mat-label>
   <mat-form-field appearance="outline" class="mt-1">
     <mat-label>Enter Birthday</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="birthDay">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <input [matDatepicker]="picker" formControlName="birthDay" matInput>
+    <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <mat-error *ngIf="signUpForm.controls['birthDay'].hasError('required')">Required</mat-error>
   </mat-form-field>
@@ -52,9 +51,9 @@
   <mat-label class="text-color-01-b">Email</mat-label>
   <mat-form-field appearance="outline" class="mt-1">
     <mat-label>Enter Email address</mat-label>
-    <input matInput
+    <input formControlName="email"
+           matInput
            type="text"
-           formControlName="email"
     >
     <mat-error *ngIf="signUpForm.controls['email'].hasError('email')">This is the not a valid email</mat-error>
     <mat-error *ngIf="signUpForm.controls['email'].hasError('required')">Required</mat-error>
@@ -63,9 +62,9 @@
   <mat-label class="text-color-01-b">School</mat-label>
   <mat-form-field appearance="outline" class="mt-1">
     <mat-label>Enter School</mat-label>
-    <input matInput
+    <input formControlName="school"
+           matInput
            type="text"
-           formControlName="school"
     >
     <mat-error *ngIf="signUpForm.controls['school'].hasError('required')">Required</mat-error>
   </mat-form-field>
@@ -105,12 +104,12 @@
   <mat-label class="text-color-01-b">ReferralLink</mat-label>
   <mat-form-field appearance="outline" class="mt-1">
     <mat-label>Enter referralLink</mat-label>
-    <input matInput
+    <input formControlName="referralLink"
+           matInput
            type="text"
-           formControlName="referralLink"
     >
     <mat-error *ngIf="signUpForm.controls['referralLink'].hasError('required')">Required</mat-error>
   </mat-form-field>
 
-  <button class="btn-cus-lg w-100 mt-3" mat-raised-button color="primary">SUBMIT</button>
+  <button class="btn-cus-lg w-100 mt-3" color="primary" mat-raised-button>SUBMIT</button>
 </form>

@@ -42,7 +42,7 @@ export class CookieManagerService {
     }
   }
 
-  public getRefreshToken(): any  {
+  public getRefreshToken(): any {
     if (this.checkRefreshToken()) {
       return localStorage.getItem(Cookie.REFRESH_TOKEN);
     } else {

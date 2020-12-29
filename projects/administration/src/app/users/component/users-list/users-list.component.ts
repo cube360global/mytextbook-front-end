@@ -8,7 +8,6 @@ import {UserViewerDialogComponent} from '../user-viewer-dialog/user-viewer-dialo
 import {NgxUiLoaderService} from 'ngx-ui-loader';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
-import {AlertConst} from '../../../@core/const/AlertConst';
 import {USERS_AND_SCHOOL_DATA_LOADED} from '../../store/user.action';
 import {SearchUserModel} from '../../../@core/interfaces/api/SearchUserModel';
 import {AlertService} from '../../../@core/services/alert.service';
