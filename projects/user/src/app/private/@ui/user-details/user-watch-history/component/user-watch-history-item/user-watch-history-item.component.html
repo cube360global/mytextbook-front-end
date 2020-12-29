@@ -1,0 +1,20 @@
+<div class="m-2 col-sm-4">
+  <mat-card class="w-100"
+            routerLink="/private/user-details/subscriptions/video">
+    <img
+      [src]="content.imageURL"
+      mat-card-image>
+    <mat-card-content class="text-center">
+      <p style="font-weight: bold; font-size: medium">{{ content.name }}</p>
+      <p style="font-weight: bold; font-size: medium">{{ content.subject }}</p>
+      <p style="font-weight: bold; font-size: medium">{{ content.date | date: 'MMM d, y' }}</p>
+    </mat-card-content>
+    <mat-card-actions class="text-center mb-1">
+      <button class="m-1 btn-primary disabled"
+              mat-flat-button
+              style="text-transform: uppercase">
+        Watch Again
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

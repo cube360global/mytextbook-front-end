@@ -19,6 +19,8 @@ import {VideoItemComponent} from './user-subscriptions/components/book-content/v
 import {VideoPlayerComponent} from './user-subscriptions/components/video-player/video-player.component';
 import {LyButtonModule} from '@alyle/ui/button';
 import {MatPasswordStrengthModule} from '@angular-material-extensions/password-strength';
+import {UserWatchHistoryComponent} from './user-watch-history/page/user-watch-history.component';
+import {UserWatchHistoryItemComponent} from './user-watch-history/component/user-watch-history-item/user-watch-history-item.component';
 
 
 const routes: Routes = [
@@ -32,7 +34,8 @@ const routes: Routes = [
           {path: Path.Video, component: BookContentComponent}
         ]
       },
-      {path: Path.Play, component: VideoPlayerComponent}
+      {path: Path.Play, component: VideoPlayerComponent},
+      {path: Path.History, component: UserWatchHistoryComponent},
     ]
   }
 ];
@@ -49,7 +52,9 @@ const routes: Routes = [
     BookContentComponent,
     VideoListComponent,
     VideoItemComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    UserWatchHistoryComponent,
+    UserWatchHistoryItemComponent
   ],
   imports: [
     CommonModule,
