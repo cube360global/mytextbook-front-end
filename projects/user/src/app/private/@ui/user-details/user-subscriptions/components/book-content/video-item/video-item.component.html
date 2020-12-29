@@ -1,0 +1,13 @@
+<div>
+  <img alt="{{video.chapter}}"
+       src="{{video.markerImageURL}}"
+       mat-card-image
+       routerLink="../../../play/{{video.contentURL}}">
+  <p class="m-2 mt-4"
+     style="font-size: medium; font-weight: bold">
+    Chapter {{video.chapter}} - {{video.description}}
+  </p>
+  <p class="m-2">
+    Uploaded on {{video.dateOfUpload}}
+  </p>
+</div>

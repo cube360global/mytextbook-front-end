@@ -200,7 +200,8 @@
             ],
             "scripts": [
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "projects/user/src/js/fontawesome-kit.js"
+              "projects/user/src/js/fontawesome-kit.js",
+              "projects/user/src/js/three.js"
             ]
           },
           "configurations": {

@@ -63,7 +63,8 @@ export function tokenGetter(): string {
     NgxSpinnerModule,
     LoadingBarModule,
     LoadingBarRouterModule,
-    LoadingBarHttpClientModule
+    LoadingBarHttpClientModule,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

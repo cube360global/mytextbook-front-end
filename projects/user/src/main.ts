@@ -4,7 +4,6 @@ import 'hammerjs';
 import {AppModule} from './app/app.module';
 import {environment} from './environments/environment';
 
-
 export function getBaseUrl(): string {
   // return document.getElementsByTagName('base')[0].href + 'api/';
   return 'http://34.120.186.49/backend/';

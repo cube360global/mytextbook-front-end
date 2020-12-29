@@ -25,8 +25,9 @@ export enum Path {
   Books = 'books',
   Subscriptions = 'subscriptions',
   All = 'all',
-  // remove this
-  Video = 'video',
+  BookContent = 'book-content',
+  Play = 'play',
+  History = 'watch-history',
 
   Public = 'public',
   Private = 'private'

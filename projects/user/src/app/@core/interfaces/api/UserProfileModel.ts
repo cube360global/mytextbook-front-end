@@ -1,6 +1,5 @@
 import {UserProfileSubModel} from './UserProfileSubModel';
 
-
 export interface UserProfileModel {
   id: number;
   email: string;
