@@ -1,18 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-5 text-center">
-      <img alt="book"
-           src="https://media.npr.org/assets/img/2019/12/19/_d6a4310_sq-d258dd7e3714e2311c6aaaeaa692183219ef08e0-s1100-c15.jpg"
+      <img alt="{{bookContent.book.name}}"
+           src="{{bookContent.book.image}}"
            mat-card-image
            style="height: 40%">
     </div>
     <div class="col-sm-7">
       <p style="font-size: larger; font-weight: bold">
-        {{content[0].book}}
+        {{bookContent.book.image}}
       </p>
     </div>
   </div>
   <div class="row mt-4">
-    <app-video-list [content] = "content[0]"></app-video-list>
+    <app-video-item *ngFor="let video of bookContent.contents"
+                    [video]="video"
+                    class="col-sm-4">
+    </app-video-item>
   </div>
 </div>

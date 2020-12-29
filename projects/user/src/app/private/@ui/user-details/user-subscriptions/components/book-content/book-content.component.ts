@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ContentModel} from '../../../../../../@core/interfaces/api/ContentModel';
+import {Component, Input, OnInit} from '@angular/core';
 import {ContentApiService} from '../../shared/service/content-api.service';
+import {ActivatedRoute} from '@angular/router';
+import {BookAndContentModel} from '../../../../../../@core/interfaces/api/BookAndContentModel';
+import {BookModel} from '../../../../../../@core/interfaces/api/BookModel';
 
 @Component({
   selector: 'app-book-content',
@@ -8,12 +10,17 @@ import {ContentApiService} from '../../shared/service/content-api.service';
   styleUrls: ['./book-content.component.scss']
 })
 export class BookContentComponent implements OnInit {
-  content = [] as ContentModel[];
+  @Input() bookId = '' as string;
+  bookContent = {} as BookAndContentModel;
 
-  constructor(private contentApiService: ContentApiService) {
+
+  constructor(private contentApiService: ContentApiService,
+              private activatedRouter: ActivatedRoute) {
+    this.bookContent.book = {} as BookModel;
   }
 
   ngOnInit(): void {
-    this.contentApiService.All().subscribe(res => this.content = res);
+    const bookId = this.activatedRouter.snapshot.params.id;
+    this.contentApiService.getBookContentByBookId(bookId).subscribe(res => this.bookContent = res);
   }
 }
