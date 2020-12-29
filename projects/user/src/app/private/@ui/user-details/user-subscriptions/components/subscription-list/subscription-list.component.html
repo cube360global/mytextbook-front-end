@@ -1,0 +1,10 @@
+<div class="container container-fluid">
+  <div style="margin-top: 10vh">
+    <h1 class="text-center"
+        style="text-transform: uppercase">
+      My Subscriptions
+    </h1>
+    <app-subscription-item *ngFor="let subscription of $obs | async" [subscription]="subscription">
+    </app-subscription-item>
+  </div>
+</div>

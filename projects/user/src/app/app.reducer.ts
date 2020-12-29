@@ -1,6 +1,6 @@
 import * as fromAuth from './+auth/store/auth.reducer';
 import * as fromProfile from './private/@ui/user-details/user-profile/store/user-profile.reducer';
-import {ActionReducerMap, createFeatureSelector} from '@ngrx/store';
+import {ActionReducerMap, createFeatureSelector, createSelector} from '@ngrx/store';
 
 export interface AppState {
   auth: fromAuth.AuthState;
@@ -15,3 +15,5 @@ export const appReducer: ActionReducerMap<AppState> = {
 // Main Selectors
 export const getAuthState = createFeatureSelector<fromAuth.AuthState>('auth');
 export const getUserProfileReducer = createFeatureSelector<fromProfile.State>('userProfile');
+export const getUserSubscription = createSelector(getUserProfileReducer, fromProfile.getUserSubscription);
+// export const getUserAccessFunctions = createSelector(getAuthState, fromAuth.getUserAccessFunctions);
