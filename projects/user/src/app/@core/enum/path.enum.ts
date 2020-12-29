@@ -25,6 +25,8 @@ export enum Path {
   Books = 'books',
   Subscriptions = 'subscriptions',
   All = 'all',
+  Video = 'video',
+  Play = 'play',
 
   Public = 'public',
   Private = 'private'
