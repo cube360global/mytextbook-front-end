@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {UserProfileModel} from '../../../../../@core/interfaces/api/UserProfileModel';
 import {MatDialog} from '@angular/material/dialog';
 import {UserProfileFormComponent} from '../components/user-profile-form/user-profile-form.component';
+import {UserProfileResetPwdComponent} from '../components/user-profile-reset-pwd/user-profile-reset-pwd.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -36,6 +37,12 @@ export class UserProfileComponent implements OnInit {
 
   openUserEditDialog(): void {
     this.dialog.open(UserProfileFormComponent, {
+      width: '100%'
+    });
+  }
+
+  onResetPasswordDialogOpen(): void{
+    this.dialog.open(UserProfileResetPwdComponent, {
       width: '100%'
     });
   }

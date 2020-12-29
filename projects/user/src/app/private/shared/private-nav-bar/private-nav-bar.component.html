@@ -1,11 +1,14 @@
 <nav class="navbar navbar-light bg-light fixed-top">
   <div class="container-fluid">
-    <div class="navbar-brand d-flex align-items-center">
-      <i (click)="drawer.toggle()" *ngIf="isDrawerShow" class="fas fa-bars me-2" style="color: #ffffff"></i>
-      <img alt="my text book logo"
-           class="img-fluid ms-lg-4"
-           src="../../../../../../../assets/img/my-text-book-logo.png">
-    </div>
+    <button mat-icon-button
+            class="navbar-brand d-flex align-items-center" style="cursor: pointer">
+      <i (click)="drawer.toggle()" *ngIf="isDrawerShow"
+         class="fas fa-bars ms-lg-3 me-2"
+         style="color: #ffffff"></i>
+    </button>
+    <img alt="my text book logo"
+         class="img-fluid ms-lg-4"
+         src="../../../../../../../assets/img/my-text-book-logo.png">
     <div class="d-flex justify-content-between align-items-center">
       <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with share icon" class="me-lg-4"
               mat-icon-button>

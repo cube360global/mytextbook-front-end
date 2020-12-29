@@ -1,11 +1,18 @@
-<mat-drawer-container [hasBackdrop]="true" class="example-container"  style="background-color: #FFFFFF">
+<mat-drawer-container [hasBackdrop]="true" class="example-container" style="background-color: #FFFFFF">
   <mat-drawer #drawer [mode]="'over'">
+    <div class="user-active d-flex align-items-center justify-content-between p-2">
+      <div class="ms-2"> <i class="fas fa-user me-1"></i> USER PROFILE  </div>
+      <button mat-icon-button class="me-2" matTooltip="Close" (click)="drawer.close()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
     <div class="text-center mt-5">
       <img alt="profile picture"
-           src="https://www.pikpng.com/pngl/m/80-805068_my-profile-icon-blank-profile-picture-circle-clipart.png"
-           style="max-height: 75px;">
-      <div>Kasun Chamikara</div>
-      <div><a href="">Sign Out</a></div>
+           class="img-fluid"
+           src="assets/img/user.png">
+      <div class="mt-1"> {{($userData|async)?.firstName}} {{($userData|async)?.lastName}}</div>
+      <div class="mt-1"><button mat-button color="primary">Sign Out</button></div>
     </div>
     <div class="d-flex align-items-center p-3 mt-5" routerLinkActive="user-active">
       <i class="fas fa-info fa-1x icon-width" routerLink="/private/user-details"></i>

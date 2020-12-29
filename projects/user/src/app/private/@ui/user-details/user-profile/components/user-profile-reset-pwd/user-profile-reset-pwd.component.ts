@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserProfileApiService} from '../../shared/service/user-profile-api.service';
 import {ActivatedRoute} from '@angular/router';
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-profile-reset-pwd',
@@ -17,6 +18,7 @@ export class UserProfileResetPwdComponent implements OnInit {
   showDetails = true;
 
   constructor(private userProfileApiService: UserProfileApiService,
+              public dialogRef: MatDialogRef<UserProfileResetPwdComponent>,
               private activatedRouter: ActivatedRoute) {
   }
 
