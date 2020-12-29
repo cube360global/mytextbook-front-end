@@ -10,8 +10,11 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class UserProfileResetPwdComponent implements OnInit {
   hide = true;
+  hideNew = true;
+  hideConf = true;
   pwdForm = {} as FormGroup;
   token = '';
+  showDetails = true;
 
   constructor(private userProfileApiService: UserProfileApiService,
               private activatedRouter: ActivatedRoute) {
@@ -24,6 +27,10 @@ export class UserProfileResetPwdComponent implements OnInit {
       conPassword: new FormControl(null, [Validators.required])
     });
     this.token = this.activatedRouter.snapshot.queryParams.auth_token;
+  }
+
+  onStrengthChanged(strength: number): void {
+    console.log('password strength = ', strength);
   }
 
   onSavePwd(): void {

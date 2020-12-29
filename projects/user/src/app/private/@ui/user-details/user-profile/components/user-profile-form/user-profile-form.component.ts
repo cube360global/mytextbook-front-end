@@ -29,6 +29,7 @@ export class UserProfileFormComponent implements OnInit {
       if (res != null && res.user.id != null) {
         this.userProfile = res.user;
         this.patchForm(res.user);
+        console.log(res.user);
       }
     });
   }
