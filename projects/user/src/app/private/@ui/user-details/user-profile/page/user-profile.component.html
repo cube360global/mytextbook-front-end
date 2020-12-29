@@ -9,15 +9,15 @@
       <mat-card class="box-shadow-default">
         <div class="d-flex align-content-center justify-content-between">
           <p class="header-text-default">Account Details</p>
-          <span matTooltip="Click to edit user profile"
-                (click)="openUserEditDialog()"
+          <span (click)="openUserEditDialog()"
+                matTooltip="Click to edit user profile"
                 style="color: #3861C3;cursor: pointer">
             <i class="fas fa-user-edit"></i>
           </span>
         </div>
 
         <div class="d-flex align-items-center mt-2">
-          <img src="assets/img/user.png" class="img-fluid me-3" alt="user-image">
+          <img alt="user-image" class="img-fluid me-3" src="assets/img/user.png">
           <div>
             <div class="fs-5"><b>{{($userProfile | async)?.firstName}} {{($userProfile | async)?.lastName}}</b></div>
             <br>
@@ -30,36 +30,36 @@
     <div class="col-sm-12 col-lg-8">
       <div class="row">
         <div class="col-lg-3 col-sm-6">
-          <mat-card class="box-shadow-default"  matTooltip="My Profile" matRipple>
+          <mat-card class="box-shadow-default" matRipple matTooltip="My Profile">
             <div class="text-center text-link">
-              <i style="color: #3861C3" class="fas fa-user-circle fs-3"></i>
+              <i class="fas fa-user-circle fs-3" style="color: #3861C3"></i>
               <br>
               My Profile
             </div>
           </mat-card>
         </div>
         <div class="col-lg-3 col-sm-6 mb-2">
-          <mat-card class="box-shadow-default" matTooltip="Change Password" matRipple>
+          <mat-card class="box-shadow-default" matRipple matTooltip="Change Password">
             <div class="text-center text-link">
-              <i  style="color: #3861C3" class="fas fa-unlock-alt fs-3"></i>
+              <i class="fas fa-unlock-alt fs-3" style="color: #3861C3"></i>
               <br>
               Change Password
             </div>
           </mat-card>
         </div>
         <div class="col-lg-3 col-sm-6 mb-2">
-          <mat-card class="box-shadow-default" matTooltip="My Subscriptions" matRipple>
-          <div class="text-center text-link">
-            <i style="color: #3861C3" class="fas fa-shopping-basket fs-3"></i>
-            <br>
-            My Subscriptions
-          </div>
+          <mat-card class="box-shadow-default" matRipple matTooltip="My Subscriptions">
+            <div class="text-center text-link">
+              <i class="fas fa-shopping-basket fs-3" style="color: #3861C3"></i>
+              <br>
+              My Subscriptions
+            </div>
           </mat-card>
         </div>
         <div class="col-lg-3 col-sm-6">
-          <mat-card class="box-shadow-default"  matTooltip="Watch History" matRipple>
-            <div class="text-center text-link" (click)="onResetPasswordDialogOpen()">
-              <i style="color: #3861C3" class="fas fa-history fs-3"></i>
+          <mat-card class="box-shadow-default" matRipple matTooltip="Watch History">
+            <div (click)="onResetPasswordDialogOpen()" class="text-center text-link">
+              <i class="fas fa-history fs-3" style="color: #3861C3"></i>
               <br>
               Watch History
             </div>

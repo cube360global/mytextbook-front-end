@@ -45,7 +45,6 @@ export class ContentAddFormComponent implements OnInit {
     try {
       if ($event != null) {
         this.contentImage = $event.currentFiles[0];
-        console.log(this.contentImage);
       }
     } catch (e) {
       this.contentImage = null;
@@ -69,7 +68,6 @@ export class ContentAddFormComponent implements OnInit {
 
     const postDataString = JSON.stringify(postData);
 
-    console.log(postDataString);
     const formData = new FormData();
     formData.append('image', this.contentImage);
     formData.append('body', postDataString);

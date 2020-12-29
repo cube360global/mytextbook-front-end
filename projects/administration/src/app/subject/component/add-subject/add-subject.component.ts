@@ -72,7 +72,6 @@ export class AddSubjectComponent implements OnInit {
         //   // @ts-ignore
         //   const imgWidth = rs.currentTarget.width;
         //
-        //   console.log(imgHeight, imgWidth);
         //
         //
         //   if (imgHeight > maxHeight && imgWidth > maxWidth) {
@@ -114,11 +113,7 @@ export class AddSubjectComponent implements OnInit {
     const postData = {} as SubjectPostModel;
     postData.name = this.subjectName;
 
-    console.log(this.file);
-
-    console.log(typeof (JSON.stringify(postData)));
     const x = JSON.stringify(postData);
-    console.log(x);
 
     const formData = new FormData();
     formData.append('image', this.file);

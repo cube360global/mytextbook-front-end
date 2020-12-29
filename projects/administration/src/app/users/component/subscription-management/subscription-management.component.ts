@@ -54,7 +54,6 @@ export class SubscriptionManagementComponent implements OnInit {
     this.bookService.search(bookSearchModel)
       .subscribe(res => {
         this.bookModel = res;
-        console.log(res);
       });
   }
 

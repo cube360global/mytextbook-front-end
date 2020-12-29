@@ -32,7 +32,6 @@ export class UserProfileFormComponent implements OnInit {
       if (res != null && res.user.id != null) {
         this.userProfile = res.user;
         this.patchForm(res.user);
-        console.log(res.user);
       }
     });
   }
@@ -65,14 +64,11 @@ export class UserProfileFormComponent implements OnInit {
   }
 
   onSave(): void {
-    console.log(this.signUpForm.value);
     const signUpUser = this.signUpForm.value as UserProfileModel;
     signUpUser.birthDay = new Date(this.signUpForm.value.birthDay).getTime();
     signUpUser.id = this.userProfile.id;
-    console.log(signUpUser);
     this.userProfileApiService.updateUser(signUpUser)
       .subscribe(res => {
-        console.log(res);
         this.store.dispatch(USER_DATA_LOADED({payload: res}));
       });
   }

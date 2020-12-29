@@ -47,6 +47,6 @@ export class SignUpFormComponent implements OnInit {
 
   private postToServer(signUpData: UserSignUpModel): void {
     this.userApiService.signUpUser(signUpData)
-      .subscribe(res => console.log(res));
+      .subscribe(res => res);
   }
 }

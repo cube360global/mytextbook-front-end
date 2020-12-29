@@ -27,7 +27,6 @@ export class SignInComponent implements OnInit, AfterViewInit {
     //
     //   // this.content?.appendChild(renderer.domElement);
     //   const x = document.querySelector('#signContent');
-    //   console.log(this.content);
     //
     //   nativeElement.appendChild(renderer.domElement);
     //   // document.body.appendChild(renderer.domElement);

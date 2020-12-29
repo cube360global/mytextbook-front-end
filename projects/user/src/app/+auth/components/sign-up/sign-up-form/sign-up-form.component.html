@@ -2,8 +2,8 @@
   <mat-label class="text-color-01-b">First Name</mat-label>
   <mat-form-field floatLabel="never">
     <input formControlName="firstName"
-           placeholder="Nuwan"
            matInput
+           placeholder="Nuwan"
            type="text"
     >
     <mat-error *ngIf="signUpForm.controls['firstName'].hasError('required')">Required</mat-error>
@@ -32,7 +32,7 @@
   <mat-label class="text-color-01-b">Birthday</mat-label>
   <mat-form-field floatLabel="never">
     <mat-hint>Select your birthday</mat-hint>
-    <input [matDatepicker]="picker" placeholder="01/01/2000" formControlName="birthDay" matInput>
+    <input [matDatepicker]="picker" formControlName="birthDay" matInput placeholder="01/01/2000">
     <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <mat-error *ngIf="signUpForm.controls['birthDay'].hasError('required')">Required</mat-error>
@@ -61,7 +61,7 @@
 
   <mat-label class="text-color-01-b">District</mat-label>
   <mat-form-field floatLabel="never">
-    <mat-select placeholder="Colombo" formControlName="district">
+    <mat-select formControlName="district" placeholder="Colombo">
       <mat-option value="Ampara">Ampara</mat-option>
       <mat-option value="Anuradhapura">Anuradhapura</mat-option>
       <mat-option value="Badulla">Badulla</mat-option>
@@ -95,8 +95,8 @@
     <mat-hint>Please add your referral link</mat-hint>
     <input formControlName="referralLink"
            matInput
-           type="text"
            placeholder="LQkctDs5fZsyjZubSU2pRJvyydnpXcaHZyeF4cYAQ46uwHvsRQSSJN3Gtg5FNYKyvNEYvV5Yj"
+           type="text"
     >
     <mat-error *ngIf="signUpForm.controls['referralLink'].hasError('required')">Required</mat-error>
   </mat-form-field>

@@ -93,7 +93,6 @@ export class ApiBaseService {
             throw Error(data.message);
           }
         }), catchError((err: HttpErrorResponse) => {
-          console.log(err);
           if (isLoaderOn) {
             this.ngxUiLoader.stop('3200');
           }

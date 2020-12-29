@@ -32,14 +32,13 @@ export class UserProfileResetPwdComponent implements OnInit {
   }
 
   onStrengthChanged(strength: number): void {
-    console.log('password strength = ', strength);
+
   }
 
   onSavePwd(): void {
-    console.log(this.token);
     if (this.token != null) {
       this.userProfileApiService.resetPassword(this.pwdForm.value.conPassword, this.token)
-        .subscribe(res => console.log(res));
+        .subscribe(res => res);
     }
   }
 

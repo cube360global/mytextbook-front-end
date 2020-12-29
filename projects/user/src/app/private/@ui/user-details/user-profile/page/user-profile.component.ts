@@ -41,7 +41,7 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  onResetPasswordDialogOpen(): void{
+  onResetPasswordDialogOpen(): void {
     this.dialog.open(UserProfileResetPwdComponent, {
       width: '100%'
     });

@@ -18,7 +18,6 @@ export class UserSubViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.userSubscription);
   }
 
   onSubDeleteClick(userId: number): void {

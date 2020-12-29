@@ -32,7 +32,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     const userId = +this.activatedRouter.snapshot.params.userId;
     const contentId = +this.activatedRouter.snapshot.params.contentId;
     this.apiUtilityToolService.POST([ControllerConst.UserContent], {contentId, userId}, true, false)
-      .subscribe(res => console.log(res));
+      .subscribe(res => res);
   }
 
   ngAfterViewInit(): void {

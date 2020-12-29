@@ -1,4 +1,4 @@
-.body-layer{
+.body-layer {
   color: #fff;
   background: #001b34;
   width: 100vw;
@@ -6,14 +6,26 @@
 }
 
 @keyframes fadeIn {
-  from {top: 20%; opacity: 0;}
-  to {top: 100; opacity: 1;}
+  from {
+    top: 20%;
+    opacity: 0;
+  }
+  to {
+    top: 100;
+    opacity: 1;
+  }
 
 }
 
 @-webkit-keyframes fadeIn {
-  from {top: 20%; opacity: 0;}
-  to {top: 100; opacity: 1;}
+  from {
+    top: 20%;
+    opacity: 0;
+  }
+  to {
+    top: 100;
+    opacity: 1;
+  }
 
 }
 

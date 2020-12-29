@@ -20,7 +20,6 @@ export class UserAuthGuard implements CanActivate {
 
       // return !this.jwtService.isTokenExpired(accessToken);
     }
-    console.log('called FALSE');
     this.router.navigate(['']);
     return false;
 

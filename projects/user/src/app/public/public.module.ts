@@ -5,7 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {MaterialModule} from '../../../../lib/vendors/src/lib/material/material.module';
 import {PrimengModule} from '../../../../lib/vendors/src/lib/primeng/primeng.module';
 import {PublicNavbarComponent} from './layout/public-navbar/public-navbar.component';
-import { ComingSoonComponent } from './coming-soon/coming-soon.component';
+import {ComingSoonComponent} from './coming-soon/coming-soon.component';
 
 
 const routes: Routes = [

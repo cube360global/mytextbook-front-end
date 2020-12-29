@@ -15,6 +15,8 @@ import {SubjectApiService} from '../../../subject/shared/services/subject-api.se
 import {SubscriptionManagementComponent} from '../subscription-management/subscription-management.component';
 import {SubjectUser} from '../../../@core/interfaces/SubjectUser';
 import {UserEditComponent} from '../user-edit/user-edit.component';
+import {SubjectModel} from '../../../@core/interfaces/api/SubjectModel';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
@@ -24,6 +26,8 @@ import {UserEditComponent} from '../user-edit/user-edit.component';
 export class UsersListComponent implements OnInit {
 
   filterForm = {} as FormGroup;
+  subjects = [] as SubjectModel[];
+  schools = [] as string[];
 
   users = [] as UserModel[];
   loading = true;
@@ -32,6 +36,7 @@ export class UsersListComponent implements OnInit {
   constructor(private userApiService: UserApiService,
               private dialog: MatDialog,
               private toastr: ToastrService,
+              private router: Router,
               private subjectService: SubjectApiService,
               private ngxUiLoaderService: NgxUiLoaderService,
               private store: Store<fromApp.AppState>,
@@ -39,13 +44,25 @@ export class UsersListComponent implements OnInit {
 
     this.store.select(fromApp.getUserReducer)
       .subscribe(res => {
-          if (res.userData.length > 0) {
+          if (res != null && res.userData.length > 0) {
             this.users = res.userData;
             this.loading = false;
+          }
+          if (res != null && res.schools.length > 0) {
+            this.schools = res.schools;
           }
         }
         , error => console.error(error));
 
+    this.store.select(fromApp.getSubjectReducer)
+      .subscribe(res => {
+        if (res.subjectData != null && res.subjectData.length > 0) {
+          this.subjects = res.subjectData;
+        } else {
+          this.toastr.warning('Data not initialized');
+          this.router.navigate(['/admin/subject']);
+        }
+      });
   }
 
   ngOnInit(): void {
@@ -60,6 +77,7 @@ export class UsersListComponent implements OnInit {
   }
 
   openUserViewDialog(userId: string): void {
+
 
     this.ngxUiLoaderService.start();
     this.userApiService.getUserProfileById(userId)
@@ -82,11 +100,8 @@ export class UsersListComponent implements OnInit {
 
   sendToServer(): void {
     const searchUser = this.filterForm.value as SearchUserModel;
-    searchUser.grade = +searchUser.grade;
-
     console.log(searchUser);
-    console.log('CALLED');
-
+    searchUser.grade = +searchUser.grade;
     this.userApiService.searchUsers(searchUser)
       .subscribe(res => {
         console.log(res);

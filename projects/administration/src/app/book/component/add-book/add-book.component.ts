@@ -52,7 +52,6 @@ export class AddBookComponent implements OnInit {
     try {
       if ($event != null) {
         this.bookImage = $event.currentFiles[0];
-        console.log(this.bookImage);
       }
     } catch (e) {
       this.bookImage = null;
@@ -77,7 +76,6 @@ export class AddBookComponent implements OnInit {
 
     const postDataString = JSON.stringify(postData);
 
-    console.log(postDataString);
     const formData = new FormData();
     formData.append('image', this.bookImage);
     formData.append('body', postDataString);
@@ -92,7 +90,6 @@ export class AddBookComponent implements OnInit {
   }
 
   sendToServer(formData: FormData): void {
-    console.log(formData);
     this.bookApiService.Send(formData)
       .subscribe(res => {
         this.store.dispatch(BOOK_DATA_LOADED({payload: res}));

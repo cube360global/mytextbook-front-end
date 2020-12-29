@@ -56,7 +56,6 @@ export class ContentEditComponent implements OnInit {
     try {
       if ($event != null) {
         this.contentImage = $event.currentFiles[0];
-        console.log(this.contentImage);
       }
     } catch (e) {
       this.contentImage = null;

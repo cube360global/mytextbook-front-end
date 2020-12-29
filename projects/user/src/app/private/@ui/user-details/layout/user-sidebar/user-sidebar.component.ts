@@ -11,6 +11,7 @@ import {UserProfileModel} from '../../../../../@core/interfaces/api/UserProfileM
 })
 export class UserSidebarComponent implements OnInit {
   $userData = new Observable<UserProfileModel>();
+
   constructor(private store: Store<fromApp.AppState>) {
   }
 

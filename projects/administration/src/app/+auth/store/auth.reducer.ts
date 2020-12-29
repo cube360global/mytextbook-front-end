@@ -25,7 +25,7 @@ export const authReducer = createReducer(
     };
   }),
   on(AuthAction.USER_LOGIN_FAIL, state => {
-    console.log('Called From error');
+    console.log('Auth Error');
     return {
       ...state,
       tokenDecodeModel: {} as TokenDecodeModel

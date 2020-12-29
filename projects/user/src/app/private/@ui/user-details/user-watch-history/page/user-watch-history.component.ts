@@ -19,7 +19,6 @@ export class UserWatchHistoryComponent implements OnInit {
     this.store.select(fromApp.getUserProfileReducer).subscribe(res => {
       if (res != null && res.user.id != null) {
         this.contents = res.user.contents;
-        console.log(this.contents);
       }
     });
   }

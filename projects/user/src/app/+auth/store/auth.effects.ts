@@ -6,9 +6,8 @@ import {REFRESH_USER_TOKEN, USER_LOGIN, USER_LOGIN_FAIL, USER_LOGIN_STAT} from '
 import {catchError, map, switchMap, tap} from 'rxjs/operators';
 import {CookieManagerService} from '../../@core/services/cookie-manager.service';
 import {TokenDecodeModel} from '../../../../../lib/authentication/src/lib/interfaces/TokenDecodeModel';
-import {of, pipe} from 'rxjs';
+import {of} from 'rxjs';
 import {Path} from '../../@core/enum/path.enum';
-import {USER_DATA_REQUEST} from '../../private/@ui/user-details/user-profile/store/user-profile.action';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {USER_LOGOUT} from '../../../../../administration/src/app/+auth/store/auth.action';
 import {AlertService} from '../../../../../lib/tools/src/lib/alert.service';
@@ -44,7 +43,6 @@ export class AuthEffects {
     return this.action.pipe(
       ofType(REFRESH_USER_TOKEN),
       tap((tokenData) => {
-        console.log('from Refresh Token', tokenData);
         this.cookieManager.setCookie(tokenData.payload.access_token, tokenData.payload.refresh_token);
       })
     );

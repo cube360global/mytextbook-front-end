@@ -20,19 +20,18 @@ export class ResetPasswordFormComponent implements OnInit {
 
   ngOnInit(): void {
     const authToken = this.activatedRouter.snapshot.queryParams.auth_token;
-    console.log(authToken);
     this.token = authToken;
   }
 
   onStrengthChanged(strength: number): void {
-    console.log('password strength = ', strength);
   }
 
   onResetPassword(): void {
     console.log(this.token);
     if (this.token != null) {
       this.userApiService.resetPassword(this.passwordFormControl.value, this.token)
-        .subscribe(res => console.log(res));
+        .subscribe(res => {
+        });
     }
   }
 }

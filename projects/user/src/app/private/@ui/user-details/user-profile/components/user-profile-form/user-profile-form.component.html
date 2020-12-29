@@ -11,7 +11,7 @@
 <div mat-dialog-content>
   <div class="row">
     <div class="d-flex align-items-center mt-2">
-      <img src="assets/img/user.png" width="50px" class="img-fluid me-3" alt="user-image">
+      <img alt="user-image" class="img-fluid me-3" src="assets/img/user.png" width="50px">
       <div>
         <div><b>{{userProfile.firstName}} {{userProfile.lastName}}</b></div>
         <div><small><i class="fas fa-phone-alt me-2"></i>{{userProfile.telephoneNumber}}</small></div>
@@ -106,7 +106,7 @@
         <mat-option value="Vavuniya">Vavuniya</mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" class="mat-button-rounded-sm">
+    <button class="mat-button-rounded-sm" color="primary" mat-raised-button>
       EDIT
     </button>
   </form>
