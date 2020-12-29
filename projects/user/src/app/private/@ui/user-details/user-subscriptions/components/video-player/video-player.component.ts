@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ActivatedRoute} from '@angular/router';
+import {ControllerConst} from '../../../../../../../../../lib/tools/src/lib/global/ControllerConst';
+import {ApiUtilityToolService} from '../../../../../../../../../lib/tools/src/lib/api-utility-tool.service';
 // @ts-ignore
 // import Player from '@vimeo/player';
 
@@ -16,7 +18,8 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
   videoUrl: any;
 
   constructor(private sanitizer: DomSanitizer,
-              private activatedRouter: ActivatedRoute) {
+              private activatedRouter: ActivatedRoute,
+              private apiUtilityToolService: ApiUtilityToolService) {
   }
 
   ngOnInit(): void {
@@ -26,13 +29,10 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
   }
 
   notify(): void {
-    // /user-content
-    // {
-    //   "contentId": 0,
-    //   "userId": 0
-    // }
-    console.log(+this.activatedRouter.snapshot.params.userId);
-    console.log(+this.activatedRouter.snapshot.params.contentId);
+    const userId = +this.activatedRouter.snapshot.params.userId;
+    const contentId = +this.activatedRouter.snapshot.params.contentId;
+    this.apiUtilityToolService.POST([ControllerConst.UserContent], {contentId, userId}, true, false)
+      .subscribe(res => console.log(res));
   }
 
   ngAfterViewInit(): void {
