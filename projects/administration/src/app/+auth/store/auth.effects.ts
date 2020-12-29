@@ -1,20 +1,18 @@
 import {Injectable} from '@angular/core';
-import {Actions, createEffect, ofType} from '@ngrx/effects';
-import {AdminAuthService} from '../shared/services/admin-auth.service';
 import {Router} from '@angular/router';
-import {LOGIN_WITH_REFRESH_TOKEN, REFRESH_USER_TOKEN, USER_LOGIN, USER_LOGIN_FAIL, USER_LOGIN_STAT, USER_LOGOUT} from './auth.action';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
+import {of} from 'rxjs';
 import {catchError, map, switchMap, tap} from 'rxjs/operators';
+import {NgxUiLoaderService} from 'ngx-ui-loader';
 import {CookieManagerService} from '../../@core/services/cookie-manager.service';
 import {TokenDecodeModel} from '../shared/interfaces/TokenDecodeModel';
-import {of} from 'rxjs';
-import {NgxUiLoaderService} from 'ngx-ui-loader';
 import {Path} from '../../@core/enum/path.enum';
 import {AlertService} from '../../@core/services/alert.service';
-
+import {AdminAuthService} from '../shared/services/admin-auth.service';
+import {LOGIN_WITH_REFRESH_TOKEN, REFRESH_USER_TOKEN, USER_LOGIN, USER_LOGIN_FAIL, USER_LOGIN_STAT, USER_LOGOUT} from './auth.action';
 
 @Injectable()
 export class AuthEffects {
-
   authLoginStart$ = createEffect(() => {
     return this.action.pipe(
       ofType(USER_LOGIN_STAT),
@@ -62,7 +60,6 @@ export class AuthEffects {
     );
   });
 
-
   authLogOut = createEffect(() => {
     return this.action.pipe(
       ofType(REFRESH_USER_TOKEN),
@@ -101,6 +98,4 @@ export class AuthEffects {
               private ngxUiLoaderService: NgxUiLoaderService,
               private router: Router) {
   }
-
-
 }

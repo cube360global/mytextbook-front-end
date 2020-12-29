@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ContentApiService} from '../../shared/service/content-api.service';
 import {ActivatedRoute} from '@angular/router';
 import {BookAndContentModel} from '../../../../../../@core/interfaces/api/BookAndContentModel';
 import {BookModel} from '../../../../../../@core/interfaces/api/BookModel';
+import {ContentApiService} from '../../shared/service/content-api.service';
 
 @Component({
   selector: 'app-book-content',

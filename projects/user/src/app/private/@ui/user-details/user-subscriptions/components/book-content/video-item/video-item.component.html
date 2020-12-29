@@ -1,15 +1,15 @@
 <div class="text-center">
   <div>
     <img alt="{{video.chapter}}"
-         src="{{video.markerImageURL}}"
          mat-card-image
-         routerLink="../../../play/{{video.contentURL}}"
+         routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"
+         src="{{video.markerImageURL}}"
          style="max-width: 400px; max-height: 400px">
   </div>
   <div class="mt-3">
     <p style="font-size: medium; font-weight: bold">
       Chapter {{video.chapter}} - {{video.description}}
     </p>
-    <p>Uploaded on {{video.dateOfUpload}}</p>
+    <p>Uploaded on {{video.dateOfUpload | date}}</p>
   </div>
 </div>
