@@ -2,6 +2,8 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {LyButtonModule} from '@alyle/ui/button';
+import {MatPasswordStrengthModule} from '@angular-material-extensions/password-strength';
 import {MaterialModule} from '../../../../../../lib/vendors/src/lib/material/material.module';
 import {PrimengModule} from '../../../../../../lib/vendors/src/lib/primeng/primeng.module';
 import {UserSharedModule} from '../../shared/user-shared.module';
@@ -14,12 +16,7 @@ import {SubscriptionsComponent} from './user-subscriptions/page/subscriptions.co
 import {SubscriptionListComponent} from './user-subscriptions/components/subscription-list/subscription-list.component';
 import {SubscriptionItemComponent} from './user-subscriptions/components/subscription-list/subscription-item/subscription-item.component';
 import {BookContentComponent} from './user-subscriptions/components/book-content/book-content.component';
-import {VideoListComponent} from './user-subscriptions/components/book-content/video-list/video-list.component';
-import {VideoItemComponent} from './user-subscriptions/components/book-content/video-list/video-item/video-item.component';
 import {VideoPlayerComponent} from './user-subscriptions/components/video-player/video-player.component';
-import {LyButtonModule} from '@alyle/ui/button';
-import {MatPasswordStrengthModule} from '@angular-material-extensions/password-strength';
-
 
 const routes: Routes = [
   {
@@ -29,7 +26,7 @@ const routes: Routes = [
         path: Path.Subscriptions, component: SubscriptionsComponent, children: [
           {path: '', redirectTo: Path.All, pathMatch: 'full'},
           {path: Path.All, component: SubscriptionListComponent},
-          {path: Path.Video, component: BookContentComponent}
+          {path: Path.BookContent, component: BookContentComponent}
         ]
       },
       {path: Path.Play, component: VideoPlayerComponent}
@@ -47,8 +44,6 @@ const routes: Routes = [
     SubscriptionListComponent,
     SubscriptionItemComponent,
     BookContentComponent,
-    VideoListComponent,
-    VideoItemComponent,
     VideoPlayerComponent
   ],
   imports: [
@@ -61,7 +56,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     LyButtonModule,
     MatPasswordStrengthModule
-
   ]
 })
 export class UserDetailsModule {
