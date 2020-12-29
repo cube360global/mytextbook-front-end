@@ -1,13 +1,15 @@
-<div>
-  <img alt="{{video.chapter}}"
-       src="{{video.markerImageURL}}"
-       mat-card-image
-       routerLink="../../../play/{{video.contentURL}}">
-  <p class="m-2 mt-4"
-     style="font-size: medium; font-weight: bold">
-    Chapter {{video.chapter}} - {{video.description}}
-  </p>
-  <p class="m-2">
-    Uploaded on {{video.dateOfUpload}}
-  </p>
+<div class="text-center">
+  <div>
+    <img alt="{{video.chapter}}"
+         src="{{video.markerImageURL}}"
+         mat-card-image
+         routerLink="../../../play/{{video.contentURL}}"
+         style="max-width: 400px; max-height: 400px">
+  </div>
+  <div class="mt-3">
+    <p style="font-size: medium; font-weight: bold">
+      Chapter {{video.chapter}} - {{video.description}}
+    </p>
+    <p>Uploaded on {{video.dateOfUpload}}</p>
+  </div>
 </div>
