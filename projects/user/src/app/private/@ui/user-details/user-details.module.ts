@@ -24,7 +24,9 @@ const routes: Routes = [
       {
         path: Path.Subscriptions, component: SubscriptionsComponent, children: [
           {path: '', redirectTo: Path.All, pathMatch: 'full'},
-          {path: Path.All, component: SubscriptionListComponent}
+          {path: Path.All, component: SubscriptionListComponent},
+          // remove this
+          {path: Path.Video, component: BookContentComponent}
         ]
       }
     ]
