@@ -11,7 +11,7 @@ export class BookApiService {
   constructor(private  apiUtilityToolService: ApiUtilityToolService) {
   }
 
-  all(): Observable<BookModel[]> {
+  All(): Observable<BookModel[]> {
     return this.apiUtilityToolService.GET<BookModel[]>([ControllerConst.Book, ControllerConst.All], true);
   }
 }
