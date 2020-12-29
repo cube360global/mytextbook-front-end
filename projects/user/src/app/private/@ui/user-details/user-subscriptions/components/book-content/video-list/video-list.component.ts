@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ContentModel} from '../../../../../../../@core/interfaces/api/ContentModel';
 
 @Component({
   selector: 'app-video-list',
@@ -6,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./video-list.component.scss']
 })
 export class VideoListComponent implements OnInit {
+  @Input() content = {} as ContentModel;
+
   constructor() {
   }
 
