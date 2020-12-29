@@ -1,13 +1,14 @@
 <div class="container">
-  <div class="row mb-6">
-    <div class="col-sm-5 d-flex justify-content-end">
+  <div class="row mb-5">
+    <div class="col-sm-5 d-flex justify-content-center">
       <img alt="{{bookContent.book.name}}"
+           mat-card-image
            src="{{bookContent.book.image}}"
-           mat-card-image>
+           style="max-width: 400px; max-height: 400px">
     </div>
     <div class="col-sm-6">
-      <p style="font-size: x-large; font-weight: bold"
-         class="m-5">
+      <p class="m-5"
+         style="font-size: x-large; font-weight: bold">
         {{bookContent.book.name}}
       </p>
     </div>

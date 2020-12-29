@@ -1,6 +1,6 @@
 <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
   <mat-label class="text-color-01-b">Email Address</mat-label>
-  <mat-form-field  floatLabel="never">
+  <mat-form-field floatLabel="never">
     <mat-icon class="me-1 text-color-01" matPrefix>person</mat-icon>
     <input formControlName="username" matInput placeholder="example@gmail.com">
     <mat-error *ngIf="loginForm.controls['username'].hasError('email')">This is the not a valid email</mat-error>
@@ -8,7 +8,7 @@
   </mat-form-field>
 
   <mat-label class="text-color-01-b">Password</mat-label>
-  <mat-form-field  floatLabel="never">
+  <mat-form-field floatLabel="never">
     <mat-icon class="me-1 text-color-01" matPrefix>lock</mat-icon>
     <input [type]="hide ? 'password' : 'text'"
            formControlName="password"
@@ -23,7 +23,7 @@
     <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">Min 8 characters</mat-error>
     <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Required</mat-error>
   </mat-form-field>
-    <button class="mat-button-rounded-sm w-100 mt-3" color="primary" mat-raised-button>SIGN IN</button>
+  <button class="mat-button-rounded-sm w-100 mt-3" color="primary" mat-raised-button>SIGN IN</button>
 </form>
 
 

@@ -25,6 +25,7 @@ export class AuthEffects {
             map((resData: TokenDecodeModel) => {
               this.spinner.hide();
               this.cookieManager.setCookie(resData.access_token, resData.refresh_token);
+              localStorage.setItem('USERID', resData.userId);
               this.router.navigate(['/', Path.Private]);
               return USER_LOGIN({payload: resData});
             }),
