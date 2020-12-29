@@ -1,18 +1,18 @@
 <div class="container">
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-sm-5 text-center">
       <img alt="{{bookContent.book.name}}"
            src="{{bookContent.book.image}}"
-           mat-card-image
-           style="height: 40%">
+           mat-card-image>
     </div>
     <div class="col-sm-7">
       <p style="font-size: larger; font-weight: bold">
-        {{bookContent.book.image}}
+        {{bookContent.book.name}}
       </p>
     </div>
   </div>
-  <div class="row mt-4">
+  <hr>
+  <div class="row mt-5">
     <app-video-item *ngFor="let video of bookContent.contents"
                     [video]="video"
                     class="col-sm-4">
