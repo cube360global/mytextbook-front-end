@@ -17,6 +17,7 @@ import {ResetPasswordFormComponent} from './components/reset-password/reset-pass
 import {MatPasswordStrengthModule} from '@angular-material-extensions/password-strength';
 
 
+
 @NgModule({
   declarations: [
     AuthHomeComponent,
@@ -36,16 +37,16 @@ import {MatPasswordStrengthModule} from '@angular-material-extensions/password-s
     SignUpFormComponent,
     ForgetPasswordFormComponent
   ],
-  imports: [
-    CommonModule,
-    AlyleModule,
-    PrimengModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    PublicModule,
-    MatPasswordStrengthModule,
-  ]
+    imports: [
+        CommonModule,
+        AlyleModule,
+        PrimengModule,
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule,
+        PublicModule,
+        MatPasswordStrengthModule,
+    ]
 })
 export class UserAuthModule {
 }

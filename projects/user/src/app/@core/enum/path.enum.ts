@@ -27,6 +27,7 @@ export enum Path {
   All = 'all',
   BookContent = 'book-content',
   Play = 'play',
+  History = 'watch-history',
 
   Public = 'public',
   Private = 'private'
