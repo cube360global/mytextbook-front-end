@@ -30,7 +30,7 @@ const routes: Routes = [
           {path: `${Path.BookContent}/:id`, component: BookContentComponent}
         ]
       },
-      {path: `${Path.Play}/:id`, component: VideoPlayerComponent}
+      {path: Path.Play, component: VideoPlayerComponent}
     ]
   }
 ];
