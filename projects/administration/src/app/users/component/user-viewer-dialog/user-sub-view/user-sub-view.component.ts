@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserSubscriptionModel} from '../../../../@core/interfaces/api/UserSubscriptionModel';
+import {UserSubscriptionService} from '../../../shared/service/user-subscription.service';
 
 @Component({
   selector: 'app-user-sub-view',
@@ -9,11 +10,15 @@ import {UserSubscriptionModel} from '../../../../@core/interfaces/api/UserSubscr
 export class UserSubViewComponent implements OnInit {
 
   @Input() userSubscription = [] as UserSubscriptionModel [];
+  @Input() userId = 0 ;
 
-  constructor() {
+  constructor(private userSubscriptionService: UserSubscriptionService) {
   }
 
   ngOnInit(): void {
   }
 
+  onSubDeleteClick(userId: number): void {
+   // this.userSubscriptionService
+  }
 }

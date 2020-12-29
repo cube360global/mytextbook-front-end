@@ -19,6 +19,9 @@
       <th>
         Payment
       </th>
+      <th>
+        Action
+      </th>
     </tr>
   </ng-template>
   <ng-template let-sub pTemplate="body">
@@ -29,6 +32,9 @@
       <td>{{sub.description}}</td>
       <td class="text-danger"><b>{{sub.status}}%</b></td>
       <td>{{sub.payment}}</td>
+      <td>
+        <button (click)="onSubDeleteClick(userId)"></button>
+      </td>
     </tr>
   </ng-template>
 </p-table>

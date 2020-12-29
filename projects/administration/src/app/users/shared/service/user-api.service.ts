@@ -47,6 +47,10 @@ export class UserApiService {
       postSub, true, true);
   }
 
+  public deleteSubscription(): Observable<any> {
+    return this.apiBaseService.DELETE_API<any>([AdminControllersConst.SubscriptionController]);
+  }
+
   public changeUserStatus(userStatus: UserChangeStatus): Observable<any> {
     return this.apiBaseService.POST_API<any>([AdminControllersConst.UserController, 'change-status'], userStatus, true);
   }
