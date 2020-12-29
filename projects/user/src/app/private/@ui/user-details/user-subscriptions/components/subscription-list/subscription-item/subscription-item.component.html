@@ -1,0 +1,20 @@
+<div class="m-2 col-sm-4">
+  <mat-card class="w-100">
+    <img alt="{{subscription.description}}"
+         mat-card-image
+         src="{{subscription.image}}">
+    <mat-card-content class="text-center">
+      <p style="font-weight: bold; font-size: medium">
+        {{subscription.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions class="text-center mb-1">
+      <button class="m-1 btn-success disabled"
+              mat-flat-button
+              style="text-transform: uppercase">
+        <i class="fas fa-check ms-2"></i>
+        Subscribed
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
