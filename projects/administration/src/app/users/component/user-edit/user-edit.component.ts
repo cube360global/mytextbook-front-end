@@ -6,6 +6,9 @@ import {UserApiService} from '../../shared/service/user-api.service';
 import {AlertService} from '../../../@core/services/alert.service';
 import {AlertConst} from '../../../@core/const/AlertConst';
 import {UserChangeStatus} from '../../../@core/interfaces/api/UserChangeStatus';
+import {Store} from '@ngrx/store';
+import * as fromApp from '../../../app.reducer';
+import {USERS_DATA_LOADED} from '../../store/user.action';
 
 @Component({
   selector: 'app-user-edit',
@@ -18,6 +21,7 @@ export class UserEditComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<UserEditComponent>,
               public utilityService: UtilityService,
               private alertService: AlertService,
+              private store: Store<fromApp.AppState>,
               private userApiService: UserApiService,
               @Inject(MAT_DIALOG_DATA) public user: UserModel) {
   }
@@ -37,7 +41,7 @@ export class UserEditComponent implements OnInit {
           this.userApiService.changeUserStatus(userStatus)
             .subscribe(res => {
               this.dialogRef.close();
-              console.log(res);
+              this.store.dispatch(USERS_DATA_LOADED({payload: res.users}));
             });
         }
       });
