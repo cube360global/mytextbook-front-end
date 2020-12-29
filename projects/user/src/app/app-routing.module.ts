@@ -10,21 +10,23 @@ import {ResetPasswordComponent} from './+auth/components/reset-password/reset-pa
 import {PublicHomePageComponent} from './public/components/public-home-page/public-home-page.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: Path.Auth, pathMatch: 'full'},
+  {
+    path: '', redirectTo: Path.Auth, pathMatch: 'full'
+  },
   {
     path: Path.Auth, component: AuthHomeComponent, children: [
       {path: '', component: SignInComponent},
       {path: Path.SignUp, component: SignUpComponent},
       {path: Path.ForgotPassword, component: ForgetPasswordComponent},
       {path: Path.PasswordReset, component: ResetPasswordComponent},
-      {path: Path.AboutUs, component: PublicHomePageComponent},
+      {path: Path.AboutUs, component: PublicHomePageComponent}
     ]
   },
-
-  {path: Path.Public, loadChildren: () => import('./public/public.module').then(m => m.PublicModule)},
   {
-    path: Path.Private, loadChildren: () => import('./private/private.module').then(m => m.PrivateModule),
-    canActivate: [UserAuthGuard]
+    path: Path.Public, loadChildren: () => import('./public/public.module').then(m => m.PublicModule)
+  },
+  {
+    path: Path.Private, loadChildren: () => import('./private/private.module').then(m => m.PrivateModule), canActivate: [UserAuthGuard]
   }
 ];
 

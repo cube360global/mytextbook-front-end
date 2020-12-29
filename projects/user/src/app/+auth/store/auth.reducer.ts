@@ -31,6 +31,12 @@ export const authReducer = createReducer(
       tokenDecodeModel: {} as TokenDecodeModel
     };
   }),
+  on(AuthAction.USER_LOGOUT, state => {
+    return {
+      ...state,
+      tokenDecodeModel: {} as TokenDecodeModel
+    };
+  }),
   on(AuthAction.REFRESH_USER_TOKEN, (state, {payload}) => {
     return {
       ...state,

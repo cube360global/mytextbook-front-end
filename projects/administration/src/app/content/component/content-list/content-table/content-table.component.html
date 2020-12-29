@@ -2,8 +2,10 @@
          [globalFilterFields]="['name','description','chapter','pageNumber','viewCount','likeCount','unLikeCount','status','book']"
          [loading]="loading"
          [paginator]="true"
+         [resizableColumns]="true"
          [rowsPerPageOptions]="[10,25,50]"
          [rows]="10"
+         [scrollable]="true"
          [showCurrentPageReport]="true"
          [value]="contentList"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -20,79 +22,53 @@
                placeholder="Search keyword"
                type="text"/>
       </div>
-      <div class="d-flex justify-content-between align-items-center mt-2">
-        <!--        <ng-container *ngTemplateOutlet="filterTemplate"></ng-container>-->
-      </div>
-
-
-      <!--      <button mat-icon-button color="primary" (click)="op.toggle($event)">-->
-      <!--        <mat-icon>filter_alt</mat-icon>-->
-      <!--      </button>-->
-
-
     </div>
   </ng-template>
+  <ng-template pTemplate="colgroup">
+    <colgroup>
+      <col style="width:30%">
+      <col style="width:30%">
+      <col style="width:10%">
+      <col style="width:10%">
+      <col style="width:10%">
+      <col style="width:10%">
+      <col style="width:10%">
+      <col style="width:10%">
+      <col style="width:30%">
+      <col style="width:10%">
+    </colgroup>
+  </ng-template>
+
   <ng-template pTemplate="header">
     <tr>
-      <th>
+      <th pResizableColumn>
         Marker Image
       </th>
-      <th>
+      <th pResizableColumn>
         Name
-        <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
-        <!--          Email-->
-        <!--          <p-columnFilter display="menu" field="email" type="text"></p-columnFilter>-->
-        <!--        </div>-->
       </th>
-<!--      <th>-->
-<!--        Description-->
-<!--        &lt;!&ndash;        <div class="p-d-flex p-jc-between p-ai-center">&ndash;&gt;-->
-<!--        &lt;!&ndash;          First Name&ndash;&gt;-->
-<!--        &lt;!&ndash;          <p-columnFilter display="menu" field="firstName" type="text"></p-columnFilter>&ndash;&gt;-->
-<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
-<!--      </th>-->
-      <th>
-        Chapter No
-        <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
-        <!--          Last Name-->
-        <!--          <p-columnFilter display="menu" field="lastName" type="text"></p-columnFilter>-->
-        <!--        </div>-->
+      <th pResizableColumn>
+        Chapter <br>No
       </th>
       <th>
         Page No
-        <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
-        <!--          Contact No-->
-        <!--          <p-columnFilter display="menu" field="telephoneNumber" type="text"></p-columnFilter>-->
-        <!--        </div>-->
+      </th>
+      <th pResizableColumn>
+        View <br> Count
       </th>
       <th>
-        View Count
-        <!--        <div class="p-d-flex p-jc-between p-ai-center" matTooltip="User active status">-->
-        <!--          Status-->
-        <!--          <p-columnFilter display="menu" field="active" type="text"></p-columnFilter>-->
-        <!--        </div>-->
+        Like <br> Count
       </th>
-      <th>
-        Like Count
-        <!--        <div class="p-d-flex p-jc-between p-ai-center" matTooltip="Subscription Count">-->
-        <!--          Sub. Count-->
-        <!--          <p-columnFilter display="menu" field="subscriptionCount" type="number"></p-columnFilter>-->
-        <!--        </div>-->
-      </th>
-      <th>
-        Unlike Count
-        <!--        <div class="p-d-flex p-jc-between p-ai-center">-->
-        <!--          Role-->
-        <!--          <p-columnFilter display="menu" field="role" type="number"></p-columnFilter>-->
-        <!--        </div>-->
+      <th pResizableColumn>
+        Unlike <br> Count
       </th>
       <th>
         Status
       </th>
-      <th>
+      <th pResizableColumn>
         Book Name
       </th>
-      <th>
+      <th pResizableColumn>
         Action
       </th>
     </tr>
@@ -103,7 +79,7 @@
         <img alt="" class="img-fluid" height="80px" src="{{content.markerImageURL}}" width="80px">
       </td>
       <td>{{content.name}}</td>
-<!--      <td>{{content.description}}</td>-->
+      <!--      <td>{{content.description}}</td>-->
       <td>{{content.chapter}}</td>
       <td>{{content.pageNumber}}</td>
       <td>{{content.viewCount}}</td>
@@ -120,13 +96,13 @@
           <i class="fas fa-eye"></i>
         </button>
         &nbsp;
-<!--        <button-->
-<!--          color="primary"-->
-<!--          mat-mini-fab-->
-<!--          matTooltip="Edit"-->
-<!--          (click)="onContentEditDialogOpen(content)">-->
-<!--          <i class="fas fa-edit"></i>-->
-<!--        </button>-->
+        <!--        <button-->
+        <!--          color="primary"-->
+        <!--          mat-mini-fab-->
+        <!--          matTooltip="Edit"-->
+        <!--          (click)="onContentEditDialogOpen(content)">-->
+        <!--          <i class="fas fa-edit"></i>-->
+        <!--        </button>-->
       </td>
     </tr>
   </ng-template>

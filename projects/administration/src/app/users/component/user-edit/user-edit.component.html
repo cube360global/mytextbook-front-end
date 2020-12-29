@@ -1,5 +1,6 @@
 <!--<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>-->
-
+<p-confirmDialog header="Confirmation"
+                 icon="pi pi-exclamation-triangle"></p-confirmDialog>
 <div mat-dialog-title>
   <div class="d-flex justify-content-between align-items-center">
     <div class="header-text-sm">
@@ -17,14 +18,14 @@
   <div class="m-2">
     <p-dropdown
       [(ngModel)]="selectedStatus"
-      optionValue="code"
       [options]="utilityService.status"
-      appendTo="body" optionLabel="name" styleClass="p-inputtext-sm w-100"></p-dropdown>
+      appendTo="body"
+      optionLabel="name" optionValue="code" styleClass="p-inputtext-sm w-100"></p-dropdown>
   </div>
 </div>
 
 <div class="text-center mt-2">
-  <button (click)="onEditSubmit()" mat-raised-button color="primary" class="mat-button-rounded-sm">
+  <button (click)="onEditSubmit()" class="mat-button-rounded-sm" color="primary" mat-raised-button>
     Submit
   </button>
 </div>

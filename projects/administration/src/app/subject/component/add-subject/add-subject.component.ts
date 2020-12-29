@@ -16,7 +16,7 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class AddSubjectComponent implements OnInit {
 
-  subjectNameCon = new FormControl(null,[Validators.required]);
+  subjectNameCon = new FormControl(null, [Validators.required]);
   file: any;
   subjectName = '';
   imageError: any;
@@ -27,7 +27,7 @@ export class AddSubjectComponent implements OnInit {
               private store: Store<fromApp.AppState>,
               private alertService: AlertService,
               public dialogRef: MatDialogRef<AddSubjectComponent>,
-              ) {
+  ) {
   }
 
   ngOnInit(): void {

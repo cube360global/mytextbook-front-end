@@ -21,8 +21,9 @@ input {
 }
 
 textarea {
-  border-radius: 20px !important;
+  border-radius: $border-radius !important;
 }
+
 .navbar {
   color: #ffffff;
   height: 10vh;

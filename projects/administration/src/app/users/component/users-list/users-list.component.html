@@ -1,12 +1,12 @@
 <p-table #dt1
          [globalFilterFields]="['email','firstName','lastName','telephoneNumber','active','subscriptionCount','role']"
          [loading]="loading"
-         [value]="users"
-         [rowHover]="true"
-         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
-         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-         [scrollable]="true"
+         [paginator]="true"
          [resizableColumns]="true"
+         [rowHover]="true" [rowsPerPageOptions]="[10,25,50]" [rows]="10"
+         [scrollable]="true" [showCurrentPageReport]="true"
+         [value]="users"
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
          styleClass="p-datatable-gridlines"
 >
 
@@ -59,7 +59,7 @@
       <th pResizableColumn>
         Status
       </th>
-      <th pResizableColumn matTooltip="Subscription Count">
+      <th matTooltip="Subscription Count" pResizableColumn>
         Sub. Count
       </th>
       <th pResizableColumn>
@@ -68,14 +68,14 @@
     </tr>
   </ng-template>
 
-  <ng-template  pTemplate="body"  let-user>
+  <ng-template let-user pTemplate="body">
     <tr>
       <td>{{user.email}}</td>
       <td>{{user.firstName}}</td>
       <td>{{user.lastName}}</td>
       <td>{{user.telephoneNumber}}</td>
-      <td matTooltip="Click to edit user status" style="cursor: pointer" (click)="onUserStatusEditClick(user)">
-        <span  *ngIf="user.active;else falseContent"  class="alert alert-success p-1"> True </span>
+      <td (click)="onUserStatusEditClick(user)" matTooltip="Click to edit user status" style="cursor: pointer">
+        <span *ngIf="user.active;else falseContent" class="alert alert-success p-1"> True </span>
 
       </td>
       <td>{{user.subscriptionCount}}</td>

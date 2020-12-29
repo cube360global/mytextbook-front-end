@@ -21,6 +21,7 @@ export class ToolBarComponent implements OnInit {
   onLogOutClick(): void {
     this.alertService.getConfirmationDialog()
       .confirm({
+        key: 'tb-250',
         message: AlertConst.ConfirmationMessage,
         accept: () => {
           this.store.dispatch(USER_LOGOUT());

@@ -4,8 +4,8 @@ import {LoginModel} from '../../../../../../lib/authentication/src/lib/interface
 import {ControllerConst} from '../../../../../../lib/tools/src/lib/global/ControllerConst';
 import {Observable} from 'rxjs';
 import {TokenDecodeModel} from '../../../../../../lib/authentication/src/lib/interfaces/TokenDecodeModel';
-import {ApiUtilityToolService} from "../../../../../../lib/tools/src/lib/api-utility-tool.service";
-import {UserSignUpModel} from "../../../@core/interfaces/api/UserSignUpModel";
+import {ApiUtilityToolService} from '../../../../../../lib/tools/src/lib/api-utility-tool.service';
+import {UserSignUpModel} from '../../../@core/interfaces/api/UserSignUpModel';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class UserAuthService {
       .set('Content-Type', 'application/x-www-form-urlencoded')
       .set('Authorization', 'Basic ' + btoa('web-client:web-secret'));
     const httpClient = new HttpClient(this.httpBackend);
-    return httpClient.post<TokenDecodeModel>(this.baseUrl + ControllerConst.LoginController, reqBody.toString(),
+    return httpClient.post<TokenDecodeModel>(this.baseUrl + ControllerConst.Login, reqBody.toString(),
       {
         headers: headersObject
       });
@@ -42,17 +42,18 @@ export class UserAuthService {
     return this.apiUtilityToolService.POST([ControllerConst.User, 'sign-up'],
       signUp, true, true);
   }
-  public  forgetPassword(email: string): Observable<any>{
+
+  public forgetPassword(email: string): Observable<any> {
     return this.apiUtilityToolService.POST([ControllerConst.User, 'forgot-password', email],
       null, true, true);
   }
 
-  public  resetPassword(password: string, token: string): Observable<any>{
+  public resetPassword(password: string, token: string): Observable<any> {
     const x = {password};
     const headersObject = new HttpHeaders()
       .set('Authorization', `Bearer ${token}`);
     const httpClient = new HttpClient(this.httpBackend);
-    return  this.apiUtilityToolService.POST_WITHOUT_AUTH([ControllerConst.User, 'set-password'],
+    return this.apiUtilityToolService.POST_WITHOUT_AUTH([ControllerConst.User, 'set-password'],
       x, headersObject, true);
   }
 }

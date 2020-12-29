@@ -13,7 +13,7 @@ import {ValdemortModule} from 'ngx-valdemort';
 import {SubscriptionManagementComponent} from './component/subscription-management/subscription-management.component';
 import {BookItemComponent} from './component/subscription-management/book-item/book-item.component';
 import {UserSubViewComponent} from './component/user-viewer-dialog/user-sub-view/user-sub-view.component';
-import { UserEditComponent } from './component/user-edit/user-edit.component';
+import {UserEditComponent} from './component/user-edit/user-edit.component';
 
 const routes: Routes = [
   {path: '', component: UserManagementComponent},

@@ -1,3 +1,7 @@
+<p-confirmDialog header="Confirmation"
+                 icon="pi pi-exclamation-triangle"
+                 key="ce-100"></p-confirmDialog>
+
 <div mat-dialog-title>
   <div class="d-flex justify-content-between align-items-center">
     <div class="header-text-sm">
@@ -10,17 +14,17 @@
 </div>
 
 <div mat-dialog-content>
+
   <div class="container mt-4">
+
     <form (ngSubmit)="onContentSubmit()" [formGroup]="contentAddForm">
-      <div class="p-float-label">
-        <input
-          [ngClass]="{ 'p-invalid' : !contentAddForm.controls['name'].valid && contentAddForm.controls['name'].touched}"
-          class="p-inputtext-sm w-100"
-          formControlName="name"
-          id="name"
-          pInputText type="text">
-        <label for="name">Content Name*</label>
-      </div>
+      <mat-label class="text-color-01-b"> Content Name*</mat-label>
+      <input
+        [ngClass]="{ 'p-invalid' : !contentAddForm.controls['name'].valid && contentAddForm.controls['name'].touched}"
+        class="p-inputtext-sm w-100 mt-2"
+        formControlName="name"
+        id="name"
+        pInputText type="text">
       <div>
         <val-errors controlName="name">
           <ng-template valError="required"><small class="p-invalid ms-3">The content name is required</small>
@@ -29,15 +33,16 @@
         </val-errors>
       </div>
 
-      <div class="p-float-label">
-    <textarea
-      [ngClass]="{ 'p-invalid' : !contentAddForm.controls['description'].valid && contentAddForm.controls['description'].touched}"
-      class="p-inputtext-sm"
-      formControlName="description"
-      id="description"
-      pInputText type="text"></textarea>
-        <label for="description">Description*</label>
-      </div>
+      <p></p>
+      <mat-label class="text-color-01-b"> Description*</mat-label>
+      <textarea
+        [ngClass]="{ 'p-invalid' : !contentAddForm.controls['description'].valid
+        && contentAddForm.controls['description'].touched}"
+        class="p-inputtext-sm w-100 mt-2"
+        formControlName="description"
+        id="description"
+        pInputText type="text">
+      </textarea>
       <div>
         <val-errors controlName="description">
           <ng-template valError="required"><small class="p-invalid ms-3">The content name is required</small>
@@ -46,18 +51,16 @@
         </val-errors>
       </div>
 
+      <p></p>
       <div class="row">
-
         <div class="col-sm-6">
-          <div class="p-float-label">
-            <input
-              [ngClass]="{ 'p-invalid' : !contentAddForm.controls['chapter'].valid && contentAddForm.controls['chapter'].touched}"
-              class="p-inputtext-sm"
-              formControlName="chapter"
-              id="chapter"
-              pInputText type="number">
-            <label for="name">Chapter No*</label>
-          </div>
+          <mat-label class="text-color-01-b"> Chapter No*</mat-label>
+          <input
+            [ngClass]="{ 'p-invalid' : !contentAddForm.controls['chapter'].valid && contentAddForm.controls['chapter'].touched}"
+            class="p-inputtext-sm mt-2"
+            formControlName="chapter"
+            id="chapter"
+            pInputText type="number">
           <div>
             <val-errors controlName="chapter">
               <ng-template valError="required"><small class="p-invalid ms-3">The chapter is required</small>
@@ -68,15 +71,13 @@
         </div>
 
         <div class="col-sm-6">
-          <div class="p-float-label">
-            <input
-              [ngClass]="{ 'p-invalid' : !contentAddForm.controls['pageNumber'].valid && contentAddForm.controls['pageNumber'].touched}"
-              class="p-inputtext-sm"
-              formControlName="pageNumber"
-              id="pageNumber"
-              pInputText type="number">
-            <label for="name">Page Number*</label>
-          </div>
+          <mat-label class="text-color-01-b"> Page Number*</mat-label>
+          <input
+            [ngClass]="{ 'p-invalid' : !contentAddForm.controls['pageNumber'].valid && contentAddForm.controls['pageNumber'].touched}"
+            class="p-inputtext-sm mt-2"
+            formControlName="pageNumber"
+            id="pageNumber"
+            pInputText type="number">
           <div>
             <val-errors controlName="pageNumber">
               <ng-template valError="required"><small class="p-invalid ms-3">The page number is required</small>
@@ -88,36 +89,32 @@
       </div>
 
       <div *ngIf="initialLoad;else newImage">
+        <p></p>
+        <mat-label class="text-color-01-b"> Current marker url</mat-label>
         <div class="d-flex align-items-center mt-2 w-100">
-          <div class="p-float-label w-100">
-            <input
-              [value]="bookContentModel.content.markerImageURL"
-              class="p-inputtext-sm"
-              id="current-marker-img"
-              pInputText type="text">
-            <label for="current-marker-img">Current marker url</label>
-          </div>
+          <input
+            [value]="bookContentModel.content.markerImageURL"
+            class="p-inputtext-sm mt-2"
+            id="current-marker-img"
+            pInputText type="text">
+
           <button (click)="$event.preventDefault();onRemoveCurrentImageClick()"
-                  matTooltip="Remove Current Image"
-                  color="warn" mat-icon-button type="button">
+                  color="warn"
+                  mat-icon-button matTooltip="Remove Current Image" type="button">
             <mat-icon>delete</mat-icon>
           </button>
         </div>
       </div>
 
-
-
-
-
-
+      <p></p>
+      <mat-label class="text-color-01-b"> Content Id*</mat-label>
       <div class="p-float-label">
         <input
           [ngClass]="{ 'p-invalid' : !contentAddForm.controls['contentURL'].valid && contentAddForm.controls['contentURL'].touched}"
-          class="p-inputtext-sm"
+          class="p-inputtext-sm mt-1"
           formControlName="contentURL"
           id="contentURL"
           pInputText type="text">
-        <label for="contentURL">Content Id*</label>
       </div>
       <div>
         <val-errors controlName="contentURL">
@@ -126,30 +123,30 @@
         </val-errors>
       </div>
 
-      <div>
-        <p-dropdown
-          [filter]="true"
-          [options]="books"
-          [required]="true" [showClear]="true" appendTo="body" filterBy="name"
-          optionLabel="name"
-          optionValue="id"
-          formControlName="bookId"
-          placeholder="Select a Book*"
-          styleClass="p-inputtext-sm w-100 p-invalid ms-1 mt-2">
+      <p></p>
+      <mat-label class="text-color-01-b"> Book Name No*</mat-label>
+      <p-dropdown
+        [filter]="true"
+        [options]="books"
+        [required]="true" [showClear]="true" appendTo="body" filterBy="name"
+        formControlName="bookId"
+        optionLabel="name"
+        optionValue="id"
+        placeholder="Select a Book*"
+        styleClass="p-inputtext-sm w-100 p-invalid ms-1 mt-2">
 
-          <ng-template pTemplate="selectedSubject">
-            <div class="country-item country-item-value">
-              <div>{{contentAddForm.controls['bookId'].value}}</div>
-            </div>
-          </ng-template>
+        <ng-template pTemplate="selectedSubject">
+          <div class="country-item country-item-value">
+            <div>{{contentAddForm.controls['bookId'].value}}</div>
+          </div>
+        </ng-template>
 
-          <ng-template let-book pTemplate="item">
-            <div class="country-item">
-              <div>{{book.name}}</div>
-            </div>
-          </ng-template>
-        </p-dropdown>
-      </div>
+        <ng-template let-book pTemplate="item">
+          <div class="country-item">
+            <div>{{book.name}}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
 
 
       <div>
@@ -169,6 +166,7 @@
 
 
 <ng-template #newImage>
+  <p></p>
   <div class="row">
     <div class="col-sm-6">
       <label class="ms-3"> Marker Image </label>
