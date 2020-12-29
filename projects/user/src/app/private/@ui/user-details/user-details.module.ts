@@ -17,6 +17,9 @@ import {BookContentComponent} from './user-subscriptions/components/book-content
 import {VideoListComponent} from './user-subscriptions/components/book-content/video-list/video-list.component';
 import {VideoItemComponent} from './user-subscriptions/components/book-content/video-list/video-item/video-item.component';
 import {VideoPlayerComponent} from './user-subscriptions/components/video-player/video-player.component';
+import {LyButtonModule} from '@alyle/ui/button';
+import {MatPasswordStrengthModule} from '@angular-material-extensions/password-strength';
+
 
 const routes: Routes = [
   {
@@ -55,7 +58,10 @@ const routes: Routes = [
     PrimengModule,
     UserSharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LyButtonModule,
+    MatPasswordStrengthModule
+
   ]
 })
 export class UserDetailsModule {

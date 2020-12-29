@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../../app.reducer';
 import {UserProfileModel} from '../../../../../../@core/interfaces/api/UserProfileModel';
+import {UserProfileApiService} from '../../shared/service/user-profile-api.service';
+import {USER_DATA_LOADED} from '../../store/user-profile.action';
 
 @Component({
   selector: 'app-user-profile-form',
@@ -14,8 +16,11 @@ export class UserProfileFormComponent implements OnInit {
   userProfile = {} as UserProfileModel;
   signUpForm = {} as FormGroup;
   hide = true;
+  firstName = '';
+  lastname = '';
+  email = '';
 
-  constructor(private store: Store<fromApp.AppState>) {
+  constructor(private store: Store<fromApp.AppState>, private userProfileApiService: UserProfileApiService) {
   }
 
   ngOnInit(): void {
@@ -24,6 +29,7 @@ export class UserProfileFormComponent implements OnInit {
       if (res != null && res.user.id != null) {
         this.userProfile = res.user;
         this.patchForm(res.user);
+        console.log(res.user);
       }
     });
   }
@@ -45,15 +51,27 @@ export class UserProfileFormComponent implements OnInit {
       firstName: userProfile.firstName,
       lastName: userProfile.lastName,
       telephoneNumber: userProfile.telephoneNumber,
-      birthDay: userProfile.birthDay,
+      birthDay: new Date(userProfile.birthDay),
       email: userProfile.email,
       school: userProfile.school,
       district: userProfile.district
     });
+    this.firstName = userProfile.firstName;
+    this.lastname = userProfile.lastName;
+    this.email = userProfile.email;
   }
 
-  onSignUp(): void {
-
+  onSave(): void {
+    console.log(this.signUpForm.value);
+    const signUpUser = this.signUpForm.value as UserProfileModel;
+    signUpUser.birthDay = new Date(this.signUpForm.value.birthDay).getTime();
+    signUpUser.id = this.userProfile.id;
+    console.log(signUpUser);
+    this.userProfileApiService.updateUser(signUpUser)
+      .subscribe(res => {
+        console.log(res);
+        this.store.dispatch(USER_DATA_LOADED({payload: res}));
+      });
   }
 
 }
