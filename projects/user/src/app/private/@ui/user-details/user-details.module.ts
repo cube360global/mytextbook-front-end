@@ -17,6 +17,7 @@ import {SubscriptionListComponent} from './user-subscriptions/components/subscri
 import {SubscriptionItemComponent} from './user-subscriptions/components/subscription-list/subscription-item/subscription-item.component';
 import {BookContentComponent} from './user-subscriptions/components/book-content/book-content.component';
 import {VideoPlayerComponent} from './user-subscriptions/components/video-player/video-player.component';
+import {VideoItemComponent} from './user-subscriptions/components/book-content/video-item/video-item.component';
 
 const routes: Routes = [
   {
@@ -44,7 +45,8 @@ const routes: Routes = [
     SubscriptionListComponent,
     SubscriptionItemComponent,
     BookContentComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    VideoItemComponent
   ],
   imports: [
     CommonModule,

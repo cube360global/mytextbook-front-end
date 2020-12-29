@@ -13,7 +13,6 @@ export class BookContentComponent implements OnInit {
   @Input() bookId = '' as string;
   bookContent = {} as BookAndContentModel;
 
-
   constructor(private contentApiService: ContentApiService,
               private activatedRouter: ActivatedRoute) {
     this.bookContent.book = {} as BookModel;
