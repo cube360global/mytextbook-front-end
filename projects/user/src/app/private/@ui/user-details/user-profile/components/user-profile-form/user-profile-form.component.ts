@@ -16,6 +16,9 @@ export class UserProfileFormComponent implements OnInit {
   userProfile = {} as UserProfileModel;
   signUpForm = {} as FormGroup;
   hide = true;
+  firstName = '';
+  lastname = '';
+  email = '';
 
   constructor(private store: Store<fromApp.AppState>, private userProfileApiService: UserProfileApiService) {
   }
@@ -52,6 +55,9 @@ export class UserProfileFormComponent implements OnInit {
       school: userProfile.school,
       district: userProfile.district
     });
+    this.firstName = userProfile.firstName;
+    this.lastname = userProfile.lastName;
+    this.email = userProfile.email;
   }
 
   onSave(): void {
