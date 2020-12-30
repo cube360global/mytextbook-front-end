@@ -1,6 +1,5 @@
 <div class="m-2 col-sm-4">
-  <mat-card class="w-100"
-            routerLink="/private/user-details/subscriptions/video">
+  <mat-card class="w-100 box-shadow-default">
     <img
       [src]="content.imageURL"
       alt="" mat-card-image>
@@ -10,8 +9,11 @@
       <p style="font-weight: bold; font-size: medium">{{ content.viewDate | date }}</p>
     </mat-card-content>
     <mat-card-actions class="text-center mb-1">
-      <button class="m-1 btn-primary disabled"
-              mat-flat-button
+      <button class="m-1 mat-button-rounded-sm"
+              matTooltip="Click to watch again"
+              routerLink="/private/user-details/subscriptions/video"
+              mat-raised-button
+              color="primary"
               style="text-transform: uppercase">
         Watch Again
       </button>

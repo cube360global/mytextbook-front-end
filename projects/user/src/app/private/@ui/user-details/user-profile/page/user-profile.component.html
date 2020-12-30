@@ -5,7 +5,7 @@
   </h1>
 
   <div class="row">
-    <div class="col-sm-12 col-lg-4 mb-3">
+    <div class="col-sm-6 col-lg-4 mb-3">
       <mat-card class="box-shadow-default">
         <div class="d-flex align-content-center justify-content-between">
           <p class="header-text-default">Account Details</p>
@@ -27,49 +27,72 @@
         </div>
       </mat-card>
     </div>
-    <div class="col-sm-12 col-lg-8">
+    <div class="col-sm-6 col-lg-8">
       <div class="row">
-        <div class="col-lg-3 col-sm-6">
+        <div class="col-lg-3 col-6 mb-2">
           <mat-card class="box-shadow-default" matRipple matTooltip="My Profile">
             <div class="text-center text-link">
               <i class="fas fa-user-circle fs-3" style="color: #3861C3"></i>
               <br>
-              My Profile
+              My <br> Profile
             </div>
           </mat-card>
         </div>
-        <div class="col-lg-3 col-sm-6 mb-2">
-          <mat-card class="box-shadow-default" matRipple matTooltip="Change Password">
+        <div class="col-lg-3 col-6 mb-2">
+          <mat-card class="box-shadow-default"
+                    (click)="onResetPasswordDialogOpen()"
+                    matRipple
+                    matTooltip="Change Password">
             <div class="text-center text-link">
               <i class="fas fa-unlock-alt fs-3" style="color: #3861C3"></i>
               <br>
-              Change Password
+              Change <br> Password
             </div>
           </mat-card>
         </div>
-        <div class="col-lg-3 col-sm-6 mb-2">
-          <mat-card class="box-shadow-default" matRipple matTooltip="My Subscriptions">
+        <div class="col-lg-3 col-6 mb-2">
+          <mat-card class="box-shadow-default"
+                    routerLink="../subscriptions/all"
+                    style="outline: none"
+                    matRipple matTooltip="My Subscriptions">
             <div class="text-center text-link">
               <i class="fas fa-shopping-basket fs-3" style="color: #3861C3"></i>
               <br>
-              My Subscriptions
+              My <br> Subscriptions
             </div>
           </mat-card>
         </div>
-        <div class="col-lg-3 col-sm-6">
-          <mat-card class="box-shadow-default" matRipple matTooltip="Watch History">
-            <div (click)="onResetPasswordDialogOpen()" class="text-center text-link">
+        <div class="col-lg-3 col-6">
+          <mat-card class="box-shadow-default"
+                    routerLink="../watch-history"
+                    style="outline: none"
+                    matRipple matTooltip="Watch History">
+            <div  class="text-center text-link">
               <i class="fas fa-history fs-3" style="color: #3861C3"></i>
               <br>
-              Watch History
+              Watch <br> History
             </div>
           </mat-card>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="header-text-sm">
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-6 mb-4">
+      <p class="header-text-sm">My Subscriptions</p>
+      <hr>
+      <app-subscription-list></app-subscription-list>
+    </div>
+    <div class="col-sm-6">
+      <p class="header-text-sm">My Watch History</p>
+      <hr>
+      <app-user-watch-history-item *ngFor="let content of contents"
+                                   [content]="content">
+      </app-user-watch-history-item>
+    </div>
 
   </div>
 </div>

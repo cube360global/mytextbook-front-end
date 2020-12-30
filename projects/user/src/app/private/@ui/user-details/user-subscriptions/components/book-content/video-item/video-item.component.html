@@ -1,15 +1,18 @@
-<div class="text-center">
+<mat-card matRipple matTooltip="Click to watch"
+          routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"
+          style="cursor: pointer;outline: none">
   <div>
     <img alt="{{video.chapter}}"
          mat-card-image
-         routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"
-         src="{{video.markerImageURL}}"
-         style="max-width: 400px; max-height: 400px">
+
+         src="{{video.markerImageURL}}">
   </div>
-  <div class="mt-3">
+  <div class="mt-1">
     <p style="font-size: medium; font-weight: bold">
-      Chapter {{video.chapter}} - {{video.description}}
+      Chapter {{video.chapter}}
+      <br>
+      <small>{{video.description}}</small>
     </p>
     <p>Uploaded on {{video.dateOfUpload | date}}</p>
   </div>
-</div>
+</mat-card>

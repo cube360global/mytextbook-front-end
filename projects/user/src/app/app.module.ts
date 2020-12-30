@@ -25,6 +25,7 @@ import {UserProfileEffects} from './private/@ui/user-details/user-profile/store/
 import {PrimengModule} from '../../../lib/vendors/src/lib/primeng/primeng.module';
 import {AlyleModule} from '../../../lib/vendors/src/lib/alyle/alyle.module';
 import {CustomMinimaDark, CustomMinimaLight} from '../../../lib/vendors/src/lib/alyle/alyle.config';
+import {VendorsModule} from '../../../lib/vendors/src/lib/vendors.module';
 
 export function tokenGetter(): string {
   return 'this is test';
@@ -49,6 +50,7 @@ export function tokenGetter(): string {
       preventDuplicates: true,
       closeButton: true
     }),
+    VendorsModule,
     AlyleModule,
     PrimengModule,
     NgxUiLoaderModule,

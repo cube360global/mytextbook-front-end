@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as fromApp from '../../../../../app.reducer';
 import {Store} from '@ngrx/store';
+import {UserContentModel} from '../../../../../@core/interfaces/api/UserContentModel';
 
 @Component({
   selector: 'app-user-watch-history',
@@ -9,8 +10,7 @@ import {Store} from '@ngrx/store';
 })
 export class UserWatchHistoryComponent implements OnInit {
 
-  // userProfile = {} as UserProfileModel;
-  contents: any;
+  contents = [] as UserContentModel[];
 
   constructor(private store: Store<fromApp.AppState>) {
   }

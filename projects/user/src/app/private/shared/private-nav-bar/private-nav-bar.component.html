@@ -1,8 +1,8 @@
 <nav class="navbar navbar-light bg-light fixed-top">
   <div class="container-fluid">
-    <button class="navbar-brand d-flex align-items-center"
+    <button (click)="drawer.toggle()" class="navbar-brand d-flex align-items-center"
             mat-icon-button style="cursor: pointer">
-      <i (click)="drawer.toggle()" *ngIf="isDrawerShow"
+      <i  *ngIf="isDrawerShow"
          class="fas fa-bars ms-lg-3 me-2"
          style="color: #ffffff"></i>
     </button>

@@ -11,11 +11,13 @@ export class UserAuthGuard implements CanActivate {
   }
 
   canActivate(
+
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
+    console.log('canActivate');
     if (this.cookieService.checkAccessToken()) {
-
+      console.log('called');
       return true;
 
       // return !this.jwtService.isTokenExpired(accessToken);

@@ -9,11 +9,12 @@ import {UserSharedModule} from '../../shared/user-shared.module';
 import {UserContentComponent} from './layout/user-content/user-content.component';
 import {UserBookComponent} from './book/page/user-book.component';
 import {BookListComponent} from './book/components/book-list/book-list.component';
+import {UserAuthGuard} from '../../../@core/guards/user-auth.guard';
 import {BookItemComponent} from './book/components/book-list/book-item/book-item.component';
 import {SearchBooksComponent} from './book/components/search-books/search-books.component';
 
 const routes: Routes = [{
-  path: '', component: UserContentComponent, children: [
+  path: '', component: UserContentComponent, canActivate: [UserAuthGuard], children: [
     {path: '', redirectTo: Path.Books, pathMatch: 'full'},
     {path: Path.Books, component: UserBookComponent}
   ]

@@ -1,4 +1,5 @@
 import {UserProfileSubModel} from './UserProfileSubModel';
+import {UserContentModel} from './UserContentModel';
 
 export interface UserProfileModel {
   id: number;
@@ -14,5 +15,5 @@ export interface UserProfileModel {
   birthDay: number;
   school: string;
   subscriptions: UserProfileSubModel[];
-  contents: any[];
+  contents: UserContentModel[];
 }

@@ -20,22 +20,25 @@ import {VideoPlayerComponent} from './user-subscriptions/components/video-player
 import {VideoItemComponent} from './user-subscriptions/components/book-content/video-item/video-item.component';
 import {UserWatchHistoryComponent} from './user-watch-history/page/user-watch-history.component';
 import {UserWatchHistoryItemComponent} from './user-watch-history/component/user-watch-history-item/user-watch-history-item.component';
+import {VendorsModule} from '../../../../../../lib/vendors/src/lib/vendors.module';
+import {UserAuthGuard} from '../../../@core/guards/user-auth.guard';
 
 const routes: Routes = [
   {
-    path: '', component: UserSidebarComponent, children: [
-      {path: '', component: UserProfileComponent},
+    path: '', component: UserSidebarComponent, canActivate: [UserAuthGuard], children: [
+      {path: '', redirectTo: 'profile', pathMatch: 'full'},
+      {path: 'profile', component: UserProfileComponent},
       {
-        path: Path.Subscriptions, component: SubscriptionsComponent, children: [
+        path: Path.Subscriptions, component: SubscriptionsComponent, canActivate: [UserAuthGuard], children: [
           {path: '', redirectTo: Path.All, pathMatch: 'full'},
           {path: Path.All, component: SubscriptionListComponent},
           {path: Path.BookContent + '/:id', component: BookContentComponent}
         ]
       },
-      {path: Path.History, component: UserWatchHistoryComponent}
+      {path: Path.History, component: UserWatchHistoryComponent, canActivate: [UserAuthGuard]}
     ]
   },
-  {path: Path.VideoPlayer + '/:contentId/:userId/:id', component: VideoPlayerComponent}
+  {path: Path.VideoPlayer + '/:contentId/:userId/:id', canActivate: [UserAuthGuard], component: VideoPlayerComponent}
 ];
 
 @NgModule({
@@ -62,6 +65,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     LyButtonModule,
+    VendorsModule,
     MatPasswordStrengthModule
   ]
 })
