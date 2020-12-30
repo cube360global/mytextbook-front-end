@@ -65,15 +65,7 @@ export function tokenGetter(): string {
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
-    // [LyTheme2],
-    // [StyleRenderer],
-    // {provide: LY_THEME_NAME, useValue: 'minima-light'},
-    // {provide: LY_THEME, useClass: MinimaLight, multi: true},
-    // {provide: LY_THEME, useClass: MinimaDark, multi: true},
-    // {provide: LY_THEME, useClass: CustomMinimaLight, multi: true},
-    // {provide: LY_THEME, useClass: CustomMinimaDark, multi: true},
-    // {provide: HAMMER_GESTURE_CONFIG, useClass: LyHammerGestureConfig}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

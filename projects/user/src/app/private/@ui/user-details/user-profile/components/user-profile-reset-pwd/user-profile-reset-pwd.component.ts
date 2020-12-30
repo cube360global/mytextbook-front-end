@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserProfileApiService} from '../../shared/service/user-profile-api.service';
 import {ActivatedRoute} from '@angular/router';
@@ -16,6 +16,13 @@ export class UserProfileResetPwdComponent implements OnInit {
   pwdForm = {} as FormGroup;
   token = '';
   showDetails = true;
+
+  @HostListener('window:keydown', ['$event'])
+  onClick(kbdEvent: KeyboardEvent): void {
+    if (kbdEvent.code === 'Enter') {
+      this.onSavePwd();
+    }
+  }
 
   constructor(private userProfileApiService: UserProfileApiService,
               public dialogRef: MatDialogRef<UserProfileResetPwdComponent>,

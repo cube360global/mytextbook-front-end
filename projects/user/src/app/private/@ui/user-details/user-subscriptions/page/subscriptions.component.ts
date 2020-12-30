@@ -11,6 +11,7 @@ import * as fromApp from '../../../../../app.reducer';
 })
 export class SubscriptionsComponent implements OnInit {
   private userId = null as string | null;
+
   constructor(private store: Store<fromApp.AppState>) {
   }
 

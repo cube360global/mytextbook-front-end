@@ -1,11 +1,10 @@
-
 <div mat-dialog-title>
   Confirmation
 </div>
 <div matDialogContent>
   Do you really want to perform this action ?
 </div>
-<div matDialogActions class="d-flex justify-content-center">
-  <button mat-button color="primary" (click)="onClickYes()"> Yes </button>
-  <button mat-button color="warn" (click)="onClickNo()"> No </button>
+<div class="d-flex justify-content-center" matDialogActions>
+  <button (click)="onClickYes()" color="primary" mat-button> Yes</button>
+  <button (click)="onClickNo()" color="warn" mat-button> No</button>
 </div>

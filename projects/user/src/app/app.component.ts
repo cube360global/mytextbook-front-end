@@ -2,7 +2,6 @@ import {Component, HostListener} from '@angular/core';
 import {DisplayContentService} from '../../../lib/tools/src/lib/display-content.service';
 
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

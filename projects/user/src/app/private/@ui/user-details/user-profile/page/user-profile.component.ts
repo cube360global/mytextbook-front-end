@@ -8,7 +8,6 @@ import {UserProfileModel} from '../../../../../@core/interfaces/api/UserProfileM
 import {MatDialog} from '@angular/material/dialog';
 import {UserProfileFormComponent} from '../components/user-profile-form/user-profile-form.component';
 import {UserProfileResetPwdComponent} from '../components/user-profile-reset-pwd/user-profile-reset-pwd.component';
-import {ContentModel} from '../../../../../@core/interfaces/api/ContentModel';
 import {UserContentModel} from '../../../../../@core/interfaces/api/UserContentModel';
 import {UserProfileSubModel} from '../../../../../@core/interfaces/api/UserProfileSubModel';
 

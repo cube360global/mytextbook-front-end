@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {Path} from '../@core/enum/path.enum';
-import {UserAuthGuard} from '../@core/guards/user-auth.guard';
 
 const routes: Routes = [
   {

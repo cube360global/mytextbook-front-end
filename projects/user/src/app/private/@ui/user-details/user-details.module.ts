@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {LyButtonModule} from '@alyle/ui/button';
 import {MatPasswordStrengthModule} from '@angular-material-extensions/password-strength';
 import {MaterialModule} from '../../../../../../lib/vendors/src/lib/material/material.module';
 import {PrimengModule} from '../../../../../../lib/vendors/src/lib/primeng/primeng.module';
@@ -64,7 +63,6 @@ const routes: Routes = [
     UserSharedModule,
     FormsModule,
     ReactiveFormsModule,
-    LyButtonModule,
     VendorsModule,
     MatPasswordStrengthModule
   ]

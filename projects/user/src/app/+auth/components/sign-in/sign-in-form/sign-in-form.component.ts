@@ -17,11 +17,18 @@ export class SignInFormComponent implements OnInit {
   constructor(private store: Store<fromApp.AppState>) {
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(): void {
-    // this.displayContentService.isMobile = window.screen.width <= 600;
-    // this.displayContentService.isMinHeight = window.screen.height <= 580;
+  @HostListener('window:keydown', ['$event'])
+  onClick(kbdEvent: KeyboardEvent): void {
+    if (kbdEvent.code === 'Enter') {
+      this.onLogin();
+    }
   }
+
+  // @HostListener('window:resize', ['$event'])
+  // onResize(): void {
+  //   // this.displayContentService.isMobile = window.screen.width <= 600;
+  //   // this.displayContentService.isMinHeight = window.screen.height <= 580;
+  // }
 
 
   ngOnInit(): void {

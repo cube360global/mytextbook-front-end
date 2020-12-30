@@ -3,7 +3,6 @@ import {UserContentModel} from '../../../../../../@core/interfaces/api/UserConte
 import {USER_LOGIN_FAIL} from '../../../../../../+auth/store/auth.action';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../../app.reducer';
-import {USER_DATA_REQUEST} from '../../../user-profile/store/user-profile.action';
 
 @Component({
   selector: 'app-user-watch-history-item',
@@ -18,7 +17,6 @@ export class UserWatchHistoryItemComponent implements OnInit {
 
 
   }
-
 
 
   ngOnInit(): void {

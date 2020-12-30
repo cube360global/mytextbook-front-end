@@ -99,7 +99,7 @@ export class AddSubjectComponent implements OnInit {
   }
 
   onSubmitImg(): void {
-    if (!this.subjectNameCon.valid){
+    if (!this.subjectNameCon.valid) {
       this.alertService.showInfo('Input data not valid');
       return;
     }

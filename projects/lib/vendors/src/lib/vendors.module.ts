@@ -6,7 +6,7 @@ import {FooterComponent} from './footer/footer.component';
 import {MatConfirmDialogComponent} from './confirm-dialog/component/mat-confirm-dialog/mat-confirm-dialog.component';
 import {BaubleFooterComponent} from './bauble-footer/bauble-footer.component';
 import {CommonModule} from '@angular/common';
-import { NoDataFoundComponent } from './no-data-found/no-data-found.component';
+import {NoDataFoundComponent} from './no-data-found/no-data-found.component';
 
 
 @NgModule({

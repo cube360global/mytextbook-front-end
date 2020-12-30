@@ -5,7 +5,7 @@ footer {
 }
 
 footer div {
-  background-color:  #4478e3;
+  background-color: #4478e3;
   margin: -5px 0px 0px 0px;
   padding: 0px;
   color: #fff;
@@ -27,7 +27,7 @@ svg {
 
   fill: #1E6099;
   animation: drop 3.2s linear infinite normal;
-  stroke:  #4478e3;
+  stroke: #4478e3;
   stroke-width: 0.5;
   transform: translateY(25px);
   transform-box: fill-box;

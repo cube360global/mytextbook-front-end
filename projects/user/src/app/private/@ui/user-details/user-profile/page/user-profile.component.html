@@ -39,8 +39,8 @@
           </mat-card>
         </div>
         <div class="col-lg-3 col-6 mb-2">
-          <mat-card class="box-shadow-default"
-                    (click)="onResetPasswordDialogOpen()"
+          <mat-card (click)="onResetPasswordDialogOpen()"
+                    class="box-shadow-default"
                     matRipple>
             <div class="text-center text-link">
               <i class="fas fa-unlock-alt fs-3" style="color: #3861C3"></i>
@@ -51,9 +51,9 @@
         </div>
         <div class="col-lg-3 col-6 mb-2">
           <mat-card class="box-shadow-default"
+                    matRipple
                     routerLink="../subscriptions/all"
-                    style="outline: none"
-                    matRipple>
+                    style="outline: none">
             <div class="text-center text-link">
               <i class="fas fa-shopping-basket fs-3" style="color: #3861C3"></i>
               <br>
@@ -63,10 +63,10 @@
         </div>
         <div class="col-lg-3 col-6">
           <mat-card class="box-shadow-default"
+                    matRipple
                     routerLink="../watch-history"
-                    style="outline: none"
-                    matRipple>
-            <div  class="text-center text-link">
+                    style="outline: none">
+            <div class="text-center text-link">
               <i class="fas fa-history fs-3" style="color: #3861C3"></i>
               <br>
               Watch <br> History
@@ -86,8 +86,8 @@
 
       <div class="row">
         <app-subscription-item *ngFor="let subscription of $obs | async"
-                               class="col-sm-12 col-lg-6"
-                               [subscription]="subscription">
+                               [subscription]="subscription"
+                               class="col-sm-12 col-lg-6">
         </app-subscription-item>
       </div>
 
@@ -98,8 +98,8 @@
       <hr>
       <div class="row">
         <app-user-watch-history-item *ngFor="let content of contents"
-                                     class="col-sm-12 col-lg-6"
-                                     [content]="content">
+                                     [content]="content"
+                                     class="col-sm-12 col-lg-6">
         </app-user-watch-history-item>
       </div>
 

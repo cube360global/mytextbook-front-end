@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserAuthService} from '../../../shared/services/user-auth.service';
@@ -15,6 +15,15 @@ export class ResetPasswordFormComponent implements OnInit {
   hide = true;
   hide2 = true;
   token = '';
+
+  @HostListener('window:keydown', ['$event'])
+  onClick(kbdEvent: KeyboardEvent): void {
+    if (kbdEvent.code === 'Enter') {
+      this.onResetPassword();
+    }
+  }
+
+
 
   constructor(private activatedRouter: ActivatedRoute,
               private router: Router,

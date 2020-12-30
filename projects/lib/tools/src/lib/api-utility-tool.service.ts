@@ -129,7 +129,7 @@ export class ApiUtilityToolService {
           if (isLoaderOn) {
             this.spinner.hide();
           }
-          if (isShowSuccess){
+          if (isShowSuccess) {
             this.alertService.showSuccess(data.message);
           }
 

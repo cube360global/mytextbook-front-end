@@ -16,15 +16,17 @@ input {
 .dialog-panel .mat-dialog-container {
   border-radius: 20px !important;
 }
-.mat-form-field-placeholder{
 
-  color:red !important;
+.mat-form-field-placeholder {
+
+  color: red !important;
 }
 
-.mat-focused .mat-form-field-placeholder{
+.mat-focused .mat-form-field-placeholder {
 
-  color:red !important;
+  color: red !important;
 }
+
 /* When the input is not focused */
 .md-input-container label {
   color: red;

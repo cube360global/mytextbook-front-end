@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserSignUpModel} from '../../../../@core/interfaces/api/UserSignUpModel';
 import {UserAuthService} from '../../../shared/services/user-auth.service';
@@ -13,6 +13,14 @@ import {AlertService} from '../../../../../../../lib/tools/src/lib/alert.service
 export class SignUpFormComponent implements OnInit {
 
   signUpForm = {} as FormGroup;
+
+  @HostListener('window:keydown', ['$event'])
+  onClick(kbdEvent: KeyboardEvent): void {
+    if (kbdEvent.code === 'Enter') {
+      this.onSignUp();
+    }
+  }
+
 
   constructor(private userApiService: UserAuthService, private alertService: AlertService) {
   }

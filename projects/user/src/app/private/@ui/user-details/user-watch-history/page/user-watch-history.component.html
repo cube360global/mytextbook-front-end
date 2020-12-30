@@ -7,9 +7,9 @@
 <div *ngIf="contents.length <= 0">
   <div class="text-center"
        matRipple
-       style="cursor: pointer;outline: none"
+       matTooltip="No data found click to go back home"
        routerLink="/private/user-details/profile"
-       matTooltip="No data found click to go back home">
+       style="cursor: pointer;outline: none">
     <lib-no-data-found></lib-no-data-found>
   </div>
 
@@ -17,8 +17,8 @@
 <div class="container mt-5">
   <div class="row">
     <app-user-watch-history-item *ngFor="let content of contents"
-                                 class="col-sm-12 col-md-4"
-                                 [content]="content">
+                                 [content]="content"
+                                 class="col-sm-12 col-md-4">
     </app-user-watch-history-item>
   </div>
 </div>

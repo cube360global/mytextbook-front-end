@@ -1,9 +1,9 @@
 <div *ngIf="!displayContentService.isMobile;else mobile">
   <mat-card class="w-100 box-shadow-default mb-2"
             matRipple
-            style="cursor: pointer;outline: none"
             matTooltip="Click to view content"
-            routerLink="/private/user-details/subscriptions/book-content/{{subscription.bookId}}">
+            routerLink="/private/user-details/subscriptions/book-content/{{subscription.bookId}}"
+            style="cursor: pointer;outline: none">
     <img alt="{{subscription.description}}"
          mat-card-image
          src="{{subscription.image}}">
@@ -34,7 +34,7 @@
         {{subscription.description}}
       </p>
     </mat-card-content>
-    <mat-card-actions class="text-center d-flex align-content-center justify-content-between mb-1" >
+    <mat-card-actions class="text-center d-flex align-content-center justify-content-between mb-1">
       <button class="m-1 mat-button-rounded-sm"
               color="primary"
               mat-raised-button

@@ -26,6 +26,7 @@ export class AlertService {
   showWaning(message: string, title: string): void {
     this.toastr.warning(message, title);
   }
+
   showInfo(message: string): void {
     this.toastr.info(message);
   }

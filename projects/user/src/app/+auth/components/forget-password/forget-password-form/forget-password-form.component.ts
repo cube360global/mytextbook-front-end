@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {UserAuthService} from '../../../shared/services/user-auth.service';
 import {Router} from '@angular/router';
@@ -10,6 +10,15 @@ import {Router} from '@angular/router';
 })
 export class ForgetPasswordFormComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
+
+
+  @HostListener('window:keydown', ['$event'])
+  onClick(kbdEvent: KeyboardEvent): void {
+    if (kbdEvent.code === 'Enter') {
+      this.onReset();
+    }
+  }
+
 
   constructor(private userApiService: UserAuthService, private router: Router) {
   }

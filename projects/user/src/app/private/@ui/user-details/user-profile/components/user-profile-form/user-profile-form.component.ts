@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../../app.reducer';
@@ -20,6 +20,13 @@ export class UserProfileFormComponent implements OnInit {
   firstName = '';
   lastname = '';
   email = '';
+
+  @HostListener('window:keydown', ['$event'])
+  onClick(kbdEvent: KeyboardEvent): void {
+    if (kbdEvent.code === 'Enter') {
+      this.onSave();
+    }
+  }
 
   constructor(private store: Store<fromApp.AppState>,
               public dialogRef: MatDialogRef<UserProfileFormComponent>,
