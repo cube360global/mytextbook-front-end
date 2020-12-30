@@ -1,3 +1,13 @@
+<div *ngIf="($obs|async)?.length <= 0">
+  <div class="text-center"
+       matRipple
+       style="cursor: pointer;outline: none"
+       routerLink="/private/user-details/profile"
+       matTooltip="No data found click to go back home">
+    <lib-no-data-found></lib-no-data-found>
+  </div>
+
+</div>
 
 <app-subscription-item *ngFor="let subscription of $obs | async"
                        [subscription]="subscription">

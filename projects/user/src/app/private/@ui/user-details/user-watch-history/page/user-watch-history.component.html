@@ -1,8 +1,20 @@
-<div class="container container-fluid">
-  <h1 class="text-center mb-5"
-      style="text-transform: uppercase; margin-bottom: 10%">
-    Watch History
+<div class="container">
+  <h1 class="header-text">
+    <b> Watch History</b>
   </h1>
+</div>
+
+<div *ngIf="contents?.length <= 0">
+  <div class="text-center"
+       matRipple
+       style="cursor: pointer;outline: none"
+       routerLink="/private/user-details/profile"
+       matTooltip="No data found click to go back home">
+    <lib-no-data-found></lib-no-data-found>
+  </div>
+
+</div>
+<div>
   <app-user-watch-history-item *ngFor="let content of contents"
                                [content]="content">
   </app-user-watch-history-item>
