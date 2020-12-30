@@ -1,18 +1,42 @@
-<mat-card matRipple matTooltip="Click to watch"
-          routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"
-          style="cursor: pointer;outline: none">
-  <div>
-    <img alt="{{video.chapter}}"
-         mat-card-image
+<div *ngIf="!displayContentService.isMobile;else mobile">
+  <mat-card matRipple matTooltip="Click to watch"
+            routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"
+            style="cursor: pointer;outline: none">
+    <div>
+      <img alt="{{video.chapter}}"
+           mat-card-image
 
-         src="{{video.markerImageURL}}">
-  </div>
-  <div class="mt-1">
-    <p style="font-size: medium; font-weight: bold">
-      Chapter {{video.chapter}}
-      <br>
-      <small>{{video.description}}</small>
-    </p>
-    <p>Uploaded on {{video.dateOfUpload | date}}</p>
-  </div>
-</mat-card>
+           src="{{video.markerImageURL}}">
+    </div>
+    <div class="mt-1">
+      <p style="font-size: medium; font-weight: bold">
+        Chapter {{video.chapter}}
+        <br>
+        <small>{{video.description}}</small>
+      </p>
+      <p>Uploaded on {{video.dateOfUpload | date}}</p>
+    </div>
+  </mat-card>
+
+</div>
+
+<ng-template #mobile>
+  <mat-card matRipple matTooltip="Click to watch"
+            routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"
+            style="cursor: pointer;outline: none">
+    <div>
+      <img alt="{{video.chapter}}"
+           mat-card-image
+
+           src="{{video.markerImageURL}}">
+    </div>
+    <div class="mt-1">
+      <p style="font-size: medium; font-weight: bold">
+        Chapter {{video.chapter}}
+        <br>
+        <small>{{video.description}}</small>
+      </p>
+      <p>Uploaded on {{video.dateOfUpload | date}}</p>
+    </div>
+  </mat-card>
+</ng-template>

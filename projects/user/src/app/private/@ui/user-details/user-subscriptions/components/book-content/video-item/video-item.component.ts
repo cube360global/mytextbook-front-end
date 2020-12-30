@@ -3,6 +3,7 @@ import {Store} from '@ngrx/store';
 import {ContentModel} from '../../../../../../../../../../administration/src/app/@core/interfaces/api/ContentModel';
 import * as fromApp from '../../../../../../../app.reducer';
 import {USER_LOGIN_FAIL} from '../../../../../../../+auth/store/auth.action';
+import {DisplayContentService} from '../../../../../../../../../../lib/tools/src/lib/display-content.service';
 
 @Component({
   selector: 'app-video-item',
@@ -14,7 +15,7 @@ export class VideoItemComponent implements OnInit {
 
   userId: any;
 
-  constructor(private store: Store<fromApp.AppState>) {
+  constructor(private store: Store<fromApp.AppState>, public displayContentService: DisplayContentService) {
   }
 
   ngOnInit(): void {

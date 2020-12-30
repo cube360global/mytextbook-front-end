@@ -10,6 +10,7 @@ import {UserProfileFormComponent} from '../components/user-profile-form/user-pro
 import {UserProfileResetPwdComponent} from '../components/user-profile-reset-pwd/user-profile-reset-pwd.component';
 import {ContentModel} from '../../../../../@core/interfaces/api/ContentModel';
 import {UserContentModel} from '../../../../../@core/interfaces/api/UserContentModel';
+import {UserProfileSubModel} from '../../../../../@core/interfaces/api/UserProfileSubModel';
 
 @Component({
   selector: 'app-user-profile',
@@ -21,6 +22,7 @@ export class UserProfileComponent implements OnInit {
   $userProfile = new Observable<UserProfileModel>();
   userId: any;
   contents = [] as UserContentModel[];
+  $obs = new Observable<UserProfileSubModel[]>();
 
   constructor(private store: Store<fromApp.AppState>,
               private dialog: MatDialog) {
@@ -29,6 +31,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.$obs = this.store.select(fromApp.getUserSubscription);
     this.userId = localStorage.getItem('USERID');
     if (this.userId != null) {
       this.store.dispatch(USER_DATA_REQUEST({payload: this.userId}));

@@ -1,4 +1,4 @@
-<div class="m-2 col-sm-4">
+<div class="m-2 col-sm-4" *ngIf="!displayContentService.isMobile;else mobile">
   <mat-card class="w-100 box-shadow-default mb-2"
             matRipple
             style="cursor: pointer;outline: none"
@@ -22,3 +22,31 @@
     </mat-card-actions>
   </mat-card>
 </div>
+
+<ng-template #mobile>
+  <mat-card class="w-100 box-shadow-default mb-2"
+            routerLink="/private/user-details/subscriptions/book-content/{{subscription.bookId}}">
+    <img alt="{{subscription.description}}"
+         mat-card-image
+         src="{{subscription.image}}">
+    <mat-card-content class="text-center">
+      <p style="font-weight: bold; font-size: medium">
+        {{subscription.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions class="text-center d-flex align-content-center justify-content-between mb-1" >
+      <button class="m-1 mat-button-rounded-sm"
+              color="primary"
+              mat-raised-button
+              style="text-transform: uppercase">
+        VIEW MORE
+      </button>
+      <button class="m-1 text-success disabled"
+              mat-flat-button
+              style="text-transform: uppercase">
+        <i class="fas fa-check ms-2"></i>
+        Subscribed
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</ng-template>

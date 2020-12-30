@@ -30,7 +30,7 @@
     <div class="col-sm-6 col-lg-8">
       <div class="row">
         <div class="col-lg-3 col-6 mb-2">
-          <mat-card class="box-shadow-default" matRipple matTooltip="My Profile">
+          <mat-card class="box-shadow-default" matRipple>
             <div class="text-center text-link">
               <i class="fas fa-user-circle fs-3" style="color: #3861C3"></i>
               <br>
@@ -41,8 +41,7 @@
         <div class="col-lg-3 col-6 mb-2">
           <mat-card class="box-shadow-default"
                     (click)="onResetPasswordDialogOpen()"
-                    matRipple
-                    matTooltip="Change Password">
+                    matRipple>
             <div class="text-center text-link">
               <i class="fas fa-unlock-alt fs-3" style="color: #3861C3"></i>
               <br>
@@ -54,7 +53,7 @@
           <mat-card class="box-shadow-default"
                     routerLink="../subscriptions/all"
                     style="outline: none"
-                    matRipple matTooltip="My Subscriptions">
+                    matRipple>
             <div class="text-center text-link">
               <i class="fas fa-shopping-basket fs-3" style="color: #3861C3"></i>
               <br>
@@ -66,7 +65,7 @@
           <mat-card class="box-shadow-default"
                     routerLink="../watch-history"
                     style="outline: none"
-                    matRipple matTooltip="Watch History">
+                    matRipple>
             <div  class="text-center text-link">
               <i class="fas fa-history fs-3" style="color: #3861C3"></i>
               <br>
@@ -84,7 +83,10 @@
     <div class="col-sm-6 mb-4">
       <p class="header-text-sm">My Subscriptions</p>
       <hr>
-      <app-subscription-list></app-subscription-list>
+      <app-subscription-item *ngFor="let subscription of $obs | async"
+                             [subscription]="subscription">
+      </app-subscription-item>
+
     </div>
     <div class="col-sm-6">
       <p class="header-text-sm">My Watch History</p>
