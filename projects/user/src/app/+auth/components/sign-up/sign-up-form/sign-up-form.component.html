@@ -3,7 +3,7 @@
   <mat-form-field floatLabel="never">
     <input formControlName="firstName"
            matInput
-           placeholder="Nuwan"
+           placeholder="Enter your first name*"
            type="text"
     >
     <mat-error *ngIf="signUpForm.controls['firstName'].hasError('required')">Required</mat-error>
@@ -13,7 +13,7 @@
   <mat-form-field floatLabel="never">
     <input formControlName="lastName"
            matInput
-           placeholder="Kumara"
+           placeholder="Enter your last name*"
            type="text"
     >
     <mat-error *ngIf="signUpForm.controls['lastName'].hasError('required')">Required</mat-error>
@@ -23,7 +23,7 @@
   <mat-form-field floatLabel="never">
     <input formControlName="telephoneNumber"
            matInput
-           placeholder="07x xxx xxx xx"
+           placeholder="Enter your primary phone no*"
            type="text"
     >
     <mat-error *ngIf="signUpForm.controls['telephoneNumber'].hasError('required')">Required</mat-error>
@@ -31,8 +31,8 @@
 
   <mat-label class="text-color-01-b">Birthday</mat-label>
   <mat-form-field floatLabel="never">
-    <mat-hint>Select your birthday</mat-hint>
-    <input [matDatepicker]="picker" formControlName="birthDay" matInput placeholder="01/01/2000">
+    <input [matDatepicker]="picker" formControlName="birthDay" matInput
+           placeholder="Pick your birthday*">
     <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <mat-error *ngIf="signUpForm.controls['birthDay'].hasError('required')">Required</mat-error>
@@ -42,7 +42,7 @@
   <mat-form-field floatLabel="never">
     <input formControlName="email"
            matInput
-           placeholder="example@example.com"
+           placeholder="Enter your primary email*"
            type="text"
     >
     <mat-error *ngIf="signUpForm.controls['email'].hasError('email')">This is the not a valid email</mat-error>
@@ -53,7 +53,7 @@
   <mat-form-field floatLabel="never">
     <input formControlName="school"
            matInput
-           placeholder="Ananda College"
+           placeholder="Enter your school name*"
            type="text"
     >
     <mat-error *ngIf="signUpForm.controls['school'].hasError('required')">Required</mat-error>
@@ -61,7 +61,7 @@
 
   <mat-label class="text-color-01-b">District</mat-label>
   <mat-form-field floatLabel="never">
-    <mat-select formControlName="district" placeholder="Colombo">
+    <mat-select formControlName="district" placeholder="Pick your district*">
       <mat-option value="Ampara">Ampara</mat-option>
       <mat-option value="Anuradhapura">Anuradhapura</mat-option>
       <mat-option value="Badulla">Badulla</mat-option>
@@ -92,10 +92,10 @@
 
   <mat-label class="text-color-01-b">ReferralLink</mat-label>
   <mat-form-field floatLabel="never">
-    <mat-hint>Please add your referral link</mat-hint>
+    <mat-hint>? You can find a referral from a registers users  </mat-hint>
     <input formControlName="referralLink"
            matInput
-           placeholder="LQkctDs5fZsyjZubSU2pRJvyydnpXcaHZyeF4cYAQ46uwHvsRQSSJN3Gtg5FNYKyvNEYvV5Yj"
+           placeholder="Past your referral link*"
            type="text"
     >
     <mat-error *ngIf="signUpForm.controls['referralLink'].hasError('required')">Required</mat-error>

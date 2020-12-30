@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../../../administration/src/app/app.reducer';
@@ -16,6 +16,13 @@ export class SignInFormComponent implements OnInit {
 
   constructor(private store: Store<fromApp.AppState>) {
   }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    // this.displayContentService.isMobile = window.screen.width <= 600;
+    // this.displayContentService.isMinHeight = window.screen.height <= 580;
+  }
+
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({

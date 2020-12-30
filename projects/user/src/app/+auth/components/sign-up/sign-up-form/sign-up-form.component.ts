@@ -26,7 +26,7 @@ export class SignUpFormComponent implements OnInit {
       email: new FormControl(null, [Validators.required, Validators.email]),
       school: new FormControl(null, [Validators.required]),
       district: new FormControl(null, [Validators.required]),
-      referralLink: new FormControl(null, [Validators.required]),
+      referralLink: new FormControl(null),
     });
   }
 
