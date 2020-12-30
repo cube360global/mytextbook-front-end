@@ -13,6 +13,28 @@ input {
   width: 100% !important;
 }
 
+.dialog-panel .mat-dialog-container {
+  border-radius: 20px !important;
+}
+.mat-form-field-placeholder{
+
+  color:red !important;
+}
+
+.mat-focused .mat-form-field-placeholder{
+
+  color:red !important;
+}
+/* When the input is not focused */
+.md-input-container label {
+  color: red;
+}
+
+/* When the input is focused */
+.md-input-container.md-input-focused label {
+  color: blue;
+}
+
 .navbar {
   color: #ffffff;
   background-color: #001B34 !important;

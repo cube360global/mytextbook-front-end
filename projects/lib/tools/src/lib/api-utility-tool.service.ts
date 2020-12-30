@@ -40,7 +40,7 @@ export class ApiUtilityToolService {
           if (isLoaderOn) {
             this.spinner.hide();
           }
-          this.alertService.showError(err.message);
+          this.alertService.showError(err?.error?.message);
           return throwError(err);
         }));
   }
@@ -66,7 +66,7 @@ export class ApiUtilityToolService {
           if (isLoaderOn) {
             this.spinner.hide();
           }
-          this.alertService.showError(err.message);
+          this.alertService.showError(err?.error?.message);
           return throwError(err);
         }));
   }
@@ -91,7 +91,7 @@ export class ApiUtilityToolService {
           if (isLoaderOn) {
             this.spinner.hide();
           }
-          this.alertService.showError(err.message);
+          this.alertService.showError(err?.error?.message);
           return throwError(err);
         }));
   }
@@ -107,13 +107,14 @@ export class ApiUtilityToolService {
             throw Error('VERTEX');
           }
         }), catchError(err => {
+          this.alertService.showError(err?.error?.message);
           if (err.message !== 'VERTEX') {
           }
           return throwError(err);
         }));
   }
 
-  POST_WITHOUT_AUTH<T>(path: string[], body: T, httpHeaders: HttpHeaders, isLoaderOn = false): Observable<T> {
+  POST_WITHOUT_AUTH<T>(path: string[], body: T, httpHeaders: HttpHeaders, isLoaderOn = false, isShowSuccess = false): Observable<T> {
     if (isLoaderOn) {
       this.spinner.show();
     }
@@ -128,6 +129,10 @@ export class ApiUtilityToolService {
           if (isLoaderOn) {
             this.spinner.hide();
           }
+          if (isShowSuccess){
+            this.alertService.showSuccess(data.message);
+          }
+
           return data.data as T;
         } else {
           throw Error(data.message);
@@ -136,7 +141,7 @@ export class ApiUtilityToolService {
         if (isLoaderOn) {
           this.spinner.hide();
         }
-        this.alertService.showError(err.message);
+        this.alertService.showError(err?.error?.message);
         return throwError(err);
       }));
   }

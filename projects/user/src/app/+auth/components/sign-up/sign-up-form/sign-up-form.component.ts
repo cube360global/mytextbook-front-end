@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserSignUpModel} from '../../../../@core/interfaces/api/UserSignUpModel';
 import {UserAuthService} from '../../../shared/services/user-auth.service';
+import {AlertService} from '../../../../../../../lib/tools/src/lib/alert.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class SignUpFormComponent implements OnInit {
 
   signUpForm = {} as FormGroup;
 
-  constructor(private userApiService: UserAuthService) {
+  constructor(private userApiService: UserAuthService, private alertService: AlertService) {
   }
 
   ngOnInit(): void {
@@ -33,14 +34,20 @@ export class SignUpFormComponent implements OnInit {
 
     if (!this.signUpForm.valid) {
       this.signUpForm.markAllAsTouched();
+      this.alertService.showError('Please check your inputs again');
       return;
     }
-    const postData = this.signUpForm.value as UserSignUpModel;
-    const date = new Date(postData.birthDay);
-    postData.birthDay = date.getTime();
+    this.alertService.showConfirmationDialog()
+      .subscribe(res => {
+        if (res) {
+          const postData = this.signUpForm.value as UserSignUpModel;
+          const date = new Date(postData.birthDay);
+          postData.birthDay = date.getTime();
 
-    // Dialog Box
-    this.postToServer(postData);
+          // Dialog Box
+          this.postToServer(postData);
+        }
+      });
 
 
   }

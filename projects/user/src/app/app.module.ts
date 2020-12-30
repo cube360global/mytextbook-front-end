@@ -1,4 +1,4 @@
-import {BrowserModule, HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxUiLoaderModule} from 'ngx-ui-loader';
@@ -13,8 +13,6 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {ToastrModule} from 'ngx-toastr';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
-import {LY_THEME, LY_THEME_NAME, LyHammerGestureConfig, LyTheme2, StyleRenderer} from '@alyle/ui';
-import {MinimaDark, MinimaLight} from '@alyle/ui/themes/minima';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {UserAuthModule} from './+auth/user-auth.module';
@@ -23,8 +21,6 @@ import {AuthEffects} from './+auth/store/auth.effects';
 import {AuthInterceptorService} from './@core/interceptors/auth-interceptor.service';
 import {UserProfileEffects} from './private/@ui/user-details/user-profile/store/user-profile.effects';
 import {PrimengModule} from '../../../lib/vendors/src/lib/primeng/primeng.module';
-import {AlyleModule} from '../../../lib/vendors/src/lib/alyle/alyle.module';
-import {CustomMinimaDark, CustomMinimaLight} from '../../../lib/vendors/src/lib/alyle/alyle.config';
 import {VendorsModule} from '../../../lib/vendors/src/lib/vendors.module';
 
 export function tokenGetter(): string {
@@ -51,7 +47,6 @@ export function tokenGetter(): string {
       closeButton: true
     }),
     VendorsModule,
-    AlyleModule,
     PrimengModule,
     NgxUiLoaderModule,
     UserAuthModule,
@@ -71,14 +66,14 @@ export function tokenGetter(): string {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
-    [LyTheme2],
-    [StyleRenderer],
-    {provide: LY_THEME_NAME, useValue: 'minima-light'},
-    {provide: LY_THEME, useClass: MinimaLight, multi: true},
-    {provide: LY_THEME, useClass: MinimaDark, multi: true},
-    {provide: LY_THEME, useClass: CustomMinimaLight, multi: true},
-    {provide: LY_THEME, useClass: CustomMinimaDark, multi: true},
-    {provide: HAMMER_GESTURE_CONFIG, useClass: LyHammerGestureConfig}
+    // [LyTheme2],
+    // [StyleRenderer],
+    // {provide: LY_THEME_NAME, useValue: 'minima-light'},
+    // {provide: LY_THEME, useClass: MinimaLight, multi: true},
+    // {provide: LY_THEME, useClass: MinimaDark, multi: true},
+    // {provide: LY_THEME, useClass: CustomMinimaLight, multi: true},
+    // {provide: LY_THEME, useClass: CustomMinimaDark, multi: true},
+    // {provide: HAMMER_GESTURE_CONFIG, useClass: LyHammerGestureConfig}
   ],
   bootstrap: [AppComponent]
 })

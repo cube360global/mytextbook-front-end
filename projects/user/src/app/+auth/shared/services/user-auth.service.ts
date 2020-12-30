@@ -39,8 +39,10 @@ export class UserAuthService {
   }
 
   public signUpUser(signUp: UserSignUpModel): Observable<any> {
-    return this.apiUtilityToolService.POST([ControllerConst.User, 'sign-up'],
-      signUp, true, true);
+    const headersObject = new HttpHeaders()
+      .set('Content-Type', 'application/json');
+    return this.apiUtilityToolService.POST_WITHOUT_AUTH([ControllerConst.User, 'sign-up'],
+      signUp, headersObject, true, true);
   }
 
   public forgetPassword(email: string): Observable<any> {
