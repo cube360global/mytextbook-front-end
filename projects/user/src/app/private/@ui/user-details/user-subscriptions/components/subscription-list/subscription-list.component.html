@@ -1,4 +1,4 @@
-<div *ngIf="($obs|async)?.length <= 0">
+<div *ngIf="!($obs|async)">
   <div class="text-center"
        matRipple
        style="cursor: pointer;outline: none"
