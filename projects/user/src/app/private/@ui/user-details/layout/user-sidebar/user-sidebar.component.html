@@ -12,7 +12,7 @@
            src="assets/img/user.png">
       <div class="mt-1"> {{($userData|async)?.firstName}} {{($userData|async)?.lastName}}</div>
       <div class="mt-1">
-        <button color="primary" mat-button>Sign Out</button>
+        <button color="primary" (click)="onLogOutClick()" mat-button>Sign Out</button>
       </div>
     </div>
     <div (click)="drawer.close()">

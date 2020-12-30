@@ -1,5 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserContentModel} from '../../../../../../@core/interfaces/api/UserContentModel';
+import {USER_LOGIN_FAIL} from '../../../../../../+auth/store/auth.action';
+import {Store} from '@ngrx/store';
+import * as fromApp from '../../../../../../app.reducer';
+import {USER_DATA_REQUEST} from '../../../user-profile/store/user-profile.action';
 
 @Component({
   selector: 'app-user-watch-history-item',
@@ -8,11 +12,20 @@ import {UserContentModel} from '../../../../../../@core/interfaces/api/UserConte
 })
 export class UserWatchHistoryItemComponent implements OnInit {
   @Input() content = {} as UserContentModel;
+  userId: any;
 
-  constructor() {
+  constructor(private store: Store<fromApp.AppState>) {
+
+
   }
 
+
+
   ngOnInit(): void {
+    this.userId = localStorage.getItem('USERID');
+    if (this.userId == null) {
+      this.store.dispatch(USER_LOGIN_FAIL());
+    }
   }
 
 }

@@ -1,4 +1,4 @@
-<div class="m-2 col-sm-4">
+<div class="mb-3">
   <mat-card class="w-100 box-shadow-default">
     <img
       [src]="content.imageURL"
@@ -11,7 +11,7 @@
     <mat-card-actions class="text-center mb-1">
       <button class="m-1 mat-button-rounded-sm"
               matTooltip="Click to watch again"
-              routerLink="/private/user-details/subscriptions/video"
+              routerLink="/private/user-details/video-player/{{content.id}}/{{userId}}/{{content.contentURL}}"
               mat-raised-button
               color="primary"
               style="text-transform: uppercase">

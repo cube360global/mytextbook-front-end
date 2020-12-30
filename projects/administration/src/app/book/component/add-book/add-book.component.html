@@ -31,7 +31,7 @@
       <p-dropdown
         placeholder="Book's Medium*"
         [options]="utilityService.mediums"
-        required
+        [required]="true"
         formControlName="medium"
         appendTo="body"
         optionLabel="name"

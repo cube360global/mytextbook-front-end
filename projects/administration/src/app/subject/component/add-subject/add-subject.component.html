@@ -52,7 +52,7 @@
     </button>
   </div>
 
-  <button (click)="onSubmitImg()" [disabled]="cardImageBase64 == '' || subjectName == ''"
+  <button (click)="onSubmitImg()" [disabled]="cardImageBase64 == '' || !subjectNameCon.valid"
           class="mat-button-rounded-sm mt-3" color="primary"
           mat-raised-button style="width: 100%;">submit
   </button>

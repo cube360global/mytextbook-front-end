@@ -14,8 +14,11 @@
   </div>
 
 </div>
-<div>
-  <app-user-watch-history-item *ngFor="let content of contents"
-                               [content]="content">
-  </app-user-watch-history-item>
+<div class="container mt-5">
+  <div class="row">
+    <app-user-watch-history-item *ngFor="let content of contents"
+                                 class="col-sm-12 col-md-4"
+                                 [content]="content">
+    </app-user-watch-history-item>
+  </div>
 </div>

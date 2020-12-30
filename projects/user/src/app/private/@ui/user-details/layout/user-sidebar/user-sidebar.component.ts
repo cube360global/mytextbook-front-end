@@ -3,6 +3,7 @@ import * as fromApp from '../../../../../app.reducer';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {UserProfileModel} from '../../../../../@core/interfaces/api/UserProfileModel';
+import {USER_LOGOUT} from '../../../../../+auth/store/auth.action';
 
 @Component({
   selector: 'app-user-sidebar',
@@ -17,5 +18,9 @@ export class UserSidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.$userData = this.store.select(fromApp.getUserProfile);
+  }
+
+  onLogOutClick(): void {
+    this.store.dispatch(USER_LOGOUT());
   }
 }
