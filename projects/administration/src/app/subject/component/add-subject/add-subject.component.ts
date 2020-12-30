@@ -18,7 +18,6 @@ export class AddSubjectComponent implements OnInit {
 
   subjectNameCon = new FormControl(null, [Validators.required]);
   file: any;
-  subjectName = '';
   imageError: any;
   isImageSaved: any;
   cardImageBase64 = '';
@@ -100,6 +99,10 @@ export class AddSubjectComponent implements OnInit {
   }
 
   onSubmitImg(): void {
+    if (!this.subjectNameCon.valid){
+      this.alertService.showInfo('Input data not valid');
+      return;
+    }
     this.alertService.getConfirmationDialog()
       .confirm({
         message: AlertConst.ConfirmationMessage,
@@ -111,7 +114,7 @@ export class AddSubjectComponent implements OnInit {
 
   doSubmit(): void {
     const postData = {} as SubjectPostModel;
-    postData.name = this.subjectName;
+    postData.name = this.subjectNameCon.value;
 
     const x = JSON.stringify(postData);
 
@@ -122,6 +125,7 @@ export class AddSubjectComponent implements OnInit {
 
     this.subjectApiService.Put(formData)
       .subscribe(res => {
+        this.dialogRef.close();
         this.store.dispatch(SUBJECT_DATA_LOADED({payload: res}));
       }, () => {
 

@@ -64,7 +64,7 @@ export class AddBookComponent implements OnInit {
   }
 
   onAddBooks(): void {
-    if (this.addBook.invalid && this.bookImage == null) {
+    if (this.addBook.invalid || this.bookImage == null) {
       this.addBook.markAllAsTouched();
       return;
     }

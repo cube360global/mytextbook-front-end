@@ -56,7 +56,7 @@ export class ContentAddFormComponent implements OnInit {
   }
 
   onContentSubmit(): void {
-    if (this.contentAddForm.invalid && this.contentImage == null) {
+    if (this.contentAddForm.invalid || this.contentImage == null) {
       this.contentAddForm.markAllAsTouched();
       return;
     }

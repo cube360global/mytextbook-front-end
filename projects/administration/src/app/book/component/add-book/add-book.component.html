@@ -27,15 +27,28 @@
       </val-errors>
     </div>
 
-    <div class="p-float-label m-2">
-      <input
-        [ngClass]="{ 'p-invalid' : !addBook.controls['medium'].valid && addBook.controls['medium'].touched}"
-        class="p-inputtext-sm"
+    <div class="m-2">
+      <p-dropdown
+        placeholder="Book's Medium*"
+        [options]="utilityService.mediums"
+        required
         formControlName="medium"
-        id="medium"
-        pInputText type="text">
-      <label for="medium">Book's Medium*</label>
+        appendTo="body"
+        optionLabel="name"
+        optionValue="name"
+        styleClass="p-inputtext-sm w-100"></p-dropdown>
     </div>
+
+
+<!--    <div class="p-float-label m-2">-->
+<!--      <input-->
+<!--        [ngClass]="{ 'p-invalid' : !addBook.controls['medium'].valid && addBook.controls['medium'].touched}"-->
+<!--        class="p-inputtext-sm"-->
+<!--        formControlName="medium"-->
+<!--        id="medium"-->
+<!--        pInputText type="text">-->
+<!--      <label for="medium">Book's Medium*</label>-->
+<!--    </div>-->
 
     <div>
       <val-errors controlName="medium">

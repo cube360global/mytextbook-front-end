@@ -11,10 +11,9 @@
   </div>
 </div>
 
-<div mat-dialog-content>
+<div mat-dialog-content class="p-3">
   <div class="p-float-label mt-2 mb-2">
-    <input [(ngModel)]="subjectName"
-           [formControl]="subjectNameCon"
+    <input [formControl]="subjectNameCon"
            [ngClass]="{ 'p-invalid' : !subjectNameCon.valid && subjectNameCon.touched}"
            class="p-inputtext-sm"
            id="subjectName"
@@ -26,7 +25,7 @@
     <small *ngIf="!subjectNameCon.valid && subjectNameCon.touched" class="p-invalid ms-3">The Name is required</small>
   </div>
 
-  <fieldset class="form-group mt-4 image-size">
+  <fieldset class="form-group mt-4  image-size">
     <label class="mb-2"><b>Upload Logo *</b></label>
     {{imageError}}
     <div class="custom-file fileInputProfileWrap ">
