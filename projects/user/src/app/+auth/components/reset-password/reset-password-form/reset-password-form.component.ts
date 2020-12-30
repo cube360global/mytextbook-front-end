@@ -38,6 +38,7 @@ export class ResetPasswordFormComponent implements OnInit {
       this.userApiService.resetPassword(this.passwordFormControl.value, this.token)
         .subscribe(res => {
           console.log(res);
+          this.alertService.showSuccess('Your password has been changed');
           this.router.navigate(['']);
         });
     }
