@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {UserAuthService} from '../../../shared/services/user-auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-forget-password-form',
@@ -10,7 +11,7 @@ import {UserAuthService} from '../../../shared/services/user-auth.service';
 export class ForgetPasswordFormComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor(private userApiService: UserAuthService) {
+  constructor(private userApiService: UserAuthService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -19,6 +20,8 @@ export class ForgetPasswordFormComponent implements OnInit {
   onReset(): void {
     this.userApiService.forgetPassword(this.email.value)
       .subscribe(res => {
+        console.log(res);
+        this.router.navigate(['']);
       });
   }
 }
