@@ -1,0 +1,43 @@
+<div class="mb-3">
+  <div class="w-100">
+    <div class="row">
+      <div class="col-sm-3">
+        <img
+          [src]="content.imageURL"
+          class="img-fluid">
+      </div>
+      <div class="col-sm-5 d-flex align-items-center justify-content-center">
+        <div>
+          <p>{{ content.name }}</p>
+          <p>{{ content.subject }}</p>
+          <p><small>{{ content.viewDate | date }}</small></p>
+        </div>
+      </div>
+      <div class="col-sm-3 d-flex align-items-center">
+        <span class="text-link"
+                matTooltip="Click to watch again"
+                routerLink="/private/user-details/video-player/{{content.id}}/{{userId}}/{{content.contentURL}}"
+                style="text-transform: uppercase;outline: none">
+          Watch Again
+        </span>
+      </div>
+    </div>
+
+<!--    <mat-card-content class="text-center">-->
+<!--      <p style="font-weight: bold; font-size: medium">{{ content.name }}</p>-->
+<!--      <p style="font-weight: bold; font-size: medium">{{ content.subject }}</p>-->
+<!--      <p style="font-weight: bold; font-size: medium">{{ content.viewDate | date }}</p>-->
+<!--    </mat-card-content>-->
+<!--    <mat-card-actions class="text-center mb-1">-->
+<!--      <button class="m-1 mat-button-rounded-sm"-->
+<!--              color="primary"-->
+<!--              mat-raised-button-->
+<!--              matTooltip="Click to watch again"-->
+<!--              routerLink="/private/user-details/video-player/{{content.id}}/{{userId}}/{{content.contentURL}}"-->
+<!--              style="text-transform: uppercase">-->
+<!--        Watch Again-->
+<!--      </button>-->
+<!--    </mat-card-actions>-->
+  </div>
+  <mat-divider></mat-divider>
+</div>

@@ -39,7 +39,6 @@ export class UserProfileComponent implements OnInit {
     }
     this.store.select(fromApp.getUserProfileReducer).subscribe(res => {
       if (res != null && res.user.id != null) {
-        console.log(res.user.contents);
         this.contents = res.user.contents;
       }
     });

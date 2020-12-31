@@ -1,5 +1,6 @@
 <div *ngIf="!displayContentService.isMobile;else mobile">
   <mat-card matRipple matTooltip="Click to watch"
+            class="mb-2"
             routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"
             style="cursor: pointer;outline: none">
     <div>

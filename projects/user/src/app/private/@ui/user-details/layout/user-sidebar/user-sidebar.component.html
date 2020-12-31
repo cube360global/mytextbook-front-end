@@ -1,4 +1,5 @@
-<mat-drawer-container [hasBackdrop]="true" class="example-container" style="background-color: #FFFFFF">
+<mat-drawer-container [hasBackdrop]="true" class="example-container"
+                      style="background-color: #FFFFFF !important;">
   <mat-drawer #drawer [mode]="'over'">
     <div class="user-active d-flex align-items-center justify-content-between p-2">
       <div class="ms-2"><i class="fas fa-user me-1"></i> USER PROFILE</div>
@@ -15,22 +16,31 @@
         <button (click)="onLogOutClick()" color="primary" mat-button>Sign Out</button>
       </div>
     </div>
-    <div (click)="drawer.close()">
-      <div class="d-flex align-items-center p-3 mt-5" routerLinkActive="user-active">
-        <i class="fas fa-info fa-1x icon-width" routerLink="/private/user-details/profile"></i>
-        <div class="ms-3 router-text-default me-5" routerLink="/private/user-details/profile">
+    <div>
+      <div class="d-flex align-items-center p-3 mt-5"
+           (click)="drawer.close()"
+           routerLink="/private/user-details/profile"
+           routerLinkActive="user-active">
+        <i class="fas fa-info fa-1x icon-width"></i>
+        <div class="ms-3 router-text-default me-5">
           USER DETAILS
         </div>
       </div>
-      <div class="d-flex align-items-center p-3" routerLinkActive="user-active">
-        <i class="fas fa-shopping-bag fa-1x icon-width" routerLink="/private/user-details/subscriptions"></i>
-        <div class="ms-3 router-text-default me-5" routerLink="/private/user-details/subscriptions">
+      <div class="d-flex align-items-center p-3"
+           (click)="drawer.close()"
+           routerLink="/private/user-details/subscriptions"
+           routerLinkActive="user-active">
+        <i class="fas fa-shopping-bag fa-1x icon-width"></i>
+        <div class="ms-3 router-text-default me-5">
           SUBSCRIPTIONS
         </div>
       </div>
-      <div class="d-flex align-items-center p-3" routerLinkActive="user-active">
-        <i class="fas fa-history fa-1x icon-width" routerLink="/private/user-details/watch-history"></i>
-        <div class="ms-3 router-text-default me-5" routerLink="/private/user-details/watch-history">
+      <div class="d-flex align-items-center p-3"
+           (click)="drawer.close()"
+           routerLink="/private/user-details/watch-history"
+           routerLinkActive="user-active">
+        <i class="fas fa-history fa-1x icon-width"></i>
+        <div class="ms-3 router-text-default me-5">
           WATCH HISTORY
         </div>
       </div>
@@ -49,7 +59,7 @@
     <!--      </div>-->
     <!--    </div>-->
   </mat-drawer>
-  <mat-drawer-content style="background-image: url('assets/img/live-background.svg')">
+  <mat-drawer-content style="background-image: url('assets/img/live-background.svg');background-color: #ffffff!important;">
     <app-private-nav-bar [drawer]="drawer"></app-private-nav-bar>
     <div style="margin-top: 15vh;">
       <router-outlet></router-outlet>

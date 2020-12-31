@@ -86,8 +86,7 @@
 
       <div class="row">
         <app-subscription-item *ngFor="let subscription of $obs | async"
-                               [subscription]="subscription"
-                               class="col-sm-12 col-lg-6">
+                               [subscription]="subscription">
         </app-subscription-item>
       </div>
 
@@ -97,10 +96,13 @@
       <p class="header-text-sm">My Watch History</p>
       <hr>
       <div class="row">
-        <app-user-watch-history-item *ngFor="let content of contents"
-                                     [content]="content"
-                                     class="col-sm-12 col-lg-6">
-        </app-user-watch-history-item>
+        <mat-card class="box-shadow-default">
+          <app-user-profile-watch-history *ngFor="let content of contents"
+                                          [content]="content"
+                                          class="col-sm-12 col-lg-4">
+          </app-user-profile-watch-history>
+        </mat-card>
+
       </div>
 
     </div>

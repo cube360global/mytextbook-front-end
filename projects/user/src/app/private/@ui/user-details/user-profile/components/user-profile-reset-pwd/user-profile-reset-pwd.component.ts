@@ -1,8 +1,9 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserProfileApiService} from '../../shared/service/user-profile-api.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialogRef} from '@angular/material/dialog';
+import {AlertService} from '../../../../../../../../../lib/tools/src/lib/alert.service';
 
 @Component({
   selector: 'app-user-profile-reset-pwd',
@@ -25,6 +26,8 @@ export class UserProfileResetPwdComponent implements OnInit {
   }
 
   constructor(private userProfileApiService: UserProfileApiService,
+              private router: Router,
+              private alertService: AlertService,
               public dialogRef: MatDialogRef<UserProfileResetPwdComponent>,
               private activatedRouter: ActivatedRoute) {
   }
@@ -43,10 +46,12 @@ export class UserProfileResetPwdComponent implements OnInit {
   }
 
   onSavePwd(): void {
-    if (this.token != null) {
-      this.userProfileApiService.resetPassword(this.pwdForm.value.conPassword, this.token)
-        .subscribe(res => res);
-    }
+      this.alertService.showError('This function not available right now, Please User Forgot password');
+      this.router.navigate(['auth/forgot-password']);
+    // if (this.token != null) {
+    //   this.userProfileApiService.resetPassword(this.pwdForm.value.conPassword, this.token)
+    //     .subscribe(res => res);
+    // }
   }
 
 }

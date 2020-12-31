@@ -1,16 +1,18 @@
-<div class="row mt-5 mb-5">
+
+<div class="row mb-3" style="position: relative">
+
   <div class="col-lg-6">
     <mat-card class="box-shadow-default">
       <div class="d-flex align-content-center justify-content-between">
         <p class="header-text-default">Book Details</p>
       </div>
+
       <div class="d-flex align-items-center mt-2">
         <img alt="{{bookContent.book.name}}"
              class="img-fluid me-3"
-             height="100px"
+             height="50px"
              src="{{bookContent.book.image}}"
-             style="border-radius: 50%"
-             width="100px">
+             width="50px">
         <div>
           <div class="fs-5"><b>{{bookContent.book.name}}</b></div>
           <div><small>{{bookContent.book.medium}}</small></div>
@@ -21,6 +23,10 @@
   </div>
 </div>
 <h2 class="header-text-sm"> Book's Content </h2>
+
+<ng-container *ngTemplateOutlet="searchContainer"></ng-container>
+
+
 <hr>
 <div class="row mt-2">
   <app-video-item *ngFor="let video of bookContent.contents"
@@ -29,3 +35,36 @@
   </app-video-item>
 </div>
 
+<ng-template #searchContainer>
+  <div class="overlay-content">
+    <div class="row">
+      <div class="col-sm-4 col-lg-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input placeholder="1.1 රුපය"  [(ngModel)]="name" matInput>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4 col-lg-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Page No</mat-label>
+          <input type="number" placeholder="10" [(ngModel)]="pageNo" matInput>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4 col-lg-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Chapter No</mat-label>
+          <input type="number" placeholder="10" [(ngModel)]="chapterNo" matInput>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4  col-lg-3">
+        <button mat-stroked-button
+                (click)="onSearchClick()"
+                class="mat-button-rounded w-100"
+
+                color="primary" matTooltip="Click to go search or reset">
+          <mat-icon>search</mat-icon> SEARCH
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserSignUpModel} from '../../../../@core/interfaces/api/UserSignUpModel';
 import {UserAuthService} from '../../../shared/services/user-auth.service';
 import {AlertService} from '../../../../../../../lib/tools/src/lib/alert.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,9 @@ export class SignUpFormComponent implements OnInit {
   }
 
 
-  constructor(private userApiService: UserAuthService, private alertService: AlertService) {
+  constructor(private userApiService: UserAuthService,
+              private router: Router,
+              private alertService: AlertService) {
   }
 
   ngOnInit(): void {
@@ -62,6 +65,9 @@ export class SignUpFormComponent implements OnInit {
 
   private postToServer(signUpData: UserSignUpModel): void {
     this.userApiService.signUpUser(signUpData)
-      .subscribe(res => res);
+      .subscribe(res => {
+        this.signUpForm.reset(null);
+        this.router.navigate(['']);
+      });
   }
 }
