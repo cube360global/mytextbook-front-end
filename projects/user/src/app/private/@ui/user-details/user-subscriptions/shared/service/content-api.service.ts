@@ -4,6 +4,7 @@ import {ApiUtilityToolService} from '../../../../../../../../../lib/tools/src/li
 import {ControllerConst} from '../../../../../../../../../lib/tools/src/lib/global/ControllerConst';
 import {BookAndContentModel} from '../../../../../../@core/interfaces/api/BookAndContentModel';
 import {BookSearchApiModel} from '../../../../../../@core/interfaces/api/BookSearchApiModel';
+import {ContentModel} from '../../../../../../@core/interfaces/api/ContentModel';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,8 @@ export class ContentApiService {
     return this.apiUtilityToolService.GET<BookAndContentModel>([ControllerConst.Book, 'book-and-contents', bookId], true);
   }
 
-  public searchBookContentByBookId(bookSearch: BookSearchApiModel): Observable<BookAndContentModel> {
-    console.log(bookSearch);
-    return this.apiUtilityToolService.POST<BookAndContentModel>
+  public searchBookContentByBookId(bookSearch: BookSearchApiModel): Observable<ContentModel[]> {
+    return this.apiUtilityToolService.POST<ContentModel[]>
     ([ControllerConst.Content, 'book-contents', 'search'], bookSearch, true, true);
   }
 }

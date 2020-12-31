@@ -4,6 +4,7 @@ import {BookAndContentModel} from '../../../../../../@core/interfaces/api/BookAn
 import {BookModel} from '../../../../../../@core/interfaces/api/BookModel';
 import {ContentApiService} from '../../shared/service/content-api.service';
 import {BookSearchApiModel} from '../../../../../../@core/interfaces/api/BookSearchApiModel';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-book-content',
@@ -14,8 +15,9 @@ export class BookContentComponent implements OnInit {
   @Input() bookId = '' as string;
   bookContent = {} as BookAndContentModel;
   name = null;
-  chapterNo = '';
-  pageNo = '';
+
+  chapterNo = new FormControl(null);
+  pageNo =  new FormControl(null);
 
   constructor(private contentApiService: ContentApiService,
               private activatedRouter: ActivatedRoute) {
@@ -30,12 +32,11 @@ export class BookContentComponent implements OnInit {
   onSearchClick(): void {
     const searchData = {} as BookSearchApiModel;
     searchData.bookId = +this.bookId;
-    searchData.chapter = +this.chapterNo;
-    searchData.pageNumber = +this.pageNo;
+    searchData.chapter = +this.chapterNo.value;
+    searchData.pageNumber = +this.pageNo.value;
     searchData.name = name;
-    console.log(searchData);
     this.contentApiService.searchBookContentByBookId(searchData)
-      .subscribe(res => console.log(res));
+      .subscribe(res => this.bookContent.contents = res);
   }
 
 }

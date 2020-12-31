@@ -1,43 +1,121 @@
-<div *ngIf="!displayContentService.isMobile;else mobile">
-  <mat-card matRipple matTooltip="Click to watch"
-            class="mb-2"
-            routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"
-            style="cursor: pointer;outline: none">
-    <div>
-      <img alt="{{video.chapter}}"
-           mat-card-image
+<!--<div *ngIf="!displayContentService.isMobile;else mobile">-->
+<!--  <mat-card matRipple matTooltip="Click to watch"-->
+<!--            class="mb-2"-->
+<!--            routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"-->
+<!--            style="cursor: pointer;outline: none">-->
+<!--    <div>-->
+<!--      <img alt="{{video.chapter}}"-->
+<!--           mat-card-image-->
 
-           src="{{video.markerImageURL}}">
+<!--           src="{{video.markerImageURL}}">-->
+<!--    </div>-->
+<!--    <div class="mt-1">-->
+<!--      <p style="font-size: medium; font-weight: bold">-->
+<!--        Chapter {{video.chapter}}-->
+<!--        <br>-->
+<!--        <small>{{video.description}}</small>-->
+<!--      </p>-->
+<!--      <p>Uploaded on {{video.dateOfUpload | date}}</p>-->
+<!--    </div>-->
+<!--  </mat-card>-->
+
+<!--</div>-->
+
+<!--<ng-template #mobile>-->
+<!--  <mat-card matRipple matTooltip="Click to watch"-->
+<!--            routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"-->
+<!--            style="cursor: pointer;outline: none">-->
+<!--    <div>-->
+<!--      <img alt="{{video.chapter}}"-->
+<!--           mat-card-image-->
+
+<!--           src="{{video.markerImageURL}}">-->
+<!--    </div>-->
+<!--    <div class="mt-1">-->
+<!--      <p style="font-size: medium; font-weight: bold">-->
+<!--        Chapter {{video.chapter}}-->
+<!--        <br>-->
+<!--        <small>{{video.description}}</small>-->
+<!--      </p>-->
+<!--      <p>Uploaded on {{video.dateOfUpload | date}}</p>-->
+<!--    </div>-->
+<!--  </mat-card>-->
+<!--</ng-template>-->
+
+
+
+
+<div *ngIf="!displayContentService.isMobile;else mobile">
+  <mat-card class="box-shadow-default mb-3"
+            matRipple
+            matTooltip="Click to view"
+            style="outline: none;cursor: pointer"
+            routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}">
+    <div class="d-flex align-content-center justify-content-end">
+
     </div>
-    <div class="mt-1">
-      <p style="font-size: medium; font-weight: bold">
-        Chapter {{video.chapter}}
-        <br>
-        <small>{{video.description}}</small>
-      </p>
-      <p>Uploaded on {{video.dateOfUpload | date}}</p>
+
+    <div class="d-flex align-items-center mt-2">
+      <img alt="{{video.description}}"
+           class="img-fluid me-3"
+           height="80px"
+           src="{{video.markerImageURL}}"
+           width="80px">
+      <div>
+        <div class="fs-6 mt-1"><b>{{video.description}}</b></div>
+<!--        <div *ngIf="video.status;else notActive">-->
+          <div class="text-success mt-2" style="text-transform: uppercase">
+            <i class="fas fa-check"></i>
+            ACTIVATE
+          </div>
+<!--        </div>-->
+      </div>
     </div>
   </mat-card>
-
 </div>
 
 <ng-template #mobile>
-  <mat-card matRipple matTooltip="Click to watch"
-            routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"
-            style="cursor: pointer;outline: none">
-    <div>
-      <img alt="{{video.chapter}}"
-           mat-card-image
 
-           src="{{video.markerImageURL}}">
+  <mat-card class="box-shadow-default mb-3"
+            style="outline: none;">
+
+
+    <div class="d-flex align-items-center mt-2">
+      <img alt="{{video.description}}"
+           class="img-fluid me-3"
+           height="80px"
+           src="{{video.markerImageURL}}"
+           width="80px">
+      <div>
+        <div class="fs-6 mt-1"><b>{{video.description}}</b></div>
+<!--        <div *ngIf="true;else notActive">-->
+          <div class="text-success mt-2" style="text-transform: uppercase">
+            <i class="fas fa-check"></i>
+            ACTIVATE
+          </div>
+
+<!--        </div>-->
+
+      </div>
     </div>
-    <div class="mt-1">
-      <p style="font-size: medium; font-weight: bold">
-        Chapter {{video.chapter}}
-        <br>
-        <small>{{video.description}}</small>
-      </p>
-      <p>Uploaded on {{video.dateOfUpload | date}}</p>
+    <mat-divider></mat-divider>
+    <div class="d-flex align-content-center justify-content-end">
+      <button class="m-1 mat-button-rounded-sm"
+              color="primary"
+              mat-button
+              style="color: #3861C3"
+              routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"
+      >
+        VIEW MORE
+      </button>
     </div>
   </mat-card>
+
+</ng-template>
+
+<ng-template #notActive>
+  <div class="text-danger mt-2" style="text-transform: uppercase">
+    <i class="fas fa-times"></i>
+    DEACTIVATE
+  </div>
 </ng-template>

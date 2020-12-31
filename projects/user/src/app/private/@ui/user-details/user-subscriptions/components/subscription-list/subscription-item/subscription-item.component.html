@@ -14,7 +14,7 @@
            src="{{subscription.image}}"
            width="80px">
       <div>
-        <div class="fs-6 mt-1" style="color: #979595"><b>{{subscription.description}}</b></div>
+        <div class="fs-6 mt-1"><b>{{subscription.description}}</b></div>
         <div *ngIf="subscription.status;else notActive">
           <div class="text-success mt-2" style="text-transform: uppercase">
             <i class="fas fa-check"></i>
@@ -52,15 +52,7 @@
 
   <mat-card class="box-shadow-default mb-3"
             style="outline: none;">
-    <div class="d-flex align-content-center justify-content-end">
-      <button class="m-1 mat-button-rounded-sm"
-              color="primary"
-              mat-button
-              routerLink="/private/user-details/subscriptions/book-content/{{subscription.bookId}}"
-              style="text-transform: uppercase">
-        VIEW MORE
-      </button>
-    </div>
+
 
     <div class="d-flex align-items-center mt-2">
       <img alt="{{subscription.description}}"
@@ -69,7 +61,7 @@
            src="{{subscription.image}}"
            width="80px">
       <div>
-        <div class="fs-6 mt-1" style="color: #979595"><b>{{subscription.description}}</b></div>
+        <div class="fs-6 mt-1"><b>{{subscription.description}}</b></div>
         <div *ngIf="subscription.status;else notActive">
           <div class="text-success mt-2" style="text-transform: uppercase">
             <i class="fas fa-check"></i>
@@ -79,6 +71,17 @@
         </div>
 
       </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="d-flex align-content-center justify-content-end">
+      <button class="m-1 mat-button-rounded-sm"
+              color="primary"
+              mat-button
+              style="color: #3861C3"
+              routerLink="/private/user-details/subscriptions/book-content/{{subscription.bookId}}"
+              >
+        VIEW MORE
+      </button>
     </div>
   </mat-card>
 

@@ -17,9 +17,7 @@ export class UserAuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    console.log('canActivate');
     if (this.cookieService.checkAccessToken()) {
-      console.log('called');
       return true;
     }
     this.alertService.showError('Please Login First');

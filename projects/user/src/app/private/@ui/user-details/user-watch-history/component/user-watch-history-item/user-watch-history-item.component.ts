@@ -3,6 +3,7 @@ import {UserContentModel} from '../../../../../../@core/interfaces/api/UserConte
 import {USER_LOGIN_FAIL} from '../../../../../../+auth/store/auth.action';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../../app.reducer';
+import {DisplayContentService} from '../../../../../../../../../lib/tools/src/lib/display-content.service';
 
 @Component({
   selector: 'app-user-watch-history-item',
@@ -13,7 +14,7 @@ export class UserWatchHistoryItemComponent implements OnInit {
   @Input() content = {} as UserContentModel;
   userId: any;
 
-  constructor(private store: Store<fromApp.AppState>) {
+  constructor(private store: Store<fromApp.AppState>, public displayContentService: DisplayContentService) {
 
 
   }

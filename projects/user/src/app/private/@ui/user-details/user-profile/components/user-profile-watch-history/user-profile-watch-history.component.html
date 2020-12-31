@@ -13,14 +13,14 @@
           <p><small>{{ content.viewDate | date }}</small></p>
         </div>
       </div>
-      <div class="col-sm-3 d-flex align-items-center">
-        <span class="text-link"
-                matTooltip="Click to watch again"
+      <div class="col-sm-3 d-flex align-items-center justify-content-center">
+        <span matTooltip="Click to watch again"
                 routerLink="/private/user-details/video-player/{{content.id}}/{{userId}}/{{content.contentURL}}"
-                style="text-transform: uppercase;outline: none">
+                style="text-transform:uppercase;cursor: pointer;outline: none;color: #3861C3">
           Watch Again
         </span>
       </div>
+      <p></p>
     </div>
 
 <!--    <mat-card-content class="text-center">-->

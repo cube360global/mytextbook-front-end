@@ -47,20 +47,20 @@
       <div class="col-sm-4 col-lg-3">
         <mat-form-field appearance="fill">
           <mat-label>Page No</mat-label>
-          <input type="number" placeholder="10" [(ngModel)]="pageNo" matInput>
+          <input type="tel" placeholder="10"
+                 [formControl]="pageNo" matInput>
         </mat-form-field>
       </div>
       <div class="col-sm-4 col-lg-3">
         <mat-form-field appearance="fill">
           <mat-label>Chapter No</mat-label>
-          <input type="number" placeholder="10" [(ngModel)]="chapterNo" matInput>
+          <input type="tel" placeholder="10" [formControl]="chapterNo" matInput>
         </mat-form-field>
       </div>
       <div class="col-sm-4  col-lg-3">
-        <button mat-stroked-button
+        <button mat-raised-button
                 (click)="onSearchClick()"
                 class="mat-button-rounded w-100"
-
                 color="primary" matTooltip="Click to go search or reset">
           <mat-icon>search</mat-icon> SEARCH
         </button>
