@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {DisplayContentService} from '../../../../../../lib/tools/src/lib/display-content.service';
 
 @Component({
   selector: 'app-forget-password',
@@ -7,10 +8,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ForgetPasswordComponent implements OnInit {
 
-  constructor() {
+  constructor(public displayService: DisplayContentService) {
   }
 
   ngOnInit(): void {
   }
 
 }
+
