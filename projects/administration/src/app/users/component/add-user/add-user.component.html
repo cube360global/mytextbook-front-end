@@ -54,12 +54,24 @@
 
     <!--Role Id-->
     <div class="p-float-label m-2">
-      <input [ngClass]="{ 'p-invalid' : !addUser.controls['roleId'].valid && addUser.controls['roleId'].touched}"
-             class="p-inputtext-sm"
-             formControlName="roleId"
-             id="roleId"
-             pInputText type="text">
-      <label for="roleId">Role Id*</label>
+
+      <p-dropdown
+        [options]="utilityService.roles"
+        [required]="true"
+        formControlName="roleId"
+        appendTo="body"
+        optionLabel="name"
+        optionValue="code"
+        placeholder="Book's Medium*"
+        styleClass="p-inputtext-sm w-100"></p-dropdown>
+
+
+<!--      <input [ngClass]="{ 'p-invalid' : !addUser.controls['roleId'].valid && addUser.controls['roleId'].touched}"-->
+<!--             class="p-inputtext-sm"-->
+<!--             formControlName="roleId"-->
+<!--             id="roleId"-->
+<!--             pInputText type="text">-->
+<!--      <label for="roleId">Role Id*</label>-->
     </div>
     <div>
       <val-errors controlName="roleId" label="The roleId">

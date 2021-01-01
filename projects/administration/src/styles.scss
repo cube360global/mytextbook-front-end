@@ -1,10 +1,14 @@
 @import '~ngx-toastr/toastr';
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 div, label, span, p {
   font-family: 'Titillium Web', sans-serif;
 }
 
-
+.ui-table-scrollable-header {
+  overflow-y: scroll !important;
+}
 $border-radius: 40px;
 span:focus {
   outline: none;

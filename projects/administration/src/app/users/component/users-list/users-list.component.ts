@@ -17,6 +17,7 @@ import {SubjectUser} from '../../../@core/interfaces/SubjectUser';
 import {UserEditComponent} from '../user-edit/user-edit.component';
 import {SubjectModel} from '../../../@core/interfaces/api/SubjectModel';
 import {Router} from '@angular/router';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-users-list',
@@ -33,6 +34,17 @@ export class UsersListComponent implements OnInit {
   loading = true;
   searchInputData: any;
 
+  columnDefs = [
+    {field: 'email', sortable: true},
+    {field: 'firstName', sortable: true},
+    {field: 'lastName', sortable: true},
+    {field: 'telephoneNumber', sortable: true},
+    {field: 'active', sortable: true},
+    {field: 'subscriptionCount', sortable: true},
+    {field: 'role', sortable: true},
+  ];
+  filter = new FormControl('');
+
   constructor(private userApiService: UserApiService,
               private dialog: MatDialog,
               private toastr: ToastrService,
@@ -41,6 +53,17 @@ export class UsersListComponent implements OnInit {
               private ngxUiLoaderService: NgxUiLoaderService,
               private store: Store<fromApp.AppState>,
               private alertService: AlertService) {
+
+
+    this.filter.statusChanges.pipe(
+      tap(res => {
+        console.log(res);
+      })
+    );
+    // this.filter.valueChanges.subscribe(res => {
+    //   this.users = this.search(res);
+    // });
+
 
     this.store.select(fromApp.getUserReducer)
       .subscribe(res => {
@@ -66,6 +89,8 @@ export class UsersListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
     this.filterForm = new FormGroup({
       district: new FormControl(),
       school: new FormControl(),
@@ -75,6 +100,18 @@ export class UsersListComponent implements OnInit {
     });
 
   }
+
+  // tslint:disable-next-line:no-shadowed-variable
+  // search(text: string): UserModel[] {
+  //   return this.users.filter(country => {
+  //     console.log(text);
+  //     const term = text;
+  //     return country.email.includes(term)
+  //       || country.firstName.includes(term)
+  //       || country.telephoneNumber.includes(term)
+  //       || country.lastName.includes(term);
+  //   });
+  // }
 
   openUserViewDialog(userId: string): void {
 

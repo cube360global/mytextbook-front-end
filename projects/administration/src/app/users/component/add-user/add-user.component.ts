@@ -8,6 +8,7 @@ import * as fromApp from '../../../app.reducer';
 import {USERS_DATA_LOADED} from '../../store/user.action';
 import {AlertService} from '../../../@core/services/alert.service';
 import {AlertConst} from '../../../@core/const/AlertConst';
+import {UtilityService} from '../../../../../../lib/tools/src/lib/utility.service';
 
 @Component({
   selector: 'app-add-user',
@@ -18,8 +19,10 @@ export class AddUserComponent implements OnInit {
 
   addUser = {} as FormGroup;
 
+
   constructor(public dialogRef: MatDialogRef<AddUserComponent>,
               private alertService: AlertService,
+              public utilityService: UtilityService,
               private store: Store<fromApp.AppState>,
               private userApiService: UserApiService) {
   }
@@ -49,9 +52,10 @@ export class AddUserComponent implements OnInit {
 
   sendToServer(): void {
     const addUser = this.addUser.value as AddUserModel;
-    addUser.roleId = 2;
+    addUser.roleId = +this.addUser.value.roleId;
     this.userApiService.createUser(addUser)
       .subscribe(res => {
+        this.dialogRef.close();
         this.store.dispatch(USERS_DATA_LOADED({payload: res}));
       });
   }

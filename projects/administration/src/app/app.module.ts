@@ -24,6 +24,7 @@ import {ToastrModule} from 'ngx-toastr';
 import {BooksEffects} from './book/store/book.effects';
 import {SubjectEffects} from './subject/store/subject.effects';
 import {ContentEffects} from './content/store/content.effects';
+import {AgGridModule} from 'ag-grid-angular';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -103,7 +104,8 @@ export function tokenGetter(): string {
     PrimengModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     ReactiveFormsModule,
-    ValdemortModule
+    ValdemortModule,
+    AgGridModule.withComponents([])
 
     // NgxUiLoaderModule
   ],
@@ -116,7 +118,8 @@ export function tokenGetter(): string {
     ConfirmationService,
     MessageService,
     CookieService,
-    NgxUiLoaderService],
+    NgxUiLoaderService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

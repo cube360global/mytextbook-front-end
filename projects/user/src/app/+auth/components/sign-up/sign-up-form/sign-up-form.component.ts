@@ -4,6 +4,8 @@ import {UserSignUpModel} from '../../../../@core/interfaces/api/UserSignUpModel'
 import {UserAuthService} from '../../../shared/services/user-auth.service';
 import {AlertService} from '../../../../../../../lib/tools/src/lib/alert.service';
 import {Router} from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -64,10 +66,17 @@ export class SignUpFormComponent implements OnInit {
   }
 
   private postToServer(signUpData: UserSignUpModel): void {
+    console.log('jhsdhjksh0');
     this.userApiService.signUpUser(signUpData)
       .subscribe(res => {
-        this.signUpForm.reset(null);
-        this.router.navigate(['']);
+        this.signUpForm.reset();
+        this.signUpForm.clearValidators();
+        Swal.fire({
+          icon: 'success',
+          title: 'Please check your email!',
+          showConfirmButton: true,
+        });
+        this.router.navigate(['/auth']);
       });
   }
 }

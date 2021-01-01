@@ -32,6 +32,13 @@ export class UtilityService {
     {name: 'Deactivate', code: false}
   ];
 
+  roles = [
+    {name: 'SUPER_ADMIN', code: 1},
+    {name: 'ADMIN', code: 2},
+    {name: 'STUDENT', code: 3},
+    {name: 'TEACHER', code: 4}
+  ];
+
   constructor() {
   }
 }

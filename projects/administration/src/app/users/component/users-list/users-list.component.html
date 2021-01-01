@@ -1,96 +1,98 @@
-<p-table #dt1
-         [globalFilterFields]="['email','firstName','lastName','telephoneNumber','active','subscriptionCount','role']"
-         [loading]="loading"
-         [paginator]="true"
-         [resizableColumns]="true"
-         [rowHover]="true" [rowsPerPageOptions]="[10,25,50]" [rows]="10"
-         [scrollable]="true" [showCurrentPageReport]="true"
-         [value]="users"
-         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-         styleClass="p-datatable-gridlines"
->
+<!--<p-table #dt1-->
+<!--         [globalFilterFields]="['email','firstName','lastName','telephoneNumber','active','subscriptionCount','role']"-->
+<!--         [loading]="loading"-->
+<!--         [paginator]="true"-->
+<!--         [rowHover]="true"-->
+<!--         [scrollable]="true"-->
+<!--         [rowsPerPageOptions]="[10,25,50]"-->
+<!--         [rows]="10"-->
+<!--         [value]="users"-->
+<!--         [autoLayout]="true"-->
+<!--         [tableStyle]="{'table-layout':'auto'}"-->
+<!--         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"-->
+<!--&gt;-->
 
 
-  <ng-template pTemplate="caption">
-    <div class="mb-2">
-      <div class="p-input-icon-left">
-        <i class="pi pi-search"></i>
-        <input (input)="dt1.filterGlobal(searchInputData, 'contains')"
-               [(ngModel)]="searchInputData" class="p-inputtext-sm"
-               matTooltip="Search from table"
-               pInputText
-               placeholder="Search keyword"
-               type="text"/>
-      </div>
-      <div class="d-flex justify-content-between align-items-center mt-2">
-        <ng-container *ngTemplateOutlet="filterTemplate"></ng-container>
-      </div>
-    </div>
-  </ng-template>
+<!--  <ng-template pTemplate="caption">-->
+<!--    <div class="mb-2">-->
+<!--      <div class="p-input-icon-left">-->
+<!--        <i class="pi pi-search"></i>-->
+<!--        <input (input)="dt1.filterGlobal(searchInputData, 'contains')"-->
+<!--               [(ngModel)]="searchInputData" class="p-inputtext-sm"-->
+<!--               matTooltip="Search from table"-->
+<!--               pInputText-->
+<!--               placeholder="Search keyword"-->
+<!--               type="text"/>-->
+<!--      </div>-->
+<!--      <div class="d-flex justify-content-between align-items-center mt-2">-->
+<!--        <ng-container *ngTemplateOutlet="filterTemplate"></ng-container>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </ng-template>-->
 
-  <ng-template pTemplate="colgroup">
-    <colgroup>
-      <col style="width:25%">
-      <col style="width:15%">
-      <col style="width:35%">
-      <col style="width:25%">
-      <col style="width:25%">
-      <col style="width:25%">
-      <col style="width:25%">
-      <col style="width:25%">
-    </colgroup>
-  </ng-template>
+<!--&lt;!&ndash;  <ng-template pTemplate="colgroup">&ndash;&gt;-->
+<!--&lt;!&ndash;    <colgroup>&ndash;&gt;-->
+<!--&lt;!&ndash;      <col style="width:auto">&ndash;&gt;-->
+<!--&lt;!&ndash;      <col style="width:auto">&ndash;&gt;-->
+<!--&lt;!&ndash;      <col style="width:auto">&ndash;&gt;-->
+<!--&lt;!&ndash;      <col style="width:auto">&ndash;&gt;-->
+<!--&lt;!&ndash;      <col style="width:auto">&ndash;&gt;-->
+<!--&lt;!&ndash;      <col style="width:auto">&ndash;&gt;-->
+<!--&lt;!&ndash;      <col style="width:auto">&ndash;&gt;-->
+<!--&lt;!&ndash;      <col style="width:auto">&ndash;&gt;-->
+<!--&lt;!&ndash;    </colgroup>&ndash;&gt;-->
+<!--&lt;!&ndash;  </ng-template>&ndash;&gt;-->
 
 
-  <ng-template pTemplate="header">
-    <tr>
-      <th pResizableColumn>
-        Email
-      </th>
-      <th pResizableColumn>
-        First Name
-      </th>
-      <th pResizableColumn>
-        Last Name
-      </th>
-      <th pResizableColumn>
-        Contact No
-      </th>
-      <th pResizableColumn>
-        Status
-      </th>
-      <th matTooltip="Subscription Count" pResizableColumn>
-        Sub. Count
-      </th>
-      <th pResizableColumn>
-        Role
-      </th>
-    </tr>
-  </ng-template>
+<!--  <ng-template pTemplate="header">-->
+<!--    <tr>-->
+<!--      <th pResizableColumn>-->
+<!--        Email-->
+<!--      </th>-->
+<!--      <th pResizableColumn>-->
+<!--        First Name-->
+<!--      </th>-->
+<!--      <th pResizableColumn>-->
+<!--        Last Name-->
+<!--      </th>-->
+<!--      <th pResizableColumn>-->
+<!--        Contact No-->
+<!--      </th>-->
+<!--      <th pResizableColumn>-->
+<!--        Status-->
+<!--      </th>-->
+<!--      <th pResizableColumn matTooltip="Subscription Count">-->
+<!--        Sub. Count-->
+<!--      </th>-->
+<!--      <th pResizableColumn>-->
+<!--        Role-->
+<!--      </th>-->
+<!--    </tr>-->
+<!--  </ng-template>-->
 
-  <ng-template let-user pTemplate="body">
-    <tr>
-      <td>{{user.email}}</td>
-      <td>{{user.firstName}}</td>
-      <td>{{user.lastName}}</td>
-      <td>{{user.telephoneNumber}}</td>
-      <td (click)="onUserStatusEditClick(user)" matTooltip="Click to edit user status" style="cursor: pointer">
-        <span *ngIf="user.active;else falseContent" class="alert alert-success p-1"> True </span>
+<!--  <ng-template let-user pTemplate="body">-->
+<!--    <tr>-->
+<!--      <td class="ui-resizable-column">{{user.email}}</td>-->
+<!--      <td class="ui-resizable-column">{{user.firstName}}</td>-->
+<!--      <td class="ui-resizable-column">{{user.lastName}}</td>-->
+<!--      <td class="ui-resizable-column">{{user.telephoneNumber}}</td>-->
+<!--      <td class="ui-resizable-column" (click)="onUserStatusEditClick(user)" matTooltip="Click to edit user status" style="cursor: pointer">-->
+<!--        <span *ngIf="user.active;else falseContent" class="alert alert-success p-1"> True </span>-->
 
-      </td>
-      <td>{{user.subscriptionCount}}</td>
-      <td>{{user.role}}</td>
-      <td>
-        <button (click)="openUserViewDialog(user.id)" color="primary" mat-mini-fab matTooltip="View More"><i
-          class="fas fa-eye"></i></button>
-        <button (click)="openManageSubDialog(user)" class="ms-2" color="primary" mat-mini-fab
-                matTooltip="Add Subscription">
-          <i class="fas fa-book-medical"></i>
-        </button>
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
+<!--      </td>-->
+<!--      <td class="ui-resizable-column">{{user.subscriptionCount}}</td>-->
+<!--      <td class="ui-resizable-column">{{user.role}}</td>-->
+<!--      <td class="ui-resizable-column">-->
+<!--        <button (click)="openUserViewDialog(user.id)" color="primary" mat-mini-fab matTooltip="View More"><i-->
+<!--          class="fas fa-eye"></i></button>-->
+<!--        <button (click)="openManageSubDialog(user)" class="ms-2" color="primary" mat-mini-fab-->
+<!--                matTooltip="Add Subscription">-->
+<!--          <i class="fas fa-book-medical"></i>-->
+<!--        </button>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--  </ng-template>-->
+<!--</p-table>-->
 
 
 <ng-template #filterTemplate>
@@ -175,3 +177,80 @@
 <ng-template #falseContent>
   <span class="alert alert-danger p-1"> False </span>
 </ng-template>
+
+
+
+<!--<ag-grid-angular-->
+<!--  style="width: 100%;height: 70vh"-->
+<!--  class="ag-theme-alpine"-->
+<!--  [rowData]="users"-->
+<!--  [columnDefs]="columnDefs"-->
+<!--&gt;-->
+<!--</ag-grid-angular>-->
+
+<!--<form>-->
+<!--          <input class="p-inputtext-sm"-->
+<!--                 [formControl]="filter"-->
+<!--                 matTooltip="Search from table"-->
+<!--                 placeholder="Search keyword"-->
+<!--                 type="text"/>-->
+<!--&lt;!&ndash;  <div class="form-group form-inline">&ndash;&gt;-->
+<!--&lt;!&ndash;    Full text search: <input class="form-control ml-2" type="text" [formControl]="filter"/>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--</form>-->
+
+
+      <div class="d-flex justify-content-between align-items-center mt-2">
+        <ng-container *ngTemplateOutlet="filterTemplate"></ng-container>
+      </div>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+            <th>
+              Email
+            </th>
+            <th>
+              First Name
+            </th>
+            <th>
+              Last Name
+            </th>
+            <th>
+              Contact No
+            </th>
+            <th>
+              Status
+            </th>
+            <th matTooltip="Subscription Count">
+              Sub. Count
+            </th>
+            <th>
+              Role
+            </th>
+          </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users; index as i">
+            <td class="ui-resizable-column">{{user.email}}</td>
+            <td class="ui-resizable-column">{{user.firstName}}</td>
+            <td class="ui-resizable-column">{{user.lastName}}</td>
+            <td class="ui-resizable-column">{{user.telephoneNumber}}</td>
+            <td class="ui-resizable-column" (click)="onUserStatusEditClick(user)" matTooltip="Click to edit user status" style="cursor: pointer">
+              <span *ngIf="user.active;else falseContent" class="alert alert-success p-1"> True </span>
+
+            </td>
+            <td class="ui-resizable-column">{{user.subscriptionCount}}</td>
+            <td class="ui-resizable-column">{{user.role}}</td>
+            <td class="ui-resizable-column">
+              <button (click)="openUserViewDialog(user.id.toString())" color="primary" mat-mini-fab matTooltip="View More"><i
+                class="fas fa-eye"></i></button>
+              <button (click)="openManageSubDialog(user)" class="ms-2" color="primary" mat-mini-fab
+                      matTooltip="Add Subscription">
+                <i class="fas fa-book-medical"></i>
+              </button>
+            </td>
+
+    </tr>
+    </tbody>
+  </table>

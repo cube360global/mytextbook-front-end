@@ -14,6 +14,8 @@ import {SubscriptionManagementComponent} from './component/subscription-manageme
 import {BookItemComponent} from './component/subscription-management/book-item/book-item.component';
 import {UserSubViewComponent} from './component/user-viewer-dialog/user-sub-view/user-sub-view.component';
 import {UserEditComponent} from './component/user-edit/user-edit.component';
+import {AgGridModule} from 'ag-grid-angular';
+import {ResponsiveScrollModule} from 'p-table-responsive-scroll';
 
 const routes: Routes = [
   {path: '', component: UserManagementComponent},
@@ -24,12 +26,14 @@ const routes: Routes = [
     , UserViewerDialogComponent, AddUserComponent, AddBulkUserComponent, SubscriptionManagementComponent, BookItemComponent, UserSubViewComponent, UserEditComponent],
   imports: [
     CommonModule,
+    ResponsiveScrollModule,
     RouterModule.forChild(routes),
     MaterialModule,
     PrimengModule,
     FormsModule,
     ReactiveFormsModule,
-    ValdemortModule
+    ValdemortModule,
+    AgGridModule
   ]
 })
 export class UsersModule {

@@ -24,14 +24,14 @@
     <input formControlName="telephoneNumber"
            matInput
            placeholder="Enter your primary phone no*"
-           type="text"
+           type="number"
     >
     <mat-error *ngIf="signUpForm.controls['telephoneNumber'].hasError('required')">Required</mat-error>
   </mat-form-field>
 
   <mat-label class="text-color-01-b">Birthday</mat-label>
   <mat-form-field floatLabel="never">
-    <input [matDatepicker]="picker" formControlName="birthDay" matInput
+    <input [matDatepicker]="picker"  formControlName="birthDay" matInput
            placeholder="Pick your birthday*">
     <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>

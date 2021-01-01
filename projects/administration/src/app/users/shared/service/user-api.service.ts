@@ -20,7 +20,7 @@ export class UserApiService {
 
   public all(): Observable<UserAndSchoolModel> {
     return this.apiBaseService.GET_API<UserAndSchoolModel>([AdminControllersConst.UserController,
-      AdminControllersConst.All]);
+      AdminControllersConst.All], true);
   }
 
   public getUserProfileById(userId: string): Observable<UserModel> {

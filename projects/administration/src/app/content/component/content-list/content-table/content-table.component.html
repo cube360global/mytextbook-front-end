@@ -2,10 +2,8 @@
          [globalFilterFields]="['name','description','chapter','pageNumber','viewCount','likeCount','unLikeCount','status','book']"
          [loading]="loading"
          [paginator]="true"
-         [resizableColumns]="true"
          [rowsPerPageOptions]="[10,25,50]"
          [rows]="10"
-         [scrollable]="true"
          [showCurrentPageReport]="true"
          [value]="contentList"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -24,51 +22,38 @@
       </div>
     </div>
   </ng-template>
-  <ng-template pTemplate="colgroup">
-    <colgroup>
-      <col style="width:30%">
-      <col style="width:30%">
-      <col style="width:10%">
-      <col style="width:10%">
-      <col style="width:10%">
-      <col style="width:10%">
-      <col style="width:10%">
-      <col style="width:10%">
-      <col style="width:30%">
-      <col style="width:10%">
-    </colgroup>
-  </ng-template>
+
 
   <ng-template pTemplate="header">
     <tr>
-      <th pResizableColumn>
+      <th>
         Marker Image
       </th>
-      <th pResizableColumn>
+      <th>
         Name
       </th>
-      <th pResizableColumn>
+      <th>
         Chapter <br>No
       </th>
       <th>
         Page No
       </th>
-      <th pResizableColumn>
+      <th>
         View <br> Count
       </th>
       <th>
         Like <br> Count
       </th>
-      <th pResizableColumn>
+      <th>
         Unlike <br> Count
       </th>
       <th>
         Status
       </th>
-      <th pResizableColumn>
+      <th>
         Book Name
       </th>
-      <th pResizableColumn>
+      <th>
         Action
       </th>
     </tr>
