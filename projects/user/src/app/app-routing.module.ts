@@ -8,6 +8,7 @@ import {SignUpComponent} from './+auth/components/sign-up/sign-up.component';
 import {ForgetPasswordComponent} from './+auth/components/forget-password/forget-password.component';
 import {ResetPasswordComponent} from './+auth/components/reset-password/reset-password.component';
 import {PublicHomePageComponent} from './public/components/public-home-page/public-home-page.component';
+import {NotFoundComponent} from './not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,9 @@ const routes: Routes = [
   },
   {
     path: Path.Private, loadChildren: () => import('./private/private.module').then(m => m.PrivateModule), canActivate: [UserAuthGuard]
+  },
+  {
+    path: '**', component: NotFoundComponent
   }
 ];
 
