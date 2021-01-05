@@ -25,6 +25,7 @@ import {BooksEffects} from './book/store/book.effects';
 import {SubjectEffects} from './subject/store/subject.effects';
 import {ContentEffects} from './content/store/content.effects';
 import {AgGridModule} from 'ag-grid-angular';
+import { DevTestComponent } from './dev-test/dev-test.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -70,6 +71,7 @@ export function tokenGetter(): string {
   declarations: [
     AppComponent,
     AdminLoginComponent,
+    DevTestComponent,
 
   ],
   imports: [

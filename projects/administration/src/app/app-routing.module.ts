@@ -4,9 +4,11 @@ import {AdminLoginComponent} from './+auth/components/admin-login/admin-login.co
 import {Path} from './@core/enum/path.enum';
 import {NavBarComponent} from './@ui/layout/component/nav-bar/nav-bar.component';
 import {AdminAuthGuard} from './@core/guards/admin-auth.guard';
+import {DevTestComponent} from './dev-test/dev-test.component';
 
 const routes: Routes = [
   {path: '', component: AdminLoginComponent},
+  {path: 'dev', component: DevTestComponent},
   {
     path: Path.Admin, component: NavBarComponent, canActivate: [AdminAuthGuard], children: [
       {path: '', redirectTo: Path.Subject, pathMatch: 'full'},
