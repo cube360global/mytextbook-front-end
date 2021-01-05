@@ -33,6 +33,7 @@
     "@ngx-loading-bar/core": "^5.1.1",
     "@ngx-loading-bar/http-client": "^5.1.1",
     "@ngx-loading-bar/router": "^5.1.1",
+    "@swimlane/ngx-datatable": "^19.0.0",
     "@vimeo/player": "^2.14.1",
     "ag-grid-angular": "^24.1.0",
     "ag-grid-community": "^24.1.0",

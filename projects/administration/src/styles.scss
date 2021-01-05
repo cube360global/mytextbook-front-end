@@ -1,6 +1,7 @@
 @import '~ngx-toastr/toastr';
-@import "~ag-grid-community/dist/styles/ag-grid.css";
-@import "~ag-grid-community/dist/styles/ag-theme-alpine.css";
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
 
 div, label, span, p {
   font-family: 'Titillium Web', sans-serif;

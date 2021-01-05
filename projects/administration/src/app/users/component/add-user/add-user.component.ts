@@ -56,7 +56,7 @@ export class AddUserComponent implements OnInit {
     this.userApiService.createUser(addUser)
       .subscribe(res => {
         this.dialogRef.close();
-        this.store.dispatch(USERS_DATA_LOADED({payload: res}));
+        this.store.dispatch(USERS_DATA_LOADED({payload: res?.users}));
       });
   }
 }

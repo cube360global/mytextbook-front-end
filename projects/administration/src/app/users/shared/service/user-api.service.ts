@@ -27,8 +27,8 @@ export class UserApiService {
     return this.apiBaseService.GET_API<UserModel>([AdminControllersConst.UserController, 'profile', userId]);
   }
 
-  public createUser(addUserModel: AddUserModel): Observable<UserModel[]> {
-    return this.apiBaseService.UPDATE_API<UserModel[]>([AdminControllersConst.UserController],
+  public createUser(addUserModel: AddUserModel): Observable<UserAndSchoolModel> {
+    return this.apiBaseService.UPDATE_API<UserAndSchoolModel>([AdminControllersConst.UserController],
       addUserModel, true);
   }
 

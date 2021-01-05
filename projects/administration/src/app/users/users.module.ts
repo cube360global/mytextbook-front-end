@@ -16,16 +16,26 @@ import {UserSubViewComponent} from './component/user-viewer-dialog/user-sub-view
 import {UserEditComponent} from './component/user-edit/user-edit.component';
 import {AgGridModule} from 'ag-grid-angular';
 import {ResponsiveScrollModule} from 'p-table-responsive-scroll';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
 const routes: Routes = [
   {path: '', component: UserManagementComponent},
 ];
 
 @NgModule({
-  declarations: [UserManagementComponent, UsersListComponent
-    , UserViewerDialogComponent, AddUserComponent, AddBulkUserComponent, SubscriptionManagementComponent, BookItemComponent, UserSubViewComponent, UserEditComponent],
+  declarations: [
+    UserManagementComponent,
+    UsersListComponent,
+    UserViewerDialogComponent,
+    AddUserComponent,
+    AddBulkUserComponent,
+    SubscriptionManagementComponent,
+    BookItemComponent,
+    UserSubViewComponent,
+    UserEditComponent],
   imports: [
     CommonModule,
+    NgxDatatableModule,
     ResponsiveScrollModule,
     RouterModule.forChild(routes),
     MaterialModule,

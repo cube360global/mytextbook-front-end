@@ -51,8 +51,7 @@ export class UsersListComponent implements OnInit {
               private router: Router,
               private subjectService: SubjectApiService,
               private ngxUiLoaderService: NgxUiLoaderService,
-              private store: Store<fromApp.AppState>,
-              private alertService: AlertService) {
+              private store: Store<fromApp.AppState>) {
 
 
     this.filter.statusChanges.pipe(
@@ -102,16 +101,19 @@ export class UsersListComponent implements OnInit {
   }
 
   // tslint:disable-next-line:no-shadowed-variable
-  // search(text: string): UserModel[] {
-  //   return this.users.filter(country => {
-  //     console.log(text);
-  //     const term = text;
-  //     return country.email.includes(term)
-  //       || country.firstName.includes(term)
-  //       || country.telephoneNumber.includes(term)
-  //       || country.lastName.includes(term);
-  //   });
-  // }
+  search($event: KeyboardEvent): void {
+
+    const filterValue = ($event.target as HTMLInputElement).value;
+    const user = this.users.filter(country => {
+      console.log(filterValue);
+      const term = filterValue;
+      return country.email.includes(term)
+        || country.firstName.includes(term)
+        || country.telephoneNumber.includes(term)
+        || country.lastName.includes(term);
+    });
+    this.users = user;
+  }
 
   openUserViewDialog(userId: string): void {
 
@@ -137,11 +139,9 @@ export class UsersListComponent implements OnInit {
 
   sendToServer(): void {
     const searchUser = this.filterForm.value as SearchUserModel;
-    console.log(searchUser);
     searchUser.grade = +searchUser.grade;
     this.userApiService.searchUsers(searchUser)
       .subscribe(res => {
-        console.log(res);
         this.store.dispatch(USERS_AND_SCHOOL_DATA_LOADED({payload: res}));
       });
   }
@@ -169,4 +169,9 @@ export class UsersListComponent implements OnInit {
       data: JSON.parse(JSON.stringify(user))
     });
   }
+
+  // applyFilter($event: KeyboardEvent): void {
+  //   const filterValue = ($event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  // }
 }
