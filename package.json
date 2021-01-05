@@ -43,6 +43,7 @@
     "ngx-toastr": "^13.2.0",
     "ngx-ui-loader": "^10.0.0",
     "ngx-valdemort": "^5.0.0",
+    "ngx-webcam": "^0.3.2",
     "p-table-responsive-scroll": "^9.0.3",
     "primeicons": "^4.1.0",
     "primeng": "^11.1.0-rc.1",

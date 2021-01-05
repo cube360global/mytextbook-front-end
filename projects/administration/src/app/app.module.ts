@@ -8,7 +8,7 @@ import {MaterialModule} from '../../../lib/vendors/src/lib/material/material.mod
 import {NgxUiLoaderConfig, NgxUiLoaderModule, NgxUiLoaderService} from 'ngx-ui-loader';
 import {PrimengModule} from '../../../lib/vendors/src/lib/primeng/primeng.module';
 import {AdminLoginComponent} from './+auth/components/admin-login/admin-login.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ValdemortModule} from 'ngx-valdemort';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -26,6 +26,7 @@ import {SubjectEffects} from './subject/store/subject.effects';
 import {ContentEffects} from './content/store/content.effects';
 import {AgGridModule} from 'ag-grid-angular';
 import { DevTestComponent } from './dev-test/dev-test.component';
+import {WebcamModule} from 'ngx-webcam';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -107,7 +108,9 @@ export function tokenGetter(): string {
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     ReactiveFormsModule,
     ValdemortModule,
-    AgGridModule.withComponents([])
+    WebcamModule,
+    AgGridModule.withComponents([]),
+    FormsModule,
 
     // NgxUiLoaderModule
   ],
