@@ -7,6 +7,8 @@ import {MatConfirmDialogComponent} from './confirm-dialog/component/mat-confirm-
 import {BaubleFooterComponent} from './bauble-footer/bauble-footer.component';
 import {CommonModule} from '@angular/common';
 import {NoDataFoundComponent} from './no-data-found/no-data-found.component';
+import { TableLoaderComponent } from './components/loaders/table-loader/table-loader.component';
+import {SkeletonModule} from 'primeng/skeleton';
 
 
 @NgModule({
@@ -16,19 +18,23 @@ import {NoDataFoundComponent} from './no-data-found/no-data-found.component';
     FooterComponent,
     MatConfirmDialogComponent,
     BaubleFooterComponent,
-    NoDataFoundComponent
+    NoDataFoundComponent,
+    TableLoaderComponent
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-  ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        SkeletonModule,
+    ],
   exports: [
     VendorsComponent,
     SuccessNotifyComponent,
     FooterComponent,
     MatConfirmDialogComponent,
     NoDataFoundComponent,
-    BaubleFooterComponent]
+    BaubleFooterComponent,
+    TableLoaderComponent
+  ]
 })
 export class VendorsModule {
 }

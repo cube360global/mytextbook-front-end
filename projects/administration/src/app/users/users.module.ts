@@ -17,6 +17,8 @@ import {UserEditComponent} from './component/user-edit/user-edit.component';
 import {AgGridModule} from 'ag-grid-angular';
 import {ResponsiveScrollModule} from 'p-table-responsive-scroll';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {VendorsModule} from '../../../../lib/vendors/src/lib/vendors.module';
+import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 
 const routes: Routes = [
   {path: '', component: UserManagementComponent},
@@ -41,9 +43,11 @@ const routes: Routes = [
     MaterialModule,
     PrimengModule,
     FormsModule,
+    VendorsModule,
     ReactiveFormsModule,
     ValdemortModule,
-    AgGridModule
+    AgGridModule,
+    NgxSkeletonLoaderModule
   ]
 })
 export class UsersModule {

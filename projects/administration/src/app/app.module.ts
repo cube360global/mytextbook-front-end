@@ -27,6 +27,7 @@ import {ContentEffects} from './content/store/content.effects';
 import {AgGridModule} from 'ag-grid-angular';
 import { DevTestComponent } from './dev-test/dev-test.component';
 import {WebcamModule} from 'ngx-webcam';
+import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -106,6 +107,7 @@ export function tokenGetter(): string {
     MaterialModule,
     PrimengModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    NgxSkeletonLoaderModule,
     ReactiveFormsModule,
     ValdemortModule,
     WebcamModule,

@@ -18,6 +18,7 @@ import {UserEditComponent} from '../user-edit/user-edit.component';
 import {SubjectModel} from '../../../@core/interfaces/api/SubjectModel';
 import {Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-users-list',
@@ -26,24 +27,29 @@ import {tap} from 'rxjs/operators';
 })
 export class UsersListComponent implements OnInit {
 
+  // 2021-01-07
+  $loadingObs = new Observable();
+  searchInputData = '';
+
+
   filterForm = {} as FormGroup;
   subjects = [] as SubjectModel[];
   schools = [] as string[];
 
   users = [] as UserModel[];
   loading = true;
-  searchInputData: any;
-
-  columnDefs = [
-    {field: 'email', sortable: true},
-    {field: 'firstName', sortable: true},
-    {field: 'lastName', sortable: true},
-    {field: 'telephoneNumber', sortable: true},
-    {field: 'active', sortable: true},
-    {field: 'subscriptionCount', sortable: true},
-    {field: 'role', sortable: true},
-  ];
-  filter = new FormControl('');
+  // searchInputData: any;
+  //
+  // columnDefs = [
+  //   {field: 'email', sortable: true},
+  //   {field: 'firstName', sortable: true},
+  //   {field: 'lastName', sortable: true},
+  //   {field: 'telephoneNumber', sortable: true},
+  //   {field: 'active', sortable: true},
+  //   {field: 'subscriptionCount', sortable: true},
+  //   {field: 'role', sortable: true},
+  // ];
+  // filter = new FormControl('');
 
   constructor(private userApiService: UserApiService,
               private dialog: MatDialog,
@@ -54,15 +60,20 @@ export class UsersListComponent implements OnInit {
               private store: Store<fromApp.AppState>) {
 
 
-    this.filter.statusChanges.pipe(
-      tap(res => {
-        console.log(res);
-      })
-    );
+
+
+
+    // this.filter.statusChanges.pipe(
+    //   tap(res => {
+    //     console.log(res);
+    //   })
+    // );
     // this.filter.valueChanges.subscribe(res => {
     //   this.users = this.search(res);
     // });
 
+
+    this.$loadingObs = this.store.select(fromApp.getUserDataLoading);
 
     this.store.select(fromApp.getUserReducer)
       .subscribe(res => {
@@ -76,15 +87,15 @@ export class UsersListComponent implements OnInit {
         }
         , error => console.error(error));
 
-    this.store.select(fromApp.getSubjectReducer)
-      .subscribe(res => {
-        if (res.subjectData != null && res.subjectData.length > 0) {
-          this.subjects = res.subjectData;
-        } else {
-          this.toastr.warning('Data not initialized');
-          this.router.navigate(['/admin/subject']);
-        }
-      });
+    // this.store.select(fromApp.getSubjectReducer)
+    //   .subscribe(res => {
+    //     if (res.subjectData != null && res.subjectData.length > 0) {
+    //       this.subjects = res.subjectData;
+    //     } else {
+    //       this.toastr.warning('Data not initialized');
+    //       this.router.navigate(['/admin/subject']);
+    //     }
+    //   });
   }
 
   ngOnInit(): void {
@@ -101,19 +112,19 @@ export class UsersListComponent implements OnInit {
   }
 
   // tslint:disable-next-line:no-shadowed-variable
-  search($event: KeyboardEvent): void {
-
-    const filterValue = ($event.target as HTMLInputElement).value;
-    const user = this.users.filter(country => {
-      console.log(filterValue);
-      const term = filterValue;
-      return country.email.includes(term)
-        || country.firstName.includes(term)
-        || country.telephoneNumber.includes(term)
-        || country.lastName.includes(term);
-    });
-    this.users = user;
-  }
+  // search($event: KeyboardEvent): void {
+  //
+  //   const filterValue = ($event.target as HTMLInputElement).value;
+  //   const user = this.users.filter(country => {
+  //     console.log(filterValue);
+  //     const term = filterValue;
+  //     return country.email.includes(term)
+  //       || country.firstName.includes(term)
+  //       || country.telephoneNumber.includes(term)
+  //       || country.lastName.includes(term);
+  //   });
+  //   this.users = user;
+  // }
 
   openUserViewDialog(userId: string): void {
 
@@ -174,4 +185,5 @@ export class UsersListComponent implements OnInit {
   //   const filterValue = ($event.target as HTMLInputElement).value;
   //   this.dataSource.filter = filterValue.trim().toLowerCase();
   // }
+
 }

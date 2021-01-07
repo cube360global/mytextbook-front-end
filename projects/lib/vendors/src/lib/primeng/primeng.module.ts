@@ -12,6 +12,7 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {DropdownModule} from 'primeng/dropdown';
 import {BadgeModule} from 'primeng/badge';
+import {SkeletonModule} from 'primeng/skeleton';
 
 
 const primeNg = [
@@ -27,7 +28,8 @@ const primeNg = [
   FileUploadModule,
   ConfirmDialogModule,
   DropdownModule,
-  BadgeModule
+  BadgeModule,
+  SkeletonModule
 
 ];
 

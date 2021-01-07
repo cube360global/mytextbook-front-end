@@ -39,6 +39,7 @@
     "ag-grid-community": "^24.1.0",
     "bootstrap": "^5.0.0-beta1",
     "ngx-cookie-service": "^11.0.2",
+    "ngx-skeleton-loader": "^2.6.2",
     "ngx-spinner": "^10.0.1",
     "ngx-toastr": "^13.2.0",
     "ngx-ui-loader": "^10.0.0",
