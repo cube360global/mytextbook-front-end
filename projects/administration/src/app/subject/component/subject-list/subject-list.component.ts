@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../app.reducer';
+import {EditSubjectComponent} from '../edit-subject/edit-subject.component';
 
 @Component({
   selector: 'app-subject-list',
@@ -44,21 +45,12 @@ export class SubjectListComponent implements OnInit {
 
   }
 
-  openUserViewDialog(userId: string): void {
-    // this.ngxUiLoaderService.start();
-    // this.bookApiService.Get(userId)
-    //   .subscribe(res => {
-    //     this.dialog.open(UserViewerDialogComponent, {
-    //       width: '100%',
-    //       data: res
-    //     });
-    //     this.ngxUiLoaderService.stop();
-    //   }, () => {
-    //     this.ngxUiLoaderService.stop();
-    //   });
-
+  openSubjectViewDialog(subject: SubjectModel): void {
+    this.dialog.open(EditSubjectComponent, {
+      width: '100%',
+      data: subject
+    });
   }
-
 
   onFilterApply(): void {
 

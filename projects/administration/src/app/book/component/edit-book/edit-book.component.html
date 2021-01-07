@@ -1,0 +1,85 @@
+<!--<p-confirmDialog header="Confirmation"-->
+<!--                 icon="pi pi-exclamation-triangle"-->
+<!--                 key="ce-100"></p-confirmDialog>-->
+
+<!--<div mat-dialog-title>-->
+<!--  <div class="d-flex justify-content-between align-items-center">-->
+<!--    <div class="header-text-sm">-->
+<!--      Edit Subject-->
+<!--    </div>-->
+<!--    <button (click)="dialogRef.close()" color="warn" mat-icon-button>-->
+<!--      <mat-icon>highlight_off</mat-icon>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div mat-dialog-content>-->
+
+<!--  <div class="container mt-4">-->
+
+<!--    <form (ngSubmit)="onEditSubjectSubmit()" [formGroup]="subjectEditForm">-->
+<!--      <mat-label class="text-color-01-b">Name*</mat-label>-->
+<!--      <input-->
+<!--        [ngClass]="{ 'p-invalid' : !subjectEditForm.controls['name'].valid && subjectEditForm.controls['name'].touched}"-->
+<!--        class="p-inputtext-sm w-100 mt-2"-->
+<!--        formControlName="name"-->
+<!--        id="name"-->
+<!--        pInputText type="text">-->
+<!--      <div>-->
+<!--        <val-errors controlName="name">-->
+<!--          <ng-template valError="required"><small class="p-invalid ms-3">Name is required</small>-->
+<!--          </ng-template>-->
+<!--          >-->
+<!--        </val-errors>-->
+<!--      </div>-->
+
+<!--      <p></p>-->
+<!--      <div *ngIf="initialLoad;else newImage">-->
+<!--        <p></p>-->
+<!--        <mat-label class="text-color-01-b"> Current marker url</mat-label>-->
+<!--        <div class="d-flex align-items-center mt-2">-->
+<!--          <input-->
+<!--            [value]="subjectModel.image"-->
+<!--            class="p-inputtext-sm w-100 mt-2"-->
+<!--            id="current-marker-img"-->
+<!--            pInputText type="text">-->
+
+<!--          <button (click)="$event.preventDefault();onRemoveCurrentImageClick()"-->
+<!--                  color="warn"-->
+<!--                  mat-icon-button matTooltip="Remove Current Image" type="button">-->
+<!--            <mat-icon>delete</mat-icon>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <p></p>-->
+<!--      <div class="text-center mt-5 mb-5">-->
+<!--        <button class="mat-button-rounded-sm" color="primary" mat-raised-button> Submit</button>-->
+<!--      </div>-->
+
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--<ng-template #newImage>-->
+<!--  <p></p>-->
+<!--  <div class="row">-->
+<!--    <div class="col-sm-6">-->
+<!--      <label class="ms-3"> Marker Image </label>-->
+<!--      <div class="d-flex justify-content-between align-items-center">-->
+<!--        <p-fileUpload #ff (onSelect)="onBasicUpload($event)" [customUpload]="true" [fileLimit]="1" mode="basic"-->
+<!--                      name="demo[]"-->
+<!--                      styleClass="m-2">-->
+<!--        </p-fileUpload>-->
+<!--        <button (click)="ff.clear();onRemoveClick()" color="warn" mat-icon-button type="button">-->
+<!--          <mat-icon>delete</mat-icon>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <small *ngIf="!image" class="p-invalid ms-3">The image is required</small>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</ng-template>-->
+

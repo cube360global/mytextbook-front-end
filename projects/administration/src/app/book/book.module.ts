@@ -8,6 +8,7 @@ import {ValdemortModule} from 'ngx-valdemort';
 import {BookManagementComponent} from './page/book-management/book-management.component';
 import {BooksListComponent} from './component/books-list/books-list.component';
 import {AddBookComponent} from './component/add-book/add-book.component';
+import {EditBookComponent} from './component/edit-book/edit-book.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [BookManagementComponent, BooksListComponent, AddBookComponent],
+  declarations: [BookManagementComponent, BooksListComponent, AddBookComponent, EditBookComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

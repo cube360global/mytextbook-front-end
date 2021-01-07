@@ -27,6 +27,7 @@ export class BooksListComponent implements OnInit {
       .subscribe(res => {
           if (res.bookData.length > 0) {
             this.books = res.bookData;
+            console.log(this.books);
             this.loading = false;
           }
         }
@@ -42,7 +43,10 @@ export class BooksListComponent implements OnInit {
 
   }
 
-  openBookEditViewDialog(id: any): void {
-
+  openBookEditViewDialog(book: BookModel): void {
+    // this.dialog.open(EditBookComponent, {
+    //   width: '100%',
+    //   data: book
+    // });
   }
 }

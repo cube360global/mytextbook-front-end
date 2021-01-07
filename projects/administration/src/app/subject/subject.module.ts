@@ -8,13 +8,14 @@ import {ValdemortModule} from 'ngx-valdemort';
 import {SubjectManagerComponent} from './page/subject-manager/subject-manager.component';
 import {SubjectListComponent} from './component/subject-list/subject-list.component';
 import {AddSubjectComponent} from './component/add-subject/add-subject.component';
+import {EditSubjectComponent} from './component/edit-subject/edit-subject.component';
 
 const routes: Routes = [
   {path: '', component: SubjectManagerComponent},
 ];
 
 @NgModule({
-  declarations: [SubjectManagerComponent, SubjectListComponent, AddSubjectComponent],
+  declarations: [SubjectManagerComponent, SubjectListComponent, AddSubjectComponent, EditSubjectComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

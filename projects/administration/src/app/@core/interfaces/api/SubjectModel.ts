@@ -1,5 +1,5 @@
 export interface SubjectModel {
   id: number;
-  img: string;
+  image: string;
   name: string;
 }
