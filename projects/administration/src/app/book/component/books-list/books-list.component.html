@@ -75,13 +75,13 @@
   <ng-template let-book pTemplate="body">
     <tr>
       <td>
-        <img alt="" class="img-fluid" height="100px" src="{{book.image}}" width="100px">
+        <img alt="" class="img-fluid" height="100px" src="{{ book.image }}" width="100px">
       </td>
-      <td>Grade {{book.grade}}</td>
-      <td>{{book.medium}}</td>
-      <td>{{book.name}}</td>
-      <td>{{book.price}}.00/=</td>
-      <td>{{book.subject}}</td>
+      <td>Grade {{ book.grade }}</td>
+      <td>{{ book.medium }}</td>
+      <td>{{ book.name }}</td>
+      <td>{{ book.price }}.00/=</td>
+      <td>{{ book.subject }}</td>
       <td>
         <button (click)="openBookEditViewDialog(book)"
                 class="me-2"

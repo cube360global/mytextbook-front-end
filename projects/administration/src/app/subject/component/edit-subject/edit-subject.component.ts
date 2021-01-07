@@ -25,9 +25,6 @@ export class EditSubjectComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.subjectModel);
-    this.image = this.subjectModel.image;
-
     this.subjectEditForm = new FormGroup({
       name: new FormControl(this.subjectModel.name, [Validators.required]),
       image: new FormControl(this.subjectModel.image, [Validators.required])
@@ -44,25 +41,29 @@ export class EditSubjectComponent implements OnInit {
     }
   }
 
-  onRemoveClick(): void {
+  onImageRemoveClick(): void {
     this.image = null;
   }
 
   onRemoveCurrentImageClick(): void {
     this.initialLoad = false;
-    this.image = null;
+    this.subjectModel.image = '';
   }
 
   onEditSubjectSubmit(): void {
     if (this.subjectEditForm.invalid) {
       return;
     }
-
-    console.log(this.subjectEditForm.value);
     const subjectData = this.subjectEditForm.value as SubjectModel;
     subjectData.id = this.subjectModel.id;
-    console.log(subjectData);
-    this.subjectApiService.Put(subjectData)
+
+
+    const postDataString = JSON.stringify(subjectData);
+    const formData = new FormData();
+    formData.append('image', this.image);
+    formData.append('body', postDataString);
+
+    this.subjectApiService.Put(formData)
       .subscribe(res => {
         this.store.dispatch(SUBJECT_DATA_LOADED({payload: res}));
       });

@@ -1,5 +1,6 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {BookModel} from '../../../@core/interfaces/api/BookModel';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-book',
@@ -8,7 +9,7 @@ import {BookModel} from '../../../@core/interfaces/api/BookModel';
 })
 export class EditBookComponent implements OnInit {
 
-  constructor(@Injectable() public bookModel: BookModel) {
+  constructor(@Inject(MAT_DIALOG_DATA) public bookModel: BookModel) {
   }
 
   ngOnInit(): void {
