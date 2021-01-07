@@ -5,6 +5,7 @@ import {Store} from '@ngrx/store';
 import * as fromApp from '../../../app.reducer';
 import {BookApiService} from '../../shared/services/book-api.service';
 import {BookModel} from '../../../@core/interfaces/api/BookModel';
+import {EditBookComponent} from '../edit-book/edit-book.component';
 
 @Component({
   selector: 'app-books-list',
@@ -44,9 +45,9 @@ export class BooksListComponent implements OnInit {
   }
 
   openBookEditViewDialog(book: BookModel): void {
-    // this.dialog.open(EditBookComponent, {
-    //   width: '100%',
-    //   data: book
-    // });
+    this.dialog.open(EditBookComponent, {
+      width: '100%',
+      data: book
+    });
   }
 }
