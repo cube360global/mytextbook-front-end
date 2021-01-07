@@ -1,0 +1,136 @@
+<form (ngSubmit)="onSearchClick()" [formGroup]="filterForm">
+  <div class="row g-1">
+    <div class="col-sm-2">
+
+      <p-dropdown
+        [filter]="true"
+        [options]="subjects"
+        [showClear]="true"
+        appendTo="body"
+        filterBy="name"
+        formControlName="subject"
+        optionLabel="name"
+        optionValue="name"
+        placeholder="Select a Subject *"
+        styleClass="p-inputtext-sm w-100">
+
+        <ng-template pTemplate="selectedItem">
+          <div class="country-item country-item-value">
+            <div>{{filterForm.controls['subject'].value}}</div>
+          </div>
+        </ng-template>
+
+        <ng-template let-grade pTemplate="item">
+          <div class="country-item">
+            <div>{{grade.name}}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+
+    </div>
+    <div class="col-sm-2">
+
+      <p-dropdown
+        formControlName="status"
+        placeholder="select status"
+        [options]="utilityService.status"
+        [showClear]="true"
+        appendTo="body"
+        optionLabel="name"
+        optionValue="code"
+        styleClass="p-inputtext-sm w-100">
+      </p-dropdown>
+
+    </div>
+    <div class="col-sm-2">
+
+      <div class="p-float-label">
+        <input class="p-inputtext-sm w-100"
+               formControlName="district"
+               id="district"
+               pInputText
+               type="text">
+        <label for="district">District</label>
+      </div>
+
+    </div>
+    <div class="col-sm-2">
+
+      <div class="p-float-label">
+        <input class="p-inputtext-sm w-100"
+               formControlName="school"
+               id="school"
+               pInputText
+               type="text">
+        <label for="school">School</label>
+      </div>
+
+    </div>
+    <div class="col-sm-2">
+
+      <div class="p-float-label">
+        <input class="p-inputtext-sm w-100"
+               formControlName="grade"
+               id="grade"
+               pInputText
+               type="text">
+        <label for="grade">Grade</label>
+      </div>
+
+    </div>
+    <div class="col-sm-2">
+
+      <div class="p-float-label">
+        <input class="p-inputtext-sm w-100"
+               formControlName="salesLead"
+               id="salesLead"
+               pInputText
+               type="text">
+        <label for="salesLead">Sales Lead</label>
+      </div>
+
+    </div>
+    <div class="col-sm-2">
+
+      <div class="text-center">
+        <button class="mat-button-rounded w-100" color="primary" mat-raised-button>
+          <i class="fas fa-search me-2"></i> Search
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!--      <p-dropdown-->
+  <!--        [filter]="true"-->
+  <!--        [options]="schools"-->
+  <!--        [showClear]="true" appendTo="body" filterBy="name"-->
+  <!--        formControlName="school"-->
+  <!--        optionLabel="name"-->
+  <!--        placeholder="Select a School*"-->
+  <!--        styleClass="p-inputtext-sm w-100">-->
+
+  <!--        <ng-template pTemplate="selectedItem">-->
+  <!--          <div class="country-item country-item-value">-->
+  <!--            <div>{{filterForm.controls['subject'].value.name}}</div>-->
+  <!--          </div>-->
+  <!--        </ng-template>-->
+
+  <!--        <ng-template let-grade pTemplate="item">-->
+  <!--          <div class="country-item">-->
+  <!--            <div>{{grade.name}}</div>-->
+  <!--          </div>-->
+  <!--        </ng-template>-->
+  <!--      </p-dropdown>-->
+
+
+
+
+  <!--      <div class="p-float-label m-1">-->
+  <!--        <input class="p-inputtext-sm" formControlName="subject" id="subject" pInputText type="text">-->
+  <!--        <label for="subject">Subject</label>-->
+  <!--      </div>-->
+
+</form>

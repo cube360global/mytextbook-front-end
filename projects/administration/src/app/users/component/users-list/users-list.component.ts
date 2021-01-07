@@ -19,6 +19,7 @@ import {SubjectModel} from '../../../@core/interfaces/api/SubjectModel';
 import {Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {UtilityService} from '../../../../../../lib/tools/src/lib/utility.service';
 
 @Component({
   selector: 'app-users-list',
@@ -30,26 +31,9 @@ export class UsersListComponent implements OnInit {
   // 2021-01-07
   $loadingObs = new Observable();
   searchInputData = '';
-
-
-  filterForm = {} as FormGroup;
-  subjects = [] as SubjectModel[];
   schools = [] as string[];
-
   users = [] as UserModel[];
-  loading = true;
-  // searchInputData: any;
-  //
-  // columnDefs = [
-  //   {field: 'email', sortable: true},
-  //   {field: 'firstName', sortable: true},
-  //   {field: 'lastName', sortable: true},
-  //   {field: 'telephoneNumber', sortable: true},
-  //   {field: 'active', sortable: true},
-  //   {field: 'subscriptionCount', sortable: true},
-  //   {field: 'role', sortable: true},
-  // ];
-  // filter = new FormControl('');
+
 
   constructor(private userApiService: UserApiService,
               private dialog: MatDialog,
@@ -59,33 +43,16 @@ export class UsersListComponent implements OnInit {
               private ngxUiLoaderService: NgxUiLoaderService,
               private store: Store<fromApp.AppState>) {
 
-
-
-
-
-    // this.filter.statusChanges.pipe(
-    //   tap(res => {
-    //     console.log(res);
-    //   })
-    // );
-    // this.filter.valueChanges.subscribe(res => {
-    //   this.users = this.search(res);
-    // });
-
-
     this.$loadingObs = this.store.select(fromApp.getUserDataLoading);
-
     this.store.select(fromApp.getUserReducer)
       .subscribe(res => {
           if (res != null && res.userData.length > 0) {
             this.users = res.userData;
-            this.loading = false;
           }
           if (res != null && res.schools.length > 0) {
             this.schools = res.schools;
           }
-        }
-        , error => console.error(error));
+        }, error => console.error(error));
 
     // this.store.select(fromApp.getSubjectReducer)
     //   .subscribe(res => {
@@ -99,36 +66,10 @@ export class UsersListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
-    this.filterForm = new FormGroup({
-      district: new FormControl(),
-      school: new FormControl(),
-      subject: new FormControl(),
-      grade: new FormControl(),
-      salesLead: new FormControl(),
-    });
-
   }
 
-  // tslint:disable-next-line:no-shadowed-variable
-  // search($event: KeyboardEvent): void {
-  //
-  //   const filterValue = ($event.target as HTMLInputElement).value;
-  //   const user = this.users.filter(country => {
-  //     console.log(filterValue);
-  //     const term = filterValue;
-  //     return country.email.includes(term)
-  //       || country.firstName.includes(term)
-  //       || country.telephoneNumber.includes(term)
-  //       || country.lastName.includes(term);
-  //   });
-  //   this.users = user;
-  // }
 
   openUserViewDialog(userId: string): void {
-
-
     this.ngxUiLoaderService.start();
     this.userApiService.getUserProfileById(userId)
       .subscribe(res => {
@@ -140,22 +81,8 @@ export class UsersListComponent implements OnInit {
       }, () => {
         this.ngxUiLoaderService.stop();
       });
-
   }
 
-
-  onFilterApply(): void {
-    this.sendToServer();
-  }
-
-  sendToServer(): void {
-    const searchUser = this.filterForm.value as SearchUserModel;
-    searchUser.grade = +searchUser.grade;
-    this.userApiService.searchUsers(searchUser)
-      .subscribe(res => {
-        this.store.dispatch(USERS_AND_SCHOOL_DATA_LOADED({payload: res}));
-      });
-  }
 
   openManageSubDialog(user: UserModel): void {
     this.ngxUiLoaderService.start();
@@ -180,10 +107,5 @@ export class UsersListComponent implements OnInit {
       data: JSON.parse(JSON.stringify(user))
     });
   }
-
-  // applyFilter($event: KeyboardEvent): void {
-  //   const filterValue = ($event.target as HTMLInputElement).value;
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
 
 }
