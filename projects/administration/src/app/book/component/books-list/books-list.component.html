@@ -72,23 +72,23 @@
       </th>
     </tr>
   </ng-template>
-  <ng-template let-user pTemplate="body">
+  <ng-template let-book pTemplate="body">
     <tr>
       <td>
-        <img alt="" class="img-fluid" height="100px" src="{{user.image}}" width="100px">
+        <img alt="" class="img-fluid" height="100px" src="{{book.image}}" width="100px">
       </td>
-      <td>Grade {{user.grade}}</td>
-      <td>{{user.medium}}</td>
-      <td>{{user.name}}</td>
-      <td>{{user.price}}.00/=</td>
-      <td>{{user.subject}}</td>
+      <td>Grade {{book.grade}}</td>
+      <td>{{book.medium}}</td>
+      <td>{{book.name}}</td>
+      <td>{{book.price}}.00/=</td>
+      <td>{{book.subject}}</td>
       <td>
-        <button (click)="openBookEditViewDialog(user.id)"
+        <button (click)="openBookEditViewDialog(book)"
                 class="me-2"
                 color="primary"
                 mat-mini-fab><i class="fas fa-edit"></i></button>
 
-        <button (click)="onDelete(user.id)" color="warn" mat-mini-fab><i class="fas fa-trash"></i></button>
+        <button (click)="onDelete(book.id)" color="warn" mat-mini-fab><i class="fas fa-trash"></i></button>
       </td>
     </tr>
   </ng-template>

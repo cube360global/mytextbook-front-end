@@ -38,6 +38,7 @@ export class ContentEditComponent implements OnInit {
   ngOnInit(): void {
 
     this.books = this.bookContentModel.bookList;
+    console.log(this.bookContentModel.content);
     this.contentImage = this.bookContentModel.content.markerImageURL;
 
     this.contentAddForm = new FormGroup({

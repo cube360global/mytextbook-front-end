@@ -17,10 +17,7 @@ export class SubjectApiService {
     ([AdminControllersConst.SubjectController, AdminControllersConst.All]);
   }
 
-  // Get(dookId: string) {
-  //
-  // }
-  public Put(data: FormData): Observable<SubjectModel[]> {
+  public Put(data: SubjectModel): Observable<SubjectModel[]> {
     return this.apiBaseService.UPDATE_API<SubjectModel[]>([AdminControllersConst.SubjectController], data, true);
   }
 }

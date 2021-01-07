@@ -47,17 +47,17 @@
       </th>
     </tr>
   </ng-template>
-  <ng-template let-user pTemplate="body">
+  <ng-template let-subject pTemplate="body">
     <tr>
-      <td><img alt="" class="img-fluid" height="50px" src="{{user.image}}" width="50px"></td>
-      <td>{{user.name}}</td>
+      <td><img alt="" class="img-fluid" height="50px" src="{{subject.image}}" width="50px"></td>
+      <td>{{subject.name}}</td>
       <td>
-        <button (click)="openUserViewDialog(user.id)"
+        <button (click)="openSubjectViewDialog(subject)"
                 class="me-2"
                 color="primary"
                 mat-mini-fab><i class="fas fa-edit"></i></button>
 
-        <button (click)="openUserViewDialog(user.id)" color="warn" mat-mini-fab><i class="fas fa-trash"></i></button>
+        <!--        <button (click)="openUserViewDialog(user.id)" color="warn" mat-mini-fab><i class="fas fa-trash"></i></button>-->
       </td>
     </tr>
   </ng-template>
