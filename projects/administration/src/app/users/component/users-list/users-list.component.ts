@@ -20,6 +20,8 @@ import {Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {UtilityService} from '../../../../../../lib/tools/src/lib/utility.service';
+import {Table} from 'primeng/table';
+import {UsersPushNotificationDialogComponent} from '../users-push-notification-dialog/users-push-notification-dialog.component';
 
 @Component({
   selector: 'app-users-list',
@@ -33,6 +35,7 @@ export class UsersListComponent implements OnInit {
   searchInputData = '';
   schools = [] as string[];
   users = [] as UserModel[];
+  selectedUsers = [] as UserModel[];
 
 
   constructor(private userApiService: UserApiService,
@@ -46,13 +49,14 @@ export class UsersListComponent implements OnInit {
     this.$loadingObs = this.store.select(fromApp.getUserDataLoading);
     this.store.select(fromApp.getUserReducer)
       .subscribe(res => {
-          if (res != null && res.userData.length > 0) {
-            this.users = res.userData;
-          }
-          if (res != null && res.schools.length > 0) {
-            this.schools = res.schools;
-          }
-        }, error => console.error(error));
+        if (res != null && res.userData.length > 0) {
+          this.users = res.userData;
+          this.selectedUsers = res.userData;
+        }
+        if (res != null && res.schools.length > 0) {
+          this.schools = res.schools;
+        }
+      }, error => console.error(error));
 
     // this.store.select(fromApp.getSubjectReducer)
     //   .subscribe(res => {
@@ -108,4 +112,14 @@ export class UsersListComponent implements OnInit {
     });
   }
 
+  onPushNotificationClick(): void {
+    this.dialog.open(UsersPushNotificationDialogComponent, {
+      width: '100%',
+      data: this.selectedUsers
+    });
+  }
+
+  onFilterDataTable($event: any, dt1: Table): void {
+    this.selectedUsers = $event.filteredValue;
+  }
 }

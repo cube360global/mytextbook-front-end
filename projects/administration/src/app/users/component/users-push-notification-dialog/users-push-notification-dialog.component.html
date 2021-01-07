@@ -1,0 +1,29 @@
+<p-confirmDialog header="Confirmation"
+                 icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<div mat-dialog-title>
+<div mat-dialog-title>
+  <div class="d-flex justify-content-between">
+    <div>
+      User Details
+    </div>
+    <button (click)="dialogRef.close()" color="warn" mat-icon-button>
+      <mat-icon>highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+<div mat-dialog-content>
+  <mat-label class="text-color-01-b ms-2">Message*</mat-label>
+  <textarea [rows]="5"
+            [cols]="30"
+            pInputTextarea
+            class="w-100 mt-2"
+            [(ngModel)]="message"
+            autoResize="autoResize">
+  </textarea>
+
+  <div class="text-center mt-4">
+    <button (click)="onSendNotification()"  mat-raised-button color="primary" class="mat-button-rounded-sm">
+      SEND
+    </button>
+  </div>
+</div>

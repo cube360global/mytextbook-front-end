@@ -42,6 +42,16 @@ export class UserApiService {
       searchUserModel, true, true);
   }
 
+  public changeUserStatus(userStatus: UserChangeStatus): Observable<UserAndSchoolModel> {
+    return this.apiBaseService.POST_API<UserAndSchoolModel>([AdminControllersConst.UserController, 'change-status'], userStatus, true);
+  }
+
+  public pushUserNotifications(userList: any): Observable<any> {
+    return this.apiBaseService.POST_API<any>([AdminControllersConst.UserController, 'push-notification'],
+      userList, true, true);
+  }
+
+
   public addSubscriptionToUser(postSub: PostSubscription): Observable<any> {
     return this.apiBaseService.POST_API<any>([AdminControllersConst.SubscriptionController],
       postSub, true, true);
@@ -52,8 +62,5 @@ export class UserApiService {
     ([AdminControllersConst.SubscriptionController, userId, bookId], null, true, true);
   }
 
-  public changeUserStatus(userStatus: UserChangeStatus): Observable<UserAndSchoolModel> {
-    return this.apiBaseService.POST_API<UserAndSchoolModel>([AdminControllersConst.UserController, 'change-status'], userStatus, true);
-  }
 
 }

@@ -9,6 +9,7 @@
 <ng-template #table>
   <p-table
     #dt1
+    (onFilter)="onFilterDataTable($event, dt1)"
     [value]="users"
     [resizableColumns]="true"
     [paginator]="true"
@@ -18,8 +19,9 @@
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     columnResizeMode="expand"
     styleClass="mt-2 p-datatable-sm p-datatable-striped p-datatable-gridlines">
+
     <ng-template pTemplate="caption">
-      <div class="mb-2">
+      <div class="d-flex justify-content-between mb-2">
         <div class="p-input-icon-left">
           <i class="pi pi-search"></i>
           <input (input)="dt1.filterGlobal(searchInputData, 'contains')"
@@ -30,8 +32,17 @@
                  placeholder="Search keyword"
                  type="text"/>
         </div>
+
+        <button (click)="onPushNotificationClick()"
+                class=" btn-color-gold mat-button-rounded-sm"
+                matTooltip="click to push notification to selected users below"
+                mat-raised-button><i class="fas fa-envelope me-2"></i>
+          PUSH NOTIFICATION
+        </button>
       </div>
     </ng-template>
+
+
     <ng-template pTemplate="header">
       <tr>
         <th pResizableColumn style="width: 250px"> Email</th>
@@ -72,8 +83,10 @@
       </tr>
     </ng-template>
   </p-table>
+
+
 </ng-template>
 
 <ng-template #falseContent>
-  <span class="alert alert-danger p-1"> Inactive </span>
+<span class="alert alert-danger p-1"> Inactive </span>
 </ng-template>
