@@ -39,6 +39,9 @@ export class EditBookComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
         this.subjects = res;
+        this.bookEditForm.patchValue({
+          subjectId: this.bookModel.subjectId
+        });
       });
 
     this.bookEditForm = new FormGroup({

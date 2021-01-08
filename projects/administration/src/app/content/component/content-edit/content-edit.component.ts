@@ -83,7 +83,7 @@ export class ContentEditComponent implements OnInit {
     postData.chapter = +postData.chapter;
     postData.pageNumber = +postData.pageNumber;
     postData.bookId = +this.contentAddForm.controls.bookId.value;
-
+    console.log(postData);
     const postDataString = JSON.stringify(postData);
 
 
