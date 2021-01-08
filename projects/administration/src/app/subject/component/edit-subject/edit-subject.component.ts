@@ -6,6 +6,8 @@ import {SubjectApiService} from '../../shared/services/subject-api.service';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../app.reducer';
 import {SUBJECT_DATA_LOADED} from '../../store/subject.action';
+import {AlertConst} from '../../../@core/const/AlertConst';
+import {AlertService} from '../../../@core/services/alert.service';
 
 @Component({
   selector: 'app-edit-subject',
@@ -21,13 +23,15 @@ export class EditSubjectComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<EditSubjectComponent>,
               @Inject(MAT_DIALOG_DATA) public subjectModel: SubjectModel,
               private subjectApiService: SubjectApiService,
-              private store: Store<fromApp.AppState>) {
+              private store: Store<fromApp.AppState>,
+              private alertService: AlertService) {
   }
 
   ngOnInit(): void {
+    console.log(this.subjectModel);
+    this.image = this.subjectModel.image;
     this.subjectEditForm = new FormGroup({
       name: new FormControl(this.subjectModel.name, [Validators.required]),
-      image: new FormControl(this.subjectModel.image, [Validators.required])
     });
   }
 
@@ -47,7 +51,8 @@ export class EditSubjectComponent implements OnInit {
 
   onRemoveCurrentImageClick(): void {
     this.initialLoad = false;
-    this.subjectModel.image = '';
+    // this.subjectModel.image = '';
+    this.image = null;
   }
 
   onEditSubjectSubmit(): void {
@@ -55,16 +60,28 @@ export class EditSubjectComponent implements OnInit {
       return;
     }
     const subjectData = this.subjectEditForm.value as SubjectModel;
+
     subjectData.id = this.subjectModel.id;
-
-
     const postDataString = JSON.stringify(subjectData);
+
     const formData = new FormData();
     formData.append('image', this.image);
     formData.append('body', postDataString);
 
-    this.subjectApiService.Put(formData)
+    this.alertService.getConfirmationDialog()
+      .confirm({
+        key: 'ce-100',
+        message: AlertConst.ConfirmationMessage,
+        accept: () => {
+          this.sendToServer(formData);
+        }
+      });
+  }
+
+  sendToServer(data: FormData) {
+    this.subjectApiService.Put(data)
       .subscribe(res => {
+        this.dialogRef.close();
         this.store.dispatch(SUBJECT_DATA_LOADED({payload: res}));
       });
   }

@@ -17,6 +17,11 @@ export class SubjectApiService {
     ([AdminControllersConst.SubjectController, AdminControllersConst.All]);
   }
 
+  public Post(data: FormData): Observable<SubjectModel[]> {
+    return this.apiBaseService.POST_API<SubjectModel[]>([AdminControllersConst.SubjectController], data, true);
+  }
+
+  // []?
   public Put(data: FormData): Observable<SubjectModel[]> {
     return this.apiBaseService.UPDATE_API<SubjectModel[]>([AdminControllersConst.SubjectController], data, true);
   }
