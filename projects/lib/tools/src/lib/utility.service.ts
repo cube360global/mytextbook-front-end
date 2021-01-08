@@ -29,7 +29,7 @@ export class UtilityService {
 
   status = [
     {name: 'Active', code: true},
-    {name: 'Deactivate', code: false}
+    {name: 'Inactive', code: false}
   ];
 
   roles = [

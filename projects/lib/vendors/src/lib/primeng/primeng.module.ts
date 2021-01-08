@@ -13,6 +13,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {DropdownModule} from 'primeng/dropdown';
 import {BadgeModule} from 'primeng/badge';
 import {SkeletonModule} from 'primeng/skeleton';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 
 const primeNg = [
@@ -29,8 +30,8 @@ const primeNg = [
   ConfirmDialogModule,
   DropdownModule,
   BadgeModule,
-  SkeletonModule
-
+  SkeletonModule,
+  InputTextareaModule
 ];
 
 @NgModule({
