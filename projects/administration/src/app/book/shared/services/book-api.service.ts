@@ -27,6 +27,9 @@ export class BookApiService {
       bookModel, true, true);
   }
 
+  public Put(formData: FormData): Observable<BookModel[]> {
+    return this.apiBaseService.UPDATE_API<BookModel[]>([AdminControllersConst.BookController], formData, true);
+  }
 
   // Get(dookId: string) {
   //

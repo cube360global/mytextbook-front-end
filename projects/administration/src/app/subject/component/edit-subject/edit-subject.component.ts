@@ -78,7 +78,7 @@ export class EditSubjectComponent implements OnInit {
       });
   }
 
-  sendToServer(data: FormData) {
+  sendToServer(data: FormData): void {
     this.subjectApiService.Put(data)
       .subscribe(res => {
         this.dialogRef.close();

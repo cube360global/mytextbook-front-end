@@ -4,8 +4,12 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../app.reducer';
-import {SubjectApiService} from "../../../subject/shared/services/subject-api.service";
-import {SubjectModel} from "../../../@core/interfaces/api/SubjectModel";
+import {SubjectApiService} from '../../../subject/shared/services/subject-api.service';
+import {SubjectModel} from '../../../@core/interfaces/api/SubjectModel';
+import {AlertConst} from '../../../@core/const/AlertConst';
+import {AlertService} from '../../../@core/services/alert.service';
+import {BOOK_DATA_LOADED} from '../../store/book.action';
+import {BookApiService} from '../../shared/services/book-api.service';
 
 @Component({
   selector: 'app-edit-book',
@@ -22,11 +26,14 @@ export class EditBookComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<EditBookComponent>,
               @Inject(MAT_DIALOG_DATA) public bookModel: BookModel,
               private store: Store<fromApp.AppState>,
-              private subjectApiService: SubjectApiService) {
+              private subjectApiService: SubjectApiService,
+              private alertService: AlertService,
+              private bookApiService: BookApiService) {
   }
 
   ngOnInit(): void {
     console.log(this.bookModel);
+    this.image = this.bookModel.image;
 
     this.subjectApiService.All()
       .subscribe(res => {
@@ -60,7 +67,8 @@ export class EditBookComponent implements OnInit {
 
   onRemoveCurrentImageClick(): void {
     this.initialLoad = false;
-    this.bookModel.image = '';
+    // this.bookModel.image = '';
+    this.image = null;
   }
 
   onEditBookSubmit(): void {
@@ -73,7 +81,27 @@ export class EditBookComponent implements OnInit {
     bookData.id = this.bookModel.id;
     bookData.subjectId = this.bookModel.subjectId;
 
-    // this.store.dispatch(BOOK_DATA_LOADED, )
+    const formData = new FormData();
+    const bookDataString = JSON.stringify(bookData);
+    formData.append('body', bookDataString);
+    formData.append('image', this.image);
+
+    this.alertService.getConfirmationDialog()
+      .confirm({
+        key: 'ce-100',
+        message: AlertConst.ConfirmationMessage,
+        accept: () => {
+          this.sendToServer(formData);
+        }
+      });
+  }
+
+  sendToServer(data: FormData): void {
+    this.bookApiService.Put(data)
+      .subscribe(res => {
+        this.dialogRef.close();
+        this.store.dispatch(BOOK_DATA_LOADED({payload: res}));
+      });
   }
 
 }
