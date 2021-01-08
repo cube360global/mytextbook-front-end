@@ -78,6 +78,7 @@ export class ContentEditComponent implements OnInit {
     }
 
     const postData = this.contentAddForm.value as ContentModel;
+    console.log(this.contentAddForm.value);
     postData.id = this.bookContentModel.content.id;
     postData.chapter = +postData.chapter;
     postData.pageNumber = +postData.pageNumber;
@@ -89,6 +90,7 @@ export class ContentEditComponent implements OnInit {
     const formData = new FormData();
     formData.append('image', this.contentImage);
     formData.append('body', postDataString);
+    console.log(postDataString);
 
     this.alertService.getConfirmationDialog()
       .confirm({
