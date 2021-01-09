@@ -123,7 +123,7 @@ export class AddSubjectComponent implements OnInit {
     formData.append('body', x);
 
 
-    this.subjectApiService.Put(formData)
+    this.subjectApiService.Post(formData)
       .subscribe(res => {
         this.dialogRef.close();
         this.store.dispatch(SUBJECT_DATA_LOADED({payload: res}));

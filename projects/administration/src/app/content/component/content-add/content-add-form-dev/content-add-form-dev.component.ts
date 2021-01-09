@@ -31,7 +31,7 @@ export class ContentAddFormDevComponent implements OnInit {
     body.videoSize = size;
     body.videoName = name;
 
-    this.http.post<any>('https://localhost:5001/api/vimeo/upload-video', body).subscribe(res => {
+    this.http.post<any>('http://localhost:5000/api/vimeo/upload-video', body).subscribe(res => {
       // console.log(res.upload.upload_link);
       console.log(res);
       this.tusFileUpload.tusUpload(file, res.upload_url).start();

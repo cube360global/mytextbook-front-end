@@ -10,6 +10,7 @@ import {AlertConst} from '../../../@core/const/AlertConst';
 import {AlertService} from '../../../@core/services/alert.service';
 import {BOOK_DATA_LOADED} from '../../store/book.action';
 import {BookApiService} from '../../shared/services/book-api.service';
+import {SubjectBookModel} from '../../../@core/interfaces/SubjectBookModel';
 
 @Component({
   selector: 'app-edit-book',
@@ -24,7 +25,7 @@ export class EditBookComponent implements OnInit {
   subjects = [] as SubjectModel[];
 
   constructor(public dialogRef: MatDialogRef<EditBookComponent>,
-              @Inject(MAT_DIALOG_DATA) public bookModel: BookModel,
+              @Inject(MAT_DIALOG_DATA) public subjectBookModel: SubjectBookModel,
               private store: Store<fromApp.AppState>,
               private subjectApiService: SubjectApiService,
               private alertService: AlertService,
@@ -32,24 +33,15 @@ export class EditBookComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.bookModel);
-    this.image = this.bookModel.image;
-
-    this.subjectApiService.All()
-      .subscribe(res => {
-        console.log(res);
-        this.subjects = res;
-        this.bookEditForm.patchValue({
-          subjectId: this.bookModel.subjectId
-        });
-      });
-
+    console.log(this.subjectBookModel);
+    this.image = this.subjectBookModel.book.image;
+    this.subjects = this.subjectBookModel.subjects;
     this.bookEditForm = new FormGroup({
-      grade: new FormControl(this.bookModel.grade, [Validators.required]),
-      medium: new FormControl(this.bookModel.medium, [Validators.required]),
-      name: new FormControl(this.bookModel.name, [Validators.required]),
-      price: new FormControl(this.bookModel.price, [Validators.required]),
-      subjectId: new FormControl(this.bookModel.subjectId, [Validators.required])
+      grade: new FormControl(this.subjectBookModel.book.grade, [Validators.required]),
+      medium: new FormControl(this.subjectBookModel.book.medium, [Validators.required]),
+      name: new FormControl(this.subjectBookModel.book.name, [Validators.required]),
+      price: new FormControl(this.subjectBookModel.book.price, [Validators.required]),
+      subjectId: new FormControl(this.subjectBookModel.book.subjectId, [Validators.required])
     });
   }
 
@@ -80,8 +72,7 @@ export class EditBookComponent implements OnInit {
     }
 
     const bookData = this.bookEditForm.value as BookModel;
-    bookData.id = this.bookModel.id;
-    bookData.subjectId = this.bookModel.subjectId;
+    bookData.id = this.subjectBookModel.book.id;
 
     const formData = new FormData();
     const bookDataString = JSON.stringify(bookData);

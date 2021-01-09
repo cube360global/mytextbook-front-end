@@ -80,9 +80,9 @@ export class ContentEditComponent implements OnInit {
     const postData = this.contentAddForm.value as ContentModel;
     console.log(this.contentAddForm.value);
     postData.id = this.bookContentModel.content.id;
-    postData.chapter = +postData.chapter;
-    postData.pageNumber = +postData.pageNumber;
-    postData.bookId = +this.contentAddForm.controls.bookId.value;
+    // postData.chapter = +postData.chapter;
+    // postData.pageNumber = +postData.pageNumber;
+    // postData.bookId = +this.contentAddForm.controls.bookId.value;
     console.log(postData);
     const postDataString = JSON.stringify(postData);
 

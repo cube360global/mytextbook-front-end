@@ -6,6 +6,9 @@ import * as fromApp from '../../../app.reducer';
 import {BookApiService} from '../../shared/services/book-api.service';
 import {BookModel} from '../../../@core/interfaces/api/BookModel';
 import {EditBookComponent} from '../edit-book/edit-book.component';
+import {SubjectApiService} from '../../../subject/shared/services/subject-api.service';
+import {SubjectModel} from '../../../@core/interfaces/api/SubjectModel';
+import {SubjectBookModel} from '../../../@core/interfaces/SubjectBookModel';
 
 @Component({
   selector: 'app-books-list',
@@ -14,12 +17,13 @@ import {EditBookComponent} from '../edit-book/edit-book.component';
 })
 export class BooksListComponent implements OnInit {
 
-
   books = [] as BookModel[];
+  subjects = [] as SubjectModel[];
   loading = true;
   searchInputData = '';
 
   constructor(private bookApiService: BookApiService,
+              private subjectApiService: SubjectApiService,
               private dialog: MatDialog,
               private ngxUiLoaderService: NgxUiLoaderService,
               private store: Store<fromApp.AppState>) {
@@ -45,9 +49,18 @@ export class BooksListComponent implements OnInit {
   }
 
   openBookEditViewDialog(book: BookModel): void {
-    this.dialog.open(EditBookComponent, {
-      width: '100%',
-      data: book
-    });
+    this.subjectApiService.All()
+      .subscribe(res => {
+        console.log(res);
+        this.subjects = res;
+        const subjectBook: SubjectBookModel = {
+          subjects: this.subjects,
+          book
+        };
+        this.dialog.open(EditBookComponent, {
+          width: '100%',
+          data: subjectBook
+        });
+      });
   }
 }

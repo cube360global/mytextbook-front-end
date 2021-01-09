@@ -17,6 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "url-parse",
+              "js-base64"
+            ],
             "outputPath": "dist/administration",
             "index": "projects/administration/src/index.html",
             "main": "projects/administration/src/main.ts",
