@@ -1,4 +1,5 @@
 import {UserSubscriptionModel} from './UserSubscriptionModel';
+import {CommissionModel} from './CommissionModel';
 
 export interface UserModel {
   id: number;
@@ -15,4 +16,5 @@ export interface UserModel {
   school: string;
   subscriptions: UserSubscriptionModel[];
   contents: any[];
+  commissions: CommissionModel[];
 }
