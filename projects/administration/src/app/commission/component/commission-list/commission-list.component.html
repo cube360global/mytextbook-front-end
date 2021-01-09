@@ -1,1 +1,36 @@
-<p>commission-list works!</p>
+<div *ngIf="commissions.length; else noCommissions">
+  <div class="card">
+    <p-table [(selection)]="selectedCommissions" [value]="commissions" dataKey="code">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 3rem">
+            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+          </th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Referral Count</th>
+          <th>Amount</th>
+        </tr>
+      </ng-template>
+      <ng-template let-commission pTemplate="body">
+        <tr>
+          <td>
+            <p-tableCheckbox [value]="commission"></p-tableCheckbox>
+          </td>
+          <td>{{ commission.name }}</td>
+          <td>{{ commission.email }}</td>
+          <td>{{ commission.referralCount }}</td>
+          <td>{{ commission.amount }}.00 /=</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <button (click)="pay()" class="mat-button-rounded-sm ms-2 mt-2" color="primary" mat-raised-button>
+    <i class="fas fa-file-invoice-dollar"></i>
+    Pay
+  </button>
+</div>
+<ng-template #noCommissions>
+  <h2>No commissions</h2>
+</ng-template>
+

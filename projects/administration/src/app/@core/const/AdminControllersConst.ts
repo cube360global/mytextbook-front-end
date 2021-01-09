@@ -5,6 +5,7 @@ export class AdminControllersConst {
   public static SubjectController = 'subject';
   public static SubscriptionController = 'subscription';
   public static ContentController = 'content';
+  public static CommissionController = 'commission';
 
 
   // Support
