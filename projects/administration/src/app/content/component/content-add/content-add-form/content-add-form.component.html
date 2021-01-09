@@ -3,6 +3,7 @@
 
 <div class="container">
   <form (ngSubmit)="onContentSubmit()" [formGroup]="contentAddForm">
+    <mat-label class="text-color-01-b"> Description*</mat-label>
     <div class="p-float-label">
       <input
         [ngClass]="{ 'p-invalid' : !contentAddForm.controls['name'].valid && contentAddForm.controls['name'].touched}"
@@ -12,6 +13,7 @@
         pInputText type="text">
       <label for="name">Content Name*</label>
     </div>
+    <p></p>
     <div>
       <val-errors controlName="name">
         <ng-template valError="required"><small class="p-invalid ms-3">The content name is required</small>

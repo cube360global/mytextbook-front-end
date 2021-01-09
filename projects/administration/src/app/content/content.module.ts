@@ -13,6 +13,7 @@ import {ContentAddComponent} from './component/content-add/content-add.component
 import {ContentViewComponent} from './component/content-view/content-view.component';
 import {ContentAddFormComponent} from './component/content-add/content-add-form/content-add-form.component';
 import {ContentEditComponent} from './component/content-edit/content-edit.component';
+import { ContentAddFormDevComponent } from './component/content-add/content-add-form-dev/content-add-form-dev.component';
 
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
     ContentAddComponent,
     ContentViewComponent,
     ContentAddFormComponent,
-    ContentEditComponent],
+    ContentEditComponent,
+    ContentAddFormDevComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
