@@ -52,6 +52,7 @@
     "sweetalert2": "^10.12.6",
     "three": "^0.124.0",
     "tslib": "^2.0.0",
+    "tus-js-client": "^2.2.0",
     "typescript": "^4.0.5",
     "zone.js": "~0.10.2"
   },
