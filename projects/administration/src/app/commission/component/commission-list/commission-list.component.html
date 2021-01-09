@@ -1,3 +1,7 @@
+<p-confirmDialog header="Confirmation"
+                 icon="pi pi-exclamation-triangle"
+                 key="ce-100"></p-confirmDialog>
+
 <div *ngIf="commissions.length; else noCommissions">
   <div class="card">
     <p-table [(selection)]="selectedCommissions" [value]="commissions" dataKey="code">

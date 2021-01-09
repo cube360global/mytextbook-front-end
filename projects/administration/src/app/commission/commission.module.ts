@@ -5,6 +5,7 @@ import {CommissionListComponent} from './component/commission-list/commission-li
 import {RouterModule, Routes} from '@angular/router';
 import {TableModule} from 'primeng/table';
 import {MatButtonModule} from '@angular/material/button';
+import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TableModule,
     MatButtonModule,
+    ConfirmDialogModule,
   ]
 })
 export class CommissionModule {

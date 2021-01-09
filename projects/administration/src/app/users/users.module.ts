@@ -23,6 +23,7 @@ import {UsersListLoadingComponent} from './component/users-list/users-list-loadi
 import {UsersListSearchComponent} from './component/users-list/users-list-search/users-list-search.component';
 import {UsersPushNotificationDialogComponent} from './component/users-push-notification-dialog/users-push-notification-dialog.component';
 import {TeacherViewDialogComponent} from './component/teacher-view-dialog/teacher-view-dialog.component';
+import {TeacherSubViewDialogComponent} from './component/teacher-view-dialog/teacher-sub-view-dialog/teacher-sub-view-dialog.component';
 
 const routes: Routes = [
   {path: '', component: UserManagementComponent},
@@ -42,7 +43,8 @@ const routes: Routes = [
     UsersListLoadingComponent,
     UsersListSearchComponent,
     UsersPushNotificationDialogComponent,
-    TeacherViewDialogComponent],
+    TeacherViewDialogComponent,
+    TeacherSubViewDialogComponent],
   imports: [
     CommonModule,
     NgxDatatableModule,
