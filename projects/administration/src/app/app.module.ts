@@ -25,9 +25,12 @@ import {BooksEffects} from './book/store/book.effects';
 import {SubjectEffects} from './subject/store/subject.effects';
 import {ContentEffects} from './content/store/content.effects';
 import {AgGridModule} from 'ag-grid-angular';
-import { DevTestComponent } from './dev-test/dev-test.component';
+import {DevTestComponent} from './dev-test/dev-test.component';
 import {WebcamModule} from 'ngx-webcam';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
+import {LoadingBarModule} from '@ngx-loading-bar/core';
+import {LoadingBarRouterModule} from '@ngx-loading-bar/router';
+import {LoadingBarHttpClientModule} from '@ngx-loading-bar/http-client';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -113,6 +116,9 @@ export function tokenGetter(): string {
     WebcamModule,
     AgGridModule.withComponents([]),
     FormsModule,
+    LoadingBarModule,
+    LoadingBarRouterModule,
+    LoadingBarHttpClientModule,
 
     // NgxUiLoaderModule
   ],

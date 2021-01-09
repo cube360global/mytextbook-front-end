@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SearchUserModel} from '../../../../@core/interfaces/api/SearchUserModel';
 import {USERS_AND_SCHOOL_DATA_LOADED} from '../../../store/user.action';
 import {FormControl, FormGroup} from '@angular/forms';
@@ -20,7 +20,8 @@ export class UsersListSearchComponent implements OnInit {
 
   constructor(private userApiService: UserApiService,
               public  utilityService: UtilityService,
-              private store: Store<fromApp.AppState>) { }
+              private store: Store<fromApp.AppState>) {
+  }
 
   ngOnInit(): void {
     this.filterForm = new FormGroup({

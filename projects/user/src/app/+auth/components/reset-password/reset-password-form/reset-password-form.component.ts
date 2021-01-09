@@ -16,19 +16,17 @@ export class ResetPasswordFormComponent implements OnInit {
   hide2 = true;
   token = '';
 
+  constructor(private activatedRouter: ActivatedRoute,
+              private router: Router,
+              private alertService: AlertService,
+              private userApiService: UserAuthService) {
+  }
+
   @HostListener('window:keydown', ['$event'])
   onClick(kbdEvent: KeyboardEvent): void {
     if (kbdEvent.code === 'Enter') {
       this.onResetPassword();
     }
-  }
-
-
-
-  constructor(private activatedRouter: ActivatedRoute,
-              private router: Router,
-              private alertService: AlertService,
-              private userApiService: UserAuthService) {
   }
 
   ngOnInit(): void {

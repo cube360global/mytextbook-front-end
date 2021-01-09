@@ -31,13 +31,13 @@
     <div class="col-sm-2">
 
       <p-dropdown
-        formControlName="status"
-        placeholder="select status"
         [options]="utilityService.status"
         [showClear]="true"
         appendTo="body"
+        formControlName="status"
         optionLabel="name"
         optionValue="code"
+        placeholder="select status"
         styleClass="p-inputtext-sm w-100">
       </p-dropdown>
 
@@ -102,7 +102,6 @@
   </div>
 
 
-
   <!--      <p-dropdown-->
   <!--        [filter]="true"-->
   <!--        [options]="schools"-->
@@ -124,8 +123,6 @@
   <!--          </div>-->
   <!--        </ng-template>-->
   <!--      </p-dropdown>-->
-
-
 
 
   <!--      <div class="p-float-label m-1">-->

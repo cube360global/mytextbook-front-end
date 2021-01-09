@@ -10,14 +10,14 @@
   <p-table
     #dt1
     (onFilter)="onFilterDataTable($event, dt1)"
-    [value]="users"
-    [resizableColumns]="true"
-    [paginator]="true"
-    [rows]="5"
     [globalFilterFields]="['email','firstName','lastName','telephoneNumber','active','subscriptionCount','role']"
+    [paginator]="true"
+    [resizableColumns]="true"
     [rowsPerPageOptions]="[5,10,25,50]"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rows]="5"
+    [value]="users"
     columnResizeMode="expand"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     styleClass="mt-2 p-datatable-sm p-datatable-striped p-datatable-gridlines">
 
     <ng-template pTemplate="caption">
@@ -35,8 +35,8 @@
 
         <button (click)="onPushNotificationClick()"
                 class=" btn-color-gold mat-button-rounded-sm"
-                matTooltip="click to push notification to selected users below"
-                mat-raised-button><i class="fas fa-envelope me-2"></i>
+                mat-raised-button
+                matTooltip="click to push notification to selected users below"><i class="fas fa-envelope me-2"></i>
           PUSH NOTIFICATION
         </button>
       </div>
@@ -50,12 +50,12 @@
         <th pResizableColumn>Last Name</th>
         <th pResizableColumn>Contact No</th>
         <th pResizableColumn>Status</th>
-        <th pResizableColumn matTooltip="Subscription Count">Sub. Count</th>
+        <th matTooltip="Subscription Count" pResizableColumn>Sub. Count</th>
         <th pResizableColumn>Role</th>
         <th pResizableColumn>Action</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-user>
+    <ng-template let-user pTemplate="body">
       <tr>
         <td>{{user.email}}</td>
         <td>{{user.firstName}}</td>
@@ -71,13 +71,18 @@
         </td>
         <td>{{user.subscriptionCount}}</td>
         <td>{{user.role}}</td>
-        <td *ngIf="user.role === 'STUDENT';else teacherRole">
+        <td *ngIf="user.role === 'STUDENT'">
           <button (click)="openUserViewDialog(user.id.toString())" color="primary"
                   mat-mini-fab matTooltip="View More">
             <i class="fas fa-eye"></i></button>
           <button (click)="openManageSubDialog(user)" class="ms-2" color="primary" mat-mini-fab
                   matTooltip="Add Subscription">
             <i class="fas fa-book-medical"></i>
+          </button>
+        </td>
+        <td *ngIf="user.role === 'TEACHER'">
+          <button (click)="openTeacherViewDialog(user.id.toString())" mat-mini-fab matTooltip="View More">
+            <i class="fas fa-eye"></i>
           </button>
         </td>
       </tr>
@@ -88,13 +93,6 @@
 </ng-template>
 
 <ng-template #falseContent>
-<span class="alert alert-danger p-1"> Inactive </span>
+  <span class="alert alert-danger p-1"> Inactive </span>
 </ng-template>
 
-<ng-template #teacherRole>
-  <td>
-    <button mat-mini-fab matTooltip="View More">
-      <i class="fas fa-eye"></i>
-    </button>
-  </td>
-</ng-template>

@@ -24,6 +24,7 @@ export enum Path {
   Content = 'content',
   Book = 'book',
   Subject = 'subject',
+  Commission = 'commission',
 
   // option
   All = 'all',

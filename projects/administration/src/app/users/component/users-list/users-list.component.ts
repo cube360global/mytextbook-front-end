@@ -6,22 +6,16 @@ import {UserModel} from '../../../@core/interfaces/api/UserModel';
 import {MatDialog} from '@angular/material/dialog';
 import {UserViewerDialogComponent} from '../user-viewer-dialog/user-viewer-dialog.component';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
-import {FormControl, FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
-import {USERS_AND_SCHOOL_DATA_LOADED} from '../../store/user.action';
-import {SearchUserModel} from '../../../@core/interfaces/api/SearchUserModel';
-import {AlertService} from '../../../@core/services/alert.service';
 import {SubjectApiService} from '../../../subject/shared/services/subject-api.service';
 import {SubscriptionManagementComponent} from '../subscription-management/subscription-management.component';
 import {SubjectUser} from '../../../@core/interfaces/SubjectUser';
 import {UserEditComponent} from '../user-edit/user-edit.component';
-import {SubjectModel} from '../../../@core/interfaces/api/SubjectModel';
 import {Router} from '@angular/router';
-import {tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {UtilityService} from '../../../../../../lib/tools/src/lib/utility.service';
 import {Table} from 'primeng/table';
 import {UsersPushNotificationDialogComponent} from '../users-push-notification-dialog/users-push-notification-dialog.component';
+import {TeacherViewDialogComponent} from '../teacher-view-dialog/teacher-view-dialog.component';
 
 @Component({
   selector: 'app-users-list',
@@ -121,5 +115,16 @@ export class UsersListComponent implements OnInit {
 
   onFilterDataTable($event: any, dt1: Table): void {
     this.selectedUsers = $event.filteredValue;
+  }
+
+  openTeacherViewDialog(userId: string): void {
+    this.userApiService.getUserProfileById(userId)
+      .subscribe(res => {
+        this.dialog.open(TeacherViewDialogComponent, {
+          width: '100%',
+          data: res
+        });
+      }, () => {
+      });
   }
 }

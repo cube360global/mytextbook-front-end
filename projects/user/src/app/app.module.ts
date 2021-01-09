@@ -21,7 +21,7 @@ import {AuthInterceptorService} from './@core/interceptors/auth-interceptor.serv
 import {UserProfileEffects} from './private/@ui/user-details/user-profile/store/user-profile.effects';
 import {PrimengModule} from '../../../lib/vendors/src/lib/primeng/primeng.module';
 import {VendorsModule} from '../../../lib/vendors/src/lib/vendors.module';
-import { NotFoundComponent } from './not-found/not-found.component';
+import {NotFoundComponent} from './not-found/not-found.component';
 import {MaterialModule} from '../../../lib/vendors/src/lib/material/material.module';
 
 export function tokenGetter(): string {

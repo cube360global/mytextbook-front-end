@@ -4,8 +4,6 @@ import {UserModel} from '../../../@core/interfaces/api/UserModel';
 import {UserApiService} from '../../shared/service/user-api.service';
 import {AlertService} from '../../../@core/services/alert.service';
 import {AlertConst} from '../../../@core/const/AlertConst';
-import * as stream from 'stream';
-import {string_distances} from 'ag-grid-community/dist/lib/utils/fuzzyMatch';
 
 @Component({
   selector: 'app-users-push-notification-dialog',

@@ -24,26 +24,29 @@
   </h1>
 
   <div>
-    <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
-            [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+    <webcam (cameraSwitched)="cameraWasSwitched($event)" (imageCapture)="handleImage($event)" (initError)="handleInitError($event)" *ngIf="showWebcam"
+            [allowCameraSwitch]="allowCameraSwitch"
+            [height]="500" [imageQuality]="1"
+            [switchCamera]="nextWebcamObservable"
+            [trigger]="triggerObservable"
             [videoOptions]="videoOptions"
-            [imageQuality]="1"
-            (cameraSwitched)="cameraWasSwitched($event)"
-            (initError)="handleInitError($event)"
+            [width]="500"
     ></webcam>
     <br/>
-    <button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
-    <button class="actionBtn" (click)="toggleWebcam();">Toggle Webcam</button>
+    <button (click)="triggerSnapshot();" class="actionBtn">Take A Snapshot</button>
+    <button (click)="toggleWebcam();" class="actionBtn">Toggle Webcam</button>
     <br/>
-    <button class="actionBtn" (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable">Next Webcam</button>
-    <input id="cameraSwitchCheckbox" type="checkbox" [(ngModel)]="allowCameraSwitch"><label for="cameraSwitchCheckbox">Allow Camera Switch</label>
+    <button (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable" class="actionBtn">Next Webcam
+    </button>
+    <input [(ngModel)]="allowCameraSwitch" id="cameraSwitchCheckbox" type="checkbox"><label for="cameraSwitchCheckbox">Allow
+    Camera Switch</label>
     <br/>
-    DeviceId: <input id="deviceId" type="text" [(ngModel)]="deviceId" style="width: 500px">
+    DeviceId: <input [(ngModel)]="deviceId" id="deviceId" style="width: 500px" type="text">
     <button (click)="showNextWebcam(deviceId);">Activate</button>
   </div>
 </div>
 
-<div class="snapshot" *ngIf="webcamImage">
+<div *ngIf="webcamImage" class="snapshot">
   <h2>Nice one!</h2>
   <img [src]="webcamImage.imageAsDataUrl"/>
 </div>

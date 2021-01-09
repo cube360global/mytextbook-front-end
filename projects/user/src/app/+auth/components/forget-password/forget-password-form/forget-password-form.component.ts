@@ -11,16 +11,14 @@ import {Router} from '@angular/router';
 export class ForgetPasswordFormComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
 
+  constructor(private userApiService: UserAuthService, private router: Router) {
+  }
 
   @HostListener('window:keydown', ['$event'])
   onClick(kbdEvent: KeyboardEvent): void {
     if (kbdEvent.code === 'Enter') {
       this.onReset();
     }
-  }
-
-
-  constructor(private userApiService: UserAuthService, private router: Router) {
   }
 
   ngOnInit(): void {

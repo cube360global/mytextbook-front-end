@@ -17,7 +17,7 @@ export class BookContentComponent implements OnInit {
   name = null;
 
   chapterNo = new FormControl(null);
-  pageNo =  new FormControl(null);
+  pageNo = new FormControl(null);
 
   constructor(private contentApiService: ContentApiService,
               private activatedRouter: ActivatedRoute) {

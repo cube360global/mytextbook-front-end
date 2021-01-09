@@ -43,14 +43,12 @@
 <!--</ng-template>-->
 
 
-
-
 <div *ngIf="!displayContentService.isMobile;else mobile">
   <mat-card class="box-shadow-default mb-3"
             matRipple
             matTooltip="Click to view"
-            style="outline: none;cursor: pointer"
-            routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}">
+            routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"
+            style="outline: none;cursor: pointer">
     <div class="d-flex align-content-center justify-content-end">
 
     </div>
@@ -63,12 +61,12 @@
            width="80px">
       <div>
         <div class="fs-6 mt-1"><b>{{video.description}}</b></div>
-<!--        <div *ngIf="video.status;else notActive">-->
-          <div class="text-success mt-2" style="text-transform: uppercase">
-            <i class="fas fa-check"></i>
-            ACTIVATE
-          </div>
-<!--        </div>-->
+        <!--        <div *ngIf="video.status;else notActive">-->
+        <div class="text-success mt-2" style="text-transform: uppercase">
+          <i class="fas fa-check"></i>
+          ACTIVATE
+        </div>
+        <!--        </div>-->
       </div>
     </div>
   </mat-card>
@@ -88,13 +86,13 @@
            width="80px">
       <div>
         <div class="fs-6 mt-1"><b>{{video.description}}</b></div>
-<!--        <div *ngIf="true;else notActive">-->
-          <div class="text-success mt-2" style="text-transform: uppercase">
-            <i class="fas fa-check"></i>
-            ACTIVATE
-          </div>
+        <!--        <div *ngIf="true;else notActive">-->
+        <div class="text-success mt-2" style="text-transform: uppercase">
+          <i class="fas fa-check"></i>
+          ACTIVATE
+        </div>
 
-<!--        </div>-->
+        <!--        </div>-->
 
       </div>
     </div>
@@ -103,8 +101,8 @@
       <button class="m-1 mat-button-rounded-sm"
               color="primary"
               mat-button
-              style="color: #3861C3"
               routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"
+              style="color: #3861C3"
       >
         VIEW MORE
       </button>

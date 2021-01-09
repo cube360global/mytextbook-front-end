@@ -21,7 +21,7 @@ import {UserWatchHistoryComponent} from './user-watch-history/page/user-watch-hi
 import {UserWatchHistoryItemComponent} from './user-watch-history/component/user-watch-history-item/user-watch-history-item.component';
 import {VendorsModule} from '../../../../../../lib/vendors/src/lib/vendors.module';
 import {UserAuthGuard} from '../../../@core/guards/user-auth.guard';
-import { UserProfileWatchHistoryComponent } from './user-profile/components/user-profile-watch-history/user-profile-watch-history.component';
+import {UserProfileWatchHistoryComponent} from './user-profile/components/user-profile-watch-history/user-profile-watch-history.component';
 
 const routes: Routes = [
   {

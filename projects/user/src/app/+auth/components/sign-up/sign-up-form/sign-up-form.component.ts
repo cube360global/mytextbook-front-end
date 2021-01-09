@@ -7,7 +7,6 @@ import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
 
 
-
 @Component({
   selector: 'app-sign-up-form',
   templateUrl: './sign-up-form.component.html',
@@ -17,17 +16,16 @@ export class SignUpFormComponent implements OnInit {
 
   signUpForm = {} as FormGroup;
 
+  constructor(private userApiService: UserAuthService,
+              private router: Router,
+              private alertService: AlertService) {
+  }
+
   @HostListener('window:keydown', ['$event'])
   onClick(kbdEvent: KeyboardEvent): void {
     if (kbdEvent.code === 'Enter') {
       this.onSignUp();
     }
-  }
-
-
-  constructor(private userApiService: UserAuthService,
-              private router: Router,
-              private alertService: AlertService) {
   }
 
   ngOnInit(): void {

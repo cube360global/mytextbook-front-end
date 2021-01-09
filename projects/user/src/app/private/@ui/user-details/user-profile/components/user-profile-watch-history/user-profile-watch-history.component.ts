@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserContentModel} from '../../../../../../@core/interfaces/api/UserContentModel';
-import {USER_LOGIN_FAIL} from '../../../../../../+auth/store/auth.action';
 
 @Component({
   selector: 'app-user-profile-watch-history',
@@ -10,7 +9,9 @@ import {USER_LOGIN_FAIL} from '../../../../../../+auth/store/auth.action';
 export class UserProfileWatchHistoryComponent implements OnInit {
   userId: any;
   @Input() content = {} as UserContentModel;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.userId = localStorage.getItem('USERID');

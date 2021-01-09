@@ -18,18 +18,18 @@ export class UserProfileResetPwdComponent implements OnInit {
   token = '';
   showDetails = true;
 
-  @HostListener('window:keydown', ['$event'])
-  onClick(kbdEvent: KeyboardEvent): void {
-    if (kbdEvent.code === 'Enter') {
-      this.onSavePwd();
-    }
-  }
-
   constructor(private userProfileApiService: UserProfileApiService,
               private router: Router,
               private alertService: AlertService,
               public dialogRef: MatDialogRef<UserProfileResetPwdComponent>,
               private activatedRouter: ActivatedRoute) {
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  onClick(kbdEvent: KeyboardEvent): void {
+    if (kbdEvent.code === 'Enter') {
+      this.onSavePwd();
+    }
   }
 
   ngOnInit(): void {
@@ -46,8 +46,8 @@ export class UserProfileResetPwdComponent implements OnInit {
   }
 
   onSavePwd(): void {
-      this.alertService.showError('This function not available right now, Please User Forgot password');
-      this.router.navigate(['auth/forgot-password']);
+    this.alertService.showError('This function not available right now, Please User Forgot password');
+    this.router.navigate(['auth/forgot-password']);
     // if (this.token != null) {
     //   this.userProfileApiService.resetPassword(this.pwdForm.value.conPassword, this.token)
     //     .subscribe(res => res);

@@ -4,8 +4,6 @@ import * as fromBookManagement from './book/store/book.reducer';
 import * as fromSubjectManagement from './subject/store/subject.reducer';
 import * as fromContentManagement from './content/store/content.reducer';
 import {ActionReducerMap, createFeatureSelector, createSelector} from '@ngrx/store';
-import * as fromProfile from '../../../user/src/app/private/@ui/user-details/user-profile/store/user-profile.reducer';
-import {getUserProfileReducer} from '../../../user/src/app/app.reducer';
 
 export interface AppState {
   auth: fromAuth.AuthState;
@@ -32,7 +30,6 @@ export const getContentReducer = createFeatureSelector<fromContentManagement.Sta
 
 // Selectors - based on the Feature Selectors
 export const getUserDataLoading = createSelector(getUserReducer, fromUserManagement.getUserLoadingState);
-
 
 
 // export const getCurrentAuthToken = createSelector(getAuthState, fromAuth.getCurrentAuthToken);

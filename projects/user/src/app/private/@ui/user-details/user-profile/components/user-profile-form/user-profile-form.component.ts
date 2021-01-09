@@ -21,16 +21,16 @@ export class UserProfileFormComponent implements OnInit {
   lastname = '';
   email = '';
 
+  constructor(private store: Store<fromApp.AppState>,
+              public dialogRef: MatDialogRef<UserProfileFormComponent>,
+              private userProfileApiService: UserProfileApiService) {
+  }
+
   @HostListener('window:keydown', ['$event'])
   onClick(kbdEvent: KeyboardEvent): void {
     if (kbdEvent.code === 'Enter') {
       this.onSave();
     }
-  }
-
-  constructor(private store: Store<fromApp.AppState>,
-              public dialogRef: MatDialogRef<UserProfileFormComponent>,
-              private userProfileApiService: UserProfileApiService) {
   }
 
   ngOnInit(): void {

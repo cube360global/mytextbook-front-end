@@ -19,9 +19,10 @@ import {ResponsiveScrollModule} from 'p-table-responsive-scroll';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {VendorsModule} from '../../../../lib/vendors/src/lib/vendors.module';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
-import { UsersListLoadingComponent } from './component/users-list/users-list-loading/users-list-loading.component';
-import { UsersListSearchComponent } from './component/users-list/users-list-search/users-list-search.component';
-import { UsersPushNotificationDialogComponent } from './component/users-push-notification-dialog/users-push-notification-dialog.component';
+import {UsersListLoadingComponent} from './component/users-list/users-list-loading/users-list-loading.component';
+import {UsersListSearchComponent} from './component/users-list/users-list-search/users-list-search.component';
+import {UsersPushNotificationDialogComponent} from './component/users-push-notification-dialog/users-push-notification-dialog.component';
+import {TeacherViewDialogComponent} from './component/teacher-view-dialog/teacher-view-dialog.component';
 
 const routes: Routes = [
   {path: '', component: UserManagementComponent},
@@ -40,7 +41,8 @@ const routes: Routes = [
     UserEditComponent,
     UsersListLoadingComponent,
     UsersListSearchComponent,
-    UsersPushNotificationDialogComponent],
+    UsersPushNotificationDialogComponent,
+    TeacherViewDialogComponent],
   imports: [
     CommonModule,
     NgxDatatableModule,

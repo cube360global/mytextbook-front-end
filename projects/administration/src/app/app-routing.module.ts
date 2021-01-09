@@ -17,6 +17,7 @@ const routes: Routes = [
       {path: Path.Content, loadChildren: () => import('./content/content.module').then(m => m.ContentModule)},
       {path: Path.Book, loadChildren: () => import('./book/book.module').then(m => m.BookModule)},
       {path: Path.Subject, loadChildren: () => import('./subject/subject.module').then(m => m.SubjectModule)},
+      {path: Path.Commission, loadChildren: () => import('./commission/commission.module').then(m => m.CommissionModule)},
     ]
   },
 
