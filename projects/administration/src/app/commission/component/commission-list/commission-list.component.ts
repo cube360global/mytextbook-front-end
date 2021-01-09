@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CommissionApiService} from '../../shared/service/commission-api.service';
 import {CommissionModel} from '../../../@core/interfaces/api/CommissionModel';
 import {CommissionPayModel} from '../../../@core/interfaces/api/CommissionPayModel';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-commission-list',
@@ -14,7 +15,8 @@ export class CommissionListComponent implements OnInit {
   selectedCommissions = [] as CommissionModel[];
   payCommissions = [] as CommissionPayModel[];
 
-  constructor(private commissionApiService: CommissionApiService) {
+  constructor(private commissionApiService: CommissionApiService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -26,9 +28,6 @@ export class CommissionListComponent implements OnInit {
   }
 
   pay(): void {
-    console.log(this.selectedCommissions);
-
-    // const b = [] as CommissionPayModel;
     this.selectedCommissions.forEach(commission => {
       this.payCommissions.push({
         amount: commission.amount,
@@ -36,10 +35,11 @@ export class CommissionListComponent implements OnInit {
         userId: commission.id
       });
     });
-    console.log(this.payCommissions);
+
     this.commissionApiService.post(this.payCommissions)
       .subscribe(res => {
         console.log(res);
+        this.router.navigate(['/admin/commission']);
       });
   }
 

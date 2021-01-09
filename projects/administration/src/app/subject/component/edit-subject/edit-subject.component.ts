@@ -28,7 +28,6 @@ export class EditSubjectComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.subjectModel);
     this.image = this.subjectModel.image;
     this.subjectEditForm = new FormGroup({
       name: new FormControl(this.subjectModel.name, [Validators.required]),
@@ -85,5 +84,4 @@ export class EditSubjectComponent implements OnInit {
         this.store.dispatch(SUBJECT_DATA_LOADED({payload: res}));
       });
   }
-
 }

@@ -46,7 +46,6 @@ export class EditBookComponent implements OnInit {
 
     this.bookEditForm = new FormGroup({
       grade: new FormControl(this.bookModel.grade, [Validators.required]),
-      image: new FormControl(this.bookModel.image, [Validators.required]),
       medium: new FormControl(this.bookModel.medium, [Validators.required]),
       name: new FormControl(this.bookModel.name, [Validators.required]),
       price: new FormControl(this.bookModel.price, [Validators.required]),
@@ -75,7 +74,7 @@ export class EditBookComponent implements OnInit {
   }
 
   onEditBookSubmit(): void {
-    if (this.bookEditForm.valid) {
+    if (this.bookEditForm.invalid) {
       this.bookEditForm.markAllAsTouched();
       return;
     }
@@ -86,6 +85,7 @@ export class EditBookComponent implements OnInit {
 
     const formData = new FormData();
     const bookDataString = JSON.stringify(bookData);
+    console.log(bookDataString);
     formData.append('body', bookDataString);
     formData.append('image', this.image);
 
