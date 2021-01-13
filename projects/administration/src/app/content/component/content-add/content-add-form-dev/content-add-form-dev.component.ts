@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ContentModel} from '../../../../@core/interfaces/api/ContentModel';
-import {TusUploadService} from '../../../shared/service/tus-upload.service';
+import {TusUploadService} from '../../../../@core/services/tus-upload.service';
 
 @Component({
   selector: 'app-content-add-form-dev',

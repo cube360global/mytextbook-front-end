@@ -37,6 +37,7 @@
     "@vimeo/player": "^2.14.1",
     "ag-grid-angular": "^24.1.0",
     "ag-grid-community": "^24.1.0",
+    "angular2-uuid": "^1.1.1",
     "bootstrap": "^5.0.0-beta1",
     "ngx-cookie-service": "^11.0.2",
     "ngx-skeleton-loader": "^2.6.2",

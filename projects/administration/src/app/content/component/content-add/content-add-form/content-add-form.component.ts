@@ -10,6 +10,7 @@ import * as fromApp from '../../../../app.reducer';
 import {CONTENT_DATA_LOADED} from '../../../store/content.action';
 import {Router} from '@angular/router';
 import {VideoUploadService} from '../../../../@core/services/video-upload.service';
+import {VideoUploadModel} from '../../../../@core/interfaces/VideoUploadModel';
 
 @Component({
   selector: 'app-content-add-form',
@@ -61,7 +62,6 @@ export class ContentAddFormComponent implements OnInit {
       }
     } catch (e) {
       this.videoContent = null;
-      this.videoUploadService.setUploadVideo(null);
     }
   }
 
@@ -72,7 +72,6 @@ export class ContentAddFormComponent implements OnInit {
 
   onVideoRemoveClick(): void {
     this.videoContent = null;
-    this.videoUploadService.setUploadVideo(null);
   }
 
   onContentSubmit(): void {
@@ -114,7 +113,10 @@ export class ContentAddFormComponent implements OnInit {
     this.contentApiService.putContent(formData)
       .subscribe(res => {
         console.log(res);
-        // this.videoUploadService.setUploadVideo(this.videoContent);
+        const videoData = {} as VideoUploadModel;
+        videoData.upload_link = res;
+        videoData.video = this.videoContent;
+        this.videoUploadService.setUploadVideo(videoData);
         this.router.navigate(['/admin/content/all']);
         // this.store.dispatch(CONTENT_DATA_LOADED({payload: res}));
       });
