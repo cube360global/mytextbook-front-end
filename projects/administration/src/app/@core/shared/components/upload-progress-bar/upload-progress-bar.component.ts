@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {UploadVideoArrModel} from '../../../interfaces/UploadVideoArrModel';
 
 @Component({
   selector: 'app-upload-progress-bar',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadProgressBarComponent implements OnInit {
 
-  fileName = '';
+  @Input() UploadFileData  = {} as UploadVideoArrModel;
 
   constructor() { }
 

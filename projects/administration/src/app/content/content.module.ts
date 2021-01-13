@@ -14,6 +14,7 @@ import {ContentViewComponent} from './component/content-view/content-view.compon
 import {ContentAddFormComponent} from './component/content-add/content-add-form/content-add-form.component';
 import {ContentEditComponent} from './component/content-edit/content-edit.component';
 import { ContentAddFormDevComponent } from './component/content-add/content-add-form-dev/content-add-form-dev.component';
+import {CoreModule} from '../@core/core.module';
 
 
 const routes: Routes = [
@@ -37,15 +38,16 @@ const routes: Routes = [
     ContentAddFormComponent,
     ContentEditComponent,
     ContentAddFormDevComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    MaterialModule,
-    PrimengModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ValdemortModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        MaterialModule,
+        PrimengModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ValdemortModule,
+        CoreModule
+    ]
 })
 export class ContentModule {
 }

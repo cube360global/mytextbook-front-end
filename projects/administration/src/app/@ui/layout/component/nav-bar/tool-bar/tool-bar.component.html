@@ -15,6 +15,12 @@
               class="me-lg-4" mat-icon-button>
         <mat-icon>person</mat-icon>
       </button>
+      <button *ngIf="tusService.fileUploadArray.length > 0;"
+              (click)="op.toggle($event)"
+              aria-label="Example icon-button with share icon"
+              class="ms-1 me-lg-4" mat-icon-button>
+        <mat-icon [matBadge]="tusService.fileUploadArray.length">backup</mat-icon>
+      </button>
     </div>
   </div>
 </nav>
@@ -26,3 +32,14 @@
     <span>Sign Out</span>
   </button>
 </mat-menu>
+
+
+  <p-overlayPanel #op  [dismissable]="true" [showCloseIcon]="true">
+    <ng-template pTemplate>
+      <div *ngFor="let ele of tusService.fileUploadArray">
+        <app-upload-progress-bar [UploadFileData]="ele"></app-upload-progress-bar>
+      </div>
+    </ng-template>
+  </p-overlayPanel>
+
+

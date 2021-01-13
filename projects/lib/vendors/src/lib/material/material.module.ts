@@ -33,6 +33,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 const material = [
@@ -71,6 +72,7 @@ const material = [
   MatDatepickerModule,
   MatTooltipModule,
   MatNativeDateModule,
+  MatProgressBarModule,
 ];
 
 

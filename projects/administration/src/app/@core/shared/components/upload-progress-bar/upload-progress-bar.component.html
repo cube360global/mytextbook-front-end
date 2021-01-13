@@ -1,1 +1,13 @@
-<div>  </div>
+
+  <div>
+    <small>{{UploadFileData.fileName}} - {{UploadFileData.uploadTime}}</small>
+  </div>
+
+  <mat-progress-bar
+    color="primary"
+    mode="determinate"
+    [value]="UploadFileData.progress">
+  </mat-progress-bar>
+
+<!--  <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
+

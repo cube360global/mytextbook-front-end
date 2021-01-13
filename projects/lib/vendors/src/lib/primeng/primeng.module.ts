@@ -31,7 +31,8 @@ const primeNg = [
   DropdownModule,
   BadgeModule,
   SkeletonModule,
-  InputTextareaModule
+  InputTextareaModule,
+  OverlayPanelModule
 ];
 
 @NgModule({

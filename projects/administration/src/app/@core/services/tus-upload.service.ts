@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import * as tus from 'tus-js-client';
 import {UploadVideoArrModel} from '../interfaces/UploadVideoArrModel';
-import {UUID} from 'angular2-uuid';
+import {AlertService} from './alert.service';
+import {Subject} from 'rxjs';
 
 
 @Injectable({
@@ -9,17 +10,14 @@ import {UUID} from 'angular2-uuid';
 })
 export class TusUploadService {
 
-  fileUploadArray = [] as UploadVideoArrModel[];
+  public uploadComplete = new Subject<any>();
+  public fileUploadArray = [] as UploadVideoArrModel[];
 
 
-  constructor() {
+  constructor(private alertService: AlertService) {
   }
 
-  public tusUpload(file: File, uploadLink: string): tus.Upload {
-    const uuid = UUID.UUID();
-
-    this.fileUploadArray.push({id: uuid, fileName: file.name, progress: 0});
-    const index = this.fileUploadArray.findIndex(value => value.id = uuid);
+  public tusUpload(file: File, uploadLink: string, index: number): tus.Upload {
 
     const upload = new tus.Upload(file, {
       uploadUrl: uploadLink,
@@ -27,12 +25,13 @@ export class TusUploadService {
       retryDelays: [0, 1000, 3000, 5000],
       onError: error => {
         console.log('Failed: ' + file.name + error);
+        this.alertService.showError(file.name + ' ' + error);
       },
       onProgress: (bytesUploaded, bytesTotal) => {
         const percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
         this.fileUploadArray[index].progress = +percentage;
 
-        console.log(this.fileUploadArray);
+        // console.log(this.fileUploadArray);
 
         // console.log(
         //   'file: :',
@@ -43,6 +42,8 @@ export class TusUploadService {
       },
       onSuccess: () => {
         this.fileUploadArray.splice(index, 1);
+        this.alertService.showSuccess(file.name + ' ' + 'Successfully uploaded to vimeo');
+        this.uploadComplete.next();
         console.log('Download' + file.name + 'from' + upload.url);
       }
     });
