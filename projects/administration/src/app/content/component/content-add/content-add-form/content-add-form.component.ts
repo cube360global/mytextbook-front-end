@@ -9,6 +9,7 @@ import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../app.reducer';
 import {CONTENT_DATA_LOADED} from '../../../store/content.action';
 import {Router} from '@angular/router';
+import {VideoUploadService} from '../../../../@core/services/video-upload.service';
 
 @Component({
   selector: 'app-content-add-form',
@@ -20,11 +21,13 @@ export class ContentAddFormComponent implements OnInit {
   contentAddForm = {} as FormGroup;
   books = [] as BookModel[];
   contentImage: any;
+  videoContent: any;
 
 
   constructor(private contentApiService: ContentApiService,
               private store: Store<fromApp.AppState>,
               private router: Router,
+              private videoUploadService: VideoUploadService,
               private alertService: AlertService) {
   }
 
@@ -36,7 +39,6 @@ export class ContentAddFormComponent implements OnInit {
       description: new FormControl(null, [Validators.required]),
       chapter: new FormControl(null, [Validators.required]),
       pageNumber: new FormControl(null, [Validators.required]),
-      contentURL: new FormControl(null, [Validators.required]),
       bookId: new FormControl(null, [Validators.required]),
     });
   }
@@ -51,19 +53,45 @@ export class ContentAddFormComponent implements OnInit {
     }
   }
 
+  onVideoUploaded($event: any): void {
+    try {
+      if ($event != null) {
+        this.videoContent = $event.currentFiles[0];
+
+      }
+    } catch (e) {
+      this.videoContent = null;
+      this.videoUploadService.setUploadVideo(null);
+    }
+  }
+
+
   onRemoveClick(): void {
     this.contentImage = null;
   }
 
+  onVideoRemoveClick(): void {
+    this.videoContent = null;
+    this.videoUploadService.setUploadVideo(null);
+  }
+
   onContentSubmit(): void {
-    if (this.contentAddForm.invalid || this.contentImage == null) {
+    if (this.contentAddForm.invalid || this.contentImage == null || this.videoContent == null) {
       this.contentAddForm.markAllAsTouched();
       return;
     }
 
     const postData = this.contentAddForm.value as ContentModel;
+
+    const file = this.videoContent;
+    const size = this.videoContent.size;
+    const name = this.videoContent.name;
+
+    postData.videoSize = size;
+    postData.videoName = name;
     postData.chapter = +postData.chapter;
     postData.pageNumber = +postData.pageNumber;
+
     postData.bookId = +this.contentAddForm.controls.bookId.value;
 
     const postDataString = JSON.stringify(postData);
@@ -85,8 +113,10 @@ export class ContentAddFormComponent implements OnInit {
   sendToServer(formData: FormData): void {
     this.contentApiService.putContent(formData)
       .subscribe(res => {
+        console.log(res);
+        // this.videoUploadService.setUploadVideo(this.videoContent);
         this.router.navigate(['/admin/content/all']);
-        this.store.dispatch(CONTENT_DATA_LOADED({payload: res}));
+        // this.store.dispatch(CONTENT_DATA_LOADED({payload: res}));
       });
   }
 

@@ -6,14 +6,6 @@
                 (onSelect)="onBasicUpload($event)" [fileLimit]="1"
                 [multiple]="false" accept="video/*">
   </p-fileUpload>
-
 </div>
 
-<p-fileUpload name="myfile[]"
-              url="https://1512435592.cloud.vimeo.com/upload?ticket_id=413700965&video_file_id=2263643698&signature=f480c30c59c80998ee07e2511d296774&v6=1&redirect_url=https%3A%2F%2Fvimeo.com%2Fupload%2Fapi%3Fvideo_file_id%3D2263643698%26app_id%3D198357%26ticket_id%3D413700965%26signature%3De98820253b1019bcc981654d485af6078362e129"></p-fileUpload>
 
-<form method="POST" action="https://1512435592.cloud.vimeo.com/upload?ticket_id=413700965&video_file_id=2263643698&signature=f480c30c59c80998ee07e2511d296774&v6=1&redirect_url=https%3A%2F%2Fvimeo.com%2Fupload%2Fapi%3Fvideo_file_id%3D2263643698%26app_id%3D198357%26ticket_id%3D413700965%26signature%3De98820253b1019bcc981654d485af6078362e129" enctype="multipart/form-data">
-  <label for="file">File:</label>
-  <input type="file" name="file_data" id="file"><br>
-  <input type="submit" name="submit" value="Submit">
-</form>

@@ -3,16 +3,13 @@
 
 <div class="container">
   <form (ngSubmit)="onContentSubmit()" [formGroup]="contentAddForm">
-    <mat-label class="text-color-01-b"> Description*</mat-label>
-    <div class="p-float-label">
-      <input
-        [ngClass]="{ 'p-invalid' : !contentAddForm.controls['name'].valid && contentAddForm.controls['name'].touched}"
-        class="p-inputtext-sm w-100"
-        formControlName="name"
-        id="name"
-        pInputText type="text">
-      <label for="name">Content Name*</label>
-    </div>
+    <mat-label class="text-color-01-b ms-2"> Content Name*</mat-label>
+    <input
+      [ngClass]="{ 'p-invalid' : !contentAddForm.controls['name'].valid && contentAddForm.controls['name'].touched}"
+      class="p-inputtext-sm w-100"
+      formControlName="name"
+      id="name"
+      pInputText type="text">
     <p></p>
     <div>
       <val-errors controlName="name">
@@ -22,15 +19,15 @@
       </val-errors>
     </div>
 
-    <div class="p-float-label">
+
+    <mat-label class="text-color-01-b ms-2"> Description*</mat-label>
     <textarea
       [ngClass]="{ 'p-invalid' : !contentAddForm.controls['description'].valid && contentAddForm.controls['description'].touched}"
       class="p-inputtext-sm"
       formControlName="description"
       id="description"
       pInputText type="text"></textarea>
-      <label for="description">Description*</label>
-    </div>
+    <p></p>
     <div>
       <val-errors controlName="description">
         <ng-template valError="required"><small class="p-invalid ms-3">The content name is required</small>
@@ -40,17 +37,15 @@
     </div>
 
     <div class="row">
-
       <div class="col-sm-6">
-        <div class="p-float-label">
-          <input
-            [ngClass]="{ 'p-invalid' : !contentAddForm.controls['chapter'].valid && contentAddForm.controls['chapter'].touched}"
-            class="p-inputtext-sm"
-            formControlName="chapter"
-            id="chapter"
-            pInputText type="number">
-          <label for="name">Chapter No*</label>
-        </div>
+
+        <mat-label class="text-color-01-b ms-2"> Chapter No*</mat-label>
+        <input
+          [ngClass]="{ 'p-invalid' : !contentAddForm.controls['chapter'].valid && contentAddForm.controls['chapter'].touched}"
+          class="p-inputtext-sm"
+          formControlName="chapter"
+          id="chapter"
+          pInputText type="number">
         <div>
           <val-errors controlName="chapter">
             <ng-template valError="required"><small class="p-invalid ms-3">The chapter is required</small></ng-template>
@@ -60,15 +55,13 @@
       </div>
 
       <div class="col-sm-6">
-        <div class="p-float-label">
-          <input
-            [ngClass]="{ 'p-invalid' : !contentAddForm.controls['pageNumber'].valid && contentAddForm.controls['pageNumber'].touched}"
-            class="p-inputtext-sm"
-            formControlName="pageNumber"
-            id="pageNumber"
-            pInputText type="number">
-          <label for="name">Page Number*</label>
-        </div>
+        <mat-label class="text-color-01-b ms-2"> Page Number*</mat-label>
+        <input
+          [ngClass]="{ 'p-invalid' : !contentAddForm.controls['pageNumber'].valid && contentAddForm.controls['pageNumber'].touched}"
+          class="p-inputtext-sm"
+          formControlName="pageNumber"
+          id="pageNumber"
+          pInputText type="number">
         <div>
           <val-errors controlName="pageNumber">
             <ng-template valError="required"><small class="p-invalid ms-3">The page number is required</small>
@@ -79,10 +72,11 @@
       </div>
 
     </div>
+    <p></p>
 
     <div class="row">
       <div class="col-sm-6">
-        <label class="ms-3"> Marker Image </label>
+        <mat-label class="text-color-01-b ms-2"> Marker Image*</mat-label>
         <div class="d-flex justify-content-between align-items-center">
           <p-fileUpload #ff (onSelect)="onBasicUpload($event)" [customUpload]="true" [fileLimit]="1" mode="basic"
                         name="demo[]"
@@ -96,33 +90,56 @@
           <small *ngIf="!contentImage" class="p-invalid ms-3">The content image is required</small>
         </div>
       </div>
+      <div class="col-sm-6">
+        <mat-label class="text-color-01-b ms-2"> Content Video*</mat-label>
+        <div class="d-flex justify-content-between align-items-center">
+          <p-fileUpload name="demo[]"
+                        #vv
+                        [customUpload]="true"
+                        mode="basic"
+                        styleClass="m-2"
+                        (onSelect)="onVideoUploaded($event)" [fileLimit]="1"
+                        [multiple]="false" accept="video/*">
+          </p-fileUpload>
+          <button (click)="vv.clear();onVideoRemoveClick()" color="warn" mat-icon-button type="button">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <div>
+          <small *ngIf="!videoContent" class="p-invalid ms-3">The content video is required</small>
+        </div>
+      </div>
     </div>
+    <p></p>
 
+<!--    <mat-label class="text-color-01-b ms-2"> Content Id*</mat-label>-->
+<!--    <input-->
+<!--      [ngClass]="{ 'p-invalid' : !contentAddForm.controls['contentURL'].valid && contentAddForm.controls['contentURL'].touched}"-->
+<!--      class="p-inputtext-sm"-->
+<!--      formControlName="contentURL"-->
+<!--      id="contentURL"-->
+<!--      pInputText type="text">-->
+<!--    <p></p>-->
+<!--    <div>-->
+<!--      <val-errors controlName="contentURL">-->
+<!--        <ng-template valError="required"><small class="p-invalid ms-3">The content Id is required</small></ng-template>-->
+<!--      </val-errors>-->
+<!--    </div>-->
 
-    <div class="p-float-label mt-2">
-      <input
-        [ngClass]="{ 'p-invalid' : !contentAddForm.controls['contentURL'].valid && contentAddForm.controls['contentURL'].touched}"
-        class="p-inputtext-sm"
-        formControlName="contentURL"
-        id="contentURL"
-        pInputText type="text">
-      <label for="contentURL">Content Id*</label>
-    </div>
+    <p></p>
     <div>
-      <val-errors controlName="contentURL">
-        <ng-template valError="required"><small class="p-invalid ms-3">The content Id is required</small></ng-template>
-      </val-errors>
-    </div>
-
-    <div>
+      <mat-label class="text-color-01-b ms-2"> Select a Book*</mat-label>
       <p-dropdown
         [filter]="true"
         [options]="books"
-        [required]="true" [showClear]="true" appendTo="body" filterBy="name"
+        [required]="true"
+        [showClear]="true"
+        appendTo="body"
+        filterBy="name"
         formControlName="bookId"
         optionLabel="name"
         optionValue="id"
-        placeholder="Select a Book*"
+        placeholder="--SELECT--"
         styleClass="p-inputtext-sm w-100 p-invalid ms-1 mt-2">
 
         <ng-template pTemplate="selectedSubject">
