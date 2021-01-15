@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {ContentModel} from '../../../../../../../../../../administration/src/app/@core/interfaces/api/ContentModel';
 import * as fromApp from '../../../../../../../app.reducer';
 import {USER_LOGIN_FAIL} from '../../../../../../../+auth/store/auth.action';
 import {DisplayContentService} from '../../../../../../../../../../lib/tools/src/lib/display-content.service';
+import { ContentModel } from 'projects/user/src/app/@core/interfaces/api/ContentModel';
 
 @Component({
   selector: 'app-video-item',

@@ -18,7 +18,7 @@ export class BookApiService {
   }
 
   public Send(formBody: FormData): Observable<BookModel[]> {
-    return this.apiBaseService.UPDATE_API<BookModel[]>([AdminControllersConst.BookController], formBody, true);
+    return this.apiBaseService.POST_API<BookModel[]>([AdminControllersConst.BookController], formBody, true);
   }
 
   public search(bookModel: any): Observable<BookModel[]> {

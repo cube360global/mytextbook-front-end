@@ -26,6 +26,7 @@ export class UserAuthService {
       .set('password', loginModel.password)
       .set('user_role', 'STUDENT');
 
+      console.log(reqBody.toString());
 
     // set headers
     const headersObject = new HttpHeaders()

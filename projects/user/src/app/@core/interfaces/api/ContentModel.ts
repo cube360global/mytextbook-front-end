@@ -13,4 +13,6 @@ export interface ContentModel {
   status: boolean;
   book: string;
   bookId: number;
+  videoSize: number;
+  videoName: string;
 }
