@@ -9,6 +9,10 @@ import {EditBookComponent} from '../edit-book/edit-book.component';
 import {SubjectApiService} from '../../../subject/shared/services/subject-api.service';
 import {SubjectModel} from '../../../@core/interfaces/api/SubjectModel';
 import {SubjectBookModel} from '../../../@core/interfaces/SubjectBookModel';
+import {AlertConst} from '../../../@core/const/AlertConst';
+import {SUBJECT_DATA_REQUEST} from '../../../subject/store/subject.action';
+import {AlertService} from '../../../@core/services/alert.service';
+import {BOOK_DATA_REQUEST} from '../../store/book.action';
 
 @Component({
   selector: 'app-books-list',
@@ -24,6 +28,7 @@ export class BooksListComponent implements OnInit {
 
   constructor(private bookApiService: BookApiService,
               private subjectApiService: SubjectApiService,
+              private alertService: AlertService,
               private dialog: MatDialog,
               private ngxUiLoaderService: NgxUiLoaderService,
               private store: Store<fromApp.AppState>) {
@@ -45,7 +50,17 @@ export class BooksListComponent implements OnInit {
 
 
   onDelete(id: any): void {
-
+    this.alertService.getConfirmationDialog()
+      .confirm({
+        key: 'book-delete',
+        message: AlertConst.ConfirmationMessage,
+        accept: () => {
+          this.bookApiService.Delete(id)
+            .subscribe(() => {
+              this.store.dispatch(BOOK_DATA_REQUEST());
+            });
+        }
+      });
   }
 
   openBookEditViewDialog(book: BookModel): void {

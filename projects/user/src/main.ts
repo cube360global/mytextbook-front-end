@@ -5,7 +5,7 @@ import {environment} from './environments/environment';
 
 export function getBaseUrl(): string {
   // return document.getElementsByTagName('base')[0].href + 'api/';
-  return 'https://my-text-book-backend.herokuapp.com/backend/';
+  return 'https://my-text-book-backend-dev.herokuapp.com/backend/';
 }
 
 export function getBaseUrlWithOutApi(): string {

@@ -3,6 +3,9 @@ import {UserSubscriptionModel} from '../../../../@core/interfaces/api/UserSubscr
 import {AlertService} from '../../../../@core/services/alert.service';
 import {AlertConst} from '../../../../@core/const/AlertConst';
 import {UserApiService} from '../../../shared/service/user-api.service';
+import {USERS_DATA_REQUEST} from '../../../store/user.action';
+import {Store} from '@ngrx/store';
+import * as fromApp from '../../../../app.reducer';
 
 @Component({
   selector: 'app-user-sub-view',
@@ -14,19 +17,24 @@ export class UserSubViewComponent implements OnInit {
   @Input() userSubscription = [] as UserSubscriptionModel [];
   @Input() userId = 0;
 
-  constructor(private userApiService: UserApiService, private alertService: AlertService) {
+  constructor(private userApiService: UserApiService,
+              private store: Store<fromApp.AppState>,
+              private alertService: AlertService) {
   }
 
   ngOnInit(): void {
   }
 
-  onSubDeleteClick(userId: number): void {
+  onSubDeleteClick(userId: number, bookId: number): void {
 
     this.alertService.getConfirmationDialog()
       .confirm({
         message: AlertConst.ConfirmationMessage,
         accept: () => {
-          // this.userApiService.deleteSubscription(userId,);
+          this.userApiService.deleteSubscription(userId.toString(), bookId.toString())
+            .subscribe(res => {
+              this.store.dispatch(USERS_DATA_REQUEST());
+            });
         }
       });
 

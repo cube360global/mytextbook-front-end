@@ -25,11 +25,11 @@ import {TeacherViewDialogComponent} from '../teacher-view-dialog/teacher-view-di
 export class UsersListComponent implements OnInit {
 
   // 2021-01-07
-  $loadingObs = new Observable();
   searchInputData = '';
   schools = [] as string[];
   users = [] as UserModel[];
   selectedUsers = [] as UserModel[];
+  loading = true;
 
 
   constructor(private userApiService: UserApiService,
@@ -40,9 +40,12 @@ export class UsersListComponent implements OnInit {
               private ngxUiLoaderService: NgxUiLoaderService,
               private store: Store<fromApp.AppState>) {
 
-    this.$loadingObs = this.store.select(fromApp.getUserDataLoading);
+    this.store.select(fromApp.getUserDataLoading)
+      .subscribe(res => this.loading = res);
+
     this.store.select(fromApp.getUserReducer)
       .subscribe(res => {
+        console.log('CALLED');
         if (res != null && res.userData.length > 0) {
           this.users = res.userData;
           this.selectedUsers = res.userData;
@@ -68,16 +71,13 @@ export class UsersListComponent implements OnInit {
 
 
   openUserViewDialog(userId: string): void {
-    this.ngxUiLoaderService.start();
     this.userApiService.getUserProfileById(userId)
       .subscribe(res => {
         this.dialog.open(UserViewerDialogComponent, {
           width: '100%',
           data: res
         });
-        this.ngxUiLoaderService.stop();
       }, () => {
-        this.ngxUiLoaderService.stop();
       });
   }
 

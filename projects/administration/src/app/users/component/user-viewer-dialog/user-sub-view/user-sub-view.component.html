@@ -34,9 +34,10 @@
       </td>
       <td>{{sub.description}}</td>
       <td class="text-danger"><b>{{sub.status}}%</b></td>
+
       <td>{{sub.payment}}</td>
       <td>
-        <button (click)="onSubDeleteClick(userId)"></button>
+        <button (click)="onSubDeleteClick(userId,sub.bookId)" color="warn" mat-mini-fab><i class="fas fa-trash"></i></button>
       </td>
     </tr>
   </ng-template>

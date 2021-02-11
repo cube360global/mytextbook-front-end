@@ -2,9 +2,11 @@
   <app-users-list-search></app-users-list-search>
 </div>
 
-<div *ngIf="($loadingObs | async);else table">
-  <app-users-list-loading></app-users-list-loading>
-</div>
+<!--<div *ngIf="($loadingObs | async);else table">-->
+<!--  <app-users-list-loading></app-users-list-loading>-->
+<!--</div>-->
+
+<div *ngTemplateOutlet="table"></div>
 
 <ng-template #table>
   <p-table
@@ -14,6 +16,7 @@
     [paginator]="true"
     [resizableColumns]="true"
     [rowsPerPageOptions]="[5,10,25,50]"
+    [loading]="loading"
     [rows]="5"
     [value]="users"
     columnResizeMode="expand"

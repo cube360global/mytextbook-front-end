@@ -25,4 +25,8 @@ export class SubjectApiService {
   public Put(data: FormData): Observable<SubjectModel[]> {
     return this.apiBaseService.UPDATE_API<SubjectModel[]>([AdminControllersConst.SubjectController], data, true);
   }
+
+  public Delete(subjectId: number): Observable<SubjectModel[]> {
+    return this.apiBaseService.DELETE_API<SubjectModel[]>([AdminControllersConst.SubjectController, subjectId.toString()]);
+  }
 }

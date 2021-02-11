@@ -8,7 +8,8 @@ import {AlertConst} from '../../../@core/const/AlertConst';
 import {UserChangeStatus} from '../../../@core/interfaces/api/UserChangeStatus';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../app.reducer';
-import {USERS_DATA_LOADED} from '../../store/user.action';
+import {USERS_DATA_LOADED, USERS_DATA_REQUEST} from '../../store/user.action';
+import {SUBJECT_DATA_REQUEST} from '../../../subject/store/subject.action';
 
 @Component({
   selector: 'app-user-edit',
@@ -46,4 +47,6 @@ export class UserEditComponent implements OnInit {
         }
       });
   }
+
+
 }

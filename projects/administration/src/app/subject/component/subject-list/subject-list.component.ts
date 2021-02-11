@@ -6,6 +6,9 @@ import {NgxUiLoaderService} from 'ngx-ui-loader';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../app.reducer';
 import {EditSubjectComponent} from '../edit-subject/edit-subject.component';
+import {AlertConst} from '../../../@core/const/AlertConst';
+import {AlertService} from '../../../@core/services/alert.service';
+import {SUBJECT_DATA_REQUEST} from '../../store/subject.action';
 
 @Component({
   selector: 'app-subject-list',
@@ -20,6 +23,7 @@ export class SubjectListComponent implements OnInit {
 
   constructor(private subjectApiService: SubjectApiService,
               private dialog: MatDialog,
+              private alertService: AlertService,
               private ngxUiLoaderService: NgxUiLoaderService,
               private store: Store<fromApp.AppState>) {
 
@@ -35,14 +39,21 @@ export class SubjectListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.filterForm = new FormGroup({
-    //   district: new FormControl(),
-    //   school: new FormControl(),
-    //   subject: new FormControl(),
-    //   grade: new FormControl(),
-    //   salesLead: new FormControl(),
-    // });
 
+  }
+
+  onDeleteSubject(id: number): void {
+    this.alertService.getConfirmationDialog()
+      .confirm({
+        key: 'subject-delete',
+        message: AlertConst.ConfirmationMessage,
+        accept: () => {
+            this.subjectApiService.Delete(id)
+              .subscribe(() => {
+                this.store.dispatch(SUBJECT_DATA_REQUEST());
+              });
+        }
+      });
   }
 
   openSubjectViewDialog(subject: SubjectModel): void {

@@ -34,4 +34,7 @@ export class BookApiService {
   // Get(dookId: string) {
   //
   // }
+  Delete(id: number): Observable<BookModel[]> {
+    return this.apiBaseService.DELETE_API<BookModel[]>([AdminControllersConst.BookController, id.toString()]);
+  }
 }
