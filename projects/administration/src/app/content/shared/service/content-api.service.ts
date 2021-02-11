@@ -38,4 +38,8 @@ export class ContentApiService {
     return this.apiBaseService.DELETE_API<ContentModel[]>([AdminControllersConst.ContentController, id]);
   }
 
+  getContentById(id: string): Observable<ContentModel> {
+    return this.apiBaseService.GET_API<ContentModel>([AdminControllersConst.ContentController, id]);
+  }
+
 }

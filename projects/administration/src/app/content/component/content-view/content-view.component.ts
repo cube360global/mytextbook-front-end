@@ -10,7 +10,7 @@ import {AlertConst} from '../../../@core/const/AlertConst';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../app.reducer';
 import {CONTENT_DATA_LOADED} from '../../store/content.action';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-content-view',
@@ -25,13 +25,21 @@ export class ContentViewComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer,
               private dialog: MatDialog,
               private router: Router,
+              private activatedRoute: ActivatedRoute,
               private store: Store<fromApp.AppState>,
               private alertService: AlertService,
               private contentApiService: ContentApiService) {
   }
 
   ngOnInit(): void {
-    this.contentData = window.history.state;
+
+    this.contentApiService.getContentById(this.activatedRoute.snapshot.params.id)
+      .subscribe(res => {
+        console.log(res);
+        this.contentData = res;
+      });
+
+    // this.contentData = window.history.state;
     this.videoUrl = this.sanitizer
       .bypassSecurityTrustResourceUrl(`https://player.vimeo.com/video/${this.contentData.contentURL}`);
   }

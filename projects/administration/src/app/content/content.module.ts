@@ -13,8 +13,9 @@ import {ContentAddComponent} from './component/content-add/content-add.component
 import {ContentViewComponent} from './component/content-view/content-view.component';
 import {ContentAddFormComponent} from './component/content-add/content-add-form/content-add-form.component';
 import {ContentEditComponent} from './component/content-edit/content-edit.component';
-import { ContentAddFormDevComponent } from './component/content-add/content-add-form-dev/content-add-form-dev.component';
+import {ContentAddFormDevComponent} from './component/content-add/content-add-form-dev/content-add-form-dev.component';
 import {CoreModule} from '../@core/core.module';
+import {ContentQuestionComponent} from './component/content-question/content-question.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,7 @@ const routes: Routes = [
       {path: '', redirectTo: Path.All, pathMatch: 'full'},
       {path: Path.All, component: ContentListComponent},
       {path: Path.Add, component: ContentAddComponent},
-      {path: Path.View, component: ContentViewComponent},
+      {path: ':id', component: ContentViewComponent},
     ]
   },
 ];
@@ -37,17 +38,18 @@ const routes: Routes = [
     ContentViewComponent,
     ContentAddFormComponent,
     ContentEditComponent,
-    ContentAddFormDevComponent],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        MaterialModule,
-        PrimengModule,
-        FormsModule,
-        ReactiveFormsModule,
-        ValdemortModule,
-        CoreModule
-    ]
+    ContentAddFormDevComponent,
+    ContentQuestionComponent],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    MaterialModule,
+    PrimengModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ValdemortModule,
+    CoreModule
+  ]
 })
 export class ContentModule {
 }

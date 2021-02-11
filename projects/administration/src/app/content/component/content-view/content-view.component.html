@@ -45,6 +45,10 @@
   <p> View Count : {{contentData.viewCount}} </p>
   <div class="m-5 p-5"></div>
 
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <app-content-question *ngFor="let question of contentData.questions" [question]="question"></app-content-question>
+  </div>
+
 </div>
 
 <ng-template #noContent>

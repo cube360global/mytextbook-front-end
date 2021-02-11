@@ -1,0 +1,25 @@
+<div class="col">
+  <div class="card mb-3" style="width: 18rem;">
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <h5 class="card-title">{{ question.question }}</h5>
+        </div>
+        <div class="col-2">
+          <button class="me-2" color="primary" mat-mini-fab>
+            <i class="fas fa-edit fa-xs"></i></button>
+        </div>
+        <div class="col-3">
+          <button color="warn" mat-mini-fab><i class="fas fa-trash fa-xs"></i></button>
+        </div>
+      </div>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">i).   {{ question.answer1 }}</li>
+      <li class="list-group-item">ii).  {{ question.answer2 }}</li>
+      <li class="list-group-item">iii). {{ question.answer3 }}</li>
+      <li class="list-group-item">iv).  {{ question.answer4 }}</li>
+    </ul>
+    <div class="card-footer text-success">Correct Answer: {{ question.correctAnswer }}</div>
+  </div>
+</div>

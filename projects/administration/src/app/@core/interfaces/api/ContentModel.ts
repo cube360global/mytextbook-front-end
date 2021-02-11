@@ -1,3 +1,5 @@
+import {QuestionModel} from './QuestionModel';
+
 export interface ContentModel {
   id: number;
   name: string;
@@ -15,4 +17,5 @@ export interface ContentModel {
   bookId: number;
   videoSize: number;
   videoName: number;
+  questions: QuestionModel[];
 }
