@@ -1,0 +1,120 @@
+<!--<p-confirmDialog header="Confirmation"-->
+<!--                 icon="pi pi-exclamation-triangle"-->
+<!--                 key="ce-100"></p-confirmDialog>-->
+
+<div mat-dialog-title>
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="header-text-sm">
+      Edit Question
+    </div>
+    <button (click)="dialogRef.close()" color="warn" mat-icon-button>
+      <mat-icon>highlight_off</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+
+  <div class="container mt-4">
+    <form (ngSubmit)="onEditQuestionSubmit()" [formGroup]="questionEditForm">
+
+      <mat-label class="text-color-01-b">Question*</mat-label>
+      <input
+        [ngClass]="{ 'p-invalid' : !questionEditForm.controls['question'].valid && questionEditForm.controls['question'].touched}"
+        class="p-inputtext-sm w-100 mt-2"
+        formControlName="question"
+        id="question"
+        pInputText type="text">
+      <div>
+        <val-errors controlName="question">
+          <ng-template valError="required"><small class="p-invalid ms-3">Question is required</small>
+          </ng-template>
+        </val-errors>
+      </div>
+
+      <p></p>
+      <mat-label class="text-color-01-b">Answer1*</mat-label>
+      <input
+        [ngClass]="{ 'p-invalid' : !questionEditForm.controls['answer1'].valid && questionEditForm.controls['answer1'].touched}"
+        class="p-inputtext-sm w-100 mt-2"
+        formControlName="answer1"
+        id="answer1"
+        pInputText type="text">
+      <div>
+        <val-errors controlName="answer1">
+          <ng-template valError="required"><small class="p-invalid ms-3">Answer 1 is required</small>
+          </ng-template>
+        </val-errors>
+      </div>
+
+      <p></p>
+      <mat-label class="text-color-01-b">Answer2*</mat-label>
+      <input
+        [ngClass]="{ 'p-invalid' : !questionEditForm.controls['answer2'].valid && questionEditForm.controls['answer2'].touched}"
+        class="p-inputtext-sm w-100 mt-2"
+        formControlName="answer2"
+        id="answer2"
+        pInputText type="text">
+      <div>
+        <val-errors controlName="answer2">
+          <ng-template valError="required"><small class="p-invalid ms-3">Answer 2 is required</small>
+          </ng-template>
+        </val-errors>
+      </div>
+
+      <p></p>
+      <mat-label class="text-color-01-b">Answer3*</mat-label>
+      <input
+        [ngClass]="{ 'p-invalid' : !questionEditForm.controls['answer3'].valid && questionEditForm.controls['answer3'].touched}"
+        class="p-inputtext-sm w-100 mt-2"
+        formControlName="answer3"
+        id="answer3"
+        pInputText type="text">
+      <div>
+        <val-errors controlName="answer3">
+          <ng-template valError="required"><small class="p-invalid ms-3">Answer 3 is required</small>
+          </ng-template>
+        </val-errors>
+      </div>
+
+      <p></p>
+      <mat-label class="text-color-01-b">Answer4*</mat-label>
+      <input
+        [ngClass]="{ 'p-invalid' : !questionEditForm.controls['answer2'].valid && questionEditForm.controls['answer2'].touched}"
+        class="p-inputtext-sm w-100 mt-2"
+        formControlName="answer4"
+        id="answer4"
+        pInputText type="text">
+      <div>
+        <val-errors controlName="answer4">
+          <ng-template valError="required"><small class="p-invalid ms-3">Answer 4 is required</small>
+          </ng-template>
+        </val-errors>
+      </div>
+
+      <p></p>
+      <mat-label class="text-color-01-b">Correct Answer No*</mat-label>
+      <input
+        [ngClass]="{ 'p-invalid' : !questionEditForm.controls['correctAnswer'].valid && questionEditForm.controls['correctAnswer'].touched}"
+        class="p-inputtext-sm w-100 mt-2"
+        formControlName="answer4"
+        id="correctAnswer"
+        pInputText type="text">
+      <div>
+        <val-errors controlName="correctAnswer">
+          <ng-template valError="required"><small class="p-invalid ms-3">Correct Answer is required</small>
+          </ng-template>
+        </val-errors>
+      </div>
+
+      <p></p>
+      <div class="text-center mt-5 mb-5">
+        <button class="mat-button-rounded-sm" color="primary" mat-raised-button> Submit</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+

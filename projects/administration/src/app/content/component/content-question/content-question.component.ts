@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {QuestionModel} from '../../../@core/interfaces/api/QuestionModel';
+import {ContentQuestionEditComponent} from './content-question-edit/content-question-edit.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-content-question',
@@ -10,10 +12,17 @@ export class ContentQuestionComponent implements OnInit {
 
   @Input() question = {} as QuestionModel;
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
   }
 
+  openEditDialog(): void {
+    this.dialog.open(ContentQuestionEditComponent, {
+      height: '515px',
+      width: '600px',
+      data: this.question
+    });
+  }
 }
