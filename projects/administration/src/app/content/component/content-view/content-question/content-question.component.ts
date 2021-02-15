@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {QuestionModel} from '../../../@core/interfaces/api/QuestionModel';
+import {QuestionModel} from '../../../../@core/interfaces/api/QuestionModel';
 import {ContentQuestionEditComponent} from './content-question-edit/content-question-edit.component';
 import {MatDialog} from '@angular/material/dialog';
 
@@ -20,8 +20,7 @@ export class ContentQuestionComponent implements OnInit {
 
   openEditDialog(): void {
     this.dialog.open(ContentQuestionEditComponent, {
-      height: '515px',
-      width: '600px',
+      width: '100%',
       data: this.question
     });
   }
