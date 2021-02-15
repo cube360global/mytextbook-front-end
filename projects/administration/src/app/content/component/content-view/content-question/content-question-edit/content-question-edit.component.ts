@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {QuestionModel} from '../../../../@core/interfaces/api/QuestionModel';
+import {QuestionModel} from '../../../../../@core/interfaces/api/QuestionModel';
 
 @Component({
   selector: 'app-content-question-edit',
