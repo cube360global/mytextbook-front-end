@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {QuestionModel} from '../../../../@core/interfaces/api/QuestionModel';
 import {ContentQuestionEditComponent} from './content-question-edit/content-question-edit.component';
 import {MatDialog} from '@angular/material/dialog';
+import {ContentQuestionApiService} from '../../../shared/service/content-question-api.service';
+import {AlertConst} from '../../../../@core/const/AlertConst';
+import {AlertService} from '../../../../@core/services/alert.service';
 
 @Component({
   selector: 'app-content-question',
@@ -11,17 +14,33 @@ import {MatDialog} from '@angular/material/dialog';
 export class ContentQuestionComponent implements OnInit {
 
   @Input() question = {} as QuestionModel;
+  @Input() contentId = 0;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog,
+              private contentQuestionApiService: ContentQuestionApiService,
+              private alertService: AlertService) {
   }
 
   ngOnInit(): void {
   }
 
   openEditDialog(): void {
+    console.log(this.contentId);
     this.dialog.open(ContentQuestionEditComponent, {
       width: '100%',
-      data: this.question
+      data: {question: this.question, contendId: this.contentId}
     });
+  }
+
+  onDeleteQuestion(): void {
+    this.alertService.getConfirmationDialog()
+      .confirm({
+        key: 'cd-100',
+        message: AlertConst.ConfirmationMessage,
+        accept: () => {
+          this.contentQuestionApiService.deleteQuestion(this.question.id.toString())
+            .subscribe(res => console.log(res));
+        }
+      });
   }
 }

@@ -13,13 +13,8 @@
             <i class="fas fa-edit"></i></button>
         </div>
         <div class="col-2">
-          <button aria-label="icon button with a delete icon" color="warn" mat-icon-button>
+          <button (click)="onDeleteQuestion()" aria-label="icon button with a delete icon" color="warn" mat-icon-button>
             <i class="fas fa-trash"></i></button>
-          <!--          <button (click)="$event.preventDefault();onRemoveCurrentImageClick()"-->
-          <!--                  color="warn"-->
-          <!--                  mat-icon-button matTooltip="Remove Current Image" type="button">-->
-          <!--            <mat-icon>delete</mat-icon>-->
-          <!--          </button>-->
         </div>
       </div>
     </div>

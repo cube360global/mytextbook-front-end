@@ -11,6 +11,7 @@ import {Store} from '@ngrx/store';
 import * as fromApp from '../../../app.reducer';
 import {CONTENT_DATA_LOADED} from '../../store/content.action';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ContentQuestionAddComponent} from './content-question/content-question-add/content-question-add.component';
 
 @Component({
   selector: 'app-content-view',
@@ -73,4 +74,12 @@ export class ContentViewComponent implements OnInit {
         }
       });
   }
+
+  openAddQuestionDialog(): void {
+    this.dialog.open(ContentQuestionAddComponent, {
+      width: '100%',
+      data: this.contentData.id
+    });
+  }
+
 }

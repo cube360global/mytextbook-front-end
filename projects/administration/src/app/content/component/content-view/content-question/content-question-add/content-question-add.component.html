@@ -5,7 +5,7 @@
 <div mat-dialog-title>
   <div class="d-flex justify-content-between align-items-center">
     <div class="header-text-sm">
-      Edit Question
+      Add Question
     </div>
     <button (click)="dialogRef.close()" color="warn" mat-icon-button>
       <mat-icon>highlight_off</mat-icon>
@@ -16,11 +16,11 @@
 <div mat-dialog-content>
 
   <div class="container mt-4">
-    <form (ngSubmit)="onEditQuestionSubmit()" [formGroup]="questionEditForm">
+    <form (ngSubmit)="onAddQuestionSubmit()" [formGroup]="questionAddForm">
 
       <mat-label class="text-color-01-b">Question*</mat-label>
       <input
-        [ngClass]="{ 'p-invalid' : !questionEditForm.controls['question'].valid && questionEditForm.controls['question'].touched}"
+        [ngClass]="{ 'p-invalid' : !questionAddForm.controls['question'].valid && questionAddForm.controls['question'].touched}"
         class="p-inputtext-sm w-100 mt-2"
         formControlName="question"
         id="question"
@@ -35,7 +35,7 @@
       <p></p>
       <mat-label class="text-color-01-b">Answer1*</mat-label>
       <input
-        [ngClass]="{ 'p-invalid' : !questionEditForm.controls['answer1'].valid && questionEditForm.controls['answer1'].touched}"
+        [ngClass]="{ 'p-invalid' : !questionAddForm.controls['answer1'].valid && questionAddForm.controls['answer1'].touched}"
         class="p-inputtext-sm w-100 mt-2"
         formControlName="answer1"
         id="answer1"
@@ -50,7 +50,7 @@
       <p></p>
       <mat-label class="text-color-01-b">Answer2*</mat-label>
       <input
-        [ngClass]="{ 'p-invalid' : !questionEditForm.controls['answer2'].valid && questionEditForm.controls['answer2'].touched}"
+        [ngClass]="{ 'p-invalid' : !questionAddForm.controls['answer2'].valid && questionAddForm.controls['answer2'].touched}"
         class="p-inputtext-sm w-100 mt-2"
         formControlName="answer2"
         id="answer2"
@@ -65,7 +65,7 @@
       <p></p>
       <mat-label class="text-color-01-b">Answer3*</mat-label>
       <input
-        [ngClass]="{ 'p-invalid' : !questionEditForm.controls['answer3'].valid && questionEditForm.controls['answer3'].touched}"
+        [ngClass]="{ 'p-invalid' : !questionAddForm.controls['answer3'].valid && questionAddForm.controls['answer3'].touched}"
         class="p-inputtext-sm w-100 mt-2"
         formControlName="answer3"
         id="answer3"
@@ -80,7 +80,7 @@
       <p></p>
       <mat-label class="text-color-01-b">Answer4*</mat-label>
       <input
-        [ngClass]="{ 'p-invalid' : !questionEditForm.controls['answer2'].valid && questionEditForm.controls['answer2'].touched}"
+        [ngClass]="{ 'p-invalid' : !questionAddForm.controls['answer2'].valid && questionAddForm.controls['answer2'].touched}"
         class="p-inputtext-sm w-100 mt-2"
         formControlName="answer4"
         id="answer4"
@@ -95,7 +95,7 @@
       <p></p>
       <mat-label class="text-color-01-b">Correct Answer No*</mat-label>
       <input
-        [ngClass]="{ 'p-invalid' : !questionEditForm.controls['correctAnswer'].valid && questionEditForm.controls['correctAnswer'].touched}"
+        [ngClass]="{ 'p-invalid' : !questionAddForm.controls['correctAnswer'].valid && questionAddForm.controls['correctAnswer'].touched}"
         class="p-inputtext-sm w-100 mt-2"
         formControlName="correctAnswer"
         id="correctAnswer"

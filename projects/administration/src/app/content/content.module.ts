@@ -17,6 +17,7 @@ import {ContentAddFormDevComponent} from './component/content-add/content-add-fo
 import {CoreModule} from '../@core/core.module';
 import {ContentQuestionComponent} from './component/content-view/content-question/content-question.component';
 import {ContentQuestionEditComponent} from './component/content-view/content-question/content-question-edit/content-question-edit.component';
+import {ContentQuestionAddComponent} from './component/content-view/content-question/content-question-add/content-question-add.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,8 @@ const routes: Routes = [
     ContentEditComponent,
     ContentAddFormDevComponent,
     ContentQuestionComponent,
-    ContentQuestionEditComponent
+    ContentQuestionEditComponent,
+    ContentQuestionAddComponent
   ],
   imports: [
     CommonModule,
