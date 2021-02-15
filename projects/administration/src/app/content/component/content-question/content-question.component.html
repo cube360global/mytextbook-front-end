@@ -5,13 +5,18 @@
         <div class="col mr-1">
           <h5 class="card-title">{{ question.question }}</h5>
         </div>
-        <div class="col-2">
-          <button (click)="openEditDialog()" color="primary" mat-mini-fab>
-            <i class="fas fa-edit fa-xs"></i></button>
+        <div class="col-1">
+          <button (click)="openEditDialog()" color="primary" mat-icon-button>
+            <i class="fas fa-edit"></i></button>
         </div>
-        <div class="col-3">
-          <button color="warn" mat-mini-fab>
-            <i class="fas fa-trash fa-xs"></i></button>
+        <div class="col-2">
+          <button aria-label="icon button with a delete icon" color="warn" mat-icon-button>
+            <i class="fas fa-trash"></i></button>
+          <!--          <button (click)="$event.preventDefault();onRemoveCurrentImageClick()"-->
+          <!--                  color="warn"-->
+          <!--                  mat-icon-button matTooltip="Remove Current Image" type="button">-->
+          <!--            <mat-icon>delete</mat-icon>-->
+          <!--          </button>-->
         </div>
       </div>
     </div>
