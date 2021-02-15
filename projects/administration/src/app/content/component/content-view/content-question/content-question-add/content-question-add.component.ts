@@ -41,11 +41,10 @@ export class ContentQuestionAddComponent implements OnInit {
 
     this.alertService.getConfirmationDialog()
       .confirm({
-        key: 'cd-100',
         message: AlertConst.ConfirmationMessage,
         accept: () => {
           this.contentQuestionApiService.addQuestion(newQuestion)
-            .subscribe(res => console.log(res));
+            .subscribe(res => this.dialogRef.close());
         }
       });
   }

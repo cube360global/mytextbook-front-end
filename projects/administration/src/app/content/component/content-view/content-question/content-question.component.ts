@@ -28,7 +28,7 @@ export class ContentQuestionComponent implements OnInit {
     console.log(this.contentId);
     this.dialog.open(ContentQuestionEditComponent, {
       width: '100%',
-      data: {question: this.question, contendId: this.contentId}
+      data: {question: this.question, contentId: this.contentId}
     });
   }
 

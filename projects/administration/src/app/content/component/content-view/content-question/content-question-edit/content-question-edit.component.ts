@@ -5,6 +5,7 @@ import {QuestionModel} from '../../../../../@core/interfaces/api/QuestionModel';
 import {QuestionUpdateModel} from '../../../../../@core/interfaces/api/QuestionUpdateModel';
 import {AlertService} from '../../../../../@core/services/alert.service';
 import {ContentQuestionApiService} from '../../../../shared/service/content-question-api.service';
+import {AlertConst} from '../../../../../@core/const/AlertConst';
 
 @Component({
   selector: 'app-content-question-edit',
@@ -39,17 +40,18 @@ export class ContentQuestionEditComponent implements OnInit {
     editedQuestion.correctAnswer = +this.questionEditForm.value.correctAnswer;
     editedQuestion.contentId = this.questionUpdateData.contentId;
     editedQuestion.id = this.questionUpdateData.question.id;
-    console.log(this.questionUpdateData.contentId);
+    console.log(this.questionUpdateData);
+    console.log(this.questionUpdateData.question);
     console.log(editedQuestion);
-    // this.alertService.getConfirmationDialog()
-    //   .confirm({
-    //     key: 'cd-100',
-    //     message: AlertConst.ConfirmationMessage,
-    //     accept: () => {
-    //       this.contentQuestionApiService.updateQuestion(editedQuestion)
-    //         .subscribe(res => console.log(res));
-    //     }
-    //   });
+
+    this.alertService.getConfirmationDialog()
+      .confirm({
+        message: AlertConst.ConfirmationMessage,
+        accept: () => {
+          this.contentQuestionApiService.updateQuestion(editedQuestion)
+            .subscribe(res => console.log(res));
+        }
+      });
   }
 
 }
