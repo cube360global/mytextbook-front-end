@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {TokenDecodeModel} from '../../../../../../lib/authentication/src/lib/interfaces/TokenDecodeModel';
 import {ApiUtilityToolService} from '../../../../../../lib/tools/src/lib/api-utility-tool.service';
 import {UserSignUpModel} from '../../../@core/interfaces/api/UserSignUpModel';
+import {ApiBaseService} from '../../../../../../administration/src/app/@core/api/api.base.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ import {UserSignUpModel} from '../../../@core/interfaces/api/UserSignUpModel';
 export class UserAuthService {
 
   constructor(private httpBackend: HttpBackend,
+              private apiBaseService: ApiBaseService,
               private apiUtilityToolService: ApiUtilityToolService,
               @Inject('BASE_URL') private baseUrl: string) {
   }
@@ -26,7 +28,6 @@ export class UserAuthService {
       .set('password', loginModel.password)
       .set('user_role', 'STUDENT');
 
-      console.log(reqBody.toString());
 
     // set headers
     const headersObject = new HttpHeaders()
@@ -60,5 +61,9 @@ export class UserAuthService {
     const httpClient = new HttpClient(this.httpBackend);
     return this.apiUtilityToolService.POST_WITHOUT_AUTH([ControllerConst.User, 'set-password'],
       x, headersObject, true);
+  }
+
+  userLogOut(userEmail: string): Observable<any> {
+    return  this.apiBaseService.POST_API(['user', 'logout', userEmail], null);
   }
 }

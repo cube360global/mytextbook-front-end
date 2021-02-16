@@ -84,9 +84,12 @@ export class AuthEffects {
   userLogOut = createEffect(() => {
     return this.action.pipe(
       ofType(USER_LOGOUT),
-      tap(() => {
-        this.cookieManager.deleteCookie();
-        this.router.navigate(['']);
+      tap((res) => {
+        this.authService.userLogOut(res.payload)
+          .subscribe(() => {
+            this.cookieManager.deleteCookie();
+            this.router.navigate(['']);
+          });
       })
     );
   }, {dispatch: false});

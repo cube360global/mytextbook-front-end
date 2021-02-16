@@ -4,6 +4,7 @@ import {LoginModel} from '../interfaces/LoginModel';
 import {ControllerConst} from '../../../../../../lib/tools/src/lib/global/ControllerConst';
 import {Observable} from 'rxjs';
 import {TokenDecodeModel} from '../interfaces/TokenDecodeModel';
+import {ApiBaseService} from '../../../@core/api/api.base.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import {TokenDecodeModel} from '../interfaces/TokenDecodeModel';
 export class AdminAuthService {
 
   constructor(private httpBackend: HttpBackend,
+              private apiBaseService: ApiBaseService,
               @Inject('BASE_URL') private baseUrl: string) {
   }
 
@@ -51,6 +53,11 @@ export class AdminAuthService {
       {
         headers: headersObject
       });
+  }
+
+
+  userLogOut(userEmail: string): Observable<any> {
+    return this.apiBaseService.POST_API(['user', 'logout', userEmail], null, false, false);
   }
 
 }

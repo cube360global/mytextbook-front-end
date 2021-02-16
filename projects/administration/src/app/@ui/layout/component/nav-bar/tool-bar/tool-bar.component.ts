@@ -18,10 +18,18 @@ export class ToolBarComponent implements OnInit, OnDestroy {
   @ViewChild('op') primePanel = {} as OverlayPanel;
   subscription = new Subscription();
 
+  userEmail = '';
 
   constructor(private alertService: AlertService,
               public tusService: TusUploadService,
               private store: Store<fromApp.AppState>) {
+
+    this.store.select(fromApp.getAuthState)
+      .subscribe(tokenData => {
+        if (tokenData?.tokenDecodeModel?.email) {
+          this.userEmail = tokenData.tokenDecodeModel.email;
+        }
+      });
   }
 
   ngOnInit(): void {
@@ -39,7 +47,7 @@ export class ToolBarComponent implements OnInit, OnDestroy {
         key: 'tb-250',
         message: AlertConst.ConfirmationMessage,
         accept: () => {
-          this.store.dispatch(USER_LOGOUT());
+          this.store.dispatch(USER_LOGOUT({payload: this.userEmail}));
         }
       });
   }
