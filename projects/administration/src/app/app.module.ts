@@ -43,7 +43,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fastFadeOut: true,
   fgsColor: '#001851',
   fgsPosition: 'center-center',
-  fgsSize: 60,
+  fgsSize: 30,
   fgsType: 'cube-grid',
   gap: 24,
   logoPosition: 'center-center',
