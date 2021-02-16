@@ -5,6 +5,10 @@ import {ContentQuestionApiService} from '../../../../shared/service/content-ques
 import {QuestionAddModel} from '../../../../../@core/interfaces/api/QuestionAddModel';
 import {AlertConst} from '../../../../../@core/const/AlertConst';
 import {AlertService} from '../../../../../@core/services/alert.service';
+import {Store} from '@ngrx/store';
+import * as fromApp from '../../../../../app.reducer';
+import {CONTENT_DATA_REQUEST} from '../../../../store/content.action';
+
 
 @Component({
   selector: 'app-content-question-add',
@@ -17,7 +21,8 @@ export class ContentQuestionAddComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<ContentQuestionAddComponent>,
               @Inject(MAT_DIALOG_DATA) public contentId: number,
               private contentQuestionApiService: ContentQuestionApiService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private store: Store<fromApp.AppState>) {
   }
 
   ngOnInit(): void {
@@ -44,7 +49,10 @@ export class ContentQuestionAddComponent implements OnInit {
         message: AlertConst.ConfirmationMessage,
         accept: () => {
           this.contentQuestionApiService.addQuestion(newQuestion)
-            .subscribe(res => this.dialogRef.close());
+            .subscribe(res => {
+              this.dialogRef.close();
+              this.store.dispatch(CONTENT_DATA_REQUEST());
+            });
         }
       });
   }
