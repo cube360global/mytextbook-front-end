@@ -6,6 +6,7 @@ import {QuestionUpdateModel} from '../../../../../@core/interfaces/api/QuestionU
 import {AlertService} from '../../../../../@core/services/alert.service';
 import {ContentQuestionApiService} from '../../../../shared/service/content-question-api.service';
 import {AlertConst} from '../../../../../@core/const/AlertConst';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-content-question-edit',
@@ -18,7 +19,8 @@ export class ContentQuestionEditComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<ContentQuestionEditComponent>,
               @Inject(MAT_DIALOG_DATA) public questionUpdateData: { question: QuestionModel, contentId: number },
               private alertService: AlertService,
-              private contentQuestionApiService: ContentQuestionApiService) {
+              private contentQuestionApiService: ContentQuestionApiService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -40,16 +42,17 @@ export class ContentQuestionEditComponent implements OnInit {
     editedQuestion.correctAnswer = +this.questionEditForm.value.correctAnswer;
     editedQuestion.contentId = this.questionUpdateData.contentId;
     editedQuestion.id = this.questionUpdateData.question.id;
-    console.log(this.questionUpdateData);
-    console.log(this.questionUpdateData.question);
-    console.log(editedQuestion);
 
     this.alertService.getConfirmationDialog()
       .confirm({
         message: AlertConst.ConfirmationMessage,
         accept: () => {
           this.contentQuestionApiService.updateQuestion(editedQuestion)
-            .subscribe(res => console.log(res));
+            .subscribe(res => {
+              console.log(res);
+              this.dialogRef.close();
+              this.router.navigate(['admin', 'content', 'all']);
+            });
         }
       });
   }

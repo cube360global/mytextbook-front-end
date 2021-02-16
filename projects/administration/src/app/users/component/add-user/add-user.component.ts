@@ -29,6 +29,8 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.addUser = new FormGroup({
+      firstname: new FormControl(null, {validators: [Validators.required]}),
+      lastname: new FormControl(null, {validators: [Validators.required]}),
       email: new FormControl(null, {validators: [Validators.email, Validators.required]}),
       referralLink: new FormControl(null),
       roleId: new FormControl(null, {validators: [Validators.required]})

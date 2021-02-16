@@ -3,6 +3,7 @@ import * as fromUserManagement from './users/store/user.reducer';
 import * as fromBookManagement from './book/store/book.reducer';
 import * as fromSubjectManagement from './subject/store/subject.reducer';
 import * as fromContentManagement from './content/store/content.reducer';
+import * as fromQuestionManagement from './content/store/question/question.reducer';
 import {ActionReducerMap, createFeatureSelector, createSelector} from '@ngrx/store';
 
 export interface AppState {
@@ -11,6 +12,7 @@ export interface AppState {
   bookManagement: fromBookManagement.State;
   subjectManagement: fromSubjectManagement.State;
   contentManagement: fromContentManagement.State;
+  questionManagement: fromQuestionManagement.State;
 }
 
 export const appReducer: ActionReducerMap<AppState> = {
@@ -19,6 +21,7 @@ export const appReducer: ActionReducerMap<AppState> = {
   bookManagement: fromBookManagement.bookReducer,
   subjectManagement: fromSubjectManagement.subjectReducer,
   contentManagement: fromContentManagement.contentReducer,
+  questionManagement: fromQuestionManagement.questionReducer
 };
 
 // Feature Selectors
@@ -27,6 +30,7 @@ export const getUserReducer = createFeatureSelector<fromUserManagement.State>('u
 export const getBookReducer = createFeatureSelector<fromBookManagement.State>('bookManagement');
 export const getSubjectReducer = createFeatureSelector<fromSubjectManagement.State>('subjectManagement');
 export const getContentReducer = createFeatureSelector<fromContentManagement.State>('contentManagement');
+export const getQuestionReducer = createFeatureSelector<fromQuestionManagement.State>('questionManagement');
 
 // Selectors - based on the Feature Selectors
 export const getUserDataLoading = createSelector(getUserReducer, fromUserManagement.getUserLoadingState);
