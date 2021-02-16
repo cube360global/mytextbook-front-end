@@ -12,15 +12,21 @@ import {USER_LOGOUT} from '../../../../../+auth/store/auth.action';
 })
 export class UserSidebarComponent implements OnInit {
   $userData = new Observable<UserProfileModel>();
+  userEmail = '';
 
   constructor(private store: Store<fromApp.AppState>) {
   }
 
   ngOnInit(): void {
     this.$userData = this.store.select(fromApp.getUserProfile);
+
+    this.store.select(fromApp.getAuthState)
+      .subscribe(tokenData => {
+        this.userEmail = tokenData.tokenDecodeModel.email;
+      });
   }
 
   onLogOutClick(): void {
-    this.store.dispatch(USER_LOGOUT());
+    this.store.dispatch(USER_LOGOUT({payload: this.userEmail}));
   }
 }
