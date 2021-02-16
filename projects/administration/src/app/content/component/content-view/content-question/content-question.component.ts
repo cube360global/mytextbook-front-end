@@ -25,7 +25,6 @@ export class ContentQuestionComponent implements OnInit {
   }
 
   openEditDialog(): void {
-    console.log(this.contentId);
     this.dialog.open(ContentQuestionEditComponent, {
       width: '100%',
       data: {question: this.question, contentId: this.contentId}

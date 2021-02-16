@@ -40,9 +40,6 @@ export class ContentQuestionEditComponent implements OnInit {
     editedQuestion.correctAnswer = +this.questionEditForm.value.correctAnswer;
     editedQuestion.contentId = this.questionUpdateData.contentId;
     editedQuestion.id = this.questionUpdateData.question.id;
-    console.log(this.questionUpdateData);
-    console.log(this.questionUpdateData.question);
-    console.log(editedQuestion);
 
     this.alertService.getConfirmationDialog()
       .confirm({

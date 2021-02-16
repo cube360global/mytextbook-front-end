@@ -12,6 +12,9 @@ import * as fromApp from '../../../app.reducer';
 import {CONTENT_DATA_LOADED} from '../../store/content.action';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ContentQuestionAddComponent} from './content-question/content-question-add/content-question-add.component';
+import {QuestionModel} from '../../../@core/interfaces/api/QuestionModel';
+import {ContentQuestionApiService} from '../../shared/service/content-question-api.service';
+import {QUESTION_DATA_REQUEST} from '../../store/question/question.action';
 
 @Component({
   selector: 'app-content-view',
@@ -21,6 +24,7 @@ import {ContentQuestionAddComponent} from './content-question/content-question-a
 export class ContentViewComponent implements OnInit {
 
   contentData = {} as ContentModel;
+  questions = [] as QuestionModel[];
   videoUrl: any;
 
   constructor(private sanitizer: DomSanitizer,
@@ -29,7 +33,16 @@ export class ContentViewComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private store: Store<fromApp.AppState>,
               private alertService: AlertService,
-              private contentApiService: ContentApiService) {
+              private contentApiService: ContentApiService,
+              private contentQuestionApiService: ContentQuestionApiService) {
+
+    this.store.select(fromApp.getQuestionReducer)
+      .subscribe(res => {
+        if (res.questionData.length > 0) {
+          this.questions = res.questionData;
+        }
+      });
+
   }
 
   ngOnInit(): void {
@@ -39,6 +52,13 @@ export class ContentViewComponent implements OnInit {
         console.log(res);
         this.contentData = res;
       });
+
+    // this.contentQuestionApiService.getQuestions(this.activatedRoute.snapshot.params.id)
+    //   .subscribe(res => {
+    //     this.questions = res;
+    //   });
+
+    this.store.dispatch(QUESTION_DATA_REQUEST(this.activatedRoute.snapshot.params.id));
 
     // this.contentData = window.history.state;
     this.videoUrl = this.sanitizer
