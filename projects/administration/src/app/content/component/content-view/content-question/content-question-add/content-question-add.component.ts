@@ -7,7 +7,7 @@ import {AlertConst} from '../../../../../@core/const/AlertConst';
 import {AlertService} from '../../../../../@core/services/alert.service';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../../app.reducer';
-import {CONTENT_DATA_REQUEST} from '../../../../store/content.action';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -22,7 +22,8 @@ export class ContentQuestionAddComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public contentId: number,
               private contentQuestionApiService: ContentQuestionApiService,
               private alertService: AlertService,
-              private store: Store<fromApp.AppState>) {
+              private store: Store<fromApp.AppState>,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -51,7 +52,7 @@ export class ContentQuestionAddComponent implements OnInit {
           this.contentQuestionApiService.addQuestion(newQuestion)
             .subscribe(res => {
               this.dialogRef.close();
-              this.store.dispatch(CONTENT_DATA_REQUEST());
+              this.router.navigate(['admin', 'content', 'all']);
             });
         }
       });

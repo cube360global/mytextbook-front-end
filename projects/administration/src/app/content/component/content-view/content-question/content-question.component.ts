@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {ContentQuestionApiService} from '../../../shared/service/content-question-api.service';
 import {AlertConst} from '../../../../@core/const/AlertConst';
 import {AlertService} from '../../../../@core/services/alert.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-content-question',
@@ -18,7 +19,8 @@ export class ContentQuestionComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               private contentQuestionApiService: ContentQuestionApiService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -38,7 +40,10 @@ export class ContentQuestionComponent implements OnInit {
         message: AlertConst.ConfirmationMessage,
         accept: () => {
           this.contentQuestionApiService.deleteQuestion(this.question.id.toString())
-            .subscribe(res => console.log(res));
+            .subscribe(res => {
+              console.log(res);
+              this.router.navigate(['admin', 'content', 'all']);
+            });
         }
       });
   }
