@@ -51,6 +51,7 @@ export class ContentQuestionEditComponent implements OnInit {
             .subscribe(res => {
               console.log(res);
               this.dialogRef.close();
+              this.router.navigate(['admin', 'content', 'all']);
             });
         }
       });
