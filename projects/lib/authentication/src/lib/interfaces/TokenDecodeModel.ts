@@ -7,4 +7,6 @@ export interface TokenDecodeModel {
   role: string;
   userId: string;
   jti: string;
+  email: string;
+
 }

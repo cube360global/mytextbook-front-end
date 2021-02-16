@@ -15,15 +15,14 @@ export class UserSidebarComponent implements OnInit {
   userEmail = '';
 
   constructor(private store: Store<fromApp.AppState>) {
+    this.store.select(fromApp.getAuthState)
+      .subscribe(tokenData => {
+        this.userEmail = tokenData.tokenDecodeModel?.email;
+      });
   }
 
   ngOnInit(): void {
     this.$userData = this.store.select(fromApp.getUserProfile);
-
-    this.store.select(fromApp.getAuthState)
-      .subscribe(tokenData => {
-        this.userEmail = tokenData.tokenDecodeModel.email;
-      });
   }
 
   onLogOutClick(): void {

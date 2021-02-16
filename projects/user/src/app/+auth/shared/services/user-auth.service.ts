@@ -6,7 +6,6 @@ import {Observable} from 'rxjs';
 import {TokenDecodeModel} from '../../../../../../lib/authentication/src/lib/interfaces/TokenDecodeModel';
 import {ApiUtilityToolService} from '../../../../../../lib/tools/src/lib/api-utility-tool.service';
 import {UserSignUpModel} from '../../../@core/interfaces/api/UserSignUpModel';
-import {ApiBaseService} from '../../../../../../administration/src/app/@core/api/api.base.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,6 @@ import {ApiBaseService} from '../../../../../../administration/src/app/@core/api
 export class UserAuthService {
 
   constructor(private httpBackend: HttpBackend,
-              private apiBaseService: ApiBaseService,
               private apiUtilityToolService: ApiUtilityToolService,
               @Inject('BASE_URL') private baseUrl: string) {
   }
@@ -64,6 +62,6 @@ export class UserAuthService {
   }
 
   userLogOut(userEmail: string): Observable<any> {
-    return  this.apiBaseService.POST_API(['user', 'logout', userEmail], null);
+    return  this.apiUtilityToolService.POST(['user', 'logout', userEmail], null);
   }
 }

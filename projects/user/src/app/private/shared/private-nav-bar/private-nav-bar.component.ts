@@ -13,8 +13,13 @@ export class PrivateNavBarComponent implements OnInit {
 
   @Input() drawer = {} as MatDrawer;
   @Input() isDrawerShow = true;
+  userEmail = '';
 
   constructor(private store: Store<fromApp.AppState>) {
+    this.store.select(fromApp.getAuthState)
+      .subscribe(tokenData => {
+        this.userEmail = tokenData.tokenDecodeModel?.email;
+      });
   }
 
   ngOnInit(): void {
@@ -22,6 +27,6 @@ export class PrivateNavBarComponent implements OnInit {
   }
 
   onSignOut(): void {
-    this.store.dispatch(USER_LOGOUT());
+    this.store.dispatch(USER_LOGOUT({payload: this.userEmail}));
   }
 }
