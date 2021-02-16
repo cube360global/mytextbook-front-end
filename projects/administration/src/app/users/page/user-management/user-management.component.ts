@@ -23,7 +23,7 @@ export class UserManagementComponent implements OnInit {
 
   openAddUserDialog(): void {
     this.dialog.open(AddUserComponent, {
-      width: '350px'
+      width: '450px'
     });
   }
 

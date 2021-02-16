@@ -6,6 +6,7 @@ import {UserApiService} from '../../../shared/service/user-api.service';
 import {USERS_DATA_REQUEST} from '../../../store/user.action';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../../../../app.reducer';
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-sub-view',
@@ -16,6 +17,8 @@ export class UserSubViewComponent implements OnInit {
 
   @Input() userSubscription = [] as UserSubscriptionModel [];
   @Input() userId = 0;
+
+  @Input() dialogRef: any;
 
   constructor(private userApiService: UserApiService,
               private store: Store<fromApp.AppState>,
@@ -34,6 +37,7 @@ export class UserSubViewComponent implements OnInit {
           this.userApiService.deleteSubscription(userId.toString(), bookId.toString())
             .subscribe(res => {
               this.store.dispatch(USERS_DATA_REQUEST());
+              this.dialogRef.close();
             });
         }
       });

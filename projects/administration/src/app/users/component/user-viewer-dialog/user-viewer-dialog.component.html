@@ -55,6 +55,10 @@
             Sales Lead : <b>{{userModel.salesLead}}</b>
           </p>
           <p>
+            Referral Link  : <b>{{userModel.referralLink}}</b>
+          </p>
+
+          <p>
             Status : <b>{{userModel.active}}</b>
           </p>
           <p>
@@ -67,7 +71,10 @@
       <div class="col-sm-9">
         <div class="profile-border">
           <p class="header-text-sm mb-3">Subscriptions</p>
-          <app-user-sub-view [userSubscription]="userModel.subscriptions" [userId]="userModel.id"></app-user-sub-view>
+          <app-user-sub-view
+            [dialogRef]="dialogRef"
+            [userSubscription]="userModel.subscriptions"
+            [userId]="userModel.id"></app-user-sub-view>
         </div>
         <div class="profile-border">
           <p class="header-text-sm">Watch history</p>

@@ -14,33 +14,33 @@
 <div mat-dialog-content>
   <form (ngSubmit)="onAddUsers()" [formGroup]="addUser">
 
-    <div class="p-float-label m-2">
-      <input [ngClass]="{ 'p-invalid' : !addUser.controls['firstname'].valid && addUser.controls['firstname'].touched}"
-             class="p-inputtext-sm"
-             formControlName="firstname"
-             id="firstname"
-             pInputText type="text">
-      <label for="firstname">First name*</label>
-    </div>
-    <div>
-      <val-errors controlName="firstname" label="The firstname">
-        <ng-template valError="required"><small class="p-invalid ms-3">The firstname is required</small></ng-template>
-      </val-errors>
-    </div>
+<!--    <div class="p-float-label m-2">-->
+<!--      <input [ngClass]="{ 'p-invalid' : !addUser.controls['firstname'].valid && addUser.controls['firstname'].touched}"-->
+<!--             class="p-inputtext-sm"-->
+<!--             formControlName="firstname"-->
+<!--             id="firstname"-->
+<!--             pInputText type="text">-->
+<!--      <label for="firstname">First name*</label>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <val-errors controlName="firstname" label="The firstname">-->
+<!--        <ng-template valError="required"><small class="p-invalid ms-3">The firstname is required</small></ng-template>-->
+<!--      </val-errors>-->
+<!--    </div>-->
 
-    <div class="p-float-label m-2">
-      <input [ngClass]="{ 'p-invalid' : !addUser.controls['lastname'].valid && addUser.controls['lastname'].touched}"
-             class="p-inputtext-sm"
-             formControlName="lastname"
-             id="lastname"
-             pInputText type="text">
-      <label for="lastname">Last name*</label>
-    </div>
-    <div>
-      <val-errors controlName="lastname" label="The lastname">
-        <ng-template valError="required"><small class="p-invalid ms-3">The lastname is required</small></ng-template>
-      </val-errors>
-    </div>
+<!--    <div class="p-float-label m-2">-->
+<!--      <input [ngClass]="{ 'p-invalid' : !addUser.controls['lastname'].valid && addUser.controls['lastname'].touched}"-->
+<!--             class="p-inputtext-sm"-->
+<!--             formControlName="lastname"-->
+<!--             id="lastname"-->
+<!--             pInputText type="text">-->
+<!--      <label for="lastname">Last name*</label>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <val-errors controlName="lastname" label="The lastname">-->
+<!--        <ng-template valError="required"><small class="p-invalid ms-3">The lastname is required</small></ng-template>-->
+<!--      </val-errors>-->
+<!--    </div>-->
 
     <div class="p-float-label m-2">
       <input [ngClass]="{ 'p-invalid' : !addUser.controls['email'].valid && addUser.controls['email'].touched}"

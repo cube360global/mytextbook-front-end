@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {PrimeNGConfig} from 'primeng/api';
 import {CookieManagerService} from './@core/services/cookie-manager.service';
 import {Store} from '@ngrx/store';
 import * as fromApp from './app.reducer';
-import {LOGIN_WITH_REFRESH_TOKEN} from './+auth/store/auth.action';
+import {LOGIN_WITH_REFRESH_TOKEN, USER_LOGOUT} from './+auth/store/auth.action';
 import {VideoUploadService} from './@core/services/video-upload.service';
 import {Subscription} from 'rxjs';
 import {TusUploadService} from './@core/services/tus-upload.service';
@@ -18,6 +18,15 @@ import {UploadVideoArrModel} from './@core/interfaces/UploadVideoArrModel';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'administration';
   videoSub = new Subscription();
+
+  userEmail = '';
+
+
+  @HostListener('window:beforeunload')
+  unloadHandler(event: any): void {
+    this.store.dispatch(USER_LOGOUT({payload: this.userEmail}));
+  }
+
 
   constructor(private primengConfig: PrimeNGConfig,
               private store: Store<fromApp.AppState>,
@@ -38,6 +47,12 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     });
 
+    this.store.select(fromApp.getAuthState)
+      .subscribe(tokenData => {
+        if (tokenData?.tokenDecodeModel?.email) {
+          this.userEmail = tokenData.tokenDecodeModel.email;
+        }
+      });
   }
 
   ngOnInit(): void {
@@ -71,6 +86,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.videoSub.unsubscribe();
+    console.log('APP IS CLOSED');
+
   }
 
 }

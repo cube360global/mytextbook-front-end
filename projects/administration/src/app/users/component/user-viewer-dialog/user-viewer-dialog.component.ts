@@ -26,7 +26,7 @@ export class UserViewerDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log(this.userModel);
+     console.log(this.userModel);
   }
 
   onDeleteUserClick(id: number): void {
@@ -38,6 +38,7 @@ export class UserViewerDialogComponent implements OnInit {
           this.userApiService.Delete(id)
             .subscribe(() => {
               this.store.dispatch(USERS_DATA_REQUEST());
+              this.dialogRef.close();
             });
         }
       });

@@ -14,6 +14,7 @@ export interface UserModel {
   salesLead?: any;
   birthDay: number;
   school: string;
+  referralLink: string;
   subscriptions: UserSubscriptionModel[];
   contents: any[];
   commissions: CommissionModel[];
