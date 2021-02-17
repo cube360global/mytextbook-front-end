@@ -31,6 +31,7 @@ export class TeacherSubViewSubscriptionsComponent implements OnInit {
 
     this.alertService.getConfirmationDialog()
       .confirm({
+        key: 'sub-delete',
         message: AlertConst.ConfirmationMessage,
         accept: () => {
           this.userApiService.deleteSubscription(userId.toString(), bookId.toString())
