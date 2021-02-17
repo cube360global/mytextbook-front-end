@@ -1,0 +1,49 @@
+<p-confirmDialog header="Confirmation"
+                 icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<p-table [paginator]="true"
+         [rowsPerPageOptions]="[5,10]"
+         [rows]="2"
+         [showCurrentPageReport]="true"
+         [value]="userSubscription"
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         styleClass="p-datatable-sm p-datatable-gridlines p-datatable-responsive-demo">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>
+        Image
+      </th>
+      <th>
+        Description
+      </th>
+      <th>
+        Status
+      </th>
+      <th>
+        Payment
+      </th>
+      <th>
+        Action
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template let-sub pTemplate="body">
+    <tr>
+      <td>
+        <img alt="" class="img-fluid" height="80px" src="{{sub.image}}" width="80px">
+      </td>
+      <td>{{sub.description}}</td>
+      <td class="text-danger"><b>{{sub.status}}%</b></td>
+
+      <td>{{sub.payment}}</td>
+      <td>
+        <button (click)="onSubDeleteClick(userId,sub.bookId)" color="warn" mat-mini-fab><i class="fas fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+
+

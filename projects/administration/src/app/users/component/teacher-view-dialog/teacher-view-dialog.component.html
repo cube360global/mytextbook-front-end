@@ -1,3 +1,7 @@
+<p-confirmDialog header="Confirmation"
+                 icon="pi pi-exclamation-triangle"
+                 key="teacher-delete"></p-confirmDialog>
+
 <div mat-dialog-title>
   <div class="d-flex justify-content-between">
     <div>
@@ -9,6 +13,16 @@
   </div>
 </div>
 <div mat-dialog-content>
+  <div class="d-flex justify-content-end align-items-center">
+    <div>
+      <button (click)="onDeleteUserClick(userModel.id)"
+              class="mat-button-rounded-sm ms-2"
+              color="warn" mat-raised-button>
+        <i class="fas fa-trash-alt me-2"></i>
+        DELETE USER
+      </button>
+    </div>
+  </div>
   <div class="container mt-2 mb-2">
     <div class="row">
       <div class="col-sm-3">
@@ -51,11 +65,14 @@
 
       <div class="col-sm-9">
         <div class="profile-border">
-          <p class="header-text-sm mb-3">Payments</p>
-          <app-teacher-sub-view-dialog [commissions]="userModel.commissions"></app-teacher-sub-view-dialog>
+          <p class="header-text-sm mb-3">Subscriptions</p>
+          <app-teacher-sub-view-subscriptions [dialogRef]="dialogRef"
+                                              [userId]="userModel.id"
+                                              [userSubscription]="userModel.subscriptions"></app-teacher-sub-view-subscriptions>
         </div>
         <div class="profile-border">
-
+          <p class="header-text-sm mb-3">Payments</p>
+          <app-teacher-sub-view-dialog [commissions]="userModel.commissions"></app-teacher-sub-view-dialog>
         </div>
       </div>
     </div>

@@ -24,6 +24,7 @@ import {UsersListSearchComponent} from './component/users-list/users-list-search
 import {UsersPushNotificationDialogComponent} from './component/users-push-notification-dialog/users-push-notification-dialog.component';
 import {TeacherViewDialogComponent} from './component/teacher-view-dialog/teacher-view-dialog.component';
 import {TeacherSubViewDialogComponent} from './component/teacher-view-dialog/teacher-sub-view-dialog/teacher-sub-view-dialog.component';
+import {TeacherSubViewSubscriptionsComponent} from './component/teacher-view-dialog/teacher-sub-view-subscriptions/teacher-sub-view-subscriptions.component';
 
 const routes: Routes = [
   {path: '', component: UserManagementComponent},
@@ -44,7 +45,8 @@ const routes: Routes = [
     UsersListSearchComponent,
     UsersPushNotificationDialogComponent,
     TeacherViewDialogComponent,
-    TeacherSubViewDialogComponent],
+    TeacherSubViewDialogComponent,
+    TeacherSubViewSubscriptionsComponent],
   imports: [
     CommonModule,
     NgxDatatableModule,
