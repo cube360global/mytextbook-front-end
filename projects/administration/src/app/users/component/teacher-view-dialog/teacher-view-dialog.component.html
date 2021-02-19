@@ -63,7 +63,7 @@
         </div>
       </div>
 
-      <div class="col-sm-9">
+      <div *ngIf="userModel.role === 'TEACHER'" class="col-sm-9">
         <div class="profile-border">
           <p class="header-text-sm mb-3">Subscriptions</p>
           <app-teacher-sub-view-subscriptions [dialogRef]="dialogRef"

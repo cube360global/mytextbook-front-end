@@ -63,6 +63,8 @@ export class ContentViewComponent implements OnInit {
     // this.contentData = window.history.state;
     this.videoUrl = this.sanitizer
       .bypassSecurityTrustResourceUrl(`https://player.vimeo.com/video/${this.contentData.contentURL}`);
+
+    console.log(this.videoUrl);
   }
 
   onContentEditDialogOpen(content: ContentModel): void {

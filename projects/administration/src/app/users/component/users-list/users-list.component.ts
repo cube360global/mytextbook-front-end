@@ -31,6 +31,8 @@ export class UsersListComponent implements OnInit {
   selectedUsers = [] as UserModel[];
   loading = true;
 
+  isSuperAdmin = false;
+
 
   constructor(private userApiService: UserApiService,
               private dialog: MatDialog,
@@ -55,6 +57,12 @@ export class UsersListComponent implements OnInit {
         }
       }, error => console.error(error));
 
+    this.store.select(fromApp.getAuthState)
+      .subscribe(res => {
+        if (res.tokenDecodeModel?.role === 'SUPER_ADMIN'){
+          this.isSuperAdmin = true;
+        }
+      });
     // this.store.select(fromApp.getSubjectReducer)
     //   .subscribe(res => {
     //     if (res.subjectData != null && res.subjectData.length > 0) {
