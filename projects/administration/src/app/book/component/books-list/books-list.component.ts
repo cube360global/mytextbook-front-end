@@ -37,7 +37,6 @@ export class BooksListComponent implements OnInit {
       .subscribe(res => {
           if (res.bookData.length > 0) {
             this.books = res.bookData;
-            console.log(this.books);
             this.loading = false;
           }
         }
@@ -66,7 +65,6 @@ export class BooksListComponent implements OnInit {
   openBookEditViewDialog(book: BookModel): void {
     this.subjectApiService.All()
       .subscribe(res => {
-        console.log(res);
         this.subjects = res;
         const subjectBook: SubjectBookModel = {
           subjects: this.subjects,

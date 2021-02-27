@@ -41,7 +41,6 @@ export class ContentQuestionComponent implements OnInit {
         accept: () => {
           this.contentQuestionApiService.deleteQuestion(this.question.id.toString())
             .subscribe(res => {
-              console.log(res);
               this.router.navigate(['admin', 'content', 'all']);
             });
         }

@@ -33,7 +33,6 @@ export class EditBookComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.subjectBookModel);
     this.image = this.subjectBookModel.book.image;
     this.subjects = this.subjectBookModel.subjects;
     this.bookEditForm = new FormGroup({
@@ -76,7 +75,6 @@ export class EditBookComponent implements OnInit {
 
     const formData = new FormData();
     const bookDataString = JSON.stringify(bookData);
-    console.log(bookDataString);
     formData.append('body', bookDataString);
     formData.append('image', this.image);
 

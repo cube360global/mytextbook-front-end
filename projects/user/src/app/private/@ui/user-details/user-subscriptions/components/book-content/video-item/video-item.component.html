@@ -44,7 +44,7 @@
 
 
 <div *ngIf="!displayContentService.isMobile;else mobile">
-  <mat-card class="box-shadow-default mb-3"
+  <div class="card p-3 mb-3"
             matRipple
             matTooltip="Click to view"
             routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"
@@ -61,20 +61,14 @@
            width="80px">
       <div>
         <div class="fs-6 mt-1"><b>{{video.description}}</b></div>
-        <!--        <div *ngIf="video.status;else notActive">-->
-        <div class="text-success mt-2" style="text-transform: uppercase">
-          <i class="fas fa-check"></i>
-          ACTIVATE
-        </div>
-        <!--        </div>-->
       </div>
     </div>
-  </mat-card>
+  </div>
 </div>
 
 <ng-template #mobile>
 
-  <mat-card class="box-shadow-default mb-3"
+  <div class="card p-3 mb-3"
             style="outline: none;">
 
 
@@ -86,17 +80,9 @@
            width="80px">
       <div>
         <div class="fs-6 mt-1"><b>{{video.description}}</b></div>
-        <!--        <div *ngIf="true;else notActive">-->
-        <div class="text-success mt-2" style="text-transform: uppercase">
-          <i class="fas fa-check"></i>
-          ACTIVATE
-        </div>
-
-        <!--        </div>-->
-
       </div>
     </div>
-    <mat-divider></mat-divider>
+    <hr>
     <div class="d-flex align-content-center justify-content-end">
       <button class="m-1 mat-button-rounded-sm"
               color="primary"
@@ -104,10 +90,10 @@
               routerLink="/private/user-details/video-player/{{video.id}}/{{userId}}/{{video.contentURL}}"
               style="color: #3861C3"
       >
-        VIEW MORE
+        <i class="far fa-play-circle"></i> Play Video
       </button>
     </div>
-  </mat-card>
+  </div>
 
 </ng-template>
 

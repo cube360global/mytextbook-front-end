@@ -64,7 +64,6 @@ export class SignUpFormComponent implements OnInit {
   }
 
   private postToServer(signUpData: UserSignUpModel): void {
-    console.log('jhsdhjksh0');
     this.userApiService.signUpUser(signUpData)
       .subscribe(res => {
         this.signUpForm.reset();

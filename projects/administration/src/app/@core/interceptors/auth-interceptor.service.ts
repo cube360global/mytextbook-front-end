@@ -51,7 +51,6 @@ export class AuthInterceptorService implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError(error => {
         if (error instanceof HttpErrorResponse && error.status === 401) {
-          console.log('FROM INTERCEPTOR : unauthorized error occur');
           return this.handle401Error(request, next);
         } else {
           return throwError(error);
@@ -63,7 +62,6 @@ export class AuthInterceptorService implements HttpInterceptor {
     if (!this.isRefreshing) {
       this.isRefreshing = true;
       this.refreshTokenSubject.next({} as TokenDecodeModel);
-      console.log('FROM INTERCEPTOR : getting new token');
       return this.tryGetRefreshTokenService().pipe(
         switchMap((token) => {
           this.store.dispatch(REFRESH_USER_TOKEN({payload: token}));

@@ -86,7 +86,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.videoSub.unsubscribe();
-    console.log('APP IS CLOSED');
 
   }
 

@@ -27,7 +27,6 @@ export class ForgetPasswordFormComponent implements OnInit {
   onReset(): void {
     this.userApiService.forgetPassword(this.email.value)
       .subscribe(res => {
-        console.log(res);
         this.router.navigate(['']);
       });
   }

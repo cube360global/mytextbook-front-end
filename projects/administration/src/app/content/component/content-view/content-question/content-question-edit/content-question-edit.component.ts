@@ -49,7 +49,6 @@ export class ContentQuestionEditComponent implements OnInit {
         accept: () => {
           this.contentQuestionApiService.updateQuestion(editedQuestion)
             .subscribe(res => {
-              console.log(res);
               this.dialogRef.close();
               this.router.navigate(['admin', 'content', 'all']);
             });

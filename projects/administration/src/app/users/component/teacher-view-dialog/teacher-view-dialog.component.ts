@@ -23,7 +23,6 @@ export class TeacherViewDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.userModel);
   }
 
   onDeleteUserClick(id: number): void {

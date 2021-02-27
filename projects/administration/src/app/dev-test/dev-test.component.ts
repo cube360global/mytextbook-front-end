@@ -113,12 +113,10 @@ export class DevTestComponent implements OnInit {
   }
 
   public handleImage(webcamImage: WebcamImage): void {
-    console.log('received webcam image', webcamImage);
     this.webcamImage = webcamImage;
   }
 
   public cameraWasSwitched(deviceId: string): void {
-    console.log('active device: ' + deviceId);
     this.deviceId = deviceId;
   }
 

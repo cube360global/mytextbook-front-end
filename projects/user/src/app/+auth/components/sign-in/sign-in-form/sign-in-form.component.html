@@ -3,7 +3,7 @@
   <mat-form-field floatLabel="never">
     <mat-icon class="me-1 text-color-01" matPrefix>person</mat-icon>
     <input formControlName="username" matInput placeholder="example@gmail.com">
-    <mat-error *ngIf="loginForm.controls['username'].hasError('email')">This is the not a valid email</mat-error>
+    <mat-error *ngIf="loginForm.controls['username'].hasError('email')">Please insert a valid email address</mat-error>
     <mat-error *ngIf="loginForm.controls['username'].hasError('required')">Required</mat-error>
   </mat-form-field>
 

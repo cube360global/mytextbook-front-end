@@ -38,7 +38,6 @@ export class CommissionListComponent implements OnInit {
         key: 'ce-100',
         message: AlertConst.ConfirmationMessage,
         accept: () => {
-          console.log('hi');
           this.sendToServer(this.payCommissions);
         }
       });
@@ -46,7 +45,6 @@ export class CommissionListComponent implements OnInit {
 
   loadCommissions(): void {
     this.commissionApiService.all().subscribe(res => {
-      console.log(res);
       this.commissions = res;
     });
   }

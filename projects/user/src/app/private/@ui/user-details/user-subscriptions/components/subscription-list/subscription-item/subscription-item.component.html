@@ -1,121 +1,134 @@
-<div *ngIf="!displayContentService.isMobile;else mobile">
-  <mat-card class="box-shadow-default mb-3"
-            matRipple
-            routerLink="/private/user-details/subscriptions/book-content/{{subscription.bookId}}"
-            style="outline: none;cursor: pointer">
-    <div class="d-flex align-content-center justify-content-end">
+<!--<div *ngIf="!displayContentService.isMobile;else mobile">-->
+<!--  <mat-card class="box-shadow-default mb-3"-->
+<!--            matRipple-->
+<!--            routerLink="/private/user-details/subscriptions/book-content/{{subscription.bookId}}"-->
+<!--            style="outline: none;cursor: pointer">-->
+<!--    <div class="d-flex align-content-center justify-content-end">-->
 
-    </div>
+<!--    </div>-->
 
-    <div class="d-flex align-items-center mt-2">
-      <img alt="{{subscription.description}}"
-           class="img-fluid me-3"
-           height="80px"
-           src="{{subscription.image}}"
-           width="80px">
-      <div>
-        <div class="fs-6 mt-1"><b>{{subscription.description}}</b></div>
-        <div *ngIf="subscription.status;else notActive">
-          <div class="text-success mt-2" style="text-transform: uppercase">
-            <i class="fas fa-check"></i>
-            ACTIVATE
-          </div>
-        </div>
-      </div>
+<!--    <div class="d-flex align-items-center mt-2">-->
+<!--      <img alt="{{subscription.description}}"-->
+<!--           class="img-fluid me-3"-->
+<!--           height="80px"-->
+<!--           src="{{subscription.image}}"-->
+<!--           width="80px">-->
+<!--      <div>-->
+<!--        <div class="fs-6 mt-1"><b>{{subscription.description}}</b></div>-->
+<!--        <div *ngIf="subscription.status;else notActive">-->
+<!--          <div class="text-success mt-2" style="text-transform: uppercase">-->
+<!--            <i class="fas fa-check"></i>-->
+<!--            ACTIVATE-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </mat-card>-->
+<!--  &lt;!&ndash;  <mat-card class="w-100 box-shadow-default mb-2"&ndash;&gt;-->
+<!--  &lt;!&ndash;            matRipple&ndash;&gt;-->
+<!--  &lt;!&ndash;            matTooltip="Click to view content"&ndash;&gt;-->
+<!--  &lt;!&ndash;            routerLink="/private/user-details/subscriptions/book-content/{{subscription.bookId}}"&ndash;&gt;-->
+<!--  &lt;!&ndash;            style="cursor: pointer;outline: none">&ndash;&gt;-->
+<!--  &lt;!&ndash;    <img alt="{{subscription.description}}"&ndash;&gt;-->
+<!--  &lt;!&ndash;         mat-card-image&ndash;&gt;-->
+<!--  &lt;!&ndash;         src="{{subscription.image}}">&ndash;&gt;-->
+<!--  &lt;!&ndash;    <mat-card-content class="text-center">&ndash;&gt;-->
+<!--  &lt;!&ndash;      <p style="font-weight: bold; font-size: medium">&ndash;&gt;-->
+<!--  &lt;!&ndash;        {{subscription.description}}&ndash;&gt;-->
+<!--  &lt;!&ndash;      </p>&ndash;&gt;-->
+<!--  &lt;!&ndash;    </mat-card-content>&ndash;&gt;-->
+<!--  &lt;!&ndash;    <mat-card-actions class="text-center mb-1">&ndash;&gt;-->
+<!--  &lt;!&ndash;      <button class="m-1 text-success disabled"&ndash;&gt;-->
+<!--  &lt;!&ndash;              mat-flat-button&ndash;&gt;-->
+<!--  &lt;!&ndash;              style="text-transform: uppercase">&ndash;&gt;-->
+<!--  &lt;!&ndash;        <i class="fas fa-check ms-2"></i>&ndash;&gt;-->
+<!--  &lt;!&ndash;        Subscribed&ndash;&gt;-->
+<!--  &lt;!&ndash;      </button>&ndash;&gt;-->
+<!--  &lt;!&ndash;    </mat-card-actions>&ndash;&gt;-->
+<!--  &lt;!&ndash;  </mat-card>&ndash;&gt;-->
+<!--</div>-->
+
+<!--<ng-template #mobile>-->
+
+<!--  <mat-card class="box-shadow-default mb-3"-->
+<!--            style="outline: none;">-->
+
+
+<!--    <div class="d-flex align-items-center mt-2">-->
+<!--      <img alt="{{subscription.description}}"-->
+<!--           class="img-fluid me-3"-->
+<!--           height="80px"-->
+<!--           src="{{subscription.image}}"-->
+<!--           width="80px">-->
+<!--      <div>-->
+<!--        <div class="fs-6 mt-1"><b>{{subscription.description}}</b></div>-->
+<!--        <div *ngIf="subscription.status;else notActive">-->
+<!--          <div class="text-success mt-2" style="text-transform: uppercase">-->
+<!--            <i class="fas fa-check"></i>-->
+<!--            ACTIVATE-->
+<!--          </div>-->
+
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--    <mat-divider></mat-divider>-->
+<!--    <div class="d-flex align-content-center justify-content-end">-->
+<!--      <button class="m-1 mat-button-rounded-sm"-->
+<!--              color="primary"-->
+<!--              mat-button-->
+<!--              routerLink="/private/user-details/subscriptions/book-content/{{subscription.bookId}}"-->
+<!--              style="color: #3861C3"-->
+<!--      >-->
+<!--        VIEW MORE-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </mat-card>-->
+
+
+<!--  &lt;!&ndash;  <mat-card class="w-100 box-shadow-default mb-2"&ndash;&gt;-->
+<!--  &lt;!&ndash;            routerLink="/private/user-details/subscriptions/book-content/{{subscription.bookId}}">&ndash;&gt;-->
+<!--  &lt;!&ndash;    <img alt="{{subscription.description}}"&ndash;&gt;-->
+<!--  &lt;!&ndash;         mat-card-image&ndash;&gt;-->
+<!--  &lt;!&ndash;         src="{{subscription.image}}">&ndash;&gt;-->
+<!--  &lt;!&ndash;    <mat-card-content class="text-center">&ndash;&gt;-->
+<!--  &lt;!&ndash;      <p style="font-weight: bold; font-size: medium">&ndash;&gt;-->
+<!--  &lt;!&ndash;        {{subscription.description}}&ndash;&gt;-->
+<!--  &lt;!&ndash;      </p>&ndash;&gt;-->
+<!--  &lt;!&ndash;    </mat-card-content>&ndash;&gt;-->
+<!--  &lt;!&ndash;    <mat-card-actions class="text-center d-flex align-content-center justify-content-between mb-1">&ndash;&gt;-->
+<!--  &lt;!&ndash;      <button class="m-1 mat-button-rounded-sm"&ndash;&gt;-->
+<!--  &lt;!&ndash;              color="primary"&ndash;&gt;-->
+<!--  &lt;!&ndash;              mat-raised-button&ndash;&gt;-->
+<!--  &lt;!&ndash;              style="text-transform: uppercase">&ndash;&gt;-->
+<!--  &lt;!&ndash;        VIEW MORE&ndash;&gt;-->
+<!--  &lt;!&ndash;      </button>&ndash;&gt;-->
+<!--  &lt;!&ndash;      <button class="m-1 text-success disabled"&ndash;&gt;-->
+<!--  &lt;!&ndash;              mat-flat-button&ndash;&gt;-->
+<!--  &lt;!&ndash;              style="text-transform: uppercase">&ndash;&gt;-->
+<!--  &lt;!&ndash;        <i class="fas fa-check ms-2"></i>&ndash;&gt;-->
+<!--  &lt;!&ndash;        Subscribed&ndash;&gt;-->
+<!--  &lt;!&ndash;      </button>&ndash;&gt;-->
+<!--  &lt;!&ndash;    </mat-card-actions>&ndash;&gt;-->
+<!--  &lt;!&ndash;  </mat-card>&ndash;&gt;-->
+<!--</ng-template>-->
+
+<!--<ng-template #notActive>-->
+<!--  <div class="text-danger mt-2" style="text-transform: uppercase">-->
+<!--    <i class="fas fa-times"></i>-->
+<!--    DEACTIVATE-->
+<!--  </div>-->
+<!--</ng-template>-->
+
+
+<div matRipple
+     routerLink="/private/user-details/subscriptions/book-content/{{subscription.bookId}}"
+     style="outline: none;cursor: pointer">
+  <div class="card">
+    <img class="card-img-top" src="{{subscription.image}}" alt="{{subscription.description}}">
+    <div class="card-body">
+      <p class="fs-6"><b>{{subscription.description}}</b></p>
     </div>
-  </mat-card>
-  <!--  <mat-card class="w-100 box-shadow-default mb-2"-->
-  <!--            matRipple-->
-  <!--            matTooltip="Click to view content"-->
-  <!--            routerLink="/private/user-details/subscriptions/book-content/{{subscription.bookId}}"-->
-  <!--            style="cursor: pointer;outline: none">-->
-  <!--    <img alt="{{subscription.description}}"-->
-  <!--         mat-card-image-->
-  <!--         src="{{subscription.image}}">-->
-  <!--    <mat-card-content class="text-center">-->
-  <!--      <p style="font-weight: bold; font-size: medium">-->
-  <!--        {{subscription.description}}-->
-  <!--      </p>-->
-  <!--    </mat-card-content>-->
-  <!--    <mat-card-actions class="text-center mb-1">-->
-  <!--      <button class="m-1 text-success disabled"-->
-  <!--              mat-flat-button-->
-  <!--              style="text-transform: uppercase">-->
-  <!--        <i class="fas fa-check ms-2"></i>-->
-  <!--        Subscribed-->
-  <!--      </button>-->
-  <!--    </mat-card-actions>-->
-  <!--  </mat-card>-->
+  </div>
 </div>
 
-<ng-template #mobile>
-
-  <mat-card class="box-shadow-default mb-3"
-            style="outline: none;">
-
-
-    <div class="d-flex align-items-center mt-2">
-      <img alt="{{subscription.description}}"
-           class="img-fluid me-3"
-           height="80px"
-           src="{{subscription.image}}"
-           width="80px">
-      <div>
-        <div class="fs-6 mt-1"><b>{{subscription.description}}</b></div>
-        <div *ngIf="subscription.status;else notActive">
-          <div class="text-success mt-2" style="text-transform: uppercase">
-            <i class="fas fa-check"></i>
-            ACTIVATE
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="d-flex align-content-center justify-content-end">
-      <button class="m-1 mat-button-rounded-sm"
-              color="primary"
-              mat-button
-              routerLink="/private/user-details/subscriptions/book-content/{{subscription.bookId}}"
-              style="color: #3861C3"
-      >
-        VIEW MORE
-      </button>
-    </div>
-  </mat-card>
-
-
-  <!--  <mat-card class="w-100 box-shadow-default mb-2"-->
-  <!--            routerLink="/private/user-details/subscriptions/book-content/{{subscription.bookId}}">-->
-  <!--    <img alt="{{subscription.description}}"-->
-  <!--         mat-card-image-->
-  <!--         src="{{subscription.image}}">-->
-  <!--    <mat-card-content class="text-center">-->
-  <!--      <p style="font-weight: bold; font-size: medium">-->
-  <!--        {{subscription.description}}-->
-  <!--      </p>-->
-  <!--    </mat-card-content>-->
-  <!--    <mat-card-actions class="text-center d-flex align-content-center justify-content-between mb-1">-->
-  <!--      <button class="m-1 mat-button-rounded-sm"-->
-  <!--              color="primary"-->
-  <!--              mat-raised-button-->
-  <!--              style="text-transform: uppercase">-->
-  <!--        VIEW MORE-->
-  <!--      </button>-->
-  <!--      <button class="m-1 text-success disabled"-->
-  <!--              mat-flat-button-->
-  <!--              style="text-transform: uppercase">-->
-  <!--        <i class="fas fa-check ms-2"></i>-->
-  <!--        Subscribed-->
-  <!--      </button>-->
-  <!--    </mat-card-actions>-->
-  <!--  </mat-card>-->
-</ng-template>
-
-<ng-template #notActive>
-  <div class="text-danger mt-2" style="text-transform: uppercase">
-    <i class="fas fa-times"></i>
-    DEACTIVATE
-  </div>
-</ng-template>

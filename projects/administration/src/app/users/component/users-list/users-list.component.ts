@@ -47,7 +47,6 @@ export class UsersListComponent implements OnInit {
 
     this.store.select(fromApp.getUserReducer)
       .subscribe(res => {
-        console.log('CALLED');
         if (res != null && res.userData.length > 0) {
           this.users = res.userData;
           this.selectedUsers = res.userData;

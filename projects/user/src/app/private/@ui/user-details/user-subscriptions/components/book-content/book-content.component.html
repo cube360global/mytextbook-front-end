@@ -1,7 +1,6 @@
 <div class="row mb-3" style="position: relative">
-
   <div class="col-lg-6">
-    <mat-card class="box-shadow-default">
+    <div class="card p-3">
       <div class="d-flex align-content-center justify-content-between">
         <p class="header-text-default">Book Details</p>
       </div>
@@ -18,15 +17,17 @@
           <div><small>{{bookContent.book.subject}}</small></div>
         </div>
       </div>
-    </mat-card>
+    </div>
   </div>
 </div>
+
 <h2 class="header-text-sm"> Book's Content </h2>
 
 <ng-container *ngTemplateOutlet="searchContainer"></ng-container>
 
 
 <hr>
+
 <div class="row mt-2">
   <app-video-item *ngFor="let video of bookContent.contents"
                   [video]="video"

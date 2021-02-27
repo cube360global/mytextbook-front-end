@@ -22,6 +22,7 @@ import {UserWatchHistoryItemComponent} from './user-watch-history/component/user
 import {VendorsModule} from '../../../../../../lib/vendors/src/lib/vendors.module';
 import {UserAuthGuard} from '../../../@core/guards/user-auth.guard';
 import {UserProfileWatchHistoryComponent} from './user-profile/components/user-profile-watch-history/user-profile-watch-history.component';
+import { UserProfileSubscriptionComponent } from './user-profile/components/user-profile-subscription/user-profile-subscription.component';
 
 const routes: Routes = [
   {
@@ -55,7 +56,8 @@ const routes: Routes = [
     VideoItemComponent,
     UserWatchHistoryComponent,
     UserWatchHistoryItemComponent,
-    UserProfileWatchHistoryComponent
+    UserProfileWatchHistoryComponent,
+    UserProfileSubscriptionComponent
   ],
   imports: [
     CommonModule,

@@ -11,7 +11,6 @@ export class UsersEffects {
     return this.action.pipe(
       ofType(USERS_DATA_REQUEST),
       switchMap(() => {
-        console.log('CALLED from effect');
         return this.usersApiService.all().pipe(
           map((resData) => {
             return USERS_AND_SCHOOL_DATA_LOADED({payload: resData});

@@ -112,13 +112,11 @@ export class ContentAddFormComponent implements OnInit {
   sendToServer(formData: FormData): void {
     this.contentApiService.putContent(formData)
       .subscribe(res => {
-        console.log(res);
         const videoData = {} as VideoUploadModel;
         videoData.upload_link = res;
         videoData.video = this.videoContent;
         this.videoUploadService.setUploadVideo(videoData);
         this.router.navigate(['/admin/content/all']);
-        // this.store.dispatch(CONTENT_DATA_LOADED({payload: res}));
       });
   }
 

@@ -25,11 +25,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     const currentTime = new Date().getFullYear();
-    console.log(currentTime);
     setInterval(() => {
       if (currentTime > 2021) {
         this.router.navigate(['/public']);
-        console.log('NOT ACTIVATED');
       }
     }, 3000);
 

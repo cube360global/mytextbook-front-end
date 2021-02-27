@@ -1,14 +1,27 @@
 <nav class="navbar navbar-light bg-light fixed-top">
+
   <div class="container-fluid">
-    <button (click)="drawer.toggle()" class="navbar-brand d-flex align-items-center"
-            mat-icon-button style="cursor: pointer">
-      <i *ngIf="isDrawerShow"
-         class="fas fa-bars ms-lg-3 me-2"
-         style="color: #ffffff"></i>
-    </button>
-    <img alt="my text book logo"
-         class="img-fluid ms-lg-4"
-         src="../../../../../../../assets/img/my-text-book-logo.png">
+
+    <div *ngIf="!displayContentService.isMobile;else mobileNav" class="d-flex">
+      <button 
+      (click)="drawer.toggle()" 
+      class="navbar-brand d-flex align-items-center"
+      mat-icon-button style="cursor: pointer">
+  
+        <i *ngIf="isDrawerShow"
+           class="fas fa-bars ms-lg-3 me-2"
+           style="color: #ffffff">
+          </i>
+      </button>
+  
+  
+      <img alt="my text book logo"
+           class="img-fluid ms-2"
+           src="../../../../../../../assets/img/my-text-book-logo.png">
+
+    </div>
+    
+
     <div class="d-flex justify-content-between align-items-center">
       <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with share icon" class="me-lg-4"
               mat-icon-button>
@@ -16,6 +29,8 @@
       </button>
     </div>
   </div>
+
+
 </nav>
 <mat-menu #menu="matMenu">
   <button mat-menu-item routerLink="/private/user-details">
@@ -25,3 +40,22 @@
     Sign Out
   </button>
 </mat-menu>
+
+
+<ng-template #mobileNav>
+  <div  class="d-flex">
+    <button 
+    (click)="drawer.toggle()" 
+    class="navbar-brand d-flex align-items-center"
+    mat-icon-button style="cursor: pointer">
+
+      <i *ngIf="isDrawerShow"
+         class="fas fa-bars ms-lg-3 me-2"
+         style="color: #ffffff">
+        </i>
+    </button>
+  </div>
+  <img alt="my text book logo"
+  class="img-fluid"
+  src="../../../../../../../assets/img/my-text-book-logo.png">
+</ng-template>

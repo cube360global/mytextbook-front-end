@@ -51,6 +51,8 @@ export class ContentViewComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
         this.contentData = res;
+        this.videoUrl = this.sanitizer
+          .bypassSecurityTrustResourceUrl(`https://player.vimeo.com/video/${this.contentData.contentURL}`);
       });
 
     // this.contentQuestionApiService.getQuestions(this.activatedRoute.snapshot.params.id)
@@ -61,10 +63,6 @@ export class ContentViewComponent implements OnInit {
     this.store.dispatch(QUESTION_DATA_REQUEST(this.activatedRoute.snapshot.params.id));
 
     // this.contentData = window.history.state;
-    this.videoUrl = this.sanitizer
-      .bypassSecurityTrustResourceUrl(`https://player.vimeo.com/video/${this.contentData.contentURL}`);
-
-    console.log(this.videoUrl);
   }
 
   onContentEditDialogOpen(content: ContentModel): void {

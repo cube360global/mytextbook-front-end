@@ -33,7 +33,6 @@ export class UsersPushNotificationDialogComponent implements OnInit {
             emails.push(value.email);
           });
           this.userApiService.pushUserNotifications({emails, message: this.message}).subscribe(res => {
-            console.log(res);
             // Can add fail notification window
           });
         }

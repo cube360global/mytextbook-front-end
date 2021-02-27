@@ -30,15 +30,6 @@ export class TusUploadService {
       onProgress: (bytesUploaded, bytesTotal) => {
         const percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
         this.fileUploadArray[index].progress = +percentage;
-
-        // console.log(this.fileUploadArray);
-
-        // console.log(
-        //   'file: :',
-        //   bytesUploaded,
-        //   bytesTotal,
-        //   percentage + '%'
-        // );
       },
       onSuccess: () => {
         this.fileUploadArray.splice(index, 1);

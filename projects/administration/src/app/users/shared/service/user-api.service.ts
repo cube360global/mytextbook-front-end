@@ -58,7 +58,6 @@ export class UserApiService {
   }
 
   public deleteSubscription(userId: string, bookId: string): Observable<UserAndSchoolModel> {
-    console.log(bookId);
     return this.apiBaseService.DELETE_API<UserAndSchoolModel>
     ([AdminControllersConst.SubscriptionController, userId, bookId]);
   }
