@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'dev', component: DevTestComponent},
   {
     path: Path.Admin, component: NavBarComponent, canActivate: [AdminAuthGuard], children: [
-      {path: '', redirectTo: Path.Subject, pathMatch: 'full'},
+      {path: '', redirectTo: Path.Dashboard, pathMatch: 'full'},
       {path: Path.Dashboard, loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)},
       {path: Path.Users, loadChildren: () => import('./users/users.module').then(m => m.UsersModule)},
       {path: Path.Content, loadChildren: () => import('./content/content.module').then(m => m.ContentModule)},

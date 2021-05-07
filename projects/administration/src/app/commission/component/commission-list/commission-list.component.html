@@ -4,7 +4,9 @@
 
 <div *ngIf="commissions.length; else noCommissions">
   <div class="card">
-    <p-table [(selection)]="selectedCommissions" [value]="commissions" dataKey="code">
+    <p-table [(selection)]="selectedCommissions"
+             [value]="commissions"
+             dataKey="id">
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 3rem">
@@ -36,6 +38,6 @@
 </div>
 
 <ng-template #noCommissions>
-  <h2>No commissions</h2>
+  <h2>Loading ...</h2>
 </ng-template>
 
