@@ -24,13 +24,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const currentTime = new Date().getFullYear();
-    setInterval(() => {
-      if (currentTime > 2021) {
-        this.router.navigate(['/public']);
-      }
-    }, 3000);
-
 
   }
 }
